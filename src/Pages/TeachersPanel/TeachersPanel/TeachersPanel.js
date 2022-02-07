@@ -1,4 +1,5 @@
 import React from "react";
+import { Outlet } from "react-router-dom";
 import TeachersPanelBody from "../TeachersPanelBody/TeachersPanelBody";
 import TeachersPanelSideBar from "../TeachersPanelSideBar/TeachersPanelSideBar";
 
@@ -10,7 +11,7 @@ const TeachersPanel = () => {
             </div>
             <div className="grid grid-cols-12">
                 <div className="col-span-9">
-                    <TeachersPanelBody />
+                    <Outlet />
                 </div>
                 <div className="col-span-3">
                     <TeachersPanelSideBar />
