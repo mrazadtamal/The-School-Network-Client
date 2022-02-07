@@ -1,7 +1,17 @@
+import {BrowserRouter,Routes,Route} from "react-router-dom";
+import HomePage from "./HomePageComponents/HomePage";
+
 function App() {
   return (
     <div className="App">
-      <h1>Coding wizards</h1>
+
+        <BrowserRouter>
+            <Routes>
+                <Route path="/" element={<HomePage/>}></Route>
+
+            </Routes>
+        </BrowserRouter>
+      
     </div>
   );
 }
