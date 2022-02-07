@@ -11,6 +11,11 @@ function App() {
         <div className="">
             <BrowserRouter>
                 <Routes>
+
+                     {/* --------------All User Homepage Routes Start--------------- */}
+                   <Route path="/" element={<HomePage/>}></Route>
+
+                     {/* --------------All User Homepage Routes End--------------- */}
                     {/* --------------Principal Routes Start--------------- */}
 
                     <Route
