@@ -4,7 +4,7 @@ import { AiOutlineClose } from "react-icons/ai";
 
 import "./Navbar.css";
 
-const Navbar = () => {
+const AllUserNavbar = () => {
   const [toggleMenu, setToggleMenu] = useState(false);
   return (
     <nav className="app__navbar">
@@ -91,4 +91,4 @@ const Navbar = () => {
   );
 };
 
-export default Navbar;
+export default AllUserNavbar;
