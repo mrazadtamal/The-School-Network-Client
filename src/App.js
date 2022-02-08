@@ -3,9 +3,10 @@ import PrincipalDashboard from "./Pages/PrincipalPanel/PrincipalDashboard/Princi
 import PrincipalHome from "./Pages/PrincipalPanel/PrincipalHome/PrincipalHome";
 import PrincipalPublishNotice from "./Pages/PrincipalPanel/PrincipalPublishNotice/.PrincipalPublishNotice";
 import TeachersPanel from "./Pages/TeachersPanel/TeachersPanel/TeachersPanel";
-import TeachersPanelBody from "./Pages/TeachersPanel/TeachersPanelBody/TeachersPanelBody";
 import AlluserHomePage from "./Pages/AllUser/HomePageComponents/HomePage";
 import AllUserNavbar from "./Pages/AllUser/AllUserNavbar/AllUserNavbar";
+import TeachersPanelHome from "./Pages/TeachersPanel/TeachersPanelHome/TeachersPanelHome";
+import TeachersNoticePublish from "./Pages/TeachersPanel/TeachersNoticePublish/TeachersNoticePublish";
 
 function App() {
     return (
@@ -42,8 +43,12 @@ function App() {
                     >
                         <Route
                             path="/TeachersDashboard"
-                            element={<TeachersPanelBody />}
-                        ></Route>
+                            element={<TeachersPanelHome />}
+                        />
+                        <Route
+                            path="/TeachersDashboard/NoticePublish"
+                            element={<TeachersNoticePublish />}
+                        />
                     </Route>
                     {/* --------------Teacher Routes End-------------- */}
                 </Routes>
