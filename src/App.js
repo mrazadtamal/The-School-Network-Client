@@ -4,12 +4,19 @@ import PrincipalHome from "./Pages/PrincipalPanel/PrincipalHome/PrincipalHome";
 import PrincipalPublishNotice from "./Pages/PrincipalPanel/PrincipalPublishNotice/.PrincipalPublishNotice";
 import TeachersPanel from "./Pages/TeachersPanel/TeachersPanel/TeachersPanel";
 import TeachersPanelBody from "./Pages/TeachersPanel/TeachersPanelBody/TeachersPanelBody";
+import AlluserHomePage from "./Pages/AllUser/HomePageComponents/HomePage";
+import AllUserNavbar from "./Pages/AllUser/AllUserNavbar/AllUserNavbar";
 
 function App() {
     return (
         <div className="">
             <BrowserRouter>
+                <AllUserNavbar />
                 <Routes>
+                    {/* --------------All User Homepage Routes Start--------------- */}
+                    <Route path="/" element={<AlluserHomePage />}></Route>
+
+                    {/* --------------All User Homepage Routes End--------------- */}
                     {/* --------------Principal Routes Start--------------- */}
 
                     <Route
@@ -43,6 +50,5 @@ function App() {
             </BrowserRouter>
         </div>
     );
-
-
+}
 export default App;
