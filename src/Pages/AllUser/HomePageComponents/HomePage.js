@@ -1,18 +1,19 @@
-import React from 'react';
+import React from "react";
+import AllUserNavbar from "../AllUserNavbar/AllUserNavbar";
 import ExcellenceBanner from "./ExcellenceBanner";
 import Foooter from "./Foooter";
 import NewsAndEvents from "./HomeImages/NewsAndEvents";
 
-const MyComponent = () => {
-    return (
-        <div>
+const HomePage = () => {
+  return (
+    <div>
+      <AllUserNavbar />
+      <ExcellenceBanner />
+      <NewsAndEvents />
 
-            <ExcellenceBanner/>
-            <NewsAndEvents/>
-
-            <Foooter/>
-        </div>
-    );
+      <Foooter />
+    </div>
+  );
 };
 
-export default MyComponent;
+export default HomePage;
