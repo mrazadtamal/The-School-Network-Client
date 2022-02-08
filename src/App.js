@@ -2,33 +2,37 @@ import { BrowserRouter, Routes, Route } from "react-router-dom";
 import PrincipalDashboard from "./Pages/PrincipalPanel/PrincipalDashboard/PrincipalDashboard";
 import PrincipalHome from "./Pages/PrincipalPanel/PrincipalHome/PrincipalHome";
 import PrincipalPublishNotice from "./Pages/PrincipalPanel/PrincipalPublishNotice/.PrincipalPublishNotice";
-import TeachersPanelSideBar from "./Pages/TeachersPanel/TeachersPanelSideBar/TeachersPanelSideBar";
-import TeachersPanel from "./TeachersPanel/TeachersPanel/TeachersPanel";
-import TeachersPanelBody from "./TeachersPanel/TeachersPanelBody/TeachersPanelBody";
+import HomePage from "./Pages/AllUser/HomePageComponents/HomePage";
+import TeachersPanel from "./Pages/TeachersPanel/TeachersPanel/TeachersPanel";
+import LogInPage from "./Pages/AllUser/Login/LogInPage";
+
+
 
 function App() {
     return (
-        <div className="">
+        <div className="App">
             <BrowserRouter>
                 <Routes>
 
-                     {/* --------------All User Homepage Routes Start--------------- */}
-                   <Route path="/" element={<HomePage/>}></Route>
+                    {/* --------------All User Homepage Routes Start--------------- */}
+                    <Route path="/" element={<HomePage/>}></Route>
+                    <Route path="/login" element={<LogInPage/>}></Route>
 
-                     {/* --------------All User Homepage Routes End--------------- */}
+
+                    {/* --------------All User Homepage Routes End--------------- */}
                     {/* --------------Principal Routes Start--------------- */}
 
                     <Route
                         path="/PrincipalDashboard"
-                        element={<PrincipalDashboard />}
+                        element={<PrincipalDashboard/>}
                     >
                         <Route
                             path="/PrincipalDashboard"
-                            element={<PrincipalHome />}
+                            element={<PrincipalHome/>}
                         />
                         <Route
                             path="/PrincipalDashboard/PrincipalPublishNotice"
-                            element={<PrincipalPublishNotice />}
+                            element={<PrincipalPublishNotice/>}
                         />
                     </Route>
 
@@ -37,11 +41,11 @@ function App() {
                     {/* --------------Teacher Routes Start */}
                     <Route
                         path="/TeachersDashboard"
-                        element={<TeachersPanel />}
+                        element={<TeachersPanel/>}
                     >
                         <Route
                             path="/TeachersDashboard"
-                            element={<TeachersPanelBody />}
+                            element={<TeachersPanel/>}
                         ></Route>
                     </Route>
                     {/* --------------Teacher Routes End-------------- */}
@@ -50,5 +54,5 @@ function App() {
         </div>
     );
 
-
+}
 export default App;
