@@ -3,7 +3,7 @@ import ExcellenceBanner from "./ExcellenceBanner";
 import Foooter from "./Foooter";
 import NewsAndEvents from "./HomeImages/NewsAndEvents";
 
-const MyComponent = () => {
+const AlluserHomePage = () => {
     return (
         <div>
 
@@ -15,4 +15,4 @@ const MyComponent = () => {
     );
 };
 
-export default MyComponent;
+export default AlluserHomePage;
