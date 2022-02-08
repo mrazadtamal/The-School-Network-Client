@@ -3,6 +3,7 @@ import { GiHamburgerMenu } from "react-icons/gi";
 import { AiOutlineClose } from "react-icons/ai";
 
 import "./Navbar.css";
+import {Link} from "react-router-dom";
 
 const AllUserNavbar = () => {
   const [toggleMenu, setToggleMenu] = useState(false);
@@ -19,7 +20,11 @@ const AllUserNavbar = () => {
       </div>
       <ul className="app__navbar-links">
         <li className="p__opensans">
-          <a href="#home">Home</a>
+          <a href="#home">
+              <Link to="/">
+                  Home
+              </Link>
+              </a>
         </li>
         <li className="p__opensans">
           <a href="#about">About</a>
@@ -35,9 +40,13 @@ const AllUserNavbar = () => {
         </li>
       </ul>
       <div className="app__navbar-login">
-        <a href="#login" className="p__opensans">
-          SignIn
-        </a>
+
+           <a  className="p__opensans">
+             <Link to="/login">
+                 SignIn
+             </Link>
+           </a>
+
 
         <a href="/" className="p__opensans">
           Registration

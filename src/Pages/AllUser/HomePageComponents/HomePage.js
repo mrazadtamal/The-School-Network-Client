@@ -4,7 +4,7 @@ import Foooter from "./Foooter";
 import NewsAndEvents from "./HomeImages/NewsAndEvents";
 import AllUserNavbar from "../AllUserNavbar/AllUserNavbar";
 
-const MyComponent = () => {
+const AlluserHomePage = () => {
     return (
         <div>
             <AllUserNavbar/>
@@ -15,4 +15,4 @@ const MyComponent = () => {
     );
 };
 
-export default MyComponent;
+export default AlluserHomePage;
