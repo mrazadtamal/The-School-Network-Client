@@ -1,4 +1,4 @@
-import React from 'react';
+import React from "react";
 import ExcellenceBanner from "./ExcellenceBanner";
 import Foooter from "./Foooter";
 import NewsAndEvents from "./HomeImages/NewsAndEvents";
@@ -10,14 +10,15 @@ import Annoucements from "./Annoucements";
 const AlluserHomePage = () => {
     return (
         <div>
-            <AllUserNavbar/>
-            <Slider/>
+            <AllUserNavbar />
+            <Slider />
 
-            <BlogPosts/>
-            <Annoucements/>
-            <ExcellenceBanner/>
-            <NewsAndEvents/>
-            <Foooter/>
+            <BlogPosts />
+            <Annoucements />
+            <ExcellenceBanner />
+            <NewsAndEvents />
+            <Foooter />
+
         </div>
     );
 };
