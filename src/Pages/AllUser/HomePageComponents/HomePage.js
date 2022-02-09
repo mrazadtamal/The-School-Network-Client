@@ -4,16 +4,12 @@ import ExcellenceBanner from "./ExcellenceBanner";
 import Foooter from "./Foooter";
 import NewsAndEvents from "./HomeImages/NewsAndEvents";
 
-const HomePage = () => {
+const AlluserHomePage = () => {
   return (
     <div>
-      <AllUserNavbar />
-      <ExcellenceBanner />
-      <NewsAndEvents />
-
       <Foooter />
     </div>
   );
 };
 
-export default HomePage;
+export default AlluserHomePage;

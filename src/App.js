@@ -2,9 +2,9 @@ import { BrowserRouter, Routes, Route } from "react-router-dom";
 import PrincipalDashboard from "./Pages/PrincipalPanel/PrincipalDashboard/PrincipalDashboard";
 import PrincipalHome from "./Pages/PrincipalPanel/PrincipalHome/PrincipalHome";
 import PrincipalPublishNotice from "./Pages/PrincipalPanel/PrincipalPublishNotice/.PrincipalPublishNotice";
-import TeachersPanelSideBar from "./Pages/TeachersPanel/TeachersPanelSideBar/TeachersPanelSideBar";
-import TeachersPanel from "./TeachersPanel/TeachersPanel/TeachersPanel";
-import TeachersPanelBody from "./TeachersPanel/TeachersPanelBody/TeachersPanelBody";
+import TeachersPanel from "./Pages/TeachersPanel/TeachersPanel/TeachersPanel";
+import TeachersPanelBody from "./Pages/TeachersPanel/TeachersPanelBody/TeachersPanelBody";
+import AlluserHomePage from "./Pages/AllUser/HomePageComponents/HomePage";
 
 function App() {
     return (
@@ -13,7 +13,7 @@ function App() {
                 <Routes>
 
                      {/* --------------All User Homepage Routes Start--------------- */}
-                   <Route path="/" element={<HomePage/>}></Route>
+                   <Route path="/" element={<AlluserHomePage/>}></Route>
 
                      {/* --------------All User Homepage Routes End--------------- */}
                     {/* --------------Principal Routes Start--------------- */}
