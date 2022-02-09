@@ -2,39 +2,36 @@ import React from "react";
 
 const TeachersNoticePublish = () => {
     return (
-        <div className="text-center">
-            <h2 className="text-5xl text-gray-600 font-bold my-5 mt-16">
+        <div className="mx-64">
+            <h2 className="text-5xl text-gray-600 font-bold my-10 text-center">
                 Publish notice
             </h2>
             <div>
-                <div>
+                <div className="text-center">
                     <h2 className="text-2xl text-blue-500 font-medium">
                         Add local files
                     </h2>
                     <input type="file" className="my-3" />
                 </div>
                 <div className="my-3">
-                    <p className="text-gray-500">Or</p>
+                    <p className="text-gray-500 text-center">Or</p>
                 </div>
                 <div>
-                    <h2 className="text-2xl text-blue-500 font-medium mb-5">
+                    <h2 className="text-2xl text-blue-500 font-medium mb-5 text-center">
                         Write notice
                     </h2>
                     <form action="">
-                        <p className="text-lg font-medium">
-                            Write Title of the notice
-                        </p>
+                        <p className="text-lg font-medium">Title</p>
                         <input
                             type="text"
-                            className="border border-gray-500 rounded-lg w-64"
+                            className="border border-gray-500 rounded w-full"
                         />
-                        <p>Write description</p>
+                        <p className="text-lg font-medium mt-3">Description</p>
                         <textarea
                             name=""
                             id=""
-                            cols="50"
                             rows="5"
-                            className="border border-gray-500 rounded-lg w-64"
+                            className="border border-gray-500 rounded w-full"
                         ></textarea>
                         <input
                             type="submit"
