@@ -8,11 +8,13 @@ import LogInPage from "./Pages/AllUser/Login/LogInPage";
 import PrincipalAnnouncement from "./Pages/PrincipalPanel/PrincipalAnnouncement/PrincipalAnnouncement";
 import TeachersPanelHome from "./Pages/TeachersPanel/TeachersPanelHome/TeachersPanelHome";
 import TeachersNoticePublish from "./Pages/TeachersPanel/TeachersNoticePublish/TeachersNoticePublish";
+import AllUserNavbar from "./Pages/AllUser/AllUserNavbar/AllUserNavbar";
 
 function App() {
     return (
         <div className="App">
             <BrowserRouter>
+                <AllUserNavbar />
                 <Routes>
                     {/* --------------All User Homepage Routes Start--------------- */}
 
