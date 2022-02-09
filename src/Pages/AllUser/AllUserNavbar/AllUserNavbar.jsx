@@ -16,7 +16,7 @@ const AllUserNavbar = () => {
           }
           alt="app__logo"
         />
-        <h1>Coding Wizards</h1>
+        <h1>The School Network</h1>
       </div>
       <ul className="app__navbar-links">
         <li className="p__opensans">
@@ -47,10 +47,6 @@ const AllUserNavbar = () => {
              </Link>
            </a>
 
-
-        <a href="/" className="p__opensans">
-          Registration
-        </a>
       </div>
 
       <div className="app__navbar-smallScreen">
