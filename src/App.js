@@ -1,21 +1,23 @@
 import { BrowserRouter, Routes, Route } from "react-router-dom";
 import PrincipalDashboard from "./Pages/PrincipalPanel/PrincipalDashboard/PrincipalDashboard";
 import PrincipalHome from "./Pages/PrincipalPanel/PrincipalHome/PrincipalHome";
-import PrincipalPublishNotice from "./Pages/PrincipalPanel/PrincipalPublishNotice/.PrincipalPublishNotice";
+import PrincipalPublishNotice from "./Pages/PrincipalPanel/PrincipalPublishNotice/PrincipalPublishNotice";
 import TeachersPanel from "./Pages/TeachersPanel/TeachersPanel/TeachersPanel";
-import AlluserHomePage from "./Pages/AllUser/HomePageComponents/HomePage";
-import AllUserNavbar from "./Pages/AllUser/AllUserNavbar/AllUserNavbar";
+import HomePage from "./Pages/AllUser/HomePageComponents/HomePage";
+import LogInPage from "./Pages/AllUser/Login/LogInPage";
+import PrincipalAnnouncement from "./Pages/PrincipalPanel/PrincipalAnnouncement/PrincipalAnnouncement";
 import TeachersPanelHome from "./Pages/TeachersPanel/TeachersPanelHome/TeachersPanelHome";
 import TeachersNoticePublish from "./Pages/TeachersPanel/TeachersNoticePublish/TeachersNoticePublish";
 
 function App() {
     return (
-        <div className="">
+        <div className="App">
             <BrowserRouter>
-                <AllUserNavbar />
                 <Routes>
                     {/* --------------All User Homepage Routes Start--------------- */}
-                    <Route path="/" element={<AlluserHomePage />}></Route>
+
+                    <Route path="/" element={<HomePage />} />
+                    <Route path="/login" element={<LogInPage />} />
 
                     {/* --------------All User Homepage Routes End--------------- */}
                     {/* --------------Principal Routes Start--------------- */}
@@ -31,6 +33,10 @@ function App() {
                         <Route
                             path="/PrincipalDashboard/PrincipalPublishNotice"
                             element={<PrincipalPublishNotice />}
+                        />
+                        <Route
+                            path="/PrincipalDashboard/PrincipalAnnouncement"
+                            element={<PrincipalAnnouncement />}
                         />
                     </Route>
 
