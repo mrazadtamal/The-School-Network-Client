@@ -18,7 +18,7 @@ function App() {
           <Route path="/login" element={<LogInPage/>}/>
 
           {/* --------------All User Homepage Routes End--------------- */}
-          {/* --------------Principal Routes Start--------------- */}
+          {/* --------------Principal Routes Start-------------- */}
 
           <Route path="/PrincipalDashboard" element={<PrincipalDashboard />}>
             <Route path="/PrincipalDashboard" element={<PrincipalHome />} />
