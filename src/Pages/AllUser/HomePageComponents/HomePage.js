@@ -3,7 +3,6 @@ import ExcellenceBanner from "./ExcellenceBanner";
 import Foooter from "./Foooter";
 import NewsAndEvents from "./HomeImages/NewsAndEvents";
 import AllUserNavbar from "../AllUserNavbar/AllUserNavbar";
-import StudentMyDocuments from "../../StudentPanel/StudentDashboard/StudentMyDocuments/StudentMyDocuments";
 
 const AlluserHomePage = () => {
   return (
@@ -12,7 +11,6 @@ const AlluserHomePage = () => {
       <ExcellenceBanner />
       <NewsAndEvents />
       <Foooter />
-      <StudentMyDocuments />
     </div>
   );
 };
