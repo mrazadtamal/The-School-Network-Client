@@ -8,6 +8,9 @@ import LogInPage from "./Pages/AllUser/Login/LogInPage";
 import PrincipalAnnouncement from "./Pages/PrincipalPanel/PrincipalAnnouncement/PrincipalAnnouncement";
 import TeachersPanelHome from "./Pages/TeachersPanel/TeachersPanelHome/TeachersPanelHome";
 import TeachersNoticePublish from "./Pages/TeachersPanel/TeachersNoticePublish/TeachersNoticePublish";
+import AdmissionPolicy from "./Pages/AllUser/Admission/AdmissionPoliciy";
+import HowToApply from "./Pages/AllUser/Admission/HowToApply";
+import AdmissionForm from "./Pages/AllUser/Admission/AdmissionForm";
  
 function App() {
     return (
@@ -18,7 +21,11 @@ function App() {
  
                     <Route path="/" element={<HomePage />} />
                     <Route path="/login" element={<LogInPage />} />
- 
+                    <Route path="/admissionPolicy" element={<AdmissionPolicy/>}/>
+                    <Route path="/howtoapply" element={<HowToApply/>}/>
+                    <Route path="/admissionForm" element={<AdmissionForm/>}/>
+                    AdmissionForm
+
                     {/* --------------All User Homepage Routes End--------------- */}
                     {/* --------------Principal Routes Start--------------- */}
  
