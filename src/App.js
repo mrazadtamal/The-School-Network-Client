@@ -3,13 +3,13 @@ import PrincipalDashboard from "./Pages/PrincipalPanel/PrincipalDashboard/Princi
 import PrincipalHome from "./Pages/PrincipalPanel/PrincipalHome/PrincipalHome";
 import PrincipalPublishNotice from "./Pages/PrincipalPanel/PrincipalPublishNotice/PrincipalPublishNotice";
 import TeachersPanel from "./Pages/TeachersPanel/TeachersPanel/TeachersPanel";
-import TeachersPanelBody from "./Pages/TeachersPanel/TeachersPanelBody/TeachersPanelBody";
-
 import HomePage from "./Pages/AllUser/HomePageComponents/HomePage";
 import LogInPage from "./Pages/AllUser/Login/LogInPage";
 import PrincipalAnnouncement from "./Pages/PrincipalPanel/PrincipalAnnouncement/PrincipalAnnouncement";
 import TeachersPanelHome from "./Pages/TeachersPanel/TeachersPanelHome/TeachersPanelHome";
 import TeachersNoticePublish from "./Pages/TeachersPanel/TeachersNoticePublish/TeachersNoticePublish";
+import TeachersClassRoutine from "./Pages/TeachersPanel/TeachersClassRoutine/TeachersClassRoutine";
+import TeachersExamRoutine from "./Pages/TeachersPanel/TeachersExamRoutine/TeachersExamRoutine";
 
 function App() {
     return (
@@ -56,6 +56,14 @@ function App() {
                         <Route
                             path="/TeachersDashboard/NoticePublish"
                             element={<TeachersNoticePublish />}
+                        />
+                        <Route
+                            path="/TeachersDashboard/ClassRoutine"
+                            element={<TeachersClassRoutine />}
+                        />
+                        <Route
+                            path="/TeachersDashboard/ExamRoutine"
+                            element={<TeachersExamRoutine />}
                         />
                     </Route>
                     {/* --------------Teacher Routes End-------------- */}

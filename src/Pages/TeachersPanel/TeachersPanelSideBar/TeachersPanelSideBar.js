@@ -233,8 +233,8 @@ const TeachersPanelSideBar = () => {
                                 <div className="p-1">
                                     <Menu.Item>
                                         {({ active }) => (
-                                            <a
-                                                href="#"
+                                            <Link
+                                                to="/TeachersDashboard/ClassRoutine"
                                                 className={classNames(
                                                     active
                                                         ? "bg-gray-100 text-gray-900"
@@ -243,13 +243,13 @@ const TeachersPanelSideBar = () => {
                                                 )}
                                             >
                                                 Class Routine
-                                            </a>
+                                            </Link>
                                         )}
                                     </Menu.Item>
                                     <Menu.Item>
                                         {({ active }) => (
-                                            <a
-                                                href="#"
+                                            <Link
+                                                to="/TeachersDashboard/ExamRoutine"
                                                 className={classNames(
                                                     active
                                                         ? "bg-gray-100 text-gray-900"
@@ -258,7 +258,7 @@ const TeachersPanelSideBar = () => {
                                                 )}
                                             >
                                                 Exam Routine
-                                            </a>
+                                            </Link>
                                         )}
                                     </Menu.Item>
                                 </div>

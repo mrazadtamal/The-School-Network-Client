@@ -2,7 +2,7 @@ import React from "react";
 
 const TeachersNoticePublish = () => {
     return (
-        <div className="mx-64">
+        <div className="container mx-auto">
             <h2 className="text-5xl text-gray-600 font-bold my-10 text-center">
                 Publish notice
             </h2>
