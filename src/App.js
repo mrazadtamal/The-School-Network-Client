@@ -9,6 +9,7 @@ import LogInPage from "./Pages/AllUser/Login/LogInPage";
 // student imports
 import StudentDashboard from "./Pages/StudentPanel/StudentDashboard/StudentDashboard";
 import StudentHome from "./Pages/StudentPanel/StudentHome/StudentHome";
+import RequestCare from "./Pages/StudentPanel/RequestCare/RequestCare";
 
 function App() {
   return (
@@ -43,7 +44,8 @@ function App() {
           {/* --------------Teacher Routes End-------------- */}
           {/* --------------------student route start-----------------------*/}
           <Route path="/StudentDashboard" element={<StudentDashboard />}>
-            <Route path="/StudentDashboard/StudentHome" element={<StudentHome />}/>
+            <Route path="/StudentDashboard" element={<StudentHome />}/>
+            <Route path="/StudentDashboard/RequestCare" element={<RequestCare />}/>
           </Route>
           {/* --------------------student route end-------------------------*/}
         </Routes>
