@@ -18,6 +18,7 @@ const AlluserHomePage = () => {
             <ExcellenceBanner />
             <NewsAndEvents />
             <Foooter />
+
         </div>
     );
 };
