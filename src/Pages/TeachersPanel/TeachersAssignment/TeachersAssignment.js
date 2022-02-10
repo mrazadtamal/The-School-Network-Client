@@ -1,7 +1,7 @@
 import React from 'react';
 import { useState } from 'react';
 import'./Teacherpanel.css'
-const TeachersAssinment = () => {
+const TeachersAssignment = () => {
     const [titles,setTitles]=useState('')
     const [descript,setdescript]=useState('')
     const [files,setFiles]=useState('')
@@ -19,16 +19,16 @@ const TeachersAssinment = () => {
        console.log(titles,descript,files)
    }
     return (
-        <div className='text-center w-full m-auto mx-64  mt-5'>
+        <div className='text-center w-full m-auto mt-5'>
             
-          <div className=' w-2/4 teacher-side p-5 '>
+          <div className='w-2/4 mx-auto container teacher-side p-5 '>
           
 
-          <p class='text-3xl text-sky-400/100'>Published Assinment</p>
+          <p class='text-3xl text-sky-400/100'>Published Assignment</p>
                 
                 <div>       
                  
-                       <label class="block mx-64">
+                       <label class="block mx-2">
                            <span class="sr-only">Choose File</span>
                         <input 
                         onChange={fileHandle}
@@ -49,18 +49,18 @@ const TeachersAssinment = () => {
                         <input 
                           className="placeholder:italic placeholder:text-slate-400 block bg-white w-full border border-slate-300 rounded-md py-2 pl-9 pr-3 shadow-sm focus:outline-none focus:border-sky-500 focus:ring-sky-500 focus:ring-1 sm:text-sm"
                           onChange={titleHandle} 
-                          placeholder="Assinment Title" 
+                          placeholder="Assignment" 
                            type="text"
                          name="title"/>
                  </label>
 
                         <textarea
-                            name="assinmentDescription"
+                            name="assingmentDescription"
                             onChange={descriptHandle}
                             id=""
                             rows="5"
                             className="placeholder:italic placeholder:text-slate-400 block bg-white w-full border border-slate-300 rounded-md py-2 pl-9 pr-3 shadow-sm focus:outline-none focus:border-sky-500 focus:ring-sky-500 focus:ring-1 sm:text-sm" 
-                            placeholder="Assinment Description" 
+                            placeholder="Assignment Description" 
                             type="text"
                         ></textarea>
                          
@@ -79,4 +79,4 @@ const TeachersAssinment = () => {
     );
 };
 
-export default TeachersAssinment;
+export default TeachersAssignment;

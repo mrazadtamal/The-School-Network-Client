@@ -1,3 +1,15 @@
+
+
+
+.dropdown:hover .dropdown-menu {
+  display: block;
+}
+
+
+/*css*/
+
+
+
 .app__navbar {
   width: 100%;
   display: flex;
@@ -83,7 +95,7 @@
   transition: 0.5s ease;
 
   flex-direction: column;
-  z-index: 5;
+  z-index: 1;
 }
 
 .app__navbar-smallScreen_overlay .overlay__close {
@@ -94,6 +106,7 @@
   position: absolute;
   top: 20px;
   right: 20px;
+  z-index: 1;
 }
 
 .app__navbar-smallScreen_links {
@@ -136,3 +149,5 @@
     width: 40px;
   }
 }
+
+
