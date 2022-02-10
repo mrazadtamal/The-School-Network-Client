@@ -70,6 +70,7 @@
 
 .app__navbar-smallScreen {
   display: none;
+  z-index: 999;
 }
 
 .flex__center {
@@ -92,7 +93,7 @@
   background: #242526;
   transition: 0.5s ease;
   flex-direction: column;
-  z-index: 1;
+  z-index: 1000;
 }
 
 .app__navbar-smallScreen_overlay .overlay__close {
