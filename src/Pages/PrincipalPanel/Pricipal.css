@@ -1,3 +1,7 @@
+#principal_nav{
+    display: none;
+}
+
 /* ----------------Principal Home css start------------- */
 .principalhomeimg{
     width: 45%;
@@ -10,13 +14,21 @@
 .principal_sidebar_link{
     cursor: pointer;
     margin-left: 20px;
+    display: flex;
+    flex-direction: row;
 }
 .sidebar_colam{
     height: 100vh;
     border-right: inset 15px rgb(194, 19, 0);
 }
 .principal_sidebar_icon{
-    margin-right: 5px;
+    margin-right: 10px;
+}
+.principal_react_icons{
+    color:#ffffff;
+    font-weight:bolder;
+    font-size: 20px;
+    margin-right: 10px;
 }
 /* ----------------Principal sidebar css End------------- */
 
@@ -36,13 +48,34 @@
     margin-bottom: 10px;
     color: rgb(0, 11, 73);;
 }
-.principal_form_inputs{
+.principal_form_textarea{
     width: 80%;
     outline: none;
     border: solid rgb(0, 153, 255) 1px;
     margin-left: 30px;
     display: block;
     height: 120px;
+}
+.principal_form_inputs{
+    width: 80%;
+    outline: none;
+    border: solid rgb(0, 153, 255) 1px;
+    margin-left: 30px;
+    display: block;
+    height: 40px;
+    border-radius: 10px;
+}
+.principal_form_span{
+    width: 80%;
+    outline: none;
+    border: solid rgb(0, 153, 255) 1px;
+    margin-left: 30px;
+    display: block;
+    height: 50px;
+    border-radius: 10px;
+}
+.principal_file_input{
+    margin-left: 15px;
 }
 .principal_notice_publish_btn{
     display: block;
@@ -56,3 +89,15 @@
 }
 /* ----------------Principal notice publish css End------------- */
 
+@media screen and (max-width: 991px) {
+    #principal_nav{
+        display: block;
+    }
+    .sidebar_colam{
+        display: none;
+    }
+    .principalhomeimg{
+        width: 100%;
+    
+    }
+}
