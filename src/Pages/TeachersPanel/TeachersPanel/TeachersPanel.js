@@ -4,11 +4,11 @@ import TeachersPanelSideBar from "../TeachersPanelSideBar/TeachersPanelSideBar";
 
 const TeachersPanel = () => {
     return (
-        <div className="grid grid-cols-12">
-            <div className="col-span-2">
+        <div className="md:grid md:grid-cols-12">
+            <div className="col-span-3 lg:col-span-2">
                 <TeachersPanelSideBar />
             </div>
-            <div className="col-span-10">
+            <div className="col-span-9 lg:col-span-10 mb-10 lg:mb-0">
                 <Outlet />
             </div>
         </div>

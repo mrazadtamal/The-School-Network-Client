@@ -9,7 +9,7 @@ function classNames(...classes) {
 
 const TeachersPanelSideBar = () => {
     return (
-        <div className="bg-green-300 h-screen p-4 text-center">
+        <div className="bg-green-300 lg:h-screen p-4 text-center">
             {/* Teachers Dashboard Home Page */}
             <Link
                 to="/TeachersDashboard"
