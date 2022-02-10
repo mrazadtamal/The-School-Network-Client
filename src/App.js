@@ -3,7 +3,6 @@ import PrincipalDashboard from "./Pages/PrincipalPanel/PrincipalDashboard/Princi
 import PrincipalHome from "./Pages/PrincipalPanel/PrincipalHome/PrincipalHome";
 import PrincipalPublishNotice from "./Pages/PrincipalPanel/PrincipalPublishNotice/.PrincipalPublishNotice";
 import TeachersPanel from "./Pages/TeachersPanel/TeachersPanel/TeachersPanel";
-import TeachersPanelBody from "./Pages/TeachersPanel/TeachersPanelBody/TeachersPanelBody";
 
 import HomePage from "./Pages/AllUser/HomePageComponents/HomePage";
 import LogInPage from "./Pages/AllUser/Login/LogInPage";
