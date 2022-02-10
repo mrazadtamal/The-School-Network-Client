@@ -1,11 +1,11 @@
 import { BrowserRouter, Routes, Route } from "react-router-dom";
-import HomePage from "./Pages/AllUser/HomePageComponents/HomePage";
 import PrincipalDashboard from "./Pages/PrincipalPanel/PrincipalDashboard/PrincipalDashboard";
 import PrincipalHome from "./Pages/PrincipalPanel/PrincipalHome/PrincipalHome";
 import PrincipalPublishNotice from "./Pages/PrincipalPanel/PrincipalPublishNotice/.PrincipalPublishNotice";
 import TeachersPanel from "./Pages/TeachersPanel/TeachersPanel/TeachersPanel";
 import TeachersPanelBody from "./Pages/TeachersPanel/TeachersPanelBody/TeachersPanelBody";
 import AlluserHomePage from "./Pages/AllUser/HomePageComponents/HomePage";
+import TeachersAssinment from "./Pages/TeachersPanel/TeachersAssinment/TeachersAssinment";
 
 function App() {
     return (
@@ -36,7 +36,7 @@ function App() {
                     {/* --------------Principal Routes End--------------- */}
 
                     {/* --------------Teacher Routes Start */}
-                    {/* <Route
+                    <Route
                         path="/TeachersDashboard"
                         element={<TeachersPanel />}
                     >
@@ -44,7 +44,8 @@ function App() {
                             path="/TeachersDashboard"
                             element={<TeachersPanelBody />}
                         ></Route>
-                    </Route> */}
+                    </Route>
+                    <Route path='/teacherAss' element={<TeachersAssinment></TeachersAssinment>}/>
                     {/* --------------Teacher Routes End-------------- */}
                 </Routes>
             </BrowserRouter>

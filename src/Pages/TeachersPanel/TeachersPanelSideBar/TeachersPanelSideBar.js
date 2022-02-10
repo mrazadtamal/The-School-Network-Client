@@ -1,8 +1,7 @@
+import { Menu, Transition } from "@headlessui/react";
 import React from "react";
 import { Fragment } from "react";
-import { Menu, Transition } from "@headlessui/react";
-import { ChevronDownIcon } from "@heroicons/react/solid";
-
+ 
 function classNames(...classes) {
     return classes.filter(Boolean).join(" ");
 }
@@ -35,7 +34,7 @@ const TeachersPanelSideBar = () => {
                                 {({ active }) => (
                                     <a
                                         href="#"
-                                        className={classNames(
+                                        className={(
                                             active
                                                 ? "bg-gray-100 text-gray-900"
                                                 : "text-gray-700",
@@ -98,6 +97,7 @@ const TeachersPanelSideBar = () => {
                     </Menu.Items>
                 </Transition>
             </Menu>
+           
 
             {/* Register Student */}
             <div className="">
@@ -196,7 +196,12 @@ const TeachersPanelSideBar = () => {
                         </div>
                     </Menu.Items>
                 </Transition>
+               
             </Menu>
+         
+            <div>
+                   
+                </div>
         </div>
     );
 };
