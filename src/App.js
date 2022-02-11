@@ -32,7 +32,9 @@ function App() {
           <Route path="/admissionForm" element={<AdmissionForm />} />
           AdmissionForm
           {/* --------------All User Homepage Routes End--------------- */}
-          {/* --------------Principal Routes Start--------------- */}
+
+          {/* --------------Principal Routes Start-------------- */}
+
           <Route path="/PrincipalDashboard" element={<PrincipalDashboard />}>
             <Route path="/PrincipalDashboard" element={<PrincipalHome />} />
             <Route
