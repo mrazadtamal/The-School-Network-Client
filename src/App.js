@@ -1,7 +1,7 @@
 import { BrowserRouter, Routes, Route } from "react-router-dom";
 import PrincipalDashboard from "./Pages/PrincipalPanel/PrincipalDashboard/PrincipalDashboard";
 import PrincipalHome from "./Pages/PrincipalPanel/PrincipalHome/PrincipalHome";
-import PrincipalPublishNotice from "./Pages/PrincipalPanel/PrincipalPublishNotice/PrincipalPublishNotice";
+import PrincipalPublishNotice from "./Pages/PrincipalPanel/PrincipalPublishNotice/.PrincipalPublishNotice";
 import TeachersPanel from "./Pages/TeachersPanel/TeachersPanel/TeachersPanel";
 import HomePage from "./Pages/AllUser/HomePageComponents/HomePage";
 import LogInPage from "./Pages/AllUser/Login/LogInPage";
@@ -13,6 +13,11 @@ import HowToApply from "./Pages/AllUser/Admission/HowToApply";
 import AdmissionForm from "./Pages/AllUser/Admission/AdmissionForm";
 import TeachersClassRoutine from "./Pages/TeachersPanel/TeachersClassRoutine/TeachersClassRoutine";
 import TeachersExamRoutine from "./Pages/TeachersPanel/TeachersExamRoutine/TeachersExamRoutine";
+
+// student imports
+import StudentDashboard from "./Pages/StudentPanel/StudentDashboard/StudentDashboard";
+import StudentHome from "./Pages/StudentPanel/StudentHome/StudentHome";
+import RequestCare from "./Pages/StudentPanel/RequestCare/RequestCare";
 
 function App() {
   return (
@@ -57,6 +62,15 @@ function App() {
             />
           </Route>
           {/* --------------Teacher Routes End-------------- */}
+          {/* --------------------student route start-----------------------*/}
+          <Route path="/StudentDashboard" element={<StudentDashboard />}>
+            <Route path="/StudentDashboard" element={<StudentHome />} />
+            <Route
+              path="/StudentDashboard/RequestCare"
+              element={<RequestCare />}
+            />
+          </Route>
+          {/* --------------------student route end-------------------------*/}
         </Routes>
       </BrowserRouter>
     </div>
