@@ -1,3 +1,15 @@
+
+
+
+.dropdown:hover .dropdown-menu {
+  display: block;
+}
+
+
+/*css*/
+
+
+
 .app__navbar {
   width: 100%;
   display: flex;
@@ -166,4 +178,6 @@
   .app__navbar-logo img {
     width: 40px;
   }
+
 }
+

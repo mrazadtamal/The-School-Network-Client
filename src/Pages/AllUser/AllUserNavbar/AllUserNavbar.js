@@ -20,9 +20,11 @@ const AllUserNavbar = () => {
       </div>
       <ul className="app__navbar-links">
         <li className="p__opensans">
-          <a href="#home">
-            <Link to="/">Home</Link>
-          </a>
+          <a >
+              <Link to="/">
+                  Home
+              </Link>
+              </a>
         </li>
         <li className="p__opensans">
           <a href="#about">About</a>
@@ -36,6 +38,15 @@ const AllUserNavbar = () => {
         <li className="p__opensans">
           <a href="#contact">Contact</a>
         </li>
+          <li className="p__opensans">
+              <a>
+                  <Link to="/admissionPolicy">
+                     Admission
+                  </Link>
+              </a>
+          </li>
+         
+
       </ul>
       <div className="app__navbar-login">
         <Link className="p__opensans" to="/login">
