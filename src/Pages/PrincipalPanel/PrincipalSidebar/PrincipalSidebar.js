@@ -18,12 +18,18 @@ const PrincipalSidebar = () => {
         </p>
       </Link>
 
-      <Link to="/PrincipalDashboard/PrincipalPublishNotice">
-        <p className="principal_sidebar_link  font-bold text-white mt-4">
-          <i className="fas fa-sticky-note principal_sidebar_icon"></i>Publish
-          Notice
-        </p>
-      </Link>
+        <Link to="/PrincipalDashboard/PrincipalPublishNotice">
+          <p className='principal_sidebar_link  font-bold text-white mt-4'><i className="fas fa-sticky-note principal_sidebar_icon"></i>Publish Notice</p>
+        </Link>
+
+        <Link to="/PrincipalDashboard/PrincipalAnnouncement">
+          <p className='principal_sidebar_link  font-bold text-white mt-4'> <HiSpeakerphone className='principal_react_icons' /> Announcement</p>
+        </Link>
+
+        <Link to="/PrincipalDashboard/PrincipalManageTeacher">
+          <p className='principal_sidebar_link  font-bold text-white mt-4'> <HiSpeakerphone className='principal_react_icons' /> Manage Teachers</p>
+        </Link>
+
     </div>
   );
 };

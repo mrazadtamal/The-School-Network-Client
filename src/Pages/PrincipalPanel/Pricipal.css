@@ -1,3 +1,15 @@
+
+#principal_nav{
+    display: none;
+}
+.dashboard_body{
+    position: relative;
+
+}
+.manageTeachers_table{
+    margin-left: 200px;
+}
+
 /* ----------------Principal Home css start------------- */
 .principalhomeimg {
   width: 45%;
@@ -6,14 +18,26 @@
 /* ----------------Principal Home css End------------- */
 
 /* ----------------Principal sidebar css start------------- */
+
+.principal_sidebar_link{
+    cursor: pointer;
+    margin-left: 20px;
+    display: flex;
+    flex-direction: row;
+    padding-right: 30px;
+}
+.sidebar_colam{
+    height: 100vh;
+    border-right: inset 15px rgb(194, 19, 0);
+    position: fixed;
+    top: 0px;
+    z-index: 1;
+
 .principal_sidebar_link {
   cursor: pointer;
   margin-left: 20px;
 }
-.sidebar_colam {
-  height: 100vh;
-  border-right: inset 15px rgb(194, 19, 0);
-}
+
 .principal_sidebar_icon {
   margin-right: 5px;
 }
@@ -54,3 +78,18 @@
   border-radius: 5px;
 }
 /* ----------------Principal notice publish css End------------- */
+
+
+@media screen and (max-width: 991px) {
+    #principal_nav{
+        display: block;
+    }
+    .sidebar_colam{
+        display: none;
+    }
+    .principalhomeimg{
+        width: 100%;
+    
+    }
+}
+
