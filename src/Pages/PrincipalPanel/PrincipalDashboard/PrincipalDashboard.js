@@ -1,11 +1,9 @@
-import React from 'react';
-import {
-    Outlet
-  } from "react-router-dom";
-import PrincipalNavbar from '../PrincipalNavbar/PrincipalNavbar';
-import PrincipalSidebar from '../PrincipalSidebar/PrincipalSidebar';
+import React from "react";
+import { Outlet } from "react-router-dom";
+import PrincipalSidebar from "../PrincipalSidebar/PrincipalSidebar";
 
 const PrincipalDashboard = () => {
+
     return (
         <div style={{width: '100%'}}>
             <PrincipalNavbar/>
@@ -18,7 +16,7 @@ const PrincipalDashboard = () => {
                 </div>
             </div>
         </div>
-    );
+);
 };
 
 export default PrincipalDashboard;
