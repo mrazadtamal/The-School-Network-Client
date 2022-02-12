@@ -18,6 +18,10 @@ const PrincipalSidebar = () => {
         <Link to="/PrincipalDashboard/PrincipalAnnouncement">
           <p className='principal_sidebar_link  font-bold text-white mt-4'> <HiSpeakerphone className='principal_react_icons' /> Announcement</p>
         </Link>
+
+        <Link to="/PrincipalDashboard/PrincipalManageTeacher">
+          <p className='principal_sidebar_link  font-bold text-white mt-4'> <HiSpeakerphone className='principal_react_icons' /> Manage Teachers</p>
+        </Link>
     </div>
   )
 }
