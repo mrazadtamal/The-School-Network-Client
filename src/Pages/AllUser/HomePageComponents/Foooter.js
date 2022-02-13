@@ -1,61 +1,81 @@
 import React from "react";
-import footerlogo from "../HomePageComponents/HomeImages/logo.svg";
-import { BsFacebook, BsInstagram, BsYoutube } from "react-icons/bs";
 
 const MyComponent = () => {
   return (
-    <div className="bg-black pt-5 pb-5 mt-8 text-white ">
-      <div className="container mx-auto  flex ">
-        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-5">
-          <div className="lg:text-left sm:text-center ">
-            <img
-              src="https://res.cloudinary.com/abidazad/image/upload/v1644746365/education_kf8trf.png"
-              className="p-3 h-40 w-30 text-center m-auto "
-              alt=""
+    <div className=" mt-20 bg-stone-800 w-full p-8 text-white">
+      <div className="sm:flex mb-4">
+        <div className="sm:w-1/4 ">
+          <img
+            className="h-20 w-15  m-auto text-center"
+            src="https://res.cloudinary.com/abidazad/image/upload/v1644746365/education_kf8trf.png"
+            alt=""
+          />
+          <div className="text-center text-xl mt-3">
+            <h2>The School Network</h2>
+          </div>
+        </div>
+        <div className="sm:w-1/4 h-auto sm:mt-0 mt-8">
+          <div className="text-blue mb-2">COMPANY</div>
+          <ul className="list-reset leading-normal">
+            <li className="hover:text-blue mt-1 text-grey-darker">About Us</li>
+            <li className="hover:text-blue mt-1 text-grey-darker">
+              Achievements
+            </li>
+            <li className="hover:text-blue mt-1 text-grey-darker">
+              Case Studies
+            </li>
+            <li className="hover:text-blue mt-1 text-grey-darker">Solutions</li>
+            <li className="hover:text-blue mt-1 text-grey-darker">
+              Download Brochure
+            </li>
+            <li className="hover:text-blue mt-1 text-grey-darker">
+              Announcements
+            </li>
+            <li className="hover:text-blue mt-1 text-grey-darker">Our Blogs</li>
+          </ul>
+        </div>
+        <div className="sm:w-1/4 h-auto sm:mt-0 mt-8">
+          <div className="text-green-dark mb-2">USEFUL LINK</div>
+          <ul className="list-reset leading-normal">
+            <li className="hover:text-green-dark mt-1 text-grey-darker">
+              Register Institute
+            </li>
+            <li className="hover:text-green-dark mt-1 text-grey-darker">
+              Login
+            </li>
+            <li className="hover:text-green-dark mt-1 text-grey-darker">
+              Sign-Up
+            </li>
+            <li className="hover:text-green-dark mt-1 text-grey-darker">
+              Blog
+            </li>
+            <li className="hover:text-green-dark mt-1 text-grey-darker">
+              Become A Partner
+            </li>
+            <li className="hover:text-green-dark mt-1 text-grey-darker">
+              Refer And Earn
+            </li>
+          </ul>
+        </div>
+        <div className="sm:w-1/2 sm:mt-0 mt-8 h-auto">
+          <div className="text-red-light mb-2">CONTACT US</div>
+
+          <p className="text-grey-darker font-bold leading-normal">PHONE</p>
+          <p className="text-grey-darker leading-normal">999333666</p>
+          <p className="text-grey-darker font-bold leading-normal">EMAIL</p>
+          <p className="text-grey-darker leading-normal">
+            web.codingwizards@gmail.com
+          </p>
+          <h4 className="font-bold text-lg">Subscribe Us</h4>
+          <div className="mt-4 flex">
+            <input
+              type="text"
+              className="p-2  w-9/12 border border-grey-light round text-grey-dark text-sm h-auto"
+              placeholder="Your email address"
             />
-            <h1 className="text-center m-auto text-lg ">The School Network</h1>
-          </div>
-
-          <div className="mt-12 md:mt-0 lg:text-left sm:text-center">
-            <h3 className="text-white pt-5">St. Clare College of Caloocan</h3>
-            <p className="text-white pt-3 font-light">
-              Zabarte Road, Camarin, Caloocan City
-              <br />
-              Metro Manila, Philippines 1400
-            </p>
-            <p className="pt-2">
-              (02) 232 4483
-              <br />
-              (02) 282 0651
-              <br />
-              0998 990 1169
-              <br />
-            </p>
-            <h2 className="pt-2">Email us at</h2>
-            <p>stclarecollege@yahoo.com</p>
-          </div>
-
-          <div className="mt-12 md:mt-0 lg:text-left sm:text-center">
-            <h3 className="text-white pt-5">SITE LINKS</h3>
-            <p className="text-white pt-3 font-light">
-              Home
-              <br />
-              About
-            </p>
-            <p className="font-light">
-              History
-              <br />
-              Features
-              <br />
-              Programs
-              <br />
-            </p>
-            <h2 className="pt-2">FOLLOW OUR SOCIAL MEDIA</h2>
-            <div className="flex space-x-3 mt-2">
-              <BsFacebook />
-              <BsInstagram />
-              <BsYoutube />
-            </div>
+            <button className=" bg-cyan-700 text-white rounded-sm h-auto text-xs p-3">
+              Subscribe
+            </button>
           </div>
         </div>
       </div>
