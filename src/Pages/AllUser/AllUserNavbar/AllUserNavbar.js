@@ -23,8 +23,8 @@ const AllUserNavbar = () => {
               <div className="flex items-center text-white ">
                 <div>
                   <img
-                    className="h-8 w-10 mr-4"
-                    src="https://res.cloudinary.com/abidazad/image/upload/v1633197929/LOGO_1_d3bfdm.svg"
+                    className="h-10 w-12 mr-4"
+                    src="https://res.cloudinary.com/abidazad/image/upload/v1644746365/education_kf8trf.png"
                     alt="Workflow"
                   />
                 </div>

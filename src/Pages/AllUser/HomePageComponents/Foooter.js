@@ -9,10 +9,11 @@ const MyComponent = () => {
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-5">
           <div className="lg:text-left sm:text-center ">
             <img
-              src="https://i.ibb.co/1MV919j/Untitled-Design-3.png"
-              className="p-3 "
+              src="https://res.cloudinary.com/abidazad/image/upload/v1644746365/education_kf8trf.png"
+              className="p-3 h-40 w-30 text-center m-auto "
               alt=""
             />
+            <h1 className="text-center m-auto text-lg ">The School Network</h1>
           </div>
 
           <div className="mt-12 md:mt-0 lg:text-left sm:text-center">
