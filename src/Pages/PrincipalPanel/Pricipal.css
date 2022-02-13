@@ -33,6 +33,10 @@
   cursor: pointer;
   margin-left: 20px;
 }
+.principal_sidebar_link {
+  cursor: pointer;
+  margin-left: 20px;
+}
 .principal_sidebar_icon{
     margin-right: 7px;
 }

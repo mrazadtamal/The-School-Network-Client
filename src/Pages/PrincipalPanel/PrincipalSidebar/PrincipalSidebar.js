@@ -1,5 +1,5 @@
-import React from 'react';
-import { Link } from 'react-router-dom';
+import React from "react";
+import { Link } from "react-router-dom";
 import { HiSpeakerphone } from 'react-icons/hi';
 import { GiTeacher } from 'react-icons/gi';
 import { FaChalkboardTeacher } from 'react-icons/fa';
