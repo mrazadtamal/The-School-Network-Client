@@ -58,7 +58,7 @@ const MyComponent = () => {
           </ul>
         </div>
         <div className="sm:w-1/2 sm:mt-0 mt-8 h-auto">
-          <div className="text-red-light mb-2">CONTACT US</div>
+          <div className="text-red-light mb-2">CONTACT Us</div>
 
           <p className="text-grey-darker font-bold leading-normal">PHONE</p>
           <p className="text-grey-darker leading-normal">999333666</p>
