@@ -1,15 +1,20 @@
+
 #principal_nav{
     display: none;
 }
 /* ----------------Principal Home css start------------- */
 .principalhomeimg{
     width: 55%;
-
+}
+/* ----------------Principal Home css start------------- */
+.principalhomeimg {
+  width: 45%;
 }
 
 /* ----------------Principal Home css End------------- */
 
 /* ----------------Principal sidebar css start------------- */
+
 .principal_sidebar_link{
     cursor: pointer;
     margin-left: 20px;
@@ -23,6 +28,10 @@
     position: sticky;
     top: 0px;
     z-index: 1;
+}
+.principal_sidebar_link {
+  cursor: pointer;
+  margin-left: 20px;
 }
 .principal_sidebar_icon{
     margin-right: 7px;
@@ -128,3 +137,4 @@
     
     }
 }
+

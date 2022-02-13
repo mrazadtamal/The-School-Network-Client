@@ -6,8 +6,14 @@ import { FaChalkboardTeacher } from 'react-icons/fa';
 
 const PrincipalSidebar = () => {
   return (
-    <div className="principal_sidebar">
-        <h1 className='mt-8 text-center'> <span className='text-5xl font-bold text-white '>P</span><span className='text-base font-bold text-white '>rincipal Dashboard</span></h1> 
+    <div className="">
+      <h1 className="mt-8 text-center">
+        {" "}
+        <span className="text-5xl font-bold text-white ">P</span>
+        <span className="text-base font-bold text-white ">
+          rincipal Dashboard
+        </span>
+      </h1>
 
         <Link to="/PrincipalDashboard">
           <p className='principal_sidebar_link   text-white mt-12'><i className="fas fa-home principal_sidebar_icon"></i>Home</p>
@@ -28,8 +34,9 @@ const PrincipalSidebar = () => {
         <Link to="/PrincipalDashboard/RegisterTeacher">
           <p className='principal_sidebar_link   text-white mt-4'> <FaChalkboardTeacher className='principal_react_icons' /> Register Teachers</p>
         </Link>
+
     </div>
-  )
-}
+  );
+};
 
 export default PrincipalSidebar;
