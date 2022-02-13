@@ -13,7 +13,7 @@ const PrincipalDashboard = () => {
                 <div className='col-span-2 bg-black sidebar_colam'>
                     <PrincipalSidebar/>
                 </div>
-                <div className='col-span-10 mx-auto'>
+                <div className='col-span-9 mx-auto pb-4'>
                     <Outlet/>
                 </div>
             </div>
