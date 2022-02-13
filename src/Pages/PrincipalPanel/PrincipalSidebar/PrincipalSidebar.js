@@ -1,5 +1,6 @@
 import React from "react";
 import { Link } from "react-router-dom";
+import { HiSpeakerphone } from 'react-icons/hi';
 
 const PrincipalSidebar = () => {
   return (

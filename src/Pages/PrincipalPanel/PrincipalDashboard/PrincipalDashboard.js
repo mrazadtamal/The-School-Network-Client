@@ -1,6 +1,7 @@
 import React from "react";
 import { Outlet } from "react-router-dom";
 import PrincipalNavbar from "../PrincipalNavbar/PrincipalNavbar";
+
 import PrincipalSidebar from "../PrincipalSidebar/PrincipalSidebar";
 
 const PrincipalDashboard = () => {
