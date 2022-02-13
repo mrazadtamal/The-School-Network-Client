@@ -18,6 +18,8 @@ import TeachersExamRoutine from "./Pages/TeachersPanel/TeachersExamRoutine/Teach
 import StudentDashboard from "./Pages/StudentPanel/StudentDashboard/StudentDashboard";
 import StudentHome from "./Pages/StudentPanel/StudentHome/StudentHome";
 import RequestCare from "./Pages/StudentPanel/RequestCare/RequestCare";
+import PrincipalManageTeacher from "./Pages/PrincipalPanel/PrincipalManageTeacher/PrincipalManageTeacher";
+import RegisterTeacher from "./Pages/PrincipalPanel/RegisterTeacher/RegisterTeacher";
 
 function App() {
   return (
@@ -44,6 +46,14 @@ function App() {
             <Route
               path="/PrincipalDashboard/PrincipalAnnouncement"
               element={<PrincipalAnnouncement />}
+            />
+             <Route
+              path="/PrincipalDashboard/PrincipalManageTeacher"
+              element={<PrincipalManageTeacher />}
+            />
+             <Route
+              path="/PrincipalDashboard/RegisterTeacher"
+              element={<RegisterTeacher />}
             />
           </Route>
           {/* --------------Principal Routes End--------------- */}
