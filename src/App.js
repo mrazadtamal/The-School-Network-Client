@@ -6,7 +6,6 @@ import TeachersPanel from "./Pages/TeachersPanel/TeachersPanel/TeachersPanel";
 import HomePage from "./Pages/AllUser/HomePageComponents/HomePage";
 import LogInPage from "./Pages/AllUser/Login/LogInPage";
 import PrincipalAnnouncement from "./Pages/PrincipalPanel/PrincipalAnnouncement/PrincipalAnnouncement";
-import PrincipalManageTeacher from "./Pages/PrincipalPanel/PrincipalManageTeacher/PrincipalManageTeacher";
 import TeachersPanelHome from "./Pages/TeachersPanel/TeachersPanelHome/TeachersPanelHome";
 import TeachersNoticePublish from "./Pages/TeachersPanel/TeachersNoticePublish/TeachersNoticePublish";
 import AdmissionPolicy from "./Pages/AllUser/Admission/AdmissionPoliciy";
@@ -19,7 +18,8 @@ import TeachersExamRoutine from "./Pages/TeachersPanel/TeachersExamRoutine/Teach
 import StudentDashboard from "./Pages/StudentPanel/StudentDashboard/StudentDashboard";
 import StudentHome from "./Pages/StudentPanel/StudentHome/StudentHome";
 import RequestCare from "./Pages/StudentPanel/RequestCare/RequestCare";
-
+import PrincipalManageTeacher from "./Pages/PrincipalPanel/PrincipalManageTeacher/PrincipalManageTeacher";
+import RegisterTeacher from "./Pages/PrincipalPanel/RegisterTeacher/RegisterTeacher";
 
 function App() {
   return (
@@ -47,9 +47,13 @@ function App() {
               path="/PrincipalDashboard/PrincipalAnnouncement"
               element={<PrincipalAnnouncement />}
             />
-            <Route
+             <Route
               path="/PrincipalDashboard/PrincipalManageTeacher"
               element={<PrincipalManageTeacher />}
+            />
+             <Route
+              path="/PrincipalDashboard/RegisterTeacher"
+              element={<RegisterTeacher />}
             />
           </Route>
           {/* --------------Principal Routes End--------------- */}
