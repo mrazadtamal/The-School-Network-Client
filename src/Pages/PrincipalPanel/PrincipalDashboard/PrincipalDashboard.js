@@ -1,6 +1,6 @@
 import React from "react";
 import { Outlet } from "react-router-dom";
-import PrincipalNavbar from '../PrincipalNavbar/PrincipalNavbar';
+import PrincipalNavbar from "../PrincipalNavbar/PrincipalNavbar";
 import PrincipalSidebar from "../PrincipalSidebar/PrincipalSidebar";
 
 const PrincipalDashboard = () => {
@@ -12,7 +12,7 @@ const PrincipalDashboard = () => {
                 <div className='col-span-2 bg-black sidebar_colam'>
                     <PrincipalSidebar/>
                 </div>
-                <div className='col-span-10 mx-auto'>
+                <div className='col-span-9 mx-auto pb-4'>
                     <Outlet/>
                 </div>
             </div>

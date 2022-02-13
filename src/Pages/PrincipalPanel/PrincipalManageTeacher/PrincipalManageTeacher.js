@@ -2,78 +2,6 @@ import React from 'react';
 
 const PrincipalManageTeacher = () => {
     const people = [
-        {
-          name: 'Teacher1',
-          title: 'Regional Paradigm Technician',
-          department: 'Optimization',
-          role: 'Teacher',
-          email: 'Teacher1@gmail.com',
-          image:
-            'https://images.unsplash.com/photo-1494790108377-be9c29b29330?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=facearea&facepad=4&w=256&h=256&q=60',
-        },
-        {
-            name: 'Teacher1',
-            title: 'Regional Paradigm Technician',
-            department: 'Optimization',
-            role: 'Teacher',
-            email: 'Teacher1@gmail.com',
-            image:
-              'https://images.unsplash.com/photo-1494790108377-be9c29b29330?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=facearea&facepad=4&w=256&h=256&q=60',
-          },
-          {
-            name: 'Teacher1',
-            title: 'Regional Paradigm Technician',
-            department: 'Optimization',
-            role: 'Teacher',
-            email: 'Teacher1@gmail.com',
-            image:
-              'https://images.unsplash.com/photo-1494790108377-be9c29b29330?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=facearea&facepad=4&w=256&h=256&q=60',
-          },
-          {
-            name: 'Teacher1',
-            title: 'Regional Paradigm Technician',
-            department: 'Optimization',
-            role: 'Teacher',
-            email: 'Teacher1@gmail.com',
-            image:
-              'https://images.unsplash.com/photo-1494790108377-be9c29b29330?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=facearea&facepad=4&w=256&h=256&q=60',
-          },
-          {
-            name: 'Teacher1',
-            title: 'Regional Paradigm Technician',
-            department: 'Optimization',
-            role: 'Teacher',
-            email: 'Teacher1@gmail.com',
-            image:
-              'https://images.unsplash.com/photo-1494790108377-be9c29b29330?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=facearea&facepad=4&w=256&h=256&q=60',
-          },
-          {
-            name: 'Teacher1',
-            title: 'Regional Paradigm Technician',
-            department: 'Optimization',
-            role: 'Teacher',
-            email: 'Teacher1@gmail.com',
-            image:
-              'https://images.unsplash.com/photo-1494790108377-be9c29b29330?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=facearea&facepad=4&w=256&h=256&q=60',
-          },
-          {
-            name: 'Teacher1',
-            title: 'Regional Paradigm Technician',
-            department: 'Optimization',
-            role: 'Teacher',
-            email: 'Teacher1@gmail.com',
-            image:
-              'https://images.unsplash.com/photo-1494790108377-be9c29b29330?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=facearea&facepad=4&w=256&h=256&q=60',
-          },
-          {
-            name: 'Teacher1',
-            title: 'Regional Paradigm Technician',
-            department: 'Optimization',
-            role: 'Teacher',
-            email: 'Teacher1@gmail.com',
-            image:
-              'https://images.unsplash.com/photo-1494790108377-be9c29b29330?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=facearea&facepad=4&w=256&h=256&q=60',
-          },
           {
             name: 'Teacher1',
             title: 'Regional Paradigm Technician',
@@ -131,7 +59,7 @@ const PrincipalManageTeacher = () => {
       
       ]
     return (
-    <div className="flex flex-col manageTeachers_table" style={{width: '96%'}}>
+    <div className="flex flex-col manageTeachers_table" >
         <h1 className='text-5xl text-center text-gray-800 mt-4'>Manage All Teachers</h1>
         <div className="-my-2 overflow-x-auto sm:-mx-6 lg:-mx-8 mt-4">
           <div className="py-2 align-middle inline-block min-w-full sm:px-6 lg:px-8">
