@@ -35,6 +35,9 @@ const PrincipalSidebar = () => {
           <p className='principal_sidebar_link   text-white mt-4'> <FaChalkboardTeacher className='principal_react_icons' /> Register Teachers</p>
         </Link>
 
+        <Link to="/PrincipalDashboard/PrincipalManageStudent">
+          <p className='principal_sidebar_link   text-white mt-4'> <FaChalkboardTeacher className='principal_react_icons' />Manage Students</p>
+        </Link>
     </div>
   );
 };

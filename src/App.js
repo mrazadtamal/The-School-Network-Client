@@ -20,6 +20,7 @@ import StudentHome from "./Pages/StudentPanel/StudentHome/StudentHome";
 import RequestCare from "./Pages/StudentPanel/RequestCare/RequestCare";
 import PrincipalManageTeacher from "./Pages/PrincipalPanel/PrincipalManageTeacher/PrincipalManageTeacher";
 import RegisterTeacher from "./Pages/PrincipalPanel/RegisterTeacher/RegisterTeacher";
+import PrincipalManageStudent from "./Pages/PrincipalPanel/PrincipalManageStudent/PrincipalManageStudent";
 
 function App() {
   return (
@@ -32,7 +33,7 @@ function App() {
           <Route path="/admissionPolicy" element={<AdmissionPolicy />} />
           <Route path="/howtoapply" element={<HowToApply />} />
           <Route path="/admissionForm" element={<AdmissionForm />} />
-          AdmissionForm
+          
           {/* --------------All User Homepage Routes End--------------- */}
 
           {/* --------------Principal Routes Start-------------- */}
@@ -54,6 +55,10 @@ function App() {
              <Route
               path="/PrincipalDashboard/RegisterTeacher"
               element={<RegisterTeacher />}
+            />
+             <Route
+              path="/PrincipalDashboard/PrincipalManageStudent"
+              element={<PrincipalManageStudent />}
             />
           </Route>
           {/* --------------Principal Routes End--------------- */}
