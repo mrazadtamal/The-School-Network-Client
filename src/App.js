@@ -20,6 +20,9 @@ import StudentHome from "./Pages/StudentPanel/StudentHome/StudentHome";
 import RequestCare from "./Pages/StudentPanel/RequestCare/RequestCare";
 import PrincipalManageTeacher from "./Pages/PrincipalPanel/PrincipalManageTeacher/PrincipalManageTeacher";
 import RegisterTeacher from "./Pages/PrincipalPanel/RegisterTeacher/RegisterTeacher";
+import Canteen from "./Pages/AllUser/Facilities/Canteen";
+import Library from "./Pages/AllUser/Facilities/Library";
+import Auditoraim from "./Pages/AllUser/Facilities/Auditoraim";
 
 function App() {
   return (
@@ -28,15 +31,17 @@ function App() {
         <Routes>
           {/* --------------All User Homepage Routes Start--------------- */}
           <Route path="/" element={<HomePage />} />
+          <Route path="/home" element={<HomePage />} />
           <Route path="/login" element={<LogInPage />} />
           <Route path="/admissionPolicy" element={<AdmissionPolicy />} />
           <Route path="/howtoapply" element={<HowToApply />} />
           <Route path="/admissionForm" element={<AdmissionForm />} />
-          AdmissionForm
+          <Route path="/canteen" element={<Canteen />} />
+          <Route path="/library" element={<Library />} />
+          <Route path="/auditoriam" element={<Auditoraim />} />
+
           {/* --------------All User Homepage Routes End--------------- */}
-
           {/* --------------Principal Routes Start-------------- */}
-
           <Route path="/PrincipalDashboard" element={<PrincipalDashboard />}>
             <Route path="/PrincipalDashboard" element={<PrincipalHome />} />
             <Route
@@ -47,11 +52,11 @@ function App() {
               path="/PrincipalDashboard/PrincipalAnnouncement"
               element={<PrincipalAnnouncement />}
             />
-             <Route
+            <Route
               path="/PrincipalDashboard/PrincipalManageTeacher"
               element={<PrincipalManageTeacher />}
             />
-             <Route
+            <Route
               path="/PrincipalDashboard/RegisterTeacher"
               element={<RegisterTeacher />}
             />
