@@ -42,10 +42,10 @@ const AllUserNavbar = () => {
                   </Link>
 
                   <Link
-                    to="/"
+                    to="/aboutus"
                     className="text-gray-300 hover:bg-gray-700 hover:text-white px-3 py-2 rounded-md text-sm font-medium"
                   >
-                    Programming
+                   About Us
                   </Link>
 
                   {/* ---------------Dropdown */}
@@ -60,7 +60,7 @@ const AllUserNavbar = () => {
                         aria-expanded="true"
                         aria-haspopup="true"
                       >
-                        Options
+                        Admission
                         <svg
                           className="-mr-1 ml-2 h-5 w-5"
                           xmlns="http://www.w3.org/2000/svg"
@@ -91,7 +91,7 @@ const AllUserNavbar = () => {
                             role="menuitem"
                             id="menu-item-0"
                           >
-                            How To apply
+                            <Link to="/howtoapply">How To apply</Link>
                           </a>
                           <a
                             href="/"
@@ -99,7 +99,7 @@ const AllUserNavbar = () => {
                             role="menuitem"
                             id="menu-item-1"
                           >
-                            Application Form
+                            <Link to="/admissionForm">Application Form</Link>
                           </a>
                           <a
                             href="/"
@@ -107,7 +107,9 @@ const AllUserNavbar = () => {
                             role="menuitem"
                             id="menu-item-2"
                           >
-                            Application procedures
+                            <Link to="/admissionPolicy">Application procedures</Link>
+
+
                           </a>
                         </div>
                       </div>
@@ -135,7 +137,7 @@ const AllUserNavbar = () => {
                         aria-expanded="true"
                         aria-haspopup="true"
                       >
-                        Options
+                       Facilites
                         <svg
                           className="-mr-1 ml-2 h-5 w-5"
                           xmlns="http://www.w3.org/2000/svg"
@@ -166,7 +168,8 @@ const AllUserNavbar = () => {
                             role="menuitem"
                             id="menu-item-0"
                           >
-                            How To apply
+                            <Link to="/auditoriam">Auditoriam</Link>
+
                           </a>
                           <a
                             href="/"
@@ -174,7 +177,7 @@ const AllUserNavbar = () => {
                             role="menuitem"
                             id="menu-item-1"
                           >
-                            Application Form
+                            <Link to="/canteen">Canteen</Link>
                           </a>
                           <a
                             href="/"
@@ -182,7 +185,16 @@ const AllUserNavbar = () => {
                             role="menuitem"
                             id="menu-item-2"
                           >
-                            Application procedures
+                            <Link to="/library">Library</Link>
+                          </a>
+
+                          <a
+                              href="/"
+                              className="text-gray-700 block px-4 py-2 text-sm"
+                              role="menuitem"
+                              id="menu-item-2"
+                          >
+                            <Link to="/games">Games</Link>
                           </a>
                         </div>
                       </div>

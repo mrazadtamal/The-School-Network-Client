@@ -1,7 +1,7 @@
 import React from "react";
 import ExcellenceBanner from "./ExcellenceBanner";
 import Foooter from "./Foooter";
-import NewsAndEvents from "./HomeImages/NewsAndEvents";
+import NewsAndEvents from "./NewsAndEvents";
 import AllUserNavbar from "../AllUserNavbar/AllUserNavbar";
 import BlogPosts from "./BlogPosts";
 

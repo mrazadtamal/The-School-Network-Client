@@ -23,6 +23,8 @@ import RegisterTeacher from "./Pages/PrincipalPanel/RegisterTeacher/RegisterTeac
 import Canteen from "./Pages/AllUser/Facilities/Canteen";
 import Library from "./Pages/AllUser/Facilities/Library";
 import Auditoraim from "./Pages/AllUser/Facilities/Auditoraim";
+import Games from "./Pages/AllUser/Facilities/Games";
+import AboutUsPage from "./Pages/AllUser/HomePageComponents/AboutUsPage/AboutUsPage";
 
 function App() {
   return (
@@ -32,6 +34,7 @@ function App() {
           {/* --------------All User Homepage Routes Start--------------- */}
           <Route path="/" element={<HomePage />} />
           <Route path="/home" element={<HomePage />} />
+          <Route path="/aboutus" element={<AboutUsPage />} />
           <Route path="/login" element={<LogInPage />} />
           <Route path="/admissionPolicy" element={<AdmissionPolicy />} />
           <Route path="/howtoapply" element={<HowToApply />} />
@@ -39,6 +42,8 @@ function App() {
           <Route path="/canteen" element={<Canteen />} />
           <Route path="/library" element={<Library />} />
           <Route path="/auditoriam" element={<Auditoraim />} />
+          <Route path="/games" element={<Games />} />
+
 
           {/* --------------All User Homepage Routes End--------------- */}
           {/* --------------Principal Routes Start-------------- */}
