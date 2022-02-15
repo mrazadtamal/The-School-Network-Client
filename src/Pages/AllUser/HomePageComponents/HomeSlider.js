@@ -22,9 +22,9 @@ const HomeSlider = () => {
             className="object-fill"
           />
         </div>
-        <div>
-         <img src="https://i.ibb.co/gdwDCYD/alexandre-van-thuan-mr9-Foutt-LGY-unsplash.jpg"  alt="img"  className="object-contain" />
-        </div>
+        {/*<div>*/}
+        {/*  <img src="https://i.ibb.co/gdwDCYD/alexandre-van-thuan-mr9-Foutt-LGY-unsplash.jpg"  alt="img"  className="object-contain" />*/}
+        {/*</div>*/}
         <div>
           <img src="https://i.ibb.co/HYqH4Br/robo-wunderkind-h-Lv-Q4-QEBAE-unsplash.jpg" alt="img"   className="object-contain"/>
         </div>
