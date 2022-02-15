@@ -38,6 +38,10 @@ const PrincipalSidebar = () => {
         <Link to="/PrincipalDashboard/PrincipalManageStudent">
           <p className='principal_sidebar_link   text-white mt-4'> <FaChalkboardTeacher className='principal_react_icons' />Manage Students</p>
         </Link>
+
+        <Link to="/PrincipalDashboard/UploadPayment">
+          <p className='principal_sidebar_link   text-white mt-4'> <FaChalkboardTeacher className='principal_react_icons' />Upload Payment</p>
+        </Link>
     </div>
   );
 };
