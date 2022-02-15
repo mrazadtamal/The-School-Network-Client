@@ -7,17 +7,23 @@ import BlogPosts from "./BlogPosts";
 
 import Annoucements from "./Annoucements";
 import HomeSlider from "./HomeSlider";
+import OurRanking from "./OurRanking";
+import TopSections from "./TopSections";
+import OurVisitors from "./OurVisitors";
 
 const AlluserHomePage = () => {
     return (
         <div>
             <AllUserNavbar />
             <HomeSlider />
+            <TopSections/>
 
             <BlogPosts />
             <Annoucements />
             <ExcellenceBanner />
+            <OurRanking/>
             <NewsAndEvents />
+            <OurVisitors/>
             <Foooter />
 
         </div>
