@@ -27,6 +27,8 @@ import Library from "./Pages/AllUser/Facilities/Library";
 import Auditoraim from "./Pages/AllUser/Facilities/Auditoraim";
 import Games from "./Pages/AllUser/Facilities/Games";
 import AboutUsPage from "./Pages/AllUser/HomePageComponents/AboutUsPage/AboutUsPage";
+import StudentMyDocuments from "./Pages/StudentPanel/StudentDashboard/StudentMyDocuments/StudentMyDocuments";
+import StudentPay from "./Pages/StudentPanel/StudentPay/StudentPay";
 
 
 function App() {
@@ -105,6 +107,14 @@ function App() {
             <Route
               path="/StudentDashboard/RequestCare"
               element={<RequestCare />}
+            />
+            <Route
+              path="/StudentDashboard/SubmitDocuments"
+              element={<StudentMyDocuments />}
+            />
+            <Route
+              path="/StudentDashboard/StudentPay"
+              element={<StudentPay />}
             />
           </Route>
           {/* --------------------student route end-------------------------*/}
