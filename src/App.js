@@ -15,6 +15,23 @@ import TeachersClassRoutine from "./Pages/TeachersPanel/TeachersClassRoutine/Tea
 import TeachersExamRoutine from "./Pages/TeachersPanel/TeachersExamRoutine/TeachersExamRoutine";
 import TeachersAssignment from "./Pages/TeachersPanel/TeachersAssignment/TeachersAssignment";
 
+// student imports
+import StudentDashboard from "./Pages/StudentPanel/StudentDashboard/StudentDashboard";
+import StudentHome from "./Pages/StudentPanel/StudentHome/StudentHome";
+import RequestCare from "./Pages/StudentPanel/RequestCare/RequestCare";
+import PrincipalManageTeacher from "./Pages/PrincipalPanel/PrincipalManageTeacher/PrincipalManageTeacher";
+import RegisterTeacher from "./Pages/PrincipalPanel/RegisterTeacher/RegisterTeacher";
+import PrincipalManageStudent from "./Pages/PrincipalPanel/PrincipalManageStudent/PrincipalManageStudent";
+import UploadPayment from "./Pages/PrincipalPanel/UploadPayment/UploadPayment";
+import Canteen from "./Pages/AllUser/Facilities/Canteen";
+import Library from "./Pages/AllUser/Facilities/Library";
+import Auditoraim from "./Pages/AllUser/Facilities/Auditoraim";
+import Games from "./Pages/AllUser/Facilities/Games";
+import AboutUsPage from "./Pages/AllUser/HomePageComponents/AboutUsPage/AboutUsPage";
+import CheckPaymentStatus from "./Pages/PrincipalPanel/CheckPaymentStatus/CheckPaymentStatus";
+import ResultAdd from "./Pages/Shared/ResultAdd/ResultAdd";
+
+
 function App() {
   return (
     <div className="App">
@@ -22,13 +39,24 @@ function App() {
         <Routes>
           {/* --------------All User Homepage Routes Start--------------- */}
           <Route path="/" element={<HomePage />} />
+          <Route path="/home" element={<HomePage />} />
+          <Route path="/aboutus" element={<AboutUsPage />} />
           <Route path="/login" element={<LogInPage />} />
           <Route path="/admissionPolicy" element={<AdmissionPolicy />} />
           <Route path="/howtoapply" element={<HowToApply />} />
           <Route path="/admissionForm" element={<AdmissionForm />} />
-          AdmissionForm
+
+          
           {/* --------------All User Homepage Routes End--------------- */}
-          {/* --------------Principal Routes Start--------------- */}
+
+          <Route path="/canteen" element={<Canteen />} />
+          <Route path="/library" element={<Library />} />
+          <Route path="/auditoriam" element={<Auditoraim />} />
+          <Route path="/games" element={<Games />} />
+
+
+          {/* --------------All User Homepage Routes End--------------- */}
+          {/* --------------Principal Routes Start-------------- */}
           <Route path="/PrincipalDashboard" element={<PrincipalDashboard />}>
             <Route path="/PrincipalDashboard" element={<PrincipalHome />} />
             <Route
@@ -38,6 +66,30 @@ function App() {
             <Route
               path="/PrincipalDashboard/PrincipalAnnouncement"
               element={<PrincipalAnnouncement />}
+            />
+            <Route
+              path="/PrincipalDashboard/PrincipalManageTeacher"
+              element={<PrincipalManageTeacher />}
+            />
+            <Route
+              path="/PrincipalDashboard/RegisterTeacher"
+              element={<RegisterTeacher />}
+            />
+             <Route
+              path="/PrincipalDashboard/PrincipalManageStudent"
+              element={<PrincipalManageStudent />}
+            />
+             <Route
+              path="/PrincipalDashboard/UploadPayment"
+              element={<UploadPayment />}
+            />
+            <Route
+              path="/PrincipalDashboard/CheckPaymentStatus"
+              element={<CheckPaymentStatus />}
+            />
+            <Route
+              path="/PrincipalDashboard/ResultAdd"
+              element={<ResultAdd />}
             />
           </Route>
           {/* --------------Principal Routes End--------------- */}
@@ -62,6 +114,15 @@ function App() {
             />
           </Route>
           {/* --------------Teacher Routes End-------------- */}
+          {/* --------------------student route start-----------------------*/}
+          <Route path="/StudentDashboard" element={<StudentDashboard />}>
+            <Route path="/StudentDashboard" element={<StudentHome />} />
+            <Route
+              path="/StudentDashboard/RequestCare"
+              element={<RequestCare />}
+            />
+          </Route>
+          {/* --------------------student route end-------------------------*/}
         </Routes>
       </BrowserRouter>
     </div>
