@@ -13,6 +13,13 @@ import HowToApply from "./Pages/AllUser/Admission/HowToApply";
 import AdmissionForm from "./Pages/AllUser/Admission/AdmissionForm";
 import TeachersClassRoutine from "./Pages/TeachersPanel/TeachersClassRoutine/TeachersClassRoutine";
 import TeachersExamRoutine from "./Pages/TeachersPanel/TeachersExamRoutine/TeachersExamRoutine";
+
+// student imports
+import StudentDashboard from "./Pages/StudentPanel/StudentDashboard/StudentDashboard";
+import StudentHome from "./Pages/StudentPanel/StudentHome/StudentHome";
+import RequestCare from "./Pages/StudentPanel/RequestCare/RequestCare";
+import PrincipalManageTeacher from "./Pages/PrincipalPanel/PrincipalManageTeacher/PrincipalManageTeacher";
+import RegisterTeacher from "./Pages/PrincipalPanel/RegisterTeacher/RegisterTeacher";
 import TeachersAssignment from "./Pages/TeachersPanel/TeachersAssignment/TeachersAssignment";
 
 function App() {
@@ -28,7 +35,9 @@ function App() {
           <Route path="/admissionForm" element={<AdmissionForm />} />
           AdmissionForm
           {/* --------------All User Homepage Routes End--------------- */}
-          {/* --------------Principal Routes Start--------------- */}
+
+          {/* --------------Principal Routes Start-------------- */}
+
           <Route path="/PrincipalDashboard" element={<PrincipalDashboard />}>
             <Route path="/PrincipalDashboard" element={<PrincipalHome />} />
             <Route
@@ -38,6 +47,14 @@ function App() {
             <Route
               path="/PrincipalDashboard/PrincipalAnnouncement"
               element={<PrincipalAnnouncement />}
+            />
+             <Route
+              path="/PrincipalDashboard/PrincipalManageTeacher"
+              element={<PrincipalManageTeacher />}
+            />
+             <Route
+              path="/PrincipalDashboard/RegisterTeacher"
+              element={<RegisterTeacher />}
             />
           </Route>
           {/* --------------Principal Routes End--------------- */}
@@ -57,11 +74,20 @@ function App() {
               element={<TeachersExamRoutine />}
             />
             <Route
-              path="/TeachersDashboard/createAssinment"
-              element={<TeachersAssignment/>}
+              path="/TeachersDashboard/publishAssignment"
+              element={<TeachersAssignment />}
             />
           </Route>
           {/* --------------Teacher Routes End-------------- */}
+          {/* --------------------student route start-----------------------*/}
+          <Route path="/StudentDashboard" element={<StudentDashboard />}>
+            <Route path="/StudentDashboard" element={<StudentHome />} />
+            <Route
+              path="/StudentDashboard/RequestCare"
+              element={<RequestCare />}
+            />
+          </Route>
+          {/* --------------------student route end-------------------------*/}
         </Routes>
       </BrowserRouter>
     </div>

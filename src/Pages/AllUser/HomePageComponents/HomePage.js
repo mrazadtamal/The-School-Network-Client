@@ -1,22 +1,29 @@
 import React from "react";
 import ExcellenceBanner from "./ExcellenceBanner";
 import Foooter from "./Foooter";
-import NewsAndEvents from "./HomeImages/NewsAndEvents";
+import NewsAndEvents from "./NewsAndEvents";
 import AllUserNavbar from "../AllUserNavbar/AllUserNavbar";
 import BlogPosts from "./BlogPosts";
-import Slider from "./Slider";
+
 import Annoucements from "./Annoucements";
+import HomeSlider from "./HomeSlider";
+import OurRanking from "./OurRanking";
+import TopSections from "./TopSections";
+import OurVisitors from "./OurVisitors";
 
 const AlluserHomePage = () => {
     return (
         <div>
             <AllUserNavbar />
-            <Slider />
+            <HomeSlider />
+            <TopSections/>
 
             <BlogPosts />
             <Annoucements />
             <ExcellenceBanner />
+            <OurRanking/>
             <NewsAndEvents />
+            <OurVisitors/>
             <Foooter />
 
         </div>
