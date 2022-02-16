@@ -13,6 +13,7 @@ import HowToApply from "./Pages/AllUser/Admission/HowToApply";
 import AdmissionForm from "./Pages/AllUser/Admission/AdmissionForm";
 import TeachersClassRoutine from "./Pages/TeachersPanel/TeachersClassRoutine/TeachersClassRoutine";
 import TeachersExamRoutine from "./Pages/TeachersPanel/TeachersExamRoutine/TeachersExamRoutine";
+import TeachersAssignment from "./Pages/TeachersPanel/TeachersAssignment/TeachersAssignment";
 
 // student imports
 import StudentDashboard from "./Pages/StudentPanel/StudentDashboard/StudentDashboard";
@@ -106,6 +107,10 @@ function App() {
             <Route
               path="/TeachersDashboard/ExamRoutine"
               element={<TeachersExamRoutine />}
+            />
+            <Route
+              path="/TeachersDashboard/createAssinment"
+              element={<TeachersAssignment/>}
             />
           </Route>
           {/* --------------Teacher Routes End-------------- */}
