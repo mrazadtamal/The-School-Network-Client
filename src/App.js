@@ -27,6 +27,8 @@ import Library from "./Pages/AllUser/Facilities/Library";
 import Auditoraim from "./Pages/AllUser/Facilities/Auditoraim";
 import Games from "./Pages/AllUser/Facilities/Games";
 import AboutUsPage from "./Pages/AllUser/HomePageComponents/AboutUsPage/AboutUsPage";
+import CheckPaymentStatus from "./Pages/PrincipalPanel/CheckPaymentStatus/CheckPaymentStatus";
+import ResultAdd from "./Pages/Shared/ResultAdd/ResultAdd";
 
 
 function App() {
@@ -79,6 +81,14 @@ function App() {
              <Route
               path="/PrincipalDashboard/UploadPayment"
               element={<UploadPayment />}
+            />
+            <Route
+              path="/PrincipalDashboard/CheckPaymentStatus"
+              element={<CheckPaymentStatus />}
+            />
+            <Route
+              path="/PrincipalDashboard/ResultAdd"
+              element={<ResultAdd />}
             />
           </Route>
           {/* --------------Principal Routes End--------------- */}

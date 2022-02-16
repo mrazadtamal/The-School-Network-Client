@@ -133,7 +133,8 @@ const RegisterTeacher = () => {
                             className="mt-1 principal_form_all_input"
                         />
                         </div>
-                </div>     
+                </div>
+                <button type='submit' className='publish_btn shadow-lg shadow-indigo-500/50'>ADD TEACHER</button>  
             </form>
       </div>
     );
