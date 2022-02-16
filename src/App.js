@@ -21,6 +21,11 @@ import RequestCare from "./Pages/StudentPanel/RequestCare/RequestCare";
 import PrincipalManageTeacher from "./Pages/PrincipalPanel/PrincipalManageTeacher/PrincipalManageTeacher";
 import RegisterTeacher from "./Pages/PrincipalPanel/RegisterTeacher/RegisterTeacher";
 import TeachersAssignment from "./Pages/TeachersPanel/TeachersAssignment/TeachersAssignment";
+import AboutUsPage from "./Pages/AllUser/HomePageComponents/AboutUsPage/AboutUsPage";
+import Canteen from "./Pages/AllUser/Facilities/Canteen";
+import Library from "./Pages/AllUser/Facilities/Library";
+import Auditoraim from "./Pages/AllUser/Facilities/Auditoraim";
+import Games from "./Pages/AllUser/Facilities/Games";
 
 function App() {
   return (
@@ -29,11 +34,22 @@ function App() {
         <Routes>
           {/* --------------All User Homepage Routes Start--------------- */}
           <Route path="/" element={<HomePage />} />
+          <Route path="/home" element={<HomePage />} />
+          <Route path="/aboutus" element={<AboutUsPage />} />
           <Route path="/login" element={<LogInPage />} />
           <Route path="/admissionPolicy" element={<AdmissionPolicy />} />
           <Route path="/howtoapply" element={<HowToApply />} />
           <Route path="/admissionForm" element={<AdmissionForm />} />
-          AdmissionForm
+
+          
+          {/* --------------All User Homepage Routes End--------------- */}
+
+          <Route path="/canteen" element={<Canteen />} />
+          <Route path="/library" element={<Library />} />
+          <Route path="/auditoriam" element={<Auditoraim />} />
+          <Route path="/games" element={<Games />} />
+
+
           {/* --------------All User Homepage Routes End--------------- */}
 
           {/* --------------Principal Routes Start-------------- */}

@@ -2,13 +2,13 @@ import React from "react";
 import { Link } from "react-router-dom";
 import { HiSpeakerphone } from 'react-icons/hi';
 import { GiTeacher } from 'react-icons/gi';
-import { FaChalkboardTeacher } from 'react-icons/fa';
+import { FaChalkboardTeacher, FaUserGraduate } from 'react-icons/fa';
+import { SiSamsungpay} from 'react-icons/si';
 
 const PrincipalSidebar = () => {
   return (
     <div className="">
       <h1 className="mt-8 text-center">
-        {" "}
         <span className="text-5xl font-bold text-white ">P</span>
         <span className="text-base font-bold text-white ">
           rincipal Dashboard
@@ -34,14 +34,32 @@ const PrincipalSidebar = () => {
         <Link to="/PrincipalDashboard/RegisterTeacher">
           <p className='principal_sidebar_link   text-white mt-4'> <FaChalkboardTeacher className='principal_react_icons' /> Register Teachers</p>
         </Link>
+        
+        <nav className="drop_navs">
+              <label for="touch"><span className="drop_span">Add Result</span></label>               
+              <input type="checkbox" id="touch"/> 
+              <ul class="slide">
+                <li><Link to="/PrincipalDashboard/ResultAdd">Class One</Link></li> 
+                <li><a href="#">Class Two</a></li>
+                <li><a href="#">Class Three</a></li>
+                <li><a href="#">Class Four</a></li>
+              </ul>
+        </nav> 
 
         <Link to="/PrincipalDashboard/PrincipalManageStudent">
-          <p className='principal_sidebar_link   text-white mt-4'> <FaChalkboardTeacher className='principal_react_icons' />Manage Students</p>
+          <p className='principal_sidebar_link   text-white mt-4'> <FaUserGraduate className='principal_react_icons' />Manage Students</p>
         </Link>
+    
 
         <Link to="/PrincipalDashboard/UploadPayment">
-          <p className='principal_sidebar_link   text-white mt-4'> <FaChalkboardTeacher className='principal_react_icons' />Upload Payment</p>
+          <p className='principal_sidebar_link   text-white mt-4'> <SiSamsungpay className='principal_react_icons' />Upload Payment</p>
         </Link>
+
+        <Link to="/PrincipalDashboard/CheckPaymentStatus">
+          <p className='principal_sidebar_link   text-white mt-4'> <SiSamsungpay className='principal_react_icons' />Check Payment Status</p>
+        </Link>
+
+
     </div>
   );
 };

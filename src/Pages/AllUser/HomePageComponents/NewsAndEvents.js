@@ -4,7 +4,7 @@ const NewsAndEvents = () => {
   return (
     <div className="pr-20 pl-20">
       <h2 className="text-left font-bold text-5xl	pl-10">
-        St. Clare News and Events
+        The Scool Network News and Events
       </h2>
       <div className="container flex flex-col-reverse lg:flex-row items-center gap-12 mt-5 lg:mt-15 mx-auto">
         <div className="flex justify-center flex-1 mb-10 md:mb-16 lg:mb-0 z-10">

@@ -10,6 +10,7 @@ import HomeSlider from "./HomeSlider";
 import OurRanking from "./OurRanking";
 import TopSections from "./TopSections";
 import OurVisitors from "./OurVisitors";
+import NoticeBoard from "./NoticeBoard";
 
 const AlluserHomePage = () => {
     return (
@@ -17,7 +18,7 @@ const AlluserHomePage = () => {
             <AllUserNavbar />
             <HomeSlider />
             <TopSections/>
-
+                  <NoticeBoard/>
             <BlogPosts />
             <Annoucements />
             <ExcellenceBanner />
