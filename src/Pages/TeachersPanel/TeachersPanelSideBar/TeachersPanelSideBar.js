@@ -148,6 +148,15 @@ const TeachersPanelSideBar = () => {
                                             Publish Notice
                                         </Link>
                                     </div>
+                                    {/* Publish Assignment */}
+                                    <div>
+                                        <Link
+                                            to="/TeachersDashboard/publishAssignment"
+                                            className="block text-black hover:bg-gray-700 hover:text-white px-3 py-2 rounded-md text-sm font-medium"
+                                        >
+                                            Publish Assignment
+                                        </Link>
+                                    </div>
 
                                     {/* Add Result */}
                                     <div>
