@@ -28,6 +28,7 @@ import Auditoraim from "./Pages/AllUser/Facilities/Auditoraim";
 import Games from "./Pages/AllUser/Facilities/Games";
 import AboutUsPage from "./Pages/AllUser/HomePageComponents/AboutUsPage/AboutUsPage";
 import TeachersRegisterStudent from "./Pages/TeachersPanel/TeachersRegisterStudent/TeachersRegisterStudent";
+import AllNotices from "./Pages/AllUser/HomePageComponents/AllNotices";
 
 function App() {
     return (
@@ -52,6 +53,7 @@ function App() {
                     <Route path="/library" element={<Library />} />
                     <Route path="/auditoriam" element={<Auditoraim />} />
                     <Route path="/games" element={<Games />} />
+                    <Route path="/allnotice" element={<AllNotices/>}/>
 
                     {/* --------------All User Homepage Routes End--------------- */}
                     {/* --------------Principal Routes Start-------------- */}
