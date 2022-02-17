@@ -13,6 +13,7 @@ import OurVisitors from "./OurVisitors";
 
 const AlluserHomePage = () => {
 <<<<<<< HEAD
+<<<<<<< HEAD
     return (
         <div>
             <AllUserNavbar />
@@ -37,6 +38,17 @@ const AlluserHomePage = () => {
       <ExcellenceBanner />
 >>>>>>> e14b4667183c413e76cfffe70cbcaeabcbe3249e
 
+=======
+  return (
+    <div>
+      <AllUserNavbar />
+      <HomeSlider />
+
+      <BlogPosts />
+      <Annoucements />
+      <ExcellenceBanner />
+
+>>>>>>> a807e00ebe6d54b5ac823728f7b4fec21e4488d0
       <NewsAndEvents />
       <Foooter />
     </div>
