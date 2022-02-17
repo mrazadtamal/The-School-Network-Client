@@ -128,26 +128,26 @@ function App() {
                     </Route>
                     {/* --------------Teacher Routes End-------------- */}
                    {/* --------------------student route start-----------------------*/}
-                <Route path="/StudentDashboard" element={<StudentDashboard />}>
-                  <Route path="/StudentDashboard" element={<StudentHome />} />
-                  <Route
-                    path="/StudentDashboard/RequestCare"
-                    element={<RequestCare />}
-                  />
-                  <Route
-                    path="/StudentDashboard/SubmitDocuments"
-                    element={<StudentMyDocuments />}
-                  />
-                  <Route
-                    path="/StudentDashboard/StudentPay"
-                    element={<StudentPay />}
-                  />
-                  <Route
-                    path="/StudentDashboard/StudentAnalytics"
-                    element={<StAnalytics />}
-                  />
-                </Route>
-          {/* --------------------student route end-------------------------*/}
+                  <Route path="/StudentDashboard" element={<StudentDashboard />}>
+                    <Route path="/StudentDashboard" element={<StudentHome />} />
+                    <Route
+                      path="/StudentDashboard/RequestCare"
+                      element={<RequestCare />}
+                    />
+                    <Route
+                      path="/StudentDashboard/SubmitDocuments"
+                      element={<StudentMyDocuments />}
+                    />
+                    <Route
+                      path="/StudentDashboard/StudentPay"
+                      element={<StudentPay />}
+                    />
+                    <Route
+                      path="/StudentDashboard/StudentAnalytics"
+                      element={<StAnalytics />}
+                    />
+                  </Route>
+                  {/* --------------------student route end-------------------------*/}
         </Routes>
             </BrowserRouter>
         </div>
