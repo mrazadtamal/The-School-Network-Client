@@ -32,6 +32,7 @@ import StudentMyDocuments from "./Pages/StudentPanel/StudentDashboard/StudentMyD
 import StudentPay from "./Pages/StudentPanel/StudentPay/StudentPay";
 import StAnalytics from "./Pages/StudentPanel/StudentDashboard/StAnalytics/StAnalytics";
 import ResultAdd from "./Pages/Shared/ResultAdd/ResultAdd";
+import TeachersAssignment from "./Pages/TeachersPanel/TeachersAssignment/TeachersAssignment";
 
 function App() {
     return (
@@ -124,7 +125,10 @@ function App() {
                             path="/TeachersDashboard/RegisterStudent"
                             element={<TeachersRegisterStudent />}
                         />
-                       
+                        <Route
+                            path="/TeachersDashboard/publishAssignment"
+                            element={<TeachersAssignment />}
+                        />
                     </Route>
                     {/* --------------Teacher Routes End-------------- */}
                    {/* --------------------student route start-----------------------*/}
