@@ -3,7 +3,7 @@ import React from "react";
 const StudentAssignmentSubmit = () => {
   return (
     <>
-      <div className="relative border-2   flex items-center justify-center  py-5 px-4 sm:px-6 lg:px-8  relative items-center">
+      <div className="relative border-2 flex justify-center  py-5 px-4 sm:px-6 lg:px-8 items-center">
         <div className="sm:max-w-lg w-full p-5 bg-white rounded-xl z-10">
           <div className="text-center">
             <h2 className="mt-5 text-2xl font-bold text-gray-900">

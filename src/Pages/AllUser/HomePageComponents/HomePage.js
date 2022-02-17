@@ -12,6 +12,7 @@ import TopSections from "./TopSections";
 import OurVisitors from "./OurVisitors";
 
 const AlluserHomePage = () => {
+<<<<<<< HEAD
     return (
         <div>
             <AllUserNavbar />
@@ -25,9 +26,21 @@ const AlluserHomePage = () => {
             <NewsAndEvents />
             <OurVisitors/>
             <Foooter />
+=======
+  return (
+    <div>
+      <AllUserNavbar />
+      <HomeSlider />
 
-        </div>
-    );
+      <BlogPosts />
+      <Annoucements />
+      <ExcellenceBanner />
+>>>>>>> e14b4667183c413e76cfffe70cbcaeabcbe3249e
+
+      <NewsAndEvents />
+      <Foooter />
+    </div>
+  );
 };
 
 export default AlluserHomePage;
