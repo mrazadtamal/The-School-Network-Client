@@ -10,12 +10,12 @@ const SeeResult = () => {
 
   return (
     <div className="h-full w-full ">
-      <div className=" bg-green-600 text-white  ">
+      <div className=" bg-gray-200 text-white  ">
         <div className="w-40 bg-gray-600 ml-5 top-10 left-16 ">
           <button
             onClick={handleClick}
             type="button"
-            className="inline-flex justify-center w-full rounded-md  border-gray-300 shadow-sm px-4 py-2  text-sm font-medium  text-white focus:outline-none    "
+            className="inline-flex text-xl justify-center w-full rounded-md  border-gray-300 shadow-sm px-4 py-2   font-medium  text-white focus:outline-none    "
           >
             See Result
             <svg
@@ -75,7 +75,7 @@ const SeeResult = () => {
                 <table class="min-w-full leading-normal">
                   <thead>
                     <tr>
-                      <th class="px-5 py-3 border-b-2 border-gray-200 bg-gray-100 text-center text-xs font-semibold text-gray-600 uppercase tracking-wider">
+                      <th class="px-5 pl-6 text-left py-3 border-b-2 border-gray-200 bg-gray-100  text-xs font-semibold text-gray-600 uppercase tracking-wider">
                         Subject
                       </th>
                       <th class="px-5 py-3 border-b-2 border-gray-200 bg-gray-100 text-center text-xs font-semibold text-gray-600 uppercase tracking-wider">
