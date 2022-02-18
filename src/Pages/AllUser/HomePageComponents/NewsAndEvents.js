@@ -2,7 +2,7 @@ import React from "react";
 
 const NewsAndEvents = () => {
   return (
-    <div className="pr-20 pl-20">
+    <div className="pr-20 pl-20" data-aos="zoom-out-up">
       <h2 className="text-left font-bold text-5xl	pl-10">
         The Scool Network News and Events
       </h2>
