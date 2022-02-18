@@ -2,11 +2,10 @@ import React from "react";
 
 const BLogPosts = () => {
   return (
-    <div className="pr-20 pl-20">
+    <div className="pr-20 pl-20" data-aos="fade-right">
       <h2 className="text-center text-5xl pt-16">Our Blogs</h2>
 
       <div className="container mx-auto pt-5 pb-5 grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-5 sm:place-content-center sm:place-items-center">
-
         <div className="max-w-md py-4 px-8 bg-white shadow-lg rounded-lg my-20 ">
           <div className="flex justify-center md:justify-end -mt-16">
             <img
