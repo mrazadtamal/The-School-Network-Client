@@ -1,0 +1,14 @@
+.filterContainer {
+  width: 50%;
+  margin: 30px 0px;
+  display: flex;
+  justify-content: space-between;
+}
+.filter {
+  display: flex;
+  align-items: center;
+}
+.filterTitle {
+  font-size: 20px;
+  font-weight: 200;
+}

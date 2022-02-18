@@ -30,6 +30,8 @@ import AboutUsPage from "./Pages/AllUser/HomePageComponents/AboutUsPage/AboutUsP
 import StudentMyDocuments from "./Pages/StudentPanel/StudentDashboard/StudentMyDocuments/StudentMyDocuments";
 import StudentPay from "./Pages/StudentPanel/StudentPay/StudentPay";
 import StAnalytics from "./Pages/StudentPanel/StudentDashboard/StAnalytics/StAnalytics";
+import SeeResult from "./Pages/StudentPanel/StudentDashboard/SeeResult/SeeResult";
+import Transcript from "./Pages/StudentPanel/StudentDashboard/Transcript/Transcript";
 
 function App() {
   return (
@@ -117,6 +119,11 @@ function App() {
             <Route
               path="/StudentDashboard/StudentAnalytics"
               element={<StAnalytics />}
+            />
+            <Route path="/StudentDashboard/seeResult" element={<SeeResult />} />
+            <Route
+              path="/StudentDashboard/transcript"
+              element={<Transcript />}
             />
           </Route>
           {/* --------------------student route end-------------------------*/}
