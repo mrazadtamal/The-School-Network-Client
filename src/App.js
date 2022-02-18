@@ -30,6 +30,8 @@ import AboutUsPage from "./Pages/AllUser/HomePageComponents/AboutUsPage/AboutUsP
 import StudentMyDocuments from "./Pages/StudentPanel/StudentDashboard/StudentMyDocuments/StudentMyDocuments";
 import StudentPay from "./Pages/StudentPanel/StudentPay/StudentPay";
 import StAnalytics from "./Pages/StudentPanel/StudentDashboard/StAnalytics/StAnalytics";
+import SeeResult from "./Pages/StudentPanel/StudentDashboard/SeeResult/SeeResult";
+import Transcript from "./Pages/StudentPanel/StudentDashboard/Transcript/Transcript";
 import ResultAdd from "./Pages/Shared/ResultAdd/ResultAdd";
 import TeachersAssignment from "./Pages/TeachersPanel/TeachersAssignment/TeachersAssignment";
 import RegisterStudent from "./Pages/Shared/RegisterStudent/RegisterStudent";
@@ -159,9 +161,8 @@ function App() {
                   </Route>
                   {/* --------------------student route end-------------------------*/}
         </Routes>
-            </BrowserRouter>
-        </div>
-    
+      </BrowserRouter>
+    </div>
   );
 }
 export default App;
