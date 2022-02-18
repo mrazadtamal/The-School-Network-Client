@@ -1,5 +1,5 @@
 import React from 'react';
-import './StudentPay.css';
+// import './StudentPay.css';
 
 const StudentPay = () => {
     return (
@@ -19,7 +19,6 @@ const StudentPay = () => {
                 <label for="type1" className="flex items-center cursor-pointer"/>
                     <input type="radio" className="form-radio h-5 w-5 text-indigo-500" name="type" id="type1" checked/>
                     <img src="https://leadershipmemphis.org/wp-content/uploads/2020/08/780370.png" className="h-8 ml-3" alt=""/>
-    
             </div>
             <div className="px-2">
                 <label for="type2" className="flex items-center cursor-pointer"/>
@@ -60,7 +59,8 @@ const StudentPay = () => {
                 </div>
             </div>
             <div className="px-2 w-1/2">
-                <select className="form-select w-full px-3 py-2 mb-1 border-2 border-gray-200 rounded-md focus:outline-none focus:border-indigo-500 transition-colors cursor-pointer">
+                    <select className="form-select w-full px-3 py-2 mb-1 border-2 border-gray-200 rounded-md focus:outline-none focus:border-indigo-500 transition-colors cursor-pointer">
+                                {/* this will be dynamic */}
                     <option value="2020">2020</option>
                     <option value="2021">2021</option>
                     <option value="2022">2022</option>
