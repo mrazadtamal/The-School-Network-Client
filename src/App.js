@@ -33,6 +33,7 @@ import StudentPay from "./Pages/StudentPanel/StudentPay/StudentPay";
 import StAnalytics from "./Pages/StudentPanel/StudentDashboard/StAnalytics/StAnalytics";
 import ResultAdd from "./Pages/Shared/ResultAdd/ResultAdd";
 import TeachersAssignment from "./Pages/TeachersPanel/TeachersAssignment/TeachersAssignment";
+import TeachersManageStudent from "./Pages/TeachersPanel/TeachersManageStudent/TeachersManageStudent";
 
 function App() {
     return (
@@ -51,7 +52,7 @@ function App() {
                     <Route path="/howtoapply" element={<HowToApply />} />
                     <Route path="/admissionForm" element={<AdmissionForm />} />
 
-          {/* --------------All User Homepage Routes End--------------- */}
+                    {/* --------------All User Homepage Routes End--------------- */}
 
                     {/* --------------All User Homepage Routes End--------------- */}
 
@@ -94,7 +95,7 @@ function App() {
                             path="/PrincipalDashboard/UploadPayment"
                             element={<UploadPayment />}
                         />
-                         <Route
+                        <Route
                             path="/PrincipalDashboard/ResultAdd"
                             element={<ResultAdd />}
                         />
@@ -108,6 +109,10 @@ function App() {
                         <Route
                             path="/TeachersDashboard"
                             element={<TeachersPanelHome />}
+                        />
+                        <Route
+                            path="/TeachersDashboard/ManageStudents"
+                            element={<TeachersManageStudent />}
                         />
                         <Route
                             path="/TeachersDashboard/NoticePublish"
@@ -131,31 +136,36 @@ function App() {
                         />
                     </Route>
                     {/* --------------Teacher Routes End-------------- */}
-                   {/* --------------------student route start-----------------------*/}
-                  <Route path="/StudentDashboard" element={<StudentDashboard />}>
-                    <Route path="/StudentDashboard" element={<StudentHome />} />
+                    {/* --------------------student route start-----------------------*/}
                     <Route
-                      path="/StudentDashboard/RequestCare"
-                      element={<RequestCare />}
-                    />
-                    <Route
-                      path="/StudentDashboard/SubmitDocuments"
-                      element={<StudentMyDocuments />}
-                    />
-                    <Route
-                      path="/StudentDashboard/StudentPay"
-                      element={<StudentPay />}
-                    />
-                    <Route
-                      path="/StudentDashboard/StudentAnalytics"
-                      element={<StAnalytics />}
-                    />
-                  </Route>
-                  {/* --------------------student route end-------------------------*/}
-        </Routes>
+                        path="/StudentDashboard"
+                        element={<StudentDashboard />}
+                    >
+                        <Route
+                            path="/StudentDashboard"
+                            element={<StudentHome />}
+                        />
+                        <Route
+                            path="/StudentDashboard/RequestCare"
+                            element={<RequestCare />}
+                        />
+                        <Route
+                            path="/StudentDashboard/SubmitDocuments"
+                            element={<StudentMyDocuments />}
+                        />
+                        <Route
+                            path="/StudentDashboard/StudentPay"
+                            element={<StudentPay />}
+                        />
+                        <Route
+                            path="/StudentDashboard/StudentAnalytics"
+                            element={<StAnalytics />}
+                        />
+                    </Route>
+                    {/* --------------------student route end-------------------------*/}
+                </Routes>
             </BrowserRouter>
         </div>
-    
-  );
+    );
 }
 export default App;
