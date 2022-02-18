@@ -4,9 +4,9 @@ const RegisterTeacher = () => {
     return (
       <div className="mt-4" style={{width: '100%'}}>
             <h1 className='text-3xl font-bold text-center mt-4'>Register Teacher</h1>
-                <form className='principal_register_teacher mt-8'>
+            <form className='principal_register_teacher mt-8'>
                 <div className='grid lg:grid-cols-12 sm:grid-cols-12 md:grid-cols-12 gap-6'>
-                    <div className="col-span-6">
+                    <div className="col-span-12">
                         <label htmlFor="first-name" className="block principal_form_all_labels">
                             Name
                         </label>
@@ -19,6 +19,8 @@ const RegisterTeacher = () => {
                         />
                     </div>
 
+                </div>
+                <div className='grid lg:grid-cols-12 sm:grid-cols-12 md:grid-cols-12 gap-6 mt-4'>
                     <div className="col-span-6">
                         <label htmlFor="email-address" className="block principal_form_all_labels">
                         Email address
@@ -28,6 +30,18 @@ const RegisterTeacher = () => {
                         name="email-address"
                         id="email-address"
                         autoComplete="email"
+                        className="mt-1 principal_form_all_input"
+                        />
+                    </div>
+                    <div className="col-span-6">
+                        <label htmlFor="first-name" className="block principal_form_all_labels">
+                            Password
+                        </label>
+                        <input
+                        type="password"
+                        name="first-name"
+                        id="first-name"
+                        autoComplete="given-name"
                         className="mt-1 principal_form_all_input"
                         />
                     </div>
@@ -107,9 +121,9 @@ const RegisterTeacher = () => {
                     </div>
                 </div>
                 <div className='grid lg:grid-cols-12 sm:grid-cols-12 md:grid-cols-12'>
-                        <div className="col-span-12 mt-8">
+                        <div className="col-span-12 mt-4">
                         <label htmlFor="street-address" className="block principal_form_all_labels">
-                            Adress
+                            Address
                         </label>
                         <textarea
                             type="text"
@@ -119,8 +133,9 @@ const RegisterTeacher = () => {
                             className="mt-1 principal_form_all_input"
                         />
                         </div>
-                </div>     
-                </form>
+                </div>
+                <button type='submit' className='publish_btn shadow-lg shadow-indigo-500/50'>ADD TEACHER</button>  
+            </form>
       </div>
     );
 };
