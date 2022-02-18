@@ -145,6 +145,11 @@ function App() {
                       path="/StudentDashboard/StudentPay"
                       element={<StudentPay />}
                     />
+                     <Route path="/StudentDashboard/seeResult" element={<SeeResult />} />
+                    <Route
+                      path="/StudentDashboard/transcript"
+                      element={<Transcript />}
+                    />
                     <Route
                       path="/StudentDashboard/StudentAnalytics"
                       element={<StAnalytics />}
