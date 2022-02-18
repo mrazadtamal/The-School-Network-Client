@@ -32,6 +32,9 @@ import StudentPay from "./Pages/StudentPanel/StudentPay/StudentPay";
 import StAnalytics from "./Pages/StudentPanel/StudentDashboard/StAnalytics/StAnalytics";
 import SeeResult from "./Pages/StudentPanel/StudentDashboard/SeeResult/SeeResult";
 import Transcript from "./Pages/StudentPanel/StudentDashboard/Transcript/Transcript";
+import ResultAdd from "./Pages/Shared/ResultAdd/ResultAdd";
+import TeachersAssignment from "./Pages/TeachersPanel/TeachersAssignment/TeachersAssignment";
+import RegisterStudent from "./Pages/Shared/RegisterStudent/RegisterStudent";
 
 function App() {
   return (
@@ -46,9 +49,6 @@ function App() {
           <Route path="/admissionPolicy" element={<AdmissionPolicy />} />
           <Route path="/howtoapply" element={<HowToApply />} />
           <Route path="/admissionForm" element={<AdmissionForm />} />
-
-          {/* --------------All User Homepage Routes End--------------- */}
-
           <Route path="/canteen" element={<Canteen />} />
           <Route path="/library" element={<Library />} />
           <Route path="/auditoriam" element={<Auditoraim />} />
@@ -82,6 +82,14 @@ function App() {
               path="/PrincipalDashboard/UploadPayment"
               element={<UploadPayment />}
             />
+            <Route
+              path="/PrincipalDashboard/ResultAdd"
+              element={<ResultAdd />}
+            />
+            <Route
+              path="/PrincipalDashboard/RegisterStudent"
+              element={<RegisterStudent />}
+            />
           </Route>
           {/* --------------Principal Routes End--------------- */}
           {/* --------------Teacher Routes Start */}
@@ -98,6 +106,14 @@ function App() {
             <Route
               path="/TeachersDashboard/ExamRoutine"
               element={<TeachersExamRoutine />}
+            />
+            <Route
+              path="/TeachersDashboard/RegisterStudent"
+              element={<RegisterStudent />}
+            />
+            <Route
+              path="/TeachersDashboard/publishAssignment"
+              element={<TeachersAssignment />}
             />
           </Route>
           {/* --------------Teacher Routes End-------------- */}
