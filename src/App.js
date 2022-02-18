@@ -14,6 +14,10 @@ import HowToApply from "./Pages/AllUser/Admission/HowToApply";
 import AdmissionForm from "./Pages/AllUser/Admission/AdmissionForm";
 import TeachersClassRoutine from "./Pages/TeachersPanel/TeachersClassRoutine/TeachersClassRoutine";
 import TeachersExamRoutine from "./Pages/TeachersPanel/TeachersExamRoutine/TeachersExamRoutine";
+import Canteen from "./Pages/AllUser/Facilities/Canteen";
+import Library from "./Pages/AllUser/Facilities/Library";
+import Auditoraim from "./Pages/AllUser/Facilities/Auditoraim";
+import Games from "./Pages/AllUser/Facilities/Games";
 
 // student imports
 import StudentDashboard from "./Pages/StudentPanel/StudentDashboard/StudentDashboard";
@@ -23,10 +27,7 @@ import PrincipalManageTeacher from "./Pages/PrincipalPanel/PrincipalManageTeache
 import RegisterTeacher from "./Pages/PrincipalPanel/RegisterTeacher/RegisterTeacher";
 import PrincipalManageStudent from "./Pages/PrincipalPanel/PrincipalManageStudent/PrincipalManageStudent";
 import UploadPayment from "./Pages/PrincipalPanel/UploadPayment/UploadPayment";
-import Canteen from "./Pages/AllUser/Facilities/Canteen";
-import Library from "./Pages/AllUser/Facilities/Library";
-import Auditoraim from "./Pages/AllUser/Facilities/Auditoraim";
-import Games from "./Pages/AllUser/Facilities/Games";
+
 import AboutUsPage from "./Pages/AllUser/HomePageComponents/AboutUsPage/AboutUsPage";
 import TeachersRegisterStudent from "./Pages/TeachersPanel/TeachersRegisterStudent/TeachersRegisterStudent";
 import StudentMyDocuments from "./Pages/StudentPanel/StudentDashboard/StudentMyDocuments/StudentMyDocuments";
@@ -34,6 +35,7 @@ import StudentPay from "./Pages/StudentPanel/StudentPay/StudentPay";
 import StAnalytics from "./Pages/StudentPanel/StudentDashboard/StAnalytics/StAnalytics";
 import ResultAdd from "./Pages/Shared/ResultAdd/ResultAdd";
 import TeachersAssignment from "./Pages/TeachersPanel/TeachersAssignment/TeachersAssignment";
+import TeachersManageStudent from "./Pages/TeachersPanel/TeachersManageStudent/TeachersManageStudent";
 
 function App() {
   return (
@@ -48,16 +50,16 @@ function App() {
           <Route path="/admissionPolicy" element={<AdmissionPolicy />} />
           <Route path="/howtoapply" element={<HowToApply />} />
           <Route path="/admissionForm" element={<AdmissionForm />} />
-
-          {/* --------------All User Homepage Routes End--------------- */}
-
-          {/* --------------All User Homepage Routes End--------------- */}
-
-          <Route path="/canteen" element={<Canteen />} />
           <Route path="/library" element={<Library />} />
           <Route path="/auditoriam" element={<Auditoraim />} />
           <Route path="/games" element={<Games />} />
           <Route path="/allnotice" element={<AllNotices />} />
+          <Route path="/canteen" element={<Canteen />} />
+
+          {/* --------------All User Homepage Routes End--------------- */}
+
+          {/* --------------All User Homepage Routes End--------------- */}
+
           {/* --------------All User Homepage Routes End--------------- */}
           {/* --------------Principal Routes Start-------------- */}
           <Route path="/PrincipalDashboard" element={<PrincipalDashboard />}>
@@ -95,6 +97,10 @@ function App() {
           {/* --------------Teacher Routes Start */}
           <Route path="/TeachersDashboard" element={<TeachersPanel />}>
             <Route path="/TeachersDashboard" element={<TeachersPanelHome />} />
+            <Route
+              path="/TeachersDashboard/ManageStudents"
+              element={<TeachersManageStudent />}
+            />
             <Route
               path="/TeachersDashboard/NoticePublish"
               element={<TeachersNoticePublish />}
