@@ -33,6 +33,8 @@ import StAnalytics from "./Pages/StudentPanel/StudentDashboard/StAnalytics/StAna
 import ResultAdd from "./Pages/Shared/ResultAdd/ResultAdd";
 import TeachersAssignment from "./Pages/TeachersPanel/TeachersAssignment/TeachersAssignment";
 import RegisterStudent from "./Pages/Shared/RegisterStudent/RegisterStudent";
+import SeeResult from "./Pages/StudentPanel/StudentDashboard/SeeResult/SeeResult";
+import Transcript from "./Pages/StudentPanel/StudentDashboard/Transcript/Transcript";
 
 function App() {
     return (
