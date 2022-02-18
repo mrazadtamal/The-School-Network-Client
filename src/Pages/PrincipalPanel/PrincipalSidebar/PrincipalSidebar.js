@@ -2,7 +2,7 @@ import React from "react";
 import { Link } from "react-router-dom";
 import { HiSpeakerphone } from 'react-icons/hi';
 import { GiTeacher } from 'react-icons/gi';
-import { FaChalkboardTeacher, FaUserGraduate } from 'react-icons/fa';
+import { FaChalkboardTeacher, FaUserGraduate , FaRegAddressCard} from 'react-icons/fa';
 import { SiSamsungpay} from 'react-icons/si';
 
 const PrincipalSidebar = () => {
@@ -49,7 +49,10 @@ const PrincipalSidebar = () => {
         <Link to="/PrincipalDashboard/PrincipalManageStudent">
           <p className='principal_sidebar_link   text-white mt-4'> <FaUserGraduate className='principal_react_icons' />Manage Students</p>
         </Link>
-    
+
+        <Link to="/PrincipalDashboard/RegisterStudent">
+          <p className='principal_sidebar_link   text-white mt-4'> <FaRegAddressCard className='principal_react_icons' />Register Student</p>
+        </Link>
 
         <Link to="/PrincipalDashboard/UploadPayment">
           <p className='principal_sidebar_link   text-white mt-4'> <SiSamsungpay className='principal_react_icons' />Upload Payment</p>
@@ -58,7 +61,6 @@ const PrincipalSidebar = () => {
         <Link to="/PrincipalDashboard/CheckPaymentStatus">
           <p className='principal_sidebar_link   text-white mt-4'> <SiSamsungpay className='principal_react_icons' />Check Payment Status</p>
         </Link>
-
 
     </div>
   );

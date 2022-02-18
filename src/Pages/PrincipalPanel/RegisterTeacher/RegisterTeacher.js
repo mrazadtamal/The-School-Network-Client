@@ -1,10 +1,61 @@
-import React from 'react';
+import React, { useState } from 'react';
+import useFirebase from '../../Shared/Authentication/Authentication';
 
 const RegisterTeacher = () => {
+    const [regdata, setRegData] = useState({})
+    const {RegisterUser, setUser} = useFirebase();
+
+    const OnblurHandler = e => {
+        const fieldname = e.target.name;
+        const fieldvalue = e.target.value;
+  
+        const newdata = {...regdata};
+        newdata[fieldname] = fieldvalue;
+        setRegData(newdata)
+    }
+    const AddTeacherHandler = (e) => {
+        
+      RegisterUser(regdata.email, regdata.password)
+      .then((userCredential) => {
+        // Signed in 
+        const user = userCredential.user;
+        setUser(user);
+        SaveTeacher(regdata.email, regdata.teachername, regdata.role, regdata.teacherclass, regdata.teachersection,regdata.teachernid, regdata.teacherphone, regdata.teacheraddress)
+
+        e.target.reset()
+        
+    }).catch((error) => {
+         
+        console.log('from register user', error.message)
+    });
+    e.preventDefault()
+
+    }
+
+     //saving teacher to database
+     const SaveTeacher = (email, teachername, role, teacherclass, teachersection, teachernid, teacherphone) => {
+
+      const teacherdata = {email, teachername, role, teacherclass, teachersection, teachernid, teacherphone}
+
+        fetch('http://localhost:5000/userAdd', {
+            method: 'POST',
+            headers: {
+                'content-type':'application/json'
+            },
+            body: JSON.stringify(teacherdata)
+        })
+        .then(res => res.json())
+        .then(data => {
+          if(data)
+          {
+            alert('Teacher Added Successfully')
+          }
+        })
+    }
     return (
       <div className="mt-4" style={{width: '100%'}}>
             <h1 className='text-3xl font-bold text-center mt-4'>Register Teacher</h1>
-            <form className='principal_register_teacher mt-8'>
+            <form onSubmit={AddTeacherHandler} className='principal_register_teacher mt-8'>
                 <div className='grid lg:grid-cols-12 sm:grid-cols-12 md:grid-cols-12 gap-6'>
                     <div className="col-span-12">
                         <label htmlFor="first-name" className="block principal_form_all_labels">
@@ -12,13 +63,11 @@ const RegisterTeacher = () => {
                         </label>
                         <input
                         type="text"
-                        name="first-name"
-                        id="first-name"
-                        autoComplete="given-name"
+                        name="teachername"
+                        onBlur={OnblurHandler}
                         className="mt-1 principal_form_all_input"
                         />
                     </div>
-
                 </div>
                 <div className='grid lg:grid-cols-12 sm:grid-cols-12 md:grid-cols-12 gap-6 mt-4'>
                     <div className="col-span-6">
@@ -27,9 +76,8 @@ const RegisterTeacher = () => {
                         </label>
                         <input
                         type="text"
-                        name="email-address"
-                        id="email-address"
-                        autoComplete="email"
+                        name="email"
+                        onBlur={OnblurHandler}
                         className="mt-1 principal_form_all_input"
                         />
                     </div>
@@ -39,7 +87,8 @@ const RegisterTeacher = () => {
                         </label>
                         <input
                         type="password"
-                        name="first-name"
+                        name="password"
+                        onBlur={OnblurHandler}
                         id="first-name"
                         autoComplete="given-name"
                         className="mt-1 principal_form_all_input"
@@ -53,9 +102,8 @@ const RegisterTeacher = () => {
                     </label>
                     <input
                         type="number"
-                        name="last-name"
-                        id="last-name"
-                        autoComplete="family-name"
+                        name="teacherphone"
+                        onBlur={OnblurHandler}
                         className="mt-1 principal_form_all_input"
                     />
                     </div>
@@ -66,9 +114,8 @@ const RegisterTeacher = () => {
                     </label>
                     <input
                         type="text"
-                        name="last-name"
-                        id="last-name"
-                        autoComplete="family-name"
+                        name="teachernid"
+                        onBlur={OnblurHandler}
                         className="mt-1 principal_form_all_input"
                     />
                     </div>
@@ -79,14 +126,15 @@ const RegisterTeacher = () => {
                         Class Teacher Of
                     </label>
                     <select
-                        id="country"
-                        name="country"
-                        autoComplete="country-name"
+                         name="teacherclass"
+                         onBlur={OnblurHandler}
                         className="mt-1 block w-full py-2 px-3 border border-gray-300 bg-white rounded-md shadow-sm focus:outline-none focus:ring-indigo-500 focus:border-indigo-500 sm:text-sm"
                     >
-                        <option>Class One</option>
-                        <option>Class Two</option>
-                        <option>Class Four</option>
+                        <option value="class-one">Class One</option>
+                        <option value="class-two">Class Two</option>
+                        <option value="class-three">Class Three</option>
+                        <option value="class-four">Class Four</option>
+                        <option value="class-five">Class Five</option>
                     </select>
                     </div>
                     
@@ -95,13 +143,12 @@ const RegisterTeacher = () => {
                         Section
                     </label>
                     <select
-                        id="country"
-                        name="country"
-                        autoComplete="country-name"
+                         name="teachersection"
+                         onBlur={OnblurHandler}
                         className="mt-1 block w-full py-2 px-3 border border-gray-300 bg-white rounded-md shadow-sm focus:outline-none focus:ring-indigo-500 focus:border-indigo-500 sm:text-sm"
                     >
-                        <option>A</option>
-                        <option>B</option>
+                        <option value="section-A">A</option>
+                        <option value="section-B">B</option>
                     </select>
                     </div>
 
@@ -110,13 +157,12 @@ const RegisterTeacher = () => {
                         Roles
                     </label>
                     <select
-                        id="country"
-                        name="country"
-                        autoComplete="country-name"
+                        name="role"
+                        onBlur={OnblurHandler}
                         className="mt-1 block w-full py-2 px-3 border border-gray-300 bg-white rounded-md shadow-sm focus:outline-none focus:ring-indigo-500 focus:border-indigo-500 sm:text-sm"
                     >
-                        <option>Teacher</option>
-                        <option>VicePrincipal</option>
+                        <option value="Teacher">Teacher</option>
+                        <option value="VicePrincipal">VicePrincipal</option>
                     </select>
                     </div>
                 </div>
@@ -126,9 +172,8 @@ const RegisterTeacher = () => {
                             Address
                         </label>
                         <textarea
-                            type="text"
-                            name="street-address"
-                            id="street-address"
+                             name="teacheraddress"
+                             onBlur={OnblurHandler}
                             autoComplete="street-address"
                             className="mt-1 principal_form_all_input"
                         />
