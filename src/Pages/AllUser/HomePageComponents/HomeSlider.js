@@ -12,7 +12,7 @@ const HomeSlider = () => {
     autoplay: true,
   };
   return (
-    <div>
+    <div data-aos="zoom-in">
       <Slider {...settings}>
         <div>
           <img
