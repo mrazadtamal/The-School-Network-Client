@@ -19,7 +19,7 @@ const Annoucements = () => {
   };
 
   return (
-    <div className="container mx-auto pr-20 pl-20">
+    <div className="container mx-auto pr-20 pl-20" data-aos="zoom-in">
       <h2 className="text-center text-5xl pb-2">Annoucements</h2>
       <hr />
       <Slider {...settings}>

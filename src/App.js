@@ -27,12 +27,12 @@ import Library from "./Pages/AllUser/Facilities/Library";
 import Auditoraim from "./Pages/AllUser/Facilities/Auditoraim";
 import Games from "./Pages/AllUser/Facilities/Games";
 import AboutUsPage from "./Pages/AllUser/HomePageComponents/AboutUsPage/AboutUsPage";
-import TeachersRegisterStudent from "./Pages/TeachersPanel/TeachersRegisterStudent/TeachersRegisterStudent";
 import StudentMyDocuments from "./Pages/StudentPanel/StudentDashboard/StudentMyDocuments/StudentMyDocuments";
 import StudentPay from "./Pages/StudentPanel/StudentPay/StudentPay";
 import StAnalytics from "./Pages/StudentPanel/StudentDashboard/StAnalytics/StAnalytics";
 import ResultAdd from "./Pages/Shared/ResultAdd/ResultAdd";
 import TeachersAssignment from "./Pages/TeachersPanel/TeachersAssignment/TeachersAssignment";
+import RegisterStudent from "./Pages/Shared/RegisterStudent/RegisterStudent";
 
 function App() {
     return (
@@ -50,11 +50,6 @@ function App() {
                     />
                     <Route path="/howtoapply" element={<HowToApply />} />
                     <Route path="/admissionForm" element={<AdmissionForm />} />
-
-          {/* --------------All User Homepage Routes End--------------- */}
-
-                    {/* --------------All User Homepage Routes End--------------- */}
-
                     <Route path="/canteen" element={<Canteen />} />
                     <Route path="/library" element={<Library />} />
                     <Route path="/auditoriam" element={<Auditoraim />} />
@@ -68,7 +63,7 @@ function App() {
                     >
                         <Route
                             path="/PrincipalDashboard"
-                            element={<PrincipalHome />}
+                            element={<PrincipalHome />} 
                         />
                         <Route
                             path="/PrincipalDashboard/PrincipalPublishNotice"
@@ -98,6 +93,10 @@ function App() {
                             path="/PrincipalDashboard/ResultAdd"
                             element={<ResultAdd />}
                         />
+                        <Route
+                            path="/PrincipalDashboard/RegisterStudent"
+                            element={<RegisterStudent />}
+                        />
                     </Route>
                     {/* --------------Principal Routes End--------------- */}
                     {/* --------------Teacher Routes Start */}
@@ -123,7 +122,7 @@ function App() {
                         />
                         <Route
                             path="/TeachersDashboard/RegisterStudent"
-                            element={<TeachersRegisterStudent />}
+                            element={<RegisterStudent />}
                         />
                         <Route
                             path="/TeachersDashboard/publishAssignment"
