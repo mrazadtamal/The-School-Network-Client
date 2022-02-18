@@ -60,13 +60,17 @@ const MyComponent = () => {
         <div className="sm:w-1/2 sm:mt-0 mt-8 h-auto">
           <div className="text-red-light mb-2">CONTACT US</div>
 
-          <p className="text-grey-darker font-bold leading-normal">PHONE</p>
+          <p className="text-grey-darker mt-1 font-bold leading-normal">
+            PHONE
+          </p>
           <p className="text-grey-darker leading-normal">999333666</p>
-          <p className="text-grey-darker font-bold leading-normal">EMAIL</p>
+          <p className="text-grey-darker mt-1 font-bold leading-normal">
+            EMAIL
+          </p>
           <p className="text-grey-darker leading-normal">
             web.codingwizards@gmail.com
           </p>
-          <h4 className="font-bold text-lg">Subscribe Us</h4>
+          <h4 className="font-bold  mt-1 text-lg">Subscribe Us</h4>
           <div className="mt-4 flex">
             <input
               type="text"

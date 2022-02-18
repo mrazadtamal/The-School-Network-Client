@@ -13,19 +13,19 @@ import OurVisitors from "./OurVisitors";
 import NoticeBoard from "./NoticeBoard";
 
 const AlluserHomePage = () => {
-  return (
-    <div>
-      <AllUserNavbar />
-      <HomeSlider />
-      <TopSections />
-      <NoticeBoard />
-      <BlogPosts />
-      <Annoucements />
-      <ExcellenceBanner />
-      <OurRanking />
-      <NewsAndEvents />
-      <OurVisitors />
-      <Foooter />
+    return (
+        <div>
+            <AllUserNavbar />
+            <HomeSlider />
+            <TopSections/>
+            <NoticeBoard/>
+            <BlogPosts />
+            <Annoucements />
+            <ExcellenceBanner />
+            <OurRanking/>
+            <NewsAndEvents />
+            <OurVisitors/>
+            <Foooter />
     </div>
   );
 };
