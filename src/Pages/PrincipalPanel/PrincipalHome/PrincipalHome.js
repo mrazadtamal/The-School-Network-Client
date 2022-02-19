@@ -1,6 +1,7 @@
 import React from "react";
 import bannarimg from "../../../img/principalhomeimg.jpg";
 import "../Pricipal.css";
+import "../PrincipalOther.css";
 const PrincipalHome = () => {
   return (
     <div className="container mx-auto ">

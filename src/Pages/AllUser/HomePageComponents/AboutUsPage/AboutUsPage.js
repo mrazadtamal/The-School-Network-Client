@@ -4,7 +4,7 @@ import Foooter from "../Foooter";
 
 const AboutUsPage = () => {
     return (
-        <div>
+        <div className="bg-cyan-50">
             <AllUserNavbar/>
             <h2 className="text-3xl text-center p-10">About Us  </h2>
             <img src="https://i.ibb.co/zXDt83v/vladislav-vasilev-9qb-PV3dvna0-unsplash.jpg" alt="img" className="h-1/4 aspect-w-1 mx-auto"/>
@@ -12,7 +12,7 @@ const AboutUsPage = () => {
             <hr/>
             
             
-            <div className="container mx-auto pl-20 pr-20 text-left pt-10">
+            <div className="container mx-auto pl-20 pr-20 text-left pt-10 bg-white shadow-2xl pb-16 ml-9 mr-16 mt-10 ">
             <p>
                The Schoool Network (The Schoool Network) is recognized in independent government assessments as one of top graded universities in Bangladesh. The university has been founded by Daffodil Group with the approval of the Ministry of Education under the Private University Act of 1992 and its amendment in 1998 andThe Schoool Network came into being on 24th January 2002, the University today combines impressive modern facilities and a dynamic approach to teaching and research with its proud heritage of service and achievement.
 
@@ -36,6 +36,55 @@ const AboutUsPage = () => {
 
                 This is a noticeable encouragement for the university observing the rapid growth of the university. The university has been started with 67 students registering in the first batch and more than 15,000 students have been enrolled till date. The Schoool Network is committed to provide standard education with all sorts of facilities to the students. Since the inception, the university is maintaining the commitment and it creates inspiration to the students and this is the key of the continuous increasing of the number of students
             </p>
+                <h2 className="pt-6 text-blue-800">History & Academic Background</h2>
+                <p className="pt-6 pb-9">
+                    The origins of the college were in a private English School named “Bauliya English School” that had been founded in Rajshahi in 1828 by the concerted efforts of many of the region’s most prominent citizens (this school is now known as Rajshahi Collegiate School). In 1836 the school was taken over by the provincial government of Bengal and was converted into a Government Zilla (or District) School. In 1873, again through the concerted efforts and appeals of local citizens, the Zilla School was given the status of an Intermediate College, and F.A. courses were introduced into its curriculum. With further development this college was accorded “first-grade rank” in 1878, which meant that it could teach B.A. courses and be affiliated to the University of Calcutta. The name “Rajshahi College” came with the first-grade rank in 1878. The year 1881 saw the inauguration of the M. A. classes; B.L. classes were added in 1883. The postgraduate Departments in Arts and in Law continued till 1909 when they were withdrawn because the college could not meet the requirements of the New Regulations of the University of Calcutta which came into force in that year.
+                </p>
+                <p className="pt-6 pb-9">
+                    The role of the rich landlord and monarch or rajas of the adjoining areas to spread of western education was significant. Haranatha Roy Chowdhury of Dubalahati, King Pramathanath Roy of Dighapatiyara, Raja Promod Rai & Basant Rai; queen Saratsundari & Hemantkumari of Putia; Kumar Sarabindu Roy of Balihar; Khan Bahadur Emad Uddin Ahmed, translator of Kimia-E-Sa’dat Mirza Mohammad Yousuf Ali, Haji Lal Mohammad, Khan Bahadur Rashid Khan Chowdhury, Natore Jaminder family; Khan Bahadur Ershad Ali Khan Chowdhury and Deputy Speaker of the Bengal Legislative Council barrister Ashraf Ali Khan Choudhari was eminent. Besides that, jaminder family of Natore made their residential quarter “Choudhury Lodge” for residing about twenty poor Muslim students in college studying for a rent-free rent free accomodation and meal. Their role in the development of education in backward Muslim society was significant.
+
+
+                </p>
+
+                <h2 className="pt-6 text-blue-800">Library, Laboratories, Publications and Informatics:</h2>
+                <p>
+                    Library: The Institution has the distinction for its Library containing both classics and recent edition of the books, journals and periodicals and it is acclaimed internationally the reliable source for the information available from the print matters.</p>
+
+                    <p>Laboratories: Twenty Laboratories are also equipped with vintage an up-to-date instruments for carrying out experiments.
+
+                    Publications and Informatics: The college used to publish popular magazine and periodicals regularly. This has been strengthened with certain specialized and research based journals. Rajshahi college is probably the sole institutes dares to manage its all data and information digitally and has become a pioneer institute to do this job online through setting an own server station along with LAN and Broadband Leased Line connection.
+                </p>
+                <h2 className="pt-6 text-blue-800"> Enrolled Students (From start to date):</h2>
+                <p>
+                    On 1st April 1873, Rajshahi College had started its journey with only six students towards an unknown future. Gradually the college reached an admirable position by overcoming all uncertainty and obstacles. The college counted 100 in 1878, 200 in 1900, 400 in 1910, 800 in 1920 and no less than 1000 in 1924; there was only one Muslim student at the college in 1873; 5 years later it was still one, but the figure rose to 156 in 1916 and climaxed at 215 in 1924. The number of students reached about 1000 in 1930 and in the next year, the college started taking girl students.</p>
+                <p>
+
+                    Subsequently, of course, Muslim numbers rose in the college and after 1947 eventually exceeded the Hindu numbers. In 1970, the college had 1,840 students, of whom about 300 were girls. The college vastly expanded after the independence of Bangladesh and in 1990, the number of students was 4,732, of whom 1,352 were girls. The enrolment increased to about 8,000 in 2000 and 25,000 in 2012.
+
+
+                </p>
+
+                <h2 className="text-blue-900 pt-6 font-bold">
+                    Geographical Location
+
+                </h2>
+            <p>
+                Coordinates: 24°21’52?N 88°35’41?E
+
+
+            </p>
+                <h2 className="text-blue-900 pt-6 font-bold">
+                    Reference
+
+                </h2>
+
+                <p>
+                   1. www.thedailystar.net/campus/2010/03/04/feature_rajshahi… <br/>
+                   2. Wikipedia article: http://en.wikipedia.org/wiki/Rajshahi_College<br/>
+                   3. http://www.eduicon.com/Institute/?Institute_Basic_ID=4442<br/>
+                </p>
+
+
             </div>
 
             <Foooter/>

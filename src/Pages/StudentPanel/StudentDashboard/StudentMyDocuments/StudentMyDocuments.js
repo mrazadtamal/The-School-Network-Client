@@ -4,7 +4,7 @@ import StudentNotesUpload from "./StudentNotesUpload";
 
 const StudentMyDocuments = () => (
   <div className="flex flex-col">
-    <h1 className="text-3xl text-center font-bold text-blue-900">
+    <h1 className="flex justify-center m-auto mt-5 text-3xl font-bold text-blue-900">
       Student Documents Submission
     </h1>
 

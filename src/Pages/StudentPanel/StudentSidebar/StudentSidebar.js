@@ -52,6 +52,24 @@ const StudentSidebar = () => {
         >
           <p className="text-white">Student Analytics</p>
         </NavLink>
+        <NavLink
+          to="/StudentDashboard/seeResult"
+          style={({ isActive }) => ({
+            color: isActive ? "#0bc28b" : "#545e6f",
+            background: isActive ? "#7600dc" : "black",
+          })}
+        >
+          <p className="text-white">See Result</p>
+        </NavLink>
+        <NavLink
+          to="/StudentDashboard/transcript"
+          style={({ isActive }) => ({
+            color: isActive ? "#0bc28b" : "#545e6f",
+            background: isActive ? "#7600dc" : "black",
+          })}
+        >
+          <p className="text-white">Transcript</p>
+        </NavLink>
       </div>
     </div>
   );

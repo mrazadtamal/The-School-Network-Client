@@ -58,12 +58,12 @@ const TeachersPanelSideBar = () => {
                                                 <Menu.Items className="origin-top-right absolute mt-2 min-w-max w-36 rounded-md shadow-lg bg-white ring-1 ring-black ring-opacity-5 focus:outline-none">
                                                     <div className="p-1">
                                                         <p className="px-2 pt-1 font-medium">
-                                                            Nursery
+                                                            Class 1
                                                         </p>
                                                         <Menu.Item>
                                                             {({ active }) => (
                                                                 <Link
-                                                                    to="#"
+                                                                    to="/TeachersDashboard/ManageStudents"
                                                                     className={classNames(
                                                                         active
                                                                             ? "bg-gray-100 text-gray-900"
@@ -78,7 +78,7 @@ const TeachersPanelSideBar = () => {
                                                         <Menu.Item>
                                                             {({ active }) => (
                                                                 <Link
-                                                                    to="#"
+                                                                    to="/TeachersDashboard/ManageStudents"
                                                                     className={classNames(
                                                                         active
                                                                             ? "bg-gray-100 text-gray-900"
@@ -91,12 +91,12 @@ const TeachersPanelSideBar = () => {
                                                             )}
                                                         </Menu.Item>
                                                         <p className="px-2 pt-1 font-medium">
-                                                            KG
+                                                            Class 2
                                                         </p>
                                                         <Menu.Item>
                                                             {({ active }) => (
                                                                 <Link
-                                                                    to="#"
+                                                                    to="/TeachersDashboard/ManageStudents"
                                                                     className={classNames(
                                                                         active
                                                                             ? "bg-gray-100 text-gray-900"
@@ -110,8 +110,8 @@ const TeachersPanelSideBar = () => {
                                                         </Menu.Item>
                                                         <Menu.Item>
                                                             {({ active }) => (
-                                                                <button
-                                                                    type="submit"
+                                                                <Link
+                                                                    to="/TeachersDashboard/ManageStudents"
                                                                     className={classNames(
                                                                         active
                                                                             ? "bg-gray-100 text-gray-900"
@@ -120,7 +120,7 @@ const TeachersPanelSideBar = () => {
                                                                     )}
                                                                 >
                                                                     Section B
-                                                                </button>
+                                                                </Link>
                                                             )}
                                                         </Menu.Item>
                                                     </div>
@@ -148,6 +148,15 @@ const TeachersPanelSideBar = () => {
                                             Publish Notice
                                         </Link>
                                     </div>
+                                    {/* Publish Assignment */}
+                                    <div>
+                                        <Link
+                                            to="/TeachersDashboard/publishAssignment"
+                                            className="block text-black hover:bg-gray-700 hover:text-white px-3 py-2 rounded-md text-sm font-medium"
+                                        >
+                                            Publish Assignment
+                                        </Link>
+                                    </div>
 
                                     {/* Add Result */}
                                     <div>
@@ -173,7 +182,7 @@ const TeachersPanelSideBar = () => {
                                                 <Menu.Items className="origin-top-right absolute mt-2 min-w-max w-36 rounded-md shadow-lg bg-white ring-1 ring-black ring-opacity-5 focus:outline-none">
                                                     <div className="p-1">
                                                         <p className="px-2 pt-1 font-medium">
-                                                            Nursery
+                                                            Class 1
                                                         </p>
                                                         <Menu.Item>
                                                             {({ active }) => (
@@ -206,7 +215,7 @@ const TeachersPanelSideBar = () => {
                                                             )}
                                                         </Menu.Item>
                                                         <p className="px-2 pt-1 font-medium">
-                                                            KG
+                                                            Class 2
                                                         </p>
                                                         <Menu.Item>
                                                             {({ active }) => (
@@ -225,8 +234,8 @@ const TeachersPanelSideBar = () => {
                                                         </Menu.Item>
                                                         <Menu.Item>
                                                             {({ active }) => (
-                                                                <button
-                                                                    type="submit"
+                                                                <Link
+                                                                    to="#"
                                                                     className={classNames(
                                                                         active
                                                                             ? "bg-gray-100 text-gray-900"
@@ -235,7 +244,7 @@ const TeachersPanelSideBar = () => {
                                                                     )}
                                                                 >
                                                                     Section B
-                                                                </button>
+                                                                </Link>
                                                             )}
                                                         </Menu.Item>
                                                     </div>
@@ -370,17 +379,17 @@ const TeachersPanelSideBar = () => {
                                 <div>
                                     <Link
                                         to="/"
-                                        className="text-black hover:bg-gray-700 hover:text-white px-3 py-2 rounded-md text-sm font-medium"
+                                        className="block text-black hover:bg-gray-700 hover:text-white px-3 py-2 rounded-md text-sm font-medium"
                                     >
                                         Home
                                     </Link>
                                 </div>
 
                                 {/* Student List Dropdown menu */}
-                                <div className="">
+                                <div>
                                     <Menu
                                         as="div"
-                                        className="relative inline-block text-left"
+                                        className="inline-block text-left"
                                     >
                                         <div>
                                             <Menu.Button className="text-black hover:bg-gray-700 hover:text-white px-3 py-2 rounded-md text-sm font-medium">
@@ -400,12 +409,12 @@ const TeachersPanelSideBar = () => {
                                             <Menu.Items className="origin-top-right absolute mt-2 min-w-max w-36 rounded-md shadow-lg bg-white ring-1 ring-black ring-opacity-5 focus:outline-none">
                                                 <div className="p-1">
                                                     <p className="px-2 pt-1 font-medium">
-                                                        Nursery
+                                                        Class 1
                                                     </p>
                                                     <Menu.Item>
                                                         {({ active }) => (
                                                             <Link
-                                                                to="#"
+                                                                to="/TeachersDashboard/ManageStudents"
                                                                 className={classNames(
                                                                     active
                                                                         ? "bg-gray-100 text-gray-900"
@@ -420,7 +429,7 @@ const TeachersPanelSideBar = () => {
                                                     <Menu.Item>
                                                         {({ active }) => (
                                                             <Link
-                                                                to="#"
+                                                                to="/TeachersDashboard/ManageStudents"
                                                                 className={classNames(
                                                                     active
                                                                         ? "bg-gray-100 text-gray-900"
@@ -433,12 +442,12 @@ const TeachersPanelSideBar = () => {
                                                         )}
                                                     </Menu.Item>
                                                     <p className="px-2 pt-1 font-medium">
-                                                        KG
+                                                        Class 2
                                                     </p>
                                                     <Menu.Item>
                                                         {({ active }) => (
                                                             <Link
-                                                                to="#"
+                                                                to="/TeachersDashboard/ManageStudents"
                                                                 className={classNames(
                                                                     active
                                                                         ? "bg-gray-100 text-gray-900"
@@ -452,8 +461,8 @@ const TeachersPanelSideBar = () => {
                                                     </Menu.Item>
                                                     <Menu.Item>
                                                         {({ active }) => (
-                                                            <button
-                                                                type="submit"
+                                                            <Link
+                                                                to="/TeachersDashboard/ManageStudents"
                                                                 className={classNames(
                                                                     active
                                                                         ? "bg-gray-100 text-gray-900"
@@ -462,7 +471,7 @@ const TeachersPanelSideBar = () => {
                                                                 )}
                                                             >
                                                                 Section B
-                                                            </button>
+                                                            </Link>
                                                         )}
                                                     </Menu.Item>
                                                 </div>
@@ -475,7 +484,7 @@ const TeachersPanelSideBar = () => {
                                 <div>
                                     <Link
                                         to="/TeachersDashboard/RegisterStudent"
-                                        className="text-black hover:bg-gray-700 hover:text-white px-3 py-2 rounded-md text-sm font-medium"
+                                        className="block text-black hover:bg-gray-700 hover:text-white px-3 py-2 rounded-md text-sm font-medium"
                                     >
                                         Register Student
                                     </Link>
@@ -485,9 +494,18 @@ const TeachersPanelSideBar = () => {
                                 <div>
                                     <Link
                                         to="/TeachersDashboard/NoticePublish"
-                                        className="text-black hover:bg-gray-700 hover:text-white px-3 py-2 rounded-md text-sm font-medium"
+                                        className="block text-black hover:bg-gray-700 hover:text-white px-3 py-2 rounded-md text-sm font-medium"
                                     >
                                         Publish Notice
+                                    </Link>
+                                </div>
+                                {/* Publish Assignment */}
+                                <div>
+                                    <Link
+                                        to="/TeachersDashboard/publishAssignment"
+                                        className="block text-black hover:bg-gray-700 hover:text-white px-3 py-2 rounded-md text-sm font-medium"
+                                    >
+                                        Publish Assignment
                                     </Link>
                                 </div>
 
@@ -495,10 +513,10 @@ const TeachersPanelSideBar = () => {
                                 <div>
                                     <Menu
                                         as="div"
-                                        className="relative inline-block text-left"
+                                        className="inline-block text-left"
                                     >
                                         <div>
-                                            <Menu.Button className="text-black hover:bg-gray-700 hover:text-white px-3 py-2 rounded-md text-sm font-medium">
+                                            <Menu.Button className="block text-black hover:bg-gray-700 hover:text-white px-3 py-2 rounded-md text-sm font-medium">
                                                 Add Result
                                             </Menu.Button>
                                         </div>
@@ -515,7 +533,7 @@ const TeachersPanelSideBar = () => {
                                             <Menu.Items className="origin-top-right absolute mt-2 min-w-max w-36 rounded-md shadow-lg bg-white ring-1 ring-black ring-opacity-5 focus:outline-none">
                                                 <div className="p-1">
                                                     <p className="px-2 pt-1 font-medium">
-                                                        Nursery
+                                                        Class 1
                                                     </p>
                                                     <Menu.Item>
                                                         {({ active }) => (
@@ -548,7 +566,7 @@ const TeachersPanelSideBar = () => {
                                                         )}
                                                     </Menu.Item>
                                                     <p className="px-2 pt-1 font-medium">
-                                                        KG
+                                                        Class 2
                                                     </p>
                                                     <Menu.Item>
                                                         {({ active }) => (
@@ -567,8 +585,8 @@ const TeachersPanelSideBar = () => {
                                                     </Menu.Item>
                                                     <Menu.Item>
                                                         {({ active }) => (
-                                                            <button
-                                                                type="submit"
+                                                            <Link
+                                                                to="#"
                                                                 className={classNames(
                                                                     active
                                                                         ? "bg-gray-100 text-gray-900"
@@ -577,7 +595,7 @@ const TeachersPanelSideBar = () => {
                                                                 )}
                                                             >
                                                                 Section B
-                                                            </button>
+                                                            </Link>
                                                         )}
                                                     </Menu.Item>
                                                 </div>
