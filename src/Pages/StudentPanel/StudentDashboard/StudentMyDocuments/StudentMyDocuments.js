@@ -3,8 +3,8 @@ import StudentAssignmentSubmit from "./StudentAssignmentSubmit";
 import StudentNotesUpload from "./StudentNotesUpload";
 
 const StudentMyDocuments = () => (
-  <>
-    <h1 className="flex justify-center m-auto mt-5 text-2xl font-bold text-blue-900">
+  <div className="flex flex-col">
+    <h1 className="flex justify-center m-auto mt-5 text-3xl font-bold text-blue-900">
       Student Documents Submission
     </h1>
 
@@ -20,7 +20,7 @@ const StudentMyDocuments = () => (
     >
       View All Submit
     </button>
-  </>
+  </div>
 );
 
 export default StudentMyDocuments;
