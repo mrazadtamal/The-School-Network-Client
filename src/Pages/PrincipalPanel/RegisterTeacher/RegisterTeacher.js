@@ -94,6 +94,18 @@ const RegisterTeacher = () => {
                         className="mt-1 principal_form_all_input"
                         />
                     </div>
+                    <div className="col-span-6">
+                        <label htmlFor="first-name" className="block principal_form_all_labels">
+                            Password
+                        </label>
+                        <input
+                        type="password"
+                        name="first-name"
+                        id="first-name"
+                        autoComplete="given-name"
+                        className="mt-1 principal_form_all_input"
+                        />
+                    </div>
                 </div>
                 <div className='grid lg:grid-cols-12 sm:grid-cols-12 md:grid-cols-12 gap-6'>
                     <div className="col-span-6 mt-8">

@@ -1,4 +1,4 @@
-import React from "react";
+import React from 'react';
 import AllUserNavbar from "../AllUserNavbar/AllUserNavbar";
 import Foooter from "./Foooter";
 
