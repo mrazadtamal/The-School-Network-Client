@@ -25,7 +25,7 @@ const OurVisitors = () => {
       <Slider {...settings}>
         <div>
           <img
-            src="https://i.ibb.co/nMbB6nL/customer-3.png"
+            src="https://i.ibb.co/b2Bq25P/choudry.jpg"
             className="rounded-full text-center w-40 h-36 mx-auto mt-12"
           />
           <h2 className="pt-12 text-center ">
@@ -36,11 +36,11 @@ const OurVisitors = () => {
             facilitesBest School and organization in bangladesh with a lot of
             facilites
           </h2>
-          <h5 className="pt-6 font-bold">Md Wahid</h5>
+          <h5 className="pt-6 font-bold">Abdullah AL jubayer chy</h5>
         </div>
         <div>
           <img
-            src="https://i.ibb.co/27dqXs7/customer-2.png"
+            src="https://i.ibb.co/wgkHrFm/tomal.jpg"
             className="rounded-full text-center w-40 h-36 mx-auto mt-12"
           />
           <h2 className="pt-12 text-center ">
@@ -51,12 +51,12 @@ const OurVisitors = () => {
             facilitesBest School and organization in bangladesh with a lot of
             facilites
           </h2>
-          <h5 className="pt-6 font-bold">Md Wahid</h5>
+          <h5 className="pt-6 font-bold">Azad Tamal</h5>
         </div>
 
         <div>
           <img
-            src="https://i.ibb.co/QKDcjsP/blog3.png"
+            src="https://i.ibb.co/C8HcdxR/abdurrahman.jpg"
             className="rounded-full text-center w-40 h-36 mx-auto mt-12"
           />
           <h2 className="pt-12 text-center ">
@@ -67,7 +67,7 @@ const OurVisitors = () => {
             facilitesBest School and organization in bangladesh with a lot of
             facilites
           </h2>
-          <h5 className="pt-6 font-bold">Md Wahid</h5>
+          <h5 className="pt-6 font-bold">ABdur Rahman Mizan</h5>
         </div>
 
         <div>
@@ -84,6 +84,37 @@ const OurVisitors = () => {
             facilites
           </h2>
           <h5 className="pt-6 font-bold">Md Wahid</h5>
+        </div>
+
+        <div>
+          <img
+            src="https://i.ibb.co/2gSjV3G/mehdivai.jpg"
+            className="rounded-full text-center w-40 h-36 mx-auto mt-12"
+          />
+          <h2 className="pt-12 text-center ">
+            Best School and organization in bangladesh with a lot of
+            facilites.Best School and <br />
+            organization in bangladesh with a lot of facilitesBest School and
+            organization in bangladesh with a lot of <br />
+            facilitesBest School and organization in bangladesh with a lot of
+            facilites
+          </h2>
+          <h5 className="pt-6 font-bold">Mehdi Vai</h5>
+        </div>
+        <div>
+          <img
+            src="https://i.ibb.co/Xp4R4qz/asif.jpg"
+            className="rounded-full text-center w-40 h-36 mx-auto mt-12"
+          />
+          <h2 className="pt-12 text-center ">
+            Best School and organization in bangladesh with a lot of
+            facilites.Best School and <br />
+            organization in bangladesh with a lot of facilitesBest School and
+            organization in bangladesh with a lot of <br />
+            facilitesBest School and organization in bangladesh with a lot of
+            facilites
+          </h2>
+          <h5 className="pt-6 font-bold">Asif </h5>
         </div>
       </Slider>
     </div>
