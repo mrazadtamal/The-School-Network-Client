@@ -20,9 +20,10 @@ const LogInPage = () => {
   };
 
   const onSubmitHandler = (e) => {
-    fetch(`http://localhost:5000/checkuser?email=${logindata.email}`)
+    fetch(`http://localhost:5000/checkUser?email=${logindata.email}`)
       .then((res) => res.json())
       .then((data) => {
+        console.log(data)
         if (data.userrole === "Principal" && role === "Principal") {
           LoginUser(logindata.email, logindata.password)
             .then((userCredential) => {

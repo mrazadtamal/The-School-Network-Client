@@ -1,5 +1,5 @@
 
-#principal_nav{
+.principal_navbar{
     display: none;
 }
 /* ----------------Principal Home css start------------- */
@@ -141,7 +141,7 @@
     font-weight: 700;
 }
 @media screen and (max-width: 991px) {
-    #principal_nav{
+    .principal_navbar{
         display: block;
     }
     .sidebar_colam{
