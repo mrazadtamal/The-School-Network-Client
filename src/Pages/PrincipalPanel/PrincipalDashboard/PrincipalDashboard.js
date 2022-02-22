@@ -8,11 +8,11 @@ const PrincipalDashboard = () => {
     return (
         <div style={{width: '100%'}}>
             <PrincipalNavbar/>
-            <div className='grid grid-cols-12 dashboard_body'>
-                <div className='col-span-2 bg-black sidebar_colam'>
+            <div className='flex  dashboard_body'>
+                <div className='grow-0  bg-black sidebar_colam'>
                     <PrincipalSidebar/>
                 </div>
-                <div className='col-span-9 mx-auto pb-4'>
+                <div className='grow-4 mx-auto pb-4 justify-content-center'>
                     <Outlet/>
                 </div>
             </div>

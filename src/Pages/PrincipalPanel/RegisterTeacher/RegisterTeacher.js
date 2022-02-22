@@ -14,7 +14,7 @@ const RegisterTeacher = () => {
         setRegData(newdata)
     }
     const AddTeacherHandler = (e) => {
-        
+        console.log('clicked')
       RegisterUser(regdata.email, regdata.password)
       .then((userCredential) => {
         // Signed in 
@@ -37,7 +37,7 @@ const RegisterTeacher = () => {
 
       const teacherdata = {email, teachername, role, teacherclass, teachersection, teachernid, teacherphone}
 
-        fetch('http://localhost:5000/userAdd', {
+        fetch('http://localhost:5000/addUser', {
             method: 'POST',
             headers: {
                 'content-type':'application/json'
@@ -94,18 +94,7 @@ const RegisterTeacher = () => {
                         className="mt-1 principal_form_all_input"
                         />
                     </div>
-                    <div className="col-span-6">
-                        <label htmlFor="first-name" className="block principal_form_all_labels">
-                            Password
-                        </label>
-                        <input
-                        type="password"
-                        name="first-name"
-                        id="first-name"
-                        autoComplete="given-name"
-                        className="mt-1 principal_form_all_input"
-                        />
-                    </div>
+               
                 </div>
                 <div className='grid lg:grid-cols-12 sm:grid-cols-12 md:grid-cols-12 gap-6'>
                     <div className="col-span-6 mt-8">
@@ -175,6 +164,7 @@ const RegisterTeacher = () => {
                     >
                         <option value="Teacher">Teacher</option>
                         <option value="VicePrincipal">VicePrincipal</option>
+                        <option value="Principal">Principal</option>
                     </select>
                     </div>
                 </div>
