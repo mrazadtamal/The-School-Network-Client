@@ -15,7 +15,7 @@ const PrincipalSidebar = () => {
         </span>
       </h1>
 
-        <Link to="/PrincipalDashboard">
+        <Link to="/PrincipalDashboard"> 
           <p className='principal_sidebar_link   text-white mt-12'><i className="fas fa-home principal_sidebar_icon"></i>Home</p>
         </Link>
 

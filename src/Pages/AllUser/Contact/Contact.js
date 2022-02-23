@@ -10,12 +10,13 @@ const Contact = () => {
 
   const handleSubmit = (e) => {
     e.preventDefault();
+
     emailjs
       .sendForm(
-        "service_hlrdsw9",
-        "template_nomknmf",
+        "service_4lf50in",
+        "template_4knku7b",
         formRef.current,
-        "user_5OnDVQv6fLxdlCRufttpC"
+        "user_vGJhhsJuUOYrl06aX6RbR"
       )
       .then(
         (result) => {
@@ -31,13 +32,13 @@ const Contact = () => {
   return (
     <div className="c">
       <div className="c-wrapper">
-        <div class="flex flex-col w-full lg:w-2/5 p-8 text-white">
-          <p class="text-3xl md:text-5xl text-yellow-500 my-3 leading-relaxed md:leading-snug">
+        <div className="flex flex-col w-full lg:w-2/5 p-8 text-white">
+          <p className="text-3xl md:text-5xl text-yellow-500 my-3 leading-relaxed md:leading-snug">
             Contact our team
           </p>
-          <p class="font-sans text-sm md:text-lg my-2 md:my-4">
+          <p className="font-sans text-sm md:text-lg my-2 md:my-4">
             <svg
-              class="inline-block fill-current mr-2"
+              className="inline-block fill-current mr-2"
               xmlns="http://www.w3.org/2000/svg"
               width="24"
               height="24"
@@ -47,9 +48,9 @@ const Contact = () => {
             </svg>
             Dhaka, Bangladesh
           </p>
-          <p class="font-sans text-sm md:text-lg my-2 md:my-4">
+          <p className="font-sans text-sm md:text-lg my-2 md:my-4">
             <svg
-              class="inline-block fill-current mr-2"
+              className="inline-block fill-current mr-2"
               xmlns="http://www.w3.org/2000/svg"
               width="24"
               height="24"
@@ -59,9 +60,9 @@ const Contact = () => {
             </svg>{" "}
             web.codingwizards@gmail.com
           </p>
-          <p class="font-sans text-sm md:text-lg my-2 md:my-4">
+          <p className="font-sans text-sm md:text-lg my-2 md:my-4">
             <svg
-              class="inline-block fill-current mr-2"
+              className="inline-block fill-current mr-2"
               xmlns="http://www.w3.org/2000/svg"
               width="24"
               height="24"
@@ -72,7 +73,7 @@ const Contact = () => {
             +999333666
           </p>{" "}
           <br /> <br />
-          {/* <p class="font-sans text-sm md:text-lg my-2 md:my-4">
+          {/* <p className="font-sans text-sm md:text-lg my-2 md:my-4">
             Press the chat icon at the right bottom corner to have a live chat
             with our team.
           </p> */}
@@ -85,19 +86,19 @@ const Contact = () => {
           {!done && (
             <form ref={formRef} onSubmit={handleSubmit}>
               <input
-                className="bg-primary border-2 border-gray-300 text-white  mr-4"
+                className="bg-primary border-2 border-gray-300 text-black  mr-4"
                 type="text"
                 placeholder="Name"
                 name="name"
               />
               <input
-                className="bg-primary border-2 border-gray-300 text-white "
+                className="bg-primary border-2 border-gray-300 text-black  "
                 type="text"
                 placeholder="Email"
                 name="email"
               />
               <textarea
-                className="bg-primary  border-2 rounded-md border-gray-300 text-white "
+                className="bg-primary  border-2 rounded-md border-gray-300 text-black  "
                 rows="4"
                 placeholder="Message"
                 name="message"
@@ -108,7 +109,7 @@ const Contact = () => {
               </button>
             </form>
           )}
-          {done && <h1 className="text-white mt-56 text-4xl"> Thank you</h1>}
+          {done && <h1 className="text-white mt-36 text-4xl"> Thank you</h1>}
         </div>
       </div>
     </div>

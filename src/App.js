@@ -35,6 +35,8 @@ import Transcript from "./Pages/StudentPanel/StudentDashboard/Transcript/Transcr
 import ResultAdd from "./Pages/Shared/ResultAdd/ResultAdd";
 import TeachersAssignment from "./Pages/TeachersPanel/TeachersAssignment/TeachersAssignment";
 import RegisterStudent from "./Pages/Shared/RegisterStudent/RegisterStudent";
+import CheckPaymentStatus from "./Pages/PrincipalPanel/CheckPaymentStatus/CheckPaymentStatus";
+import TeachersManageStudent from "./Pages/TeachersPanel/TeachersManageStudent/TeachersManageStudent";
 import Contact from "./Pages/AllUser/Contact/Contact";
 
 function App() {
@@ -92,6 +94,10 @@ function App() {
               path="/PrincipalDashboard/RegisterStudent"
               element={<RegisterStudent />}
             />
+            <Route
+              path="/PrincipalDashboard/CheckPaymentStatus"
+              element={<CheckPaymentStatus />}
+            />
           </Route>
           {/* --------------Principal Routes End--------------- */}
           {/* --------------Teacher Routes Start */}
@@ -116,6 +122,10 @@ function App() {
             <Route
               path="/TeachersDashboard/publishAssignment"
               element={<TeachersAssignment />}
+            />
+            <Route
+              path="/TeachersDashboard/ManageStudents"
+              element={<TeachersManageStudent />}
             />
           </Route>
           {/* --------------Teacher Routes End-------------- */}
