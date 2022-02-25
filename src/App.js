@@ -37,6 +37,7 @@ import TeachersAssignment from "./Pages/TeachersPanel/TeachersAssignment/Teacher
 import RegisterStudent from "./Pages/Shared/RegisterStudent/RegisterStudent";
 import CheckPaymentStatus from "./Pages/PrincipalPanel/CheckPaymentStatus/CheckPaymentStatus";
 import TeachersManageStudent from "./Pages/TeachersPanel/TeachersManageStudent/TeachersManageStudent";
+import SeeExtraRequestPage from "./Pages/TeachersPanel/SeeExtraRequestPage/SeeExtraRequestPage";
 
 function App() {
     return (
@@ -139,6 +140,10 @@ function App() {
                          <Route
                             path="/TeachersDashboard/ManageStudents"
                             element={<TeachersManageStudent />}
+                        />
+                         <Route
+                            path="/TeachersDashboard/SeeExtraRequestPage"
+                            element={<SeeExtraRequestPage />}
                         />
                     </Route>
                     {/* --------------Teacher Routes End-------------- */}
