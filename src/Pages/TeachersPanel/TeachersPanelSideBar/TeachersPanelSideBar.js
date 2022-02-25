@@ -311,6 +311,15 @@ const TeachersPanelSideBar = () => {
                                             </Transition>
                                         </Menu>
                                     </div>
+                                     {/* See Student Request */}
+                                     <div>
+                                        <Link
+                                            to="/TeachersDashboard/SeeExtraRequestPage"
+                                            className="block text-black hover:bg-gray-700 hover:text-white px-3 py-2 rounded-md text-sm font-medium"
+                                        >
+                                            ExtraCare Student Request
+                                        </Link>
+                                    </div>
                                 </div>
                             </div>
                         </div>

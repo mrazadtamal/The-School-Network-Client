@@ -1,9 +1,18 @@
 import { createAsyncThunk, createSlice } from '@reduxjs/toolkit'
 
+//Teacher geting all requst from student
+export const GetExtraCareRequest = createAsyncThunk(
+  'Teacher/getExtraCareRequest',
+  async () => {
+    const response = await fetch('http://localhost:5000/requestCare').then(res=> res.json())
+    return  response;
+   
+  }
+)
 
 const initialState = {
   value: 0,
-  notice: []
+  extraCares: []
 }
 
 export const TeeacherReducer = createSlice({
@@ -19,16 +28,14 @@ export const TeeacherReducer = createSlice({
     incrementByAmount: (state, action) => {
       state.value += action.payload
     },
- 
-    extraReducers: (builder) => {
-    //   builder.addCase(PrincipalNoticePublish.fulfilled, (state, action) => {
-    //     alert('Notice Pulish successfully')
-    //   })
-    //   builder.addCase(GetNotice.fulfilled, (state, action) => {
-    //     state.notice = action.payload
-    //   })
-    },
   },
+    extraReducers: (builder) => {
+      builder.addCase(GetExtraCareRequest.fulfilled, (state, action) => {
+        state.extraCares = action.payload
+      })
+
+    },
+
 })
 
 // Action creators are generated for each case reducer function
