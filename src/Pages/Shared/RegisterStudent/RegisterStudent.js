@@ -33,7 +33,7 @@ const RegisterStudent = () => {
     //saving teacher to database
     const SaveStudent = (studentdata) => {
       
-        fetch('http://localhost:5000/userAdd', {
+        fetch('http://localhost:5000/addUser', {
             method: 'POST',
             headers: {
                 'content-type':'application/json'
@@ -42,6 +42,7 @@ const RegisterStudent = () => {
         })
         .then(res => res.json())
         .then(data => {
+            console.log('data',data)
         if(data)
         {
             alert('Student Added Successfully')

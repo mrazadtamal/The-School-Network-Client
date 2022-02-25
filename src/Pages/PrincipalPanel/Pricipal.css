@@ -48,19 +48,17 @@
 }
 /* ----------------Principal sidebar css End------------- */
 
-/* ----------------Principal notice publish css start------------- */
+
 .principal_sidebar{
     padding-right: 10px;
 }
 .principal_notice_publish_form{
     border: solid 3px rgb(94, 3, 3);
     border-radius: 15px;
-    width: 100%;
+
     padding: 30px;
 }
-.principal_notice_publish_div{
-    width: 100%;
-}
+
 .principal_form_labels{
     display: block;
     margin-left: 30px;
@@ -70,7 +68,7 @@
 .principal_form_textarea{
     width: 80%;
     outline: none;
-    border: solid rgb(0, 153, 255) 1px;
+    border: solid rgb(65, 99, 122) 1px;
     margin-left: 30px;
     display: block;
     height: 120px;
@@ -122,7 +120,7 @@
     border-radius: 15px;
     padding: 30px;
 }
-/* ----------------Principal notice publish css End------------- */
+
 .principal_form_all_input{
     width: 100%;
     outline: none;
@@ -140,6 +138,55 @@
     color: rgb(0, 11, 73);
     font-weight: 700;
 }
+/* ----------------Principal notice publish css start------------- */
+.previous_notice_section{
+    display: grid;
+    grid-template-columns: auto auto auto;
+    grid-column-gap: 20px;
+    grid-row-gap: 20px;
+    padding-right: 20px;
+    padding-left: 20px;
+    justify-content: center;
+    width: 100%;
+}
+.Teacher_notice_section{
+    display: grid;
+    grid-template-columns: auto;
+    grid-column-gap: 20px;
+    grid-row-gap: 20px;
+    padding-right: 20px;
+    padding-left: 20px;
+    justify-content: center;
+    width: 100%;
+}
+.previous_notice_div{
+    border: solid rgb(0, 11, 73) 2px;
+    border-radius: 15px;
+    padding: 20px 10px 20px 10px;
+}
+.delete_btn{
+    border-radius: 5px;
+    border: none;
+    outline: none;
+    background-color: rgb(0, 0, 0);
+    color: #ffffff;
+    padding: 5px;
+}
+.edit_btn{
+    border-radius: 5px;
+    border: none;
+    outline: none;
+    background-color: rgb(255, 81, 0);
+    color: #ffffff;
+    padding: 5px;
+}
+.notice_img{
+
+}
+.button_div{
+    padding-top: 10px;
+}
+/* ----------------Principal notice publish css End------------- */
 @media screen and (max-width: 991px) {
     .principal_navbar{
         display: block;
