@@ -4,7 +4,7 @@ import { createAsyncThunk, createSlice } from '@reduxjs/toolkit'
 export const GetExtraCareRequest = createAsyncThunk(
   'Teacher/getExtraCareRequest',
   async () => {
-    const response = await fetch('http://localhost:5000/requestCare').then(res=> res.json())
+    const response = await fetch('https://blooming-citadel-14218.herokuapp.com/requestCare').then(res=> res.json())
     return  response;
    
   }

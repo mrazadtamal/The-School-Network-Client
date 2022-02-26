@@ -32,7 +32,6 @@ import StudentPay from "./Pages/StudentPanel/StudentPay/StudentPay";
 import StAnalytics from "./Pages/StudentPanel/StudentDashboard/StAnalytics/StAnalytics";
 import SeeResult from "./Pages/StudentPanel/StudentDashboard/SeeResult/SeeResult";
 import Transcript from "./Pages/StudentPanel/StudentDashboard/Transcript/Transcript";
-import ResultAdd from "./Pages/Shared/ResultAdd/ResultAdd";
 import TeachersAssignment from "./Pages/TeachersPanel/TeachersAssignment/TeachersAssignment";
 import RegisterStudent from "./Pages/Shared/RegisterStudent/RegisterStudent";
 import CheckPaymentStatus from "./Pages/PrincipalPanel/CheckPaymentStatus/CheckPaymentStatus";
@@ -41,9 +40,9 @@ import SeeExtraRequestPage from "./Pages/TeachersPanel/SeeExtraRequestPage/SeeEx
 
 function App() {
     return (
-        <div className="App">
-            <BrowserRouter>
-                <Routes>
+    <div>
+        <BrowserRouter>
+            <Routes>
                     {/* --------------All User Homepage Routes Start--------------- */}
                     <Route path="/" element={<HomePage />} />
                     <Route path="/home" element={<HomePage />} />
@@ -94,15 +93,11 @@ function App() {
                             path="/PrincipalDashboard/UploadPayment"
                             element={<UploadPayment />}
                         />
-                         <Route
-                            path="/PrincipalDashboard/ResultAdd"
-                            element={<ResultAdd />}
-                        />
                         <Route
                             path="/PrincipalDashboard/RegisterStudent"
                             element={<RegisterStudent />}
                         />
-                         <Route
+                        <Route
                             path="/PrincipalDashboard/CheckPaymentStatus"
                             element={<CheckPaymentStatus />}
                         />
@@ -137,43 +132,43 @@ function App() {
                             path="/TeachersDashboard/publishAssignment"
                             element={<TeachersAssignment />}
                         />
-                         <Route
+                        <Route
                             path="/TeachersDashboard/ManageStudents"
                             element={<TeachersManageStudent />}
                         />
-                         <Route
+                        <Route
                             path="/TeachersDashboard/SeeExtraRequestPage"
                             element={<SeeExtraRequestPage />}
                         />
                     </Route>
                     {/* --------------Teacher Routes End-------------- */}
-                   {/* --------------------student route start-----------------------*/}
-                  <Route path="/StudentDashboard" element={<StudentDashboard />}>
-                    <Route path="/StudentDashboard" element={<StudentHome />} />
-                    <Route
-                      path="/StudentDashboard/RequestCare"
-                      element={<RequestCare />}
-                    />
-                    <Route
-                      path="/StudentDashboard/SubmitDocuments"
-                      element={<StudentMyDocuments />}
-                    />
-                    <Route
-                      path="/StudentDashboard/StudentPay"
-                      element={<StudentPay />}
-                    />
-                     <Route path="/StudentDashboard/seeResult" element={<SeeResult />} />
-                    <Route
-                      path="/StudentDashboard/transcript"
-                      element={<Transcript />}
-                    />
-                    <Route
-                      path="/StudentDashboard/StudentAnalytics"
-                      element={<StAnalytics />}
-                    />
-                  </Route>
-                  {/* --------------------student route end-------------------------*/}
-        </Routes>
+                    {/* --------------------student route start-----------------------*/}
+                    <Route path="/StudentDashboard" element={<StudentDashboard />}>
+                        <Route path="/StudentDashboard" element={<StudentHome />} />
+                        <Route
+                        path="/StudentDashboard/RequestCare"
+                        element={<RequestCare />}
+                        />
+                        <Route
+                        path="/StudentDashboard/SubmitDocuments"
+                        element={<StudentMyDocuments />}
+                        />
+                        <Route
+                        path="/StudentDashboard/StudentPay"
+                        element={<StudentPay />}
+                        />
+                        <Route path="/StudentDashboard/seeResult" element={<SeeResult />} />
+                        <Route
+                        path="/StudentDashboard/transcript"
+                        element={<Transcript />}
+                        />
+                        <Route
+                        path="/StudentDashboard/StudentAnalytics"
+                        element={<StAnalytics />}
+                        />
+                    </Route>
+                    {/* --------------------student route end-------------------------*/}
+            </Routes>
       </BrowserRouter>
     </div>
   );

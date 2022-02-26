@@ -5,7 +5,7 @@ export const PrincipalNoticePublish = createAsyncThunk(
   'Principal/PublishNotice',
   async (data) => {
     console.log('hitted slice', data)
-    const response = await fetch('http://localhost:5000/publisNotice',{
+    const response = await fetch('https://blooming-citadel-14218.herokuapp.com/publisNotice',{
       method: 'POST',
       headers:{
         'content-type':'application/json'
@@ -26,7 +26,7 @@ export const PublishImageNotice = createAsyncThunk(
   'Principal/PublishImageNotice',
   async (fd) => {
     console.log('hitted img')
-    const response = await fetch('http://localhost:5000/PublishImageNotice',{
+    const response = await fetch('https://blooming-citadel-14218.herokuapp.com/PublishImageNotice',{
       method: 'POST',
       
       body: fd
@@ -44,7 +44,7 @@ export const PublishImageNotice = createAsyncThunk(
 export const GetingPreviousNotice = createAsyncThunk(
   'Principal/getPreviousNotice',
   async () => {
-    const response = await fetch('http://localhost:5000/PreviousNotice').then(res=> res.json())
+    const response = await fetch('https://blooming-citadel-14218.herokuapp.com/PreviousNotice').then(res=> res.json())
     return  response;
    
   }
@@ -53,7 +53,7 @@ export const GetingPreviousNotice = createAsyncThunk(
 export const DeleteNotice = createAsyncThunk(
   'Principal/DeleteNotice',
   async (id) => {
-    const response = await fetch(`http://localhost:5000/DeleteNotice/${id}`,{
+    const response = await fetch(`https://blooming-citadel-14218.herokuapp.com/DeleteNotice/${id}`,{
       method: 'DELETE'}).then(res=> res.json()).catch(error => {
       Swal.fire(
           '!',
@@ -70,7 +70,7 @@ export const PutEditNotice = createAsyncThunk(
   'Principal/PutEditNotice',
   async (data) => {
     console.log('hitted slice', data)
-    const response = await fetch(`http://localhost:5000/PutEditNotice/${data._id}`,{
+    const response = await fetch(`https://blooming-citadel-14218.herokuapp.com/PutEditNotice/${data._id}`,{
     method: 'PUT',
     headers:{
       'content-type':'application/json'
@@ -87,7 +87,7 @@ export const PrincipalAnnouncementPublish = createAsyncThunk(
   'Principal/PublishAnnouncement',
   async (data) => {
     console.log('hitted slice', data)
-    const response = await fetch('http://localhost:5000/publisAnnouncement',{
+    const response = await fetch('https://blooming-citadel-14218.herokuapp.com/publisAnnouncement',{
       method: 'POST',
       headers:{
         'content-type':'application/json'
@@ -108,7 +108,7 @@ export const PublishImageAnnouncement = createAsyncThunk(
   'Principal/PublishImageAnnouncement',
   async (fd) => {
     console.log('hitted img')
-    const response = await fetch('http://localhost:5000/PublishImageAnnouncement',{
+    const response = await fetch('https://blooming-citadel-14218.herokuapp.com/PublishImageAnnouncement',{
       method: 'POST',
       
       body: fd
@@ -126,7 +126,7 @@ export const PublishImageAnnouncement = createAsyncThunk(
 export const GetingPreviousAnnouncement = createAsyncThunk(
   'Principal/getPreviousAnnouncement',
   async () => {
-    const response = await fetch('http://localhost:5000/PreviousAnnouncement').then(res=> res.json())
+    const response = await fetch('https://blooming-citadel-14218.herokuapp.com/PreviousAnnouncement').then(res=> res.json())
     return  response;
    
   }
@@ -135,7 +135,7 @@ export const GetingPreviousAnnouncement = createAsyncThunk(
 export const DeleteAnnouncement = createAsyncThunk(
   'Principal/DeleteAnnouncement',
   async (id) => {
-    const response = await fetch(`http://localhost:5000/DeleteAnnouncement/${id}`,{
+    const response = await fetch(`https://blooming-citadel-14218.herokuapp.com/DeleteAnnouncement/${id}`,{
       method: 'DELETE'}).then(res=> res.json()).catch(error => {
       Swal.fire(
           '!',
@@ -151,7 +151,7 @@ export const PutEditAnnouncement = createAsyncThunk(
   'Principal/PutEditAnnouncement',
   async (data) => {
     console.log('hitted slice', data)
-    const response = await fetch(`http://localhost:5000/PutEditAnnouncement/${data._id}`,{
+    const response = await fetch(`https://blooming-citadel-14218.herokuapp.com/PutEditAnnouncement/${data._id}`,{
     method: 'PUT',
     headers:{
       'content-type':'application/json'

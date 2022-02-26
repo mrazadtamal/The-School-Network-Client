@@ -20,7 +20,7 @@ const LogInPage = () => {
   };
 
   const onSubmitHandler = (e) => {
-    fetch(`http://localhost:5000/checkUser?email=${logindata.email}`)
+    fetch(`https://blooming-citadel-14218.herokuapp.com/checkUser?email=${logindata.email}`)
       .then((res) => res.json())
       .then((data) => {
         console.log(data)

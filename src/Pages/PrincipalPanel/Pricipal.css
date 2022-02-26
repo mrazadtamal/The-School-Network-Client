@@ -43,7 +43,7 @@
 .principal_react_icons{
     color:#ffffff;
     font-weight:bolder;
-  
+    display: inline;
     margin-right: 7px;
 }
 /* ----------------Principal sidebar css End------------- */
@@ -180,11 +180,33 @@
     color: #ffffff;
     padding: 5px;
 }
-.notice_img{
 
-}
 .button_div{
     padding-top: 10px;
+}
+.drop_link{
+    transition: 0.5s ease-in-out;
+    margin-left: 15px;
+}
+.class_text{
+    text-align: center;
+    width: 70%;
+    margin-top: 5px;
+    margin-left: 15px;
+    color: #ffffff;
+}
+.class_text:hover{
+    background-color: #7b7878;
+    transition: 1s ease-in-out;
+    border-radius: 5px;
+}
+.drop_dwon_btn{
+    background-color: black;
+    color: #ffffff;
+    font-weight: bold;
+    margin-left: 15px;
+    display: block;
+    margin-top: 10px;
 }
 /* ----------------Principal notice publish css End------------- */
 @media screen and (max-width: 991px) {

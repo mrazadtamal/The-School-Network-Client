@@ -1,11 +1,15 @@
-import React from "react";
+import React, {useState} from "react";
 import { Link } from "react-router-dom";
 import { HiSpeakerphone } from 'react-icons/hi';
 import { GiTeacher } from 'react-icons/gi';
 import { FaChalkboardTeacher, FaUserGraduate , FaRegAddressCard} from 'react-icons/fa';
 import { SiSamsungpay} from 'react-icons/si';
+import { IoIosArrowDown} from 'react-icons/io';
 
 const PrincipalSidebar = () => {
+  const [shown1, setShown1] = useState(false)
+  const [shown2, setShown2] = useState(false)
+
   return (
     <div className="">
       <h1 className="mt-8 text-center">
@@ -35,21 +39,27 @@ const PrincipalSidebar = () => {
           <p className='principal_sidebar_link   text-white mt-4'> <FaChalkboardTeacher className='principal_react_icons' /> Register Teachers</p>
         </Link>
         
-        <nav className="drop_navs">
-              <label for="touch"><span className="drop_span">Add Result</span></label>               
-              <input type="checkbox" id="touch"/> 
-              <ul class="slide">
-                <li><Link to="/PrincipalDashboard/ResultAdd">Class One</Link></li> 
-                <li><a href="#">Class Two</a></li>
-                <li><a href="#">Class Three</a></li>
-                <li><a href="#">Class Four</a></li>
-              </ul>
-        </nav> 
+        <button onClick={() => setShown2(!shown2)} className="drop_dwon_btn"><span> + Manage Students <IoIosArrowDown className="principal_react_icons"/> </span></button>
+            {
+              shown2 && <ul className="drop_link">
+              <li className="class_text"><Link to="/PrincipalDashboard/ResultAdd">Class One</Link></li> 
+              <li className="class_text"><Link to="/PrincipalDashboard/ResultAdd"><a href="#">Class Two</a> </Link></li>
+              <li className="class_text"><a href="#">Class Three</a></li>
+              <li className="class_text"><a href="#">Class Four</a></li>
+            </ul>
+            }
 
-        <Link to="/PrincipalDashboard/PrincipalManageStudent">
-          <p className='principal_sidebar_link   text-white mt-4'> <FaUserGraduate className='principal_react_icons' />Manage Students</p>
-        </Link>
-
+        
+            <button onClick={() => setShown1(!shown1)} className="drop_dwon_btn"><span><FaUserGraduate className='principal_react_icons'/>Manage Students <IoIosArrowDown className="principal_react_icons"/></span></button>
+            {
+              shown1 && <ul className="drop_link">
+              <li className="class_text"><Link to="/PrincipalDashboard/PrincipalManageStudent">Class One</Link></li> 
+              <li className="class_text"><Link to="/PrincipalDashboard/PrincipalManageStudent"><a href="#">Class Two</a> </Link></li>
+              <li className="class_text"><a href="#">Class Three</a></li>
+              <li className="class_text"><a href="#">Class Four</a></li>
+            </ul>
+            }
+        
         <Link to="/PrincipalDashboard/RegisterStudent">
           <p className='principal_sidebar_link   text-white mt-4'> <FaRegAddressCard className='principal_react_icons' />Register Student</p>
         </Link>
