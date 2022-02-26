@@ -37,6 +37,7 @@ import RegisterStudent from "./Pages/Shared/RegisterStudent/RegisterStudent";
 import CheckPaymentStatus from "./Pages/PrincipalPanel/CheckPaymentStatus/CheckPaymentStatus";
 import TeachersManageStudent from "./Pages/TeachersPanel/TeachersManageStudent/TeachersManageStudent";
 import SeeExtraRequestPage from "./Pages/TeachersPanel/SeeExtraRequestPage/SeeExtraRequestPage";
+import Contact from "./Pages/AllUser/Contact/Contact";
 
 function App() {
     return (
@@ -58,7 +59,7 @@ function App() {
                     <Route path="/library" element={<Library />} />
                     <Route path="/auditoriam" element={<Auditoraim />} />
                     <Route path="/games" element={<Games />} />
-
+                    <Route path="/contact" element={<Contact />} />
                     {/* --------------All User Homepage Routes End--------------- */}
                     {/* --------------Principal Routes Start-------------- */}
                     <Route
