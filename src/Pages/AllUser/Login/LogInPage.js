@@ -76,6 +76,7 @@ const LogInPage = () => {
           <div className="bg-white shadow-md rounded px-8 pt-6 pb-8 flex flex-col w-1/2 pt-5 mx-auto">
             <div className="mx-auto pt-5 pb-5">
               <select name="role" onBlur={(e) => setRole(e.target.value)}>
+              <option value="">Choose Your Role</option>
                 <option value="Principal">Principal</option>
                 <option value="Teacher">Teacher</option>
                 <option value="Student">Student</option>

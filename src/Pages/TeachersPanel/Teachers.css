@@ -1,0 +1,10 @@
+.extra_care_section{
+    display: grid;
+    grid-template-columns: auto auto;
+    grid-row-gap: 20px;
+    grid-column-gap: 20px;
+}
+.extra_care_div{
+    border: 2px solid tomato;
+    border-radius: 15px;
+}
