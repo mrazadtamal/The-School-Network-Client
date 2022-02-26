@@ -1,7 +1,7 @@
 import React from "react";
 import "./STStyle.css";
 
-import {AiFile}= "react-icons/ai"
+// import {AiFile}= "react-icons/ai"
 
 const StudentAssignmentSubmit = () => {
   return (
