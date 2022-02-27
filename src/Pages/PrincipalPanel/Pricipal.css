@@ -29,6 +29,7 @@
     top: 0px;
     z-index: 1;
 }
+
 .principal_sidebar_link {
   cursor: pointer;
   margin-left: 20px;
@@ -44,7 +45,7 @@
     color:#ffffff;
     font-weight:bolder;
     display: inline;
-    margin-right: 7px;
+    margin-right: 5px;
 }
 /* ----------------Principal sidebar css End------------- */
 
@@ -114,6 +115,17 @@
     font-weight: 600;
     border-radius: 5px;
     width: 350px;
+}
+.publish_result_btn{
+    display: block;
+    margin-left: 30px;
+    margin-top: 15px;
+    background-color: rgb(0, 11, 73);
+    padding: 10px 15px 10px 15px;
+    color: white;
+    font-weight: 600;
+    border-radius: 5px;
+    width: 80%;
 }
 .principal_register_teacher{
     border: solid 3px rgb(94, 3, 3);
@@ -186,7 +198,7 @@
 }
 .drop_link{
     transition: 0.5s ease-in-out;
-    margin-left: 15px;
+    margin-left: 10px;
 }
 .class_text{
     text-align: center;
@@ -194,6 +206,7 @@
     margin-top: 5px;
     margin-left: 15px;
     color: #ffffff;
+    cursor: pointer;
 }
 .class_text:hover{
     background-color: #7b7878;
@@ -204,7 +217,7 @@
     background-color: black;
     color: #ffffff;
     font-weight: bold;
-    margin-left: 15px;
+
     display: block;
     margin-top: 10px;
 }

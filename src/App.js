@@ -38,6 +38,9 @@ import CheckPaymentStatus from "./Pages/PrincipalPanel/CheckPaymentStatus/CheckP
 import TeachersManageStudent from "./Pages/TeachersPanel/TeachersManageStudent/TeachersManageStudent";
 import SeeExtraRequestPage from "./Pages/TeachersPanel/SeeExtraRequestPage/SeeExtraRequestPage";
 import Contact from "./Pages/AllUser/Contact/Contact";
+import ClassFive from "./Pages/Shared/ResultAdd/ClassFive";
+import ClassOneToTwo from "./Pages/Shared/ResultAdd/ClassOneToTwo";
+import ClassThreeAndFour from "./Pages/Shared/ResultAdd/ClassThreeAndFour";
 
 function App() {
     return (
@@ -101,6 +104,18 @@ function App() {
                         <Route
                             path="/PrincipalDashboard/CheckPaymentStatus"
                             element={<CheckPaymentStatus />}
+                        />
+                        <Route
+                            path="/PrincipalDashboard/ClassFive"
+                            element={<ClassFive />}
+                        />
+                        <Route
+                            path="/PrincipalDashboard/ClassOneToTwo"
+                            element={<ClassOneToTwo />}
+                        />
+                        <Route
+                            path="/PrincipalDashboard/ClassThreeAndFour"
+                            element={<ClassThreeAndFour />}
                         />
                     </Route>
                     {/* --------------Principal Routes End--------------- */}

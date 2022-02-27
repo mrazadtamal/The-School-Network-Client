@@ -5,14 +5,19 @@ import { GiTeacher } from 'react-icons/gi';
 import { FaChalkboardTeacher, FaUserGraduate , FaRegAddressCard} from 'react-icons/fa';
 import { SiSamsungpay} from 'react-icons/si';
 import { IoIosArrowDown} from 'react-icons/io';
+import {  useNavigate } from "react-router-dom";
 
 const PrincipalSidebar = () => {
   const [shown1, setShown1] = useState(false)
   const [shown2, setShown2] = useState(false)
-
+  const navigate = useNavigate()
+  const ResultNavigateHandler = (route, classname) => {
+    navigate(`/PrincipalDashboard/${route}`, {state: classname})
+  }
   return (
     <div className="">
       <h1 className="mt-8 text-center">
+        <img src="" alt="" />
         <span className="text-5xl font-bold text-white ">P</span>
         <span className="text-base font-bold text-white ">
           rincipal Dashboard
@@ -39,13 +44,16 @@ const PrincipalSidebar = () => {
           <p className='principal_sidebar_link   text-white mt-4'> <FaChalkboardTeacher className='principal_react_icons' /> Register Teachers</p>
         </Link>
         
-        <button onClick={() => setShown2(!shown2)} className="drop_dwon_btn"><span> + Manage Students <IoIosArrowDown className="principal_react_icons"/> </span></button>
+        <button onClick={() => setShown2(!shown2)} className="drop_dwon_btn"><span> + Publish Results <IoIosArrowDown className="principal_react_icons"/> </span></button>
             {
               shown2 && <ul className="drop_link">
-              <li className="class_text"><Link to="/PrincipalDashboard/ResultAdd">Class One</Link></li> 
-              <li className="class_text"><Link to="/PrincipalDashboard/ResultAdd"><a href="#">Class Two</a> </Link></li>
-              <li className="class_text"><a href="#">Class Three</a></li>
-              <li className="class_text"><a href="#">Class Four</a></li>
+              <li onClick={() => ResultNavigateHandler('ClassOneToTwo', 'Class One')} className="class_text">Class One</li> 
+              <li onClick={() => ResultNavigateHandler('ClassOneToTwo', 'Class Two')} className="class_text">Class Two</li>
+
+              <li onClick={() => ResultNavigateHandler('ClassThreeAndFour', 'Class Three')} className="class_text">Class Three</li>
+              <li onClick={() => ResultNavigateHandler('ClassThreeAndFour', 'Class Four')} className="class_text">Class Four</li>
+
+              <li onClick={() => ResultNavigateHandler('ClassFive', 'Class Five')} className="class_text">Class Five</li>
             </ul>
             }
 

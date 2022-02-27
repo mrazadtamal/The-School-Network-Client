@@ -60,8 +60,8 @@ const PrincipalPublishNotice = () => {
     return (
     <div  style={{width: '100%'}}>
         <h1 className='text-center mt-12 text-5xl font-bold'>Publish Notice For Teachers</h1>
-        <div className=' justify-center principal_notice_publish_div'>
-            <form onSubmit={SubmitHandler} className='principal_notice_publish_form mx-auto mt-8 shadow-lg shadow-indigo-500/50'>
+        <div className='  justify-center principal_notice_publish_div'>
+            <form onSubmit={SubmitHandler} className=' principal_notice_publish_form mx-auto mt-8 shadow-lg shadow-indigo-500/50'>
                 <label className='principal_form_labels font-bold'>Upload Notice</label>
                 <span className='principal_form_span'><input className='principal_file_input mt-2' onBlur={(e) => setImg(e.target.files[0])}  type="file" /></span>
                 <h1 className='text-center mt-4 text-3xl font-bold text-gray-700'>OR</h1>
@@ -78,8 +78,9 @@ const PrincipalPublishNotice = () => {
                 }} className='principal_form_textarea' as="text" />
                 <button   className='principal_notice_publish_btn shadow-lg shadow-indigo-500/50'>PUBLISH</button>
             </form>
-            <h1 className='text-center mt-8 text-3xl font-bold mb-8'>Previous Notice</h1>
-            <div className="previous_notice_section">
+        </div>
+        <h1 className='text-center mt-8 text-3xl font-bold mb-8'>Previous Notice</h1>
+        <div className="previous_notice_section">
                 {
                     previousNotice?.map(notice => 
                         <div className='previous_notice_div'>
@@ -95,7 +96,6 @@ const PrincipalPublishNotice = () => {
                         </div>
                     )
                 }
-            </div>
         </div>
     <Transition.Root show={open} as={Fragment}>
       <Dialog as="div" className="fixed z-10 inset-0 overflow-y-auto" initialFocus={cancelButtonRef} onClose={setOpen}>
