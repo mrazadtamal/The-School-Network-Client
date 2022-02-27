@@ -39,6 +39,7 @@ import CheckPaymentStatus from "./Pages/PrincipalPanel/CheckPaymentStatus/CheckP
 import TeachersManageStudent from "./Pages/TeachersPanel/TeachersManageStudent/TeachersManageStudent";
 import SeeExtraRequestPage from "./Pages/TeachersPanel/SeeExtraRequestPage/SeeExtraRequestPage";
 import Contact from "./Pages/AllUser/Contact/Contact";
+import TeachersProfile from "./Pages/TeachersPanel/TeachersProfile/TeachersProfile";
 
 function App() {
     return (
@@ -69,7 +70,7 @@ function App() {
                     >
                         <Route
                             path="/PrincipalDashboard"
-                            element={<PrincipalHome />} 
+                            element={<PrincipalHome />}
                         />
                         <Route
                             path="/PrincipalDashboard/PrincipalPublishNotice"
@@ -95,7 +96,7 @@ function App() {
                             path="/PrincipalDashboard/UploadPayment"
                             element={<UploadPayment />}
                         />
-                         <Route
+                        <Route
                             path="/PrincipalDashboard/ResultAdd"
                             element={<ResultAdd />}
                         />
@@ -103,7 +104,7 @@ function App() {
                             path="/PrincipalDashboard/RegisterStudent"
                             element={<RegisterStudent />}
                         />
-                         <Route
+                        <Route
                             path="/PrincipalDashboard/CheckPaymentStatus"
                             element={<CheckPaymentStatus />}
                         />
@@ -117,6 +118,10 @@ function App() {
                         <Route
                             path="/TeachersDashboard"
                             element={<TeachersPanelHome />}
+                        />
+                        <Route
+                            path="/TeachersDashboard/Profile"
+                            element={<TeachersProfile />}
                         />
                         <Route
                             path="/TeachersDashboard/NoticePublish"
@@ -138,45 +143,54 @@ function App() {
                             path="/TeachersDashboard/publishAssignment"
                             element={<TeachersAssignment />}
                         />
-                         <Route
+                        <Route
                             path="/TeachersDashboard/ManageStudents"
                             element={<TeachersManageStudent />}
                         />
-                         <Route
+                        <Route
                             path="/TeachersDashboard/SeeExtraRequestPage"
                             element={<SeeExtraRequestPage />}
                         />
                     </Route>
                     {/* --------------Teacher Routes End-------------- */}
-                   {/* --------------------student route start-----------------------*/}
-                  <Route path="/StudentDashboard" element={<StudentDashboard />}>
-                    <Route path="/StudentDashboard" element={<StudentHome />} />
+                    {/* --------------------student route start-----------------------*/}
                     <Route
-                      path="/StudentDashboard/RequestCare"
-                      element={<RequestCare />}
-                    />
-                    <Route
-                      path="/StudentDashboard/SubmitDocuments"
-                      element={<StudentMyDocuments />}
-                    />
-                    <Route
-                      path="/StudentDashboard/StudentPay"
-                      element={<StudentPay />}
-                    />
-                     <Route path="/StudentDashboard/seeResult" element={<SeeResult />} />
-                    <Route
-                      path="/StudentDashboard/transcript"
-                      element={<Transcript />}
-                    />
-                    <Route
-                      path="/StudentDashboard/StudentAnalytics"
-                      element={<StAnalytics />}
-                    />
-                  </Route>
-                  {/* --------------------student route end-------------------------*/}
-        </Routes>
-      </BrowserRouter>
-    </div>
-  );
+                        path="/StudentDashboard"
+                        element={<StudentDashboard />}
+                    >
+                        <Route
+                            path="/StudentDashboard"
+                            element={<StudentHome />}
+                        />
+                        <Route
+                            path="/StudentDashboard/RequestCare"
+                            element={<RequestCare />}
+                        />
+                        <Route
+                            path="/StudentDashboard/SubmitDocuments"
+                            element={<StudentMyDocuments />}
+                        />
+                        <Route
+                            path="/StudentDashboard/StudentPay"
+                            element={<StudentPay />}
+                        />
+                        <Route
+                            path="/StudentDashboard/seeResult"
+                            element={<SeeResult />}
+                        />
+                        <Route
+                            path="/StudentDashboard/transcript"
+                            element={<Transcript />}
+                        />
+                        <Route
+                            path="/StudentDashboard/StudentAnalytics"
+                            element={<StAnalytics />}
+                        />
+                    </Route>
+                    {/* --------------------student route end-------------------------*/}
+                </Routes>
+            </BrowserRouter>
+        </div>
+    );
 }
 export default App;
