@@ -10,7 +10,7 @@ const SeeExtraRequestPage = () => {
     }, [dispatch]);
 
     const extraCare = useSelector((state) => state.teacherStore.extraCares);
-    console.log('extraCare', extraCare)
+
   return (
     <div>
     <h1 className='text-center mt-12 text-5xl font-bold'>Extra Care Request From Student</h1>

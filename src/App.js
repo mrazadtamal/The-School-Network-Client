@@ -41,6 +41,7 @@ import Contact from "./Pages/AllUser/Contact/Contact";
 import ClassFive from "./Pages/Shared/ResultAdd/ClassFive";
 import ClassOneToTwo from "./Pages/Shared/ResultAdd/ClassOneToTwo";
 import ClassThreeAndFour from "./Pages/Shared/ResultAdd/ClassThreeAndFour";
+import ViewStudentsPerformance from "./Pages/Shared/ViewStudentsPerformance/ViewStudentsPerformance";
 
 function App() {
     return (
@@ -116,6 +117,10 @@ function App() {
                         <Route
                             path="/PrincipalDashboard/ClassThreeAndFour"
                             element={<ClassThreeAndFour />}
+                        />
+                        <Route
+                            path="/PrincipalDashboard/ViewStudentsPerformance/:id"
+                            element={<ViewStudentsPerformance />}
                         />
                     </Route>
                     {/* --------------Principal Routes End--------------- */}

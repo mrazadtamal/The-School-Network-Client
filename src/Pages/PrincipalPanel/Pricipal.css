@@ -198,7 +198,7 @@
 }
 .drop_link{
     transition: 0.5s ease-in-out;
-    margin-left: 10px;
+   
 }
 .class_text{
     text-align: center;
@@ -219,9 +219,30 @@
     font-weight: bold;
 
     display: block;
-    margin-top: 10px;
+
 }
 /* ----------------Principal notice publish css End------------- */
+.principal_logout_btn{
+    border: solid rgb(255, 196, 1) 0.5px;
+    border-radius: 10px;
+    color: rgb(255, 196, 1);
+    padding: 10px 40px 10px 40px;
+    margin-left: 40px;
+}
+.principal_title{
+    color: rgb(255, 196, 1);;
+}
+.table_btn{
+    border: solid rgb(0, 0, 0) 1px;
+    border-radius: 5px;
+    cursor: pointer;
+    background-color: goldenrod;
+    color: black;
+}
+.table_btn:hover{
+    background-color: rgb(255, 255, 255);
+    color: rgb(92, 0, 0);
+}
 @media screen and (max-width: 991px) {
     .principal_navbar{
         display: block;

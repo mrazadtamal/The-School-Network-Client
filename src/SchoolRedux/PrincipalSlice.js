@@ -163,12 +163,33 @@ export const PutEditAnnouncement = createAsyncThunk(
     return response
   }
 )
+//principal geting all previous Announcement
+export const GetAllStudents = createAsyncThunk(
+  'Principal/GetAllStudents',
+  async (stduentclass) => {
+    const response = await fetch(`http://localhost:5000/GetAllStudents?studentclass=${stduentclass}`).then(res=> res.json())
+    return  response;
+   
+  }
+)
+//principal and teacher geting individual performance of student
+export const IndividualPerformance = createAsyncThunk(
+  'Principal/IndividualPerformance',
+  async (id) => {
+    console.log('id from slice', id)
+    const response = await fetch(`http://localhost:5000/IndividualPerformance/${id}`).then(res=> res.json())
+    return  response;
+   
+  }
+)
 export const PrincipalReducer = createSlice({
   name: 'Principal',
   initialState:{
     value: 0,
     notices: [],
-    announcement: []
+    announcement: [],
+    Allstudents: [],
+    performances: []
   },
   reducers: {
     increment: (state) => {
@@ -237,6 +258,13 @@ export const PrincipalReducer = createSlice({
           'Announcement Edited Successfully',
           'success'
         )
+      })
+      builder.addCase(GetAllStudents.fulfilled, (state, action) => {
+        state.Allstudents = action.payload
+      })
+      builder.addCase(IndividualPerformance.fulfilled, (state, action) => {
+        state.performances = action.payload;
+        console.log('result from redux', action.payload)
       })
     },
 

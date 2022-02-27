@@ -31,9 +31,10 @@ export const PublishResult = createAsyncThunk(
     return response
   }
 )
+
 const initialState = {
   value: 0,
-  extraCares: []
+  extraCares: [],
 }
 
 export const TeeacherReducer = createSlice({
@@ -61,6 +62,7 @@ export const TeeacherReducer = createSlice({
           'success'
         )
       })
+
     },
 
 })

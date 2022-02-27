@@ -1,6 +1,8 @@
-import React from "react";
+import React, { useState } from "react";
+
 
 const TeachersNoticePublish = () => {
+
     return (
         <div className="w-10/12 sm:9/12 md:w-5/6 lg:w-4/6 mx-auto">
             <h2 className="text-5xl text-gray-600 font-bold my-10 text-center">
@@ -20,7 +22,7 @@ const TeachersNoticePublish = () => {
                     <h2 className="text-2xl text-blue-500 font-medium mb-5 text-center">
                         Write notice
                     </h2>
-                    <form action="">
+                    <form >
                         <p className="text-lg font-medium">Title</p>
                         <input
                             type="text"

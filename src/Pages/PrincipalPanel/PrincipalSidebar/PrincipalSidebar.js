@@ -6,27 +6,38 @@ import { FaChalkboardTeacher, FaUserGraduate , FaRegAddressCard} from 'react-ico
 import { SiSamsungpay} from 'react-icons/si';
 import { IoIosArrowDown} from 'react-icons/io';
 import {  useNavigate } from "react-router-dom";
+import useFirebase from "../../Shared/Authentication/Authentication";
 
 const PrincipalSidebar = () => {
+  const {user, LogOutUser} = useFirebase()
   const [shown1, setShown1] = useState(false)
   const [shown2, setShown2] = useState(false)
   const navigate = useNavigate()
   const ResultNavigateHandler = (route, classname) => {
     navigate(`/PrincipalDashboard/${route}`, {state: classname})
   }
+  const ManageStudentHandler = (route, classname) => {
+    navigate(`/PrincipalDashboard/${route}`, {state: classname})
+  }
+  const LogoutHandler = () => {
+    LogOutUser(navigate)
+  }
   return (
     <div className="">
       <h1 className="mt-8 text-center">
-        <img src="" alt="" />
-        <span className="text-5xl font-bold text-white ">P</span>
-        <span className="text-base font-bold text-white ">
+        <span className="text-5xl font-bold principal_title ">P</span>
+        <span className="text-base font-bold principal_title">
           rincipal Dashboard
         </span>
       </h1>
 
-        <Link to="/PrincipalDashboard"> 
-          <p className='principal_sidebar_link   text-white mt-12'><i className="fas fa-home principal_sidebar_icon"></i>Home</p>
-        </Link>
+      {
+        user.email ?  <button onClick={LogoutHandler} className="mt-8 mb-4 principal_logout_btn">LogOut</button> : ''
+      }
+     
+      <Link to="/PrincipalDashboard"> 
+        <p className='principal_sidebar_link   text-white '><i className="fas fa-home principal_sidebar_icon"></i>Home</p>
+      </Link>
 
         <Link to="/PrincipalDashboard/PrincipalPublishNotice">
           <p className='principal_sidebar_link   text-white mt-4'><i className="fas fa-sticky-note principal_sidebar_icon"></i>Publish Notice</p>
@@ -58,15 +69,16 @@ const PrincipalSidebar = () => {
             }
 
         
-            <button onClick={() => setShown1(!shown1)} className="drop_dwon_btn"><span><FaUserGraduate className='principal_react_icons'/>Manage Students <IoIosArrowDown className="principal_react_icons"/></span></button>
-            {
-              shown1 && <ul className="drop_link">
-              <li className="class_text"><Link to="/PrincipalDashboard/PrincipalManageStudent">Class One</Link></li> 
-              <li className="class_text"><Link to="/PrincipalDashboard/PrincipalManageStudent"><a href="#">Class Two</a> </Link></li>
-              <li className="class_text"><a href="#">Class Three</a></li>
-              <li className="class_text"><a href="#">Class Four</a></li>
-            </ul>
-            }
+          <button onClick={() => setShown1(!shown1)} className="drop_dwon_btn"><span><FaUserGraduate className='principal_react_icons'/>Manage Students <IoIosArrowDown className="principal_react_icons"/></span></button>
+          {
+            shown1 && <ul className="drop_link">
+            <li onClick={() => ManageStudentHandler('PrincipalManageStudent', 'class-one')} className="class_text">Class One</li>
+            <li onClick={() => ManageStudentHandler('PrincipalManageStudent', 'class-two')} className="class_text">Class Two</li>
+            <li onClick={() => ManageStudentHandler('PrincipalManageStudent', 'class-three')} className="class_text">Class Three</li>
+            <li onClick={() => ManageStudentHandler('PrincipalManageStudent', 'class-four')} className="class_text">Class Four</li>
+            <li onClick={() => ManageStudentHandler('PrincipalManageStudent', 'class-five')} className="class_text">Class Five</li>
+          </ul>
+          }
         
         <Link to="/PrincipalDashboard/RegisterStudent">
           <p className='principal_sidebar_link   text-white mt-4'> <FaRegAddressCard className='principal_react_icons' />Register Student</p>
@@ -76,9 +88,9 @@ const PrincipalSidebar = () => {
           <p className='principal_sidebar_link   text-white mt-4'> <SiSamsungpay className='principal_react_icons' />Upload Payment</p>
         </Link>
 
-        <Link to="/PrincipalDashboard/CheckPaymentStatus">
+        {/* <Link to="/PrincipalDashboard/CheckPaymentStatus">
           <p className='principal_sidebar_link   text-white mt-4'> <SiSamsungpay className='principal_react_icons' />Check Payment Status</p>
-        </Link>
+        </Link> */}
 
     </div>
   );

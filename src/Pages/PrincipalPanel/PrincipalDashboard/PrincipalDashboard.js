@@ -13,6 +13,7 @@ const PrincipalDashboard = () => {
                     <PrincipalSidebar/>
                 </div>
                 <div className='col-span-9 lg:col-span-10 mb-10 lg:mb-0 mx-auto pb-4 justify-content-center'>
+                
                     <Outlet/>
                 </div>
             </div>
