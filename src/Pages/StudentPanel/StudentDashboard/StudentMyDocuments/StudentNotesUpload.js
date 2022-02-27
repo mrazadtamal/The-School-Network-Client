@@ -21,14 +21,14 @@ const StudentNotesUpload = () => {
                     <p className="pointer-none text-gray-500 ">
                       <span className="text-sm">Drag and drop</span> files here
                       <br /> or
-                      {/* <a
+                      <a
                         href="/"
                         id=""
                         className="text-blue-600 hover:underline"
                       >
                         select a file
-                      </a> */}
-                      select a file from your computer
+                      </a>
+                      from your computer
                     </p>
                   </div>
                   <input type="file" className="hidden" />
