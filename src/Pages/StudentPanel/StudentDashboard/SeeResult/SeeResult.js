@@ -1,13 +1,27 @@
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
+import { useDispatch, useSelector } from "react-redux";
 import { Link } from "react-router-dom";
+import { GetResult } from "../../../../SchoolRedux/StudentSlice";
 
 const SeeResult = () => {
   const [show, setShow] = useState(false);
+
+  const dispatch = useDispatch();
 
   const handleClick = () => {
     setShow(!show);
   };
 
+  // fetch the result data
+
+  useEffect(() => {
+    dispatch(GetResult());
+  }, [dispatch]);
+
+  //store all the result data
+
+  const studentResults = useSelector((state) => state.studentStore.results);
+  console.log(studentResults);
   return (
     <div className="h-full w-full ">
       <div className=" bg-gray-200 text-white  ">

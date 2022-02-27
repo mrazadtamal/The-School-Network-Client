@@ -70,6 +70,15 @@ const StudentSidebar = () => {
         >
           <p className="text-white">Transcript</p>
         </NavLink>
+        <NavLink
+          to="/StudentDashboard/StudentProfile"
+          style={({ isActive }) => ({
+            color: isActive ? "#0bc28b" : "#545e6f",
+            background: isActive ? "#7600dc" : "black",
+          })}
+        >
+          <p className="text-white">My Profile</p>
+        </NavLink>
       </div>
     </div>
   );
