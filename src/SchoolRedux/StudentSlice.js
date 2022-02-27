@@ -18,6 +18,27 @@ export const GetResult = createAsyncThunk("Student/seeResult", async () => {
   return response;
 });
 
+// request for extra care
+
+export const RequestExtraCare = createAsyncThunk(
+  "Student/RequestCare",
+  async (data) => {
+    console.log("Hitted Extra Care");
+    const response = await fetch("http://localhost:5000/student/requestCare", {
+      method: "POST",
+      headers: {
+        "content-type": "application/json",
+      },
+      body: JSON.stringify(data),
+    })
+      .then((res) => res.json())
+      .catch((err) => {
+        console.log(err);
+      });
+    return response;
+  }
+);
+
 export const StudentReducer = createSlice({
   name: "Student",
   initialState: {
@@ -32,8 +53,15 @@ export const StudentReducer = createSlice({
 
   // this is where the payload is set to the result array or initial state
   extraReducers: (builder) => {
+    // get result promise
     builder.addCase(GetResult.fulfilled, (state, action) => {
       state.results = action.payload;
+    });
+
+    // post extra care promise
+
+    builder.addCase(RequestExtraCare.fulfilled, (state, action) => {
+      Swal.fire("Success", "Application Submitted Successfully", "success");
     });
   },
 });

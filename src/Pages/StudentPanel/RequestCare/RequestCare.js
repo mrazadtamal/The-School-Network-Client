@@ -1,13 +1,17 @@
 import React, { useState } from "react";
-
 import { useForm } from "react-hook-form";
+import { useDispatch } from "react-redux";
+import { RequestExtraCare } from "../../../SchoolRedux/StudentSlice";
 
 const RequestCare = () => {
   const { register, handleSubmit } = useForm();
   const [number, setNumber] = useState(0);
+  const dispatch = useDispatch();
 
-  const onSubmit = (data) => {
+  const onSubmit = (data, e) => {
+    e.preventDefault();
     console.log(data);
+    dispatch(RequestExtraCare(data));
   };
 
   const handleIncrease = () => {};
@@ -62,7 +66,7 @@ const RequestCare = () => {
               className="w-[48%] border-2 rounded-md px-3 py-2 ml-2 mr-2"
               placeholder="issue date"
               type="date"
-              {...register("request_date")}
+              {...register("date")}
             />
           </div>
 
@@ -80,7 +84,7 @@ const RequestCare = () => {
               className="w-[48%] border-2 rounded-md px-3 py-2 ml-2 mr-2"
               placeholder="Course Name"
               type="text"
-              {...register("course_name")}
+              {...register("courseName")}
             />
           </div>
 
@@ -91,7 +95,7 @@ const RequestCare = () => {
               className="w-[48%] border-2 rounded-md px-3 py-2 ml-2 mr-2"
               placeholder="Class Teacher Name"
               type="text"
-              {...register("class_teacher")}
+              {...register("teacherName")}
             />
 
             <input
