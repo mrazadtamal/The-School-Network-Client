@@ -187,6 +187,32 @@ const ViewFirstTerm = ({result}) => {
                             <p className="text-gray-900 whitespace-no-wrap">{result.drawCgpa}</p>
                           </td>
                       </tr>
+                      <tr>
+                          <td className="px-5 py-5  bg-white text-sm">
+                            <div className="flex items-center font-bold">
+                              <div className="ml-3">
+                                <p className="text-gray-900 whitespace-no-wrap">
+                                  
+                                </p>
+                              </div>
+                            </div>
+                          </td>
+                      
+                          <td className="px-5 py-5 bg-white text-sm">
+                            <p className="text-gray-900 whitespace-no-wrap">
+                           
+                            </p>
+                          </td>
+                          <td className="px-5 py-5  bg-white text-sm">
+                            <p className="text-gray-900 whitespace-no-wrap"></p>
+                          </td>
+                          <td className="px-5 py-5  bg-white text-sm">
+                            <p className="text-gray-900 whitespace-no-wrap"></p>
+                          </td>
+                          <td className="px-5 py-5 bg-white text-sm font-bold">
+                            {result.Failcount > 0? <p className="text-red-900 whitespace-no-wrap">Failed in {result.Failcount} Subject</p> : <p className="text-green-900 whitespace-no-wrap font-bold">{result.secondtermCgpa}</p>}
+                          </td>
+                      </tr>
                     </tbody>
                   </table>
                 </div>
@@ -403,6 +429,32 @@ const ViewFirstTerm = ({result}) => {
                             <p className="text-gray-900 whitespace-no-wrap">{result.religionCgpa}</p>
                           </td>
                       </tr>
+                      <tr>
+                          <td className="px-5 py-5  bg-white text-sm">
+                            <div className="flex items-center font-bold">
+                              <div className="ml-3">
+                                <p className="text-gray-900 whitespace-no-wrap">
+                                  
+                                </p>
+                              </div>
+                            </div>
+                          </td>
+                      
+                          <td className="px-5 py-5 bg-white text-sm">
+                            <p className="text-gray-900 whitespace-no-wrap">
+                           
+                            </p>
+                          </td>
+                          <td className="px-5 py-5  bg-white text-sm">
+                            <p className="text-gray-900 whitespace-no-wrap"></p>
+                          </td>
+                          <td className="px-5 py-5  bg-white text-sm">
+                            <p className="text-gray-900 whitespace-no-wrap"></p>
+                          </td>
+                          <td className="px-5 py-5 bg-white text-sm font-bold">
+                            {result.Failcount1 > 0? <p className="text-red-900 whitespace-no-wrap">Failed in {result.Failcount1} Subject</p> : <p className="text-green-900 whitespace-no-wrap font-bold">{result.firsttermCgpa}</p>}
+                          </td>
+                      </tr>
                     </tbody>
                   </table>
                 </div>
@@ -410,7 +462,7 @@ const ViewFirstTerm = ({result}) => {
             </div>
           </div></> : ''
         }
-                {
+        {
           result.class === 'class-five' ? <><h1 className='text-center text-xl font-bold mt-8'>First Term Result Of {result.name}</h1>
           <div className="bg-white p-8 rounded-md w-full">
             <div>
@@ -591,6 +643,32 @@ const ViewFirstTerm = ({result}) => {
                           </td>
                           <td className="px-5 py-5 border-b border-gray-400 bg-white text-sm">
                             <p className="text-gray-900 whitespace-no-wrap">{result.scienceCgpa}</p>
+                          </td>
+                      </tr>
+                      <tr>
+                          <td className="px-5 py-5  bg-white text-sm">
+                            <div className="flex items-center font-bold">
+                              <div className="ml-3">
+                                <p className="text-gray-900 whitespace-no-wrap">
+                                  
+                                </p>
+                              </div>
+                            </div>
+                          </td>
+                      
+                          <td className="px-5 py-5 bg-white text-sm">
+                            <p className="text-gray-900 whitespace-no-wrap">
+                           
+                            </p>
+                          </td>
+                          <td className="px-5 py-5  bg-white text-sm">
+                            <p className="text-gray-900 whitespace-no-wrap"></p>
+                          </td>
+                          <td className="px-5 py-5  bg-white text-sm">
+                            <p className="text-gray-900 whitespace-no-wrap"></p>
+                          </td>
+                          <td className="px-5 py-5 bg-white text-sm font-bold">
+                            {result.Failcount3 > 0? <p className="text-red-900 whitespace-no-wrap">Failed in {result.Failcount3} Subject</p> : <p className="text-green-900 whitespace-no-wrap font-bold">{result.firsttermCgpa}</p>}
                           </td>
                       </tr>
                     </tbody>
