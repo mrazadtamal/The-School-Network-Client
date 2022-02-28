@@ -24,7 +24,7 @@ const TeachersPanelHome = () => {
                 <img className="w-1/2 mx-auto" src={teachersHomePageImg} alt="" />
                 </div> */}
                 <div className="">
-                <h1 className='text-center mt-8 text-3xl font-bold mb-8'> Notice</h1>
+                <h1 className='text-center mt-8 text-3xl font-bold mb-8'> Notice From Principal</h1>
                     <div className="Teacher_notice_section">
                         {
                             TeacherNotcie?.map(notice => 

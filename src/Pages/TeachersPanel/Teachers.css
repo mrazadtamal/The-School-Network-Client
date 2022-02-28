@@ -8,3 +8,12 @@
     border: 2px solid tomato;
     border-radius: 15px;
 }
+.teacher_side_colam{
+    height: 100vh;
+    position: sticky;
+    top: 0px;
+    z-index: 1;
+}
+.register_btn{
+    width: 80%;
+}

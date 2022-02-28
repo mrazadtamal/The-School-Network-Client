@@ -21,7 +21,6 @@ const useFirebase = () => {
 
   //Login user
   const LoginUser = (email, password, role) => {
-    console.log("Hitted");
     return signInWithEmailAndPassword(auth, email, password);
   };
 
@@ -41,11 +40,11 @@ const useFirebase = () => {
   }, [auth]);
 
   //user Log out
-  const LogOutUser = (history) => {
+  const LogOutUser = (navigate) => {
     signOut(auth)
       .then(() => {
         setUser({});
-        history.push("/");
+        navigate("/");
       })
       .catch((error) => {
         // An error happened.

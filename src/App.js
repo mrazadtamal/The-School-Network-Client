@@ -32,18 +32,21 @@ import StudentPay from "./Pages/StudentPanel/StudentPay/StudentPay";
 import StAnalytics from "./Pages/StudentPanel/StudentDashboard/StAnalytics/StAnalytics";
 import SeeResult from "./Pages/StudentPanel/StudentDashboard/SeeResult/SeeResult";
 import Transcript from "./Pages/StudentPanel/StudentDashboard/Transcript/Transcript";
-import ResultAdd from "./Pages/Shared/ResultAdd/ResultAdd";
 import TeachersAssignment from "./Pages/TeachersPanel/TeachersAssignment/TeachersAssignment";
 import RegisterStudent from "./Pages/Shared/RegisterStudent/RegisterStudent";
 import CheckPaymentStatus from "./Pages/PrincipalPanel/CheckPaymentStatus/CheckPaymentStatus";
 import TeachersManageStudent from "./Pages/TeachersPanel/TeachersManageStudent/TeachersManageStudent";
 import SeeExtraRequestPage from "./Pages/TeachersPanel/SeeExtraRequestPage/SeeExtraRequestPage";
 import Contact from "./Pages/AllUser/Contact/Contact";
+import ClassFive from "./Pages/Shared/ResultAdd/ClassFive";
+import ClassOneToTwo from "./Pages/Shared/ResultAdd/ClassOneToTwo";
+import ClassThreeAndFour from "./Pages/Shared/ResultAdd/ClassThreeAndFour";
+import ViewStudentsPerformance from "./Pages/Shared/ViewStudentsPerformance/ViewStudentsPerformance";
 import StudentProfile from "./Pages/StudentPanel/StudentProfile/StudentProfile";
 
 function App() {
   return (
-    <div className="App">
+    <div>
       <BrowserRouter>
         <Routes>
           {/* --------------All User Homepage Routes Start--------------- */}
@@ -88,16 +91,28 @@ function App() {
               element={<UploadPayment />}
             />
             <Route
-              path="/PrincipalDashboard/ResultAdd"
-              element={<ResultAdd />}
-            />
-            <Route
               path="/PrincipalDashboard/RegisterStudent"
               element={<RegisterStudent />}
             />
             <Route
               path="/PrincipalDashboard/CheckPaymentStatus"
               element={<CheckPaymentStatus />}
+            />
+            <Route
+              path="/PrincipalDashboard/ClassFive"
+              element={<ClassFive />}
+            />
+            <Route
+              path="/PrincipalDashboard/ClassOneToTwo"
+              element={<ClassOneToTwo />}
+            />
+            <Route
+              path="/PrincipalDashboard/ClassThreeAndFour"
+              element={<ClassThreeAndFour />}
+            />
+            <Route
+              path="/PrincipalDashboard/ViewStudentsPerformance/:id"
+              element={<ViewStudentsPerformance />}
             />
           </Route>
           {/* --------------Principal Routes End--------------- */}

@@ -17,11 +17,6 @@ const RequestCare = () => {
   const handleIncrease = () => {};
   return (
     <div className="flex align-center justify-center">
-      <button>Increase</button>
-      <br />
-      <button> Decrease</button>
-      <br />
-      <p>{number}</p>
       <div>
         <h1 className="text-4xl text-center font-bold py-5">
           {" "}

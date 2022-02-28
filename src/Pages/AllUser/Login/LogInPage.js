@@ -20,7 +20,6 @@ const LogInPage = () => {
   };
 
   const onSubmitHandler = (e) => {
-    console.log("Subimt");
     fetch(
       `https://blooming-citadel-14218.herokuapp.com/checkUser?email=${logindata.email}`
     )
