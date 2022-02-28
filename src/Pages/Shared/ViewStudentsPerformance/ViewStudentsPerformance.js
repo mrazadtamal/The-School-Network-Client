@@ -2,7 +2,9 @@ import React, {useEffect} from 'react'
 import { useDispatch, useSelector } from 'react-redux';
 import { useParams } from 'react-router-dom'
 import { IndividualPerformance } from '../../../SchoolRedux/PrincipalSlice';
+import ViewSecondTerm from './VewSecondTerm';
 import ViewFirstTerm from './ViewFirstTerm';
+import ViewThirdTerm from './ViewThirdTerm';
 
 const ViewStudentsPerformance = () => {
     const {id} = useParams();
@@ -22,6 +24,12 @@ const ViewStudentsPerformance = () => {
         <>
             {
               first?.term === 'First-Term' && <ViewFirstTerm result={first}/>
+            }
+             {
+              second?.term === 'Second-Term' && <ViewSecondTerm result={second}/>
+            }
+            {
+              third?.term === 'Third-Term' && <ViewThirdTerm result={third}/>
             }
         </>
   )
