@@ -62,7 +62,7 @@ const StudentProfile = () => {
                     </div>
                     <div className="grid grid-cols-2">
                       <div className="px-4 py-2 font-semibold">Class : </div>
-                      <div className="px-4 py-2">Doe</div>
+                      <div className="px-4 py-2">One</div>
                     </div>
                     <div className="grid grid-cols-2">
                       <div className="px-4 py-2 font-semibold">Gender : </div>
@@ -78,32 +78,23 @@ const StudentProfile = () => {
                       <div className="px-4 py-2 font-semibold">
                         Current Address
                       </div>
-                      <div className="px-4 py-2">
-                        Beech Creek, PA, Pennsylvania
-                      </div>
+                      <div className="px-4 py-2">Dhaka</div>
                     </div>
                     <div className="grid grid-cols-2">
                       <div className="px-4 py-2 font-semibold">
                         Permanant Address
                       </div>
-                      <div className="px-4 py-2">
-                        Arlington Heights, IL, Illinois
-                      </div>
+                      <div className="px-4 py-2">Dhaka</div>
                     </div>
                     <div className="grid grid-cols-2">
                       <div className="px-4 py-2 font-semibold">Email.</div>
                       <div className="px-4 py-2">
-                        <a
-                          className="text-blue-800"
-                          href="mailto:jane@example.com"
-                        >
-                          jane@example.com
-                        </a>
+                        web.codingwizards@gmail.com
                       </div>
                     </div>
                     <div className="grid grid-cols-2">
                       <div className="px-4 py-2 font-semibold">Birthday</div>
-                      <div className="px-4 py-2">Feb 06, 1998</div>
+                      <div className="px-4 py-2">2/3/2015</div>
                     </div>
                   </div>
                 </div>
@@ -111,8 +102,6 @@ const StudentProfile = () => {
                   Edit Profile
                 </button>
               </div>
-
-              <div className="my-4"></div>
             </div>
           </div>
         </div>

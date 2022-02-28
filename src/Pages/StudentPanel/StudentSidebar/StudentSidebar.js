@@ -4,17 +4,13 @@ import { Link, NavLink } from "react-router-dom";
 const StudentSidebar = () => {
   return (
     <div className="sm:py-10">
-      {/* <h1 className="text-3xl font-bold text-white text-center">
-        <span className=" text-5xl">S</span> tudent Dashboard
-      </h1> */}
-
       <h1 className="mt-8 text-center">
         <span className="text-5xl font-bold text-white ">S</span>
         <span className=" text-lg font-bold text-white ">tudent Dashboard</span>
       </h1>
 
       <img
-        className="  rounded-full h-40 w-40 text-center m-auto mt-5 mb-5"
+        className="  rounded-full h-28 w-28 text-center m-auto mt-5 mb-5"
         src="https://res.cloudinary.com/abidazad/image/upload/v1637747947/user_xsd3a7.png"
         alt=""
       />
