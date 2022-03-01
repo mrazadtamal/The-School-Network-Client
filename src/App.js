@@ -39,6 +39,7 @@ import CheckPaymentStatus from "./Pages/PrincipalPanel/CheckPaymentStatus/CheckP
 import TeachersManageStudent from "./Pages/TeachersPanel/TeachersManageStudent/TeachersManageStudent";
 import SeeExtraRequestPage from "./Pages/TeachersPanel/SeeExtraRequestPage/SeeExtraRequestPage";
 import Contact from "./Pages/AllUser/Contact/Contact";
+import TeachersProfile from "./Pages/TeachersPanel/TeachersProfile/TeachersProfile";
 import StudentProfile from "./Pages/StudentPanel/StudentProfile/StudentProfile";
 
 function App() {
@@ -104,6 +105,10 @@ function App() {
           {/* --------------Teacher Routes Start */}
           <Route path="/TeachersDashboard" element={<TeachersPanel />}>
             <Route path="/TeachersDashboard" element={<TeachersPanelHome />} />
+            <Route
+              path="/TeachersDashboard/Profile"
+              element={<TeachersProfile />}
+            />
             <Route
               path="/TeachersDashboard/NoticePublish"
               element={<TeachersNoticePublish />}

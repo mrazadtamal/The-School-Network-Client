@@ -1,11 +1,6 @@
 import { createAsyncThunk, createSlice } from "@reduxjs/toolkit";
 import Swal from "sweetalert2";
 
-const initialState = {
-  value: 0,
-  notice: [],
-};
-
 // fetch the data from the database
 //for fetching the data from the api and database we use asyncthunk
 export const GetResult = createAsyncThunk("Student/seeResult", async () => {
@@ -39,12 +34,45 @@ export const RequestExtraCare = createAsyncThunk(
   }
 );
 
+// Get the current student
+export const getStudentInfo = createAsyncThunk(
+  "Student/studentProfile",
+  async (email) => {
+    const response = await fetch(
+      `http://localhost:5000/studentProfile?email=${email}`
+    ).then((res) => res.json());
+    return response;
+  }
+);
+
+// Update student profile picture
+export const updateStudentPP = createAsyncThunk(
+  "Student/updateStudentPP",
+  async (data) => {
+    console.log("Hitted", data);
+    const response = await fetch(
+      `http://localhost:5000/updateStudentPP?email=${data.email}`,
+      {
+        method: "PUT",
+        body: data.fd,
+      }
+    )
+      .then((res) => res.json())
+      .catch((err) => console.log(err));
+    return response;
+  }
+);
+
+const initialState = {
+  value: 0,
+  results: [],
+  studentInfo: {},
+};
+
 export const StudentReducer = createSlice({
   name: "Student",
-  initialState: {
-    value: 0,
-    results: [],
-  },
+  initialState,
+
   reducers: {
     increment: (state) => {
       state.value += 1;
@@ -62,6 +90,12 @@ export const StudentReducer = createSlice({
 
     builder.addCase(RequestExtraCare.fulfilled, (state, action) => {
       Swal.fire("Success", "Application Submitted Successfully", "success");
+    });
+    builder.addCase(getStudentInfo.fulfilled, (state, action) => {
+      state.studentInfo = action.payload;
+    });
+    builder.addCase(updateStudentPP.fulfilled, (state, action) => {
+      Swal.fire("Success", "Notice Publish Successfull", "success");
     });
   },
 });

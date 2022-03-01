@@ -13,7 +13,7 @@ const TeachersPanelSideBar = () => {
         <div>
             <nav className="bg-green-300 lg:h-screen">
                 <div className="mx-auto">
-                    <div className="flex lg:flex-col items-center justify-center">
+                    <div className="flex lg:flex-col justify-between items-center lg:justify-center">
                         <div className="flex flex-col items-start justify-center">
                             <div>
                                 <Link
@@ -31,6 +31,15 @@ const TeachersPanelSideBar = () => {
                                             className="block text-black hover:bg-gray-700 hover:text-white px-3 py-2 rounded-md text-sm font-medium"
                                         >
                                             Home
+                                        </Link>
+                                    </div>
+                                    {/* Teachers Profile */}
+                                    <div>
+                                        <Link
+                                            to="/TeachersDashboard/Profile"
+                                            className="block text-black hover:bg-gray-700 hover:text-white px-3 py-2 rounded-md text-sm font-medium"
+                                        >
+                                            View Profile
                                         </Link>
                                     </div>
 
@@ -311,8 +320,8 @@ const TeachersPanelSideBar = () => {
                                             </Transition>
                                         </Menu>
                                     </div>
-                                     {/* See Student Request */}
-                                     <div>
+                                    {/* See Student Request */}
+                                    <div>
                                         <Link
                                             to="/TeachersDashboard/SeeExtraRequestPage"
                                             className="block text-black hover:bg-gray-700 hover:text-white px-3 py-2 rounded-md text-sm font-medium"
