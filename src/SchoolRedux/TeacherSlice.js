@@ -60,6 +60,26 @@ export const updateTeacherDP = createAsyncThunk(
     }
 );
 
+// Add teachers information
+export const addTeacherInfo = createAsyncThunk(
+    "Teacher/AddTeacherInfo",
+    async (data) => {
+        const response = await fetch(
+            `http://localhost:5000/AddTeacherInfo?email=${data.email}`,
+            {
+                method: "PUT",
+                headers: {
+                    "content-type": "application/json",
+                },
+                body: JSON.stringify(data),
+            }
+        )
+            .then((res) => res.json())
+            .catch((err) => console.log(err));
+        return response;
+    }
+);
+
 const initialState = {
     value: 0,
     extraCares: [],
@@ -91,7 +111,14 @@ export const TeacherReducer = createSlice({
             state.teacherInfo = action.payload;
         });
         builder.addCase(updateTeacherDP.fulfilled, (state, action) => {
-            Swal.fire("Success", "Notice Publish Successfull", "success");
+            Swal.fire(
+                "Success",
+                "Profile Picture Updated Successfully",
+                "success"
+            );
+        });
+        builder.addCase(addTeacherInfo.fulfilled, (state, action) => {
+            Swal.fire("Success", "Information Updated Successfully", "success");
         });
     },
 });

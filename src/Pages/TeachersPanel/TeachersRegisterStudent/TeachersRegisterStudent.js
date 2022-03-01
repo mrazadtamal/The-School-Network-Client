@@ -11,7 +11,7 @@ const TeachersRegisterStudent = () => {
     const onSubmit = (data) => console.log(data);
 
     return (
-        <div>
+        <div className=" h-screen overflow-scroll">
             <div>
                 <h2 className="text-center text-4xl text-blue-900 font-bold mt-3 mb-8">
                     Register A new student

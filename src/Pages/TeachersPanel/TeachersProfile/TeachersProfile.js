@@ -1,6 +1,7 @@
 import React, { useEffect, useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import {
+    addTeacherInfo,
     getTeacherInfo,
     updateTeacherDP,
 } from "./../../../SchoolRedux/TeacherSlice";
@@ -10,6 +11,8 @@ const TeachersProfile = () => {
     const dispatch = useDispatch();
     const { user } = useFirebase();
     const [profilePic, setProfilePic] = useState("");
+    const [teacherInfo, setTeacherInfo] = useState({});
+    const [showInfoUpdateForm, setShowInfoUpdateForm] = useState(false);
 
     useEffect(() => {
         dispatch(getTeacherInfo(user.email));
@@ -29,10 +32,25 @@ const TeachersProfile = () => {
         }
     };
 
+    const addTeacherInfoBtnHandler = (e) => {
+        e.preventDefault();
+        teacherInfo.email = user.email;
+        dispatch(addTeacherInfo(teacherInfo));
+        window.location.reload();
+    };
+
+    const toggleInfoUpdateForm = () => {
+        if (showInfoUpdateForm === true) {
+            setShowInfoUpdateForm(false);
+        } else {
+            setShowInfoUpdateForm(true);
+        }
+    };
+
     return (
-        <div className="lg:px-20 lg:py-10">
+        <div className="lg:px-20 lg:py-10 h-screen overflow-scroll">
             <div className="grid grid-cols-12 gap-5">
-                <div className="col-span-4 bg-amber-100 rounded p-4">
+                <div className="col-span-4 bg-blue-100 rounded p-4">
                     <div>
                         <div>
                             <div>
@@ -53,7 +71,7 @@ const TeachersProfile = () => {
                             <form onSubmit={updateDPBtnHandler}>
                                 <div>
                                     <button
-                                        class="block text-white bg-blue-700 hover:bg-blue-800 focus:ring-4 focus:ring-blue-300 font-bold rounded-lg text-sm px-3 py-2 text-center dark:bg-blue-600 dark:hover:bg-blue-700 dark:focus:ring-blue-800"
+                                        class="block text-white bg-blue-700 hover:bg-blue-800 focus:ring-4 focus:ring-blue-300 font-bold rounded-lg text-sm px-3 py-2 mt-3 text-center dark:bg-blue-600 dark:hover:bg-blue-700 dark:focus:ring-blue-800"
                                         type="button"
                                         data-modal-toggle="defaultModal"
                                     >
@@ -145,7 +163,7 @@ const TeachersProfile = () => {
                 </div>
                 <div className="col-span-8">
                     <div className="grid grid-rows-2 gap-3">
-                        <div className="grid grid-cols-12 bg-amber-100 rounded p-4">
+                        <div className="grid grid-cols-12 bg-blue-100 rounded p-4">
                             <div className="col-span-4">
                                 <p className="font-medium my-3">Full Name</p>
                                 <p className="font-medium my-3">Address</p>
@@ -167,26 +185,138 @@ const TeachersProfile = () => {
                                 <p className="my-3">Cosmology</p>
                             </div>
                         </div>
-                        <div className="bg-amber-100 rounded p-4">
-                            <h4 className="font-medium">Personal Statement:</h4>
-                            <p>
-                                Lorem ipsum, dolor sit amet consectetur
-                                adipisicing elit. Voluptate maiores placeat
-                                autem vitae vel debitis tenetur commodi tempora
-                                doloremque perferendis. Lorem ipsum dolor sit
-                                amet consectetur adipisicing elit. Dicta
-                                dolorum, animi omnis exercitationem eveniet
-                                itaque! Similique, ut sed? Quam, vel?
-                            </p>
-                            <h4 className="font-medium mt-4">Education:</h4>
-                            <p>
-                                Bangladesh University of Engineering and
-                                Technology
-                            </p>
-                            <div className=" flex justify-end">
-                                <button className="bg-blue-600 px-2 py-1 rounded mt-3">
-                                    Edit profile
-                                </button>
+                        <div className="bg-blue-100 rounded p-4">
+                            <div>
+                                {teachersData.personalStatement &&
+                                teachersData.education ? (
+                                    <div>
+                                        {showInfoUpdateForm === false && (
+                                            <div>
+                                                <h4 className="font-medium">
+                                                    Personal Statement:
+                                                </h4>
+                                                <p>
+                                                    {
+                                                        teachersData.personalStatement
+                                                    }
+                                                </p>
+                                                <h4 className="font-medium mt-4">
+                                                    Education:
+                                                </h4>
+                                                <p>{teachersData.education}</p>
+                                                <div className="flex justify-end">
+                                                    <button
+                                                        className="bg-blue-600 rounded py-1 px-2 mt-3 font-medium text-white"
+                                                        onClick={
+                                                            toggleInfoUpdateForm
+                                                        }
+                                                    >
+                                                        Update Data
+                                                    </button>
+                                                </div>
+                                            </div>
+                                        )}
+
+                                        {showInfoUpdateForm === true && (
+                                            <div>
+                                                <h1 className="text-xl font-bold text-center">
+                                                    Update Information
+                                                </h1>
+                                                <h3 className="font-medium">
+                                                    Personal Statement
+                                                </h3>
+                                                <textarea
+                                                    name=""
+                                                    id=""
+                                                    rows="5"
+                                                    className="rounded w-full"
+                                                    defaultValue={
+                                                        teachersData.personalStatement
+                                                    }
+                                                    onBlur={(e) => {
+                                                        setTeacherInfo({
+                                                            ...teacherInfo,
+                                                            personalStatement:
+                                                                e.target.value,
+                                                        });
+                                                    }}
+                                                />
+                                                <h3 className="font-medium">
+                                                    Education
+                                                </h3>
+                                                <input
+                                                    type="text"
+                                                    className="block border border-black rounded w-full"
+                                                    defaultValue={
+                                                        teachersData.education
+                                                    }
+                                                    onBlur={(e) => {
+                                                        setTeacherInfo({
+                                                            ...teacherInfo,
+                                                            education:
+                                                                e.target.value,
+                                                        });
+                                                    }}
+                                                />
+                                                <div className="flex justify-end">
+                                                    <button
+                                                        className="bg-blue-600 rounded mt-3 font-bold text-white cursor-pointer py-1 px-4"
+                                                        onClick={
+                                                            addTeacherInfoBtnHandler
+                                                        }
+                                                    >
+                                                        Update
+                                                    </button>
+                                                </div>
+                                            </div>
+                                        )}
+                                    </div>
+                                ) : (
+                                    <div>
+                                        <h1 className="text-xl font-bold text-center">
+                                            Add Information
+                                        </h1>
+                                        <h3 className="font-medium">
+                                            Personal Statement
+                                        </h3>
+                                        <textarea
+                                            name=""
+                                            id=""
+                                            rows="5"
+                                            className="rounded w-full"
+                                            onBlur={(e) => {
+                                                setTeacherInfo({
+                                                    ...teacherInfo,
+                                                    personalStatement:
+                                                        e.target.value,
+                                                });
+                                            }}
+                                        />
+                                        <h3 className="font-medium">
+                                            Education
+                                        </h3>
+                                        <input
+                                            type="text"
+                                            className="block border border-black rounded w-full"
+                                            onBlur={(e) => {
+                                                setTeacherInfo({
+                                                    ...teacherInfo,
+                                                    education: e.target.value,
+                                                });
+                                            }}
+                                        />
+                                        <div className="flex justify-end">
+                                            <button
+                                                className="bg-blue-600 rounded mt-3 font-bold text-white cursor-pointer my-1 mx-4"
+                                                onClick={
+                                                    addTeacherInfoBtnHandler
+                                                }
+                                            >
+                                                Add
+                                            </button>
+                                        </div>
+                                    </div>
+                                )}
                             </div>
                         </div>
                     </div>
