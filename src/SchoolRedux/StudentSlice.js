@@ -39,6 +39,8 @@ export const RequestExtraCare = createAsyncThunk(
   }
 );
 
+// get data from the database according to email
+
 export const StudentReducer = createSlice({
   name: "Student",
   initialState: {

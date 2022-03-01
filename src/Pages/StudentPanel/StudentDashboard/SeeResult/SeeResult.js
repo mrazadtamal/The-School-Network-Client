@@ -1,10 +1,12 @@
 import React, { useEffect, useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
-import { Link } from "react-router-dom";
 import { GetResult } from "../../../../SchoolRedux/StudentSlice";
+import useFirebase from "../../../Shared/Authentication/Authentication";
 
 const SeeResult = () => {
   const [show, setShow] = useState(false);
+  const { user } = useFirebase();
+  console.log(user);
 
   const dispatch = useDispatch();
 
@@ -22,10 +24,15 @@ const SeeResult = () => {
 
   const studentResults = useSelector((state) => state.studentStore.results);
   console.log(studentResults);
+
+  // selected semester
+
+  const [semester, setSemester] = useState("");
+  console.log(semester);
   return (
     <div className="h-full w-full ">
-      <div className=" bg-gray-200 text-white  ">
-        <div className="w-40 bg-gray-600 ml-5 top-10 left-16 ">
+      <div className=" bg-gray-200 text-black  ">
+        {/* <div className="w-40 bg-gray-600 ml-5 top-10 left-16 ">
           <button
             onClick={handleClick}
             type="button"
@@ -46,19 +53,25 @@ const SeeResult = () => {
               />
             </svg>
           </button>
-        </div>
-
-        {show && (
-          <div className=" z-50 absolute    mt-2 w-56 rounded-md shadow-lg bg-white ring-1 ring-black ring-opacity-5 focus:outline-none">
-            <div className="py-1" role="none">
-              <Link
+        </div> */}
+        <div className="w-56 mx-auto rounded-md shadow-lg bg-emerald-500 ring-1 ring-black ring-opacity-5 focus:outline-none">
+          <div className="rounded-md" role="none">
+            <div className="text-center px-3 py-2">
+              <select name="term" onChange={(e) => setSemester(e.target.value)}>
+                <option value="">Select Term</option>
+                <option value="First-Term">First Term</option>
+                <option value="Second-Term">Second Term</option>
+                <option value="Third-Term">Third Term</option>
+              </select>
+            </div>
+            {/* <Link
                 to="/firstSemester"
                 className="text-gray-700 block px-4 py-2 text-sm"
               >
                 First Semester
               </Link>
               <Link
-                to="/secondSemester"
+                to="/StudentDashboard/secondSemester"
                 className="text-gray-700 block px-4 py-2 text-sm"
               >
                 Second Semester
@@ -68,10 +81,9 @@ const SeeResult = () => {
                 className="text-gray-700 block px-4 py-2 text-sm"
               >
                 Last Semester
-              </Link>
-            </div>
+              </Link> */}
           </div>
-        )}
+        </div>
       </div>
 
       {/* result */}
