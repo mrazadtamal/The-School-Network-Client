@@ -1,12 +1,13 @@
 import React, { useEffect, useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
-import { GetResult } from "../../../../SchoolRedux/StudentSlice";
+import { GetResult, GetStudent } from "../../../../SchoolRedux/StudentSlice";
 import useFirebase from "../../../Shared/Authentication/Authentication";
 
 const SeeResult = () => {
   const [show, setShow] = useState(false);
   const { user } = useFirebase();
-  console.log(user);
+  const [student, setStudent] = useState({});
+  console.log(user.email);
 
   const dispatch = useDispatch();
 
@@ -20,11 +21,20 @@ const SeeResult = () => {
     dispatch(GetResult());
   }, [dispatch]);
 
+  // load user data according to the logged in student
+  useEffect(() => {
+    dispatch(GetStudent(user.email));
+  }, [user.email, dispatch]);
   //store all the result data
 
   const studentResults = useSelector((state) => state.studentStore.results);
-  console.log(studentResults);
+  const filteredStudent = useSelector((state) => state.studentStore.user);
 
+  // console.log(studentResults);
+  // console.log(filteredStudent[0]);
+  const { name, roll, section } = filteredStudent[0];
+  console.log(name, roll, section, filteredStudent[0].class);
+  // setStudent(filteredStudent[0]);
   // selected semester
 
   const [semester, setSemester] = useState("");

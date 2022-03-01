@@ -41,11 +41,27 @@ export const RequestExtraCare = createAsyncThunk(
 
 // get data from the database according to email
 
+export const GetStudent = createAsyncThunk(
+  "Student/GetStudent",
+  async (email) => {
+    console.log("Hitted Get Student", email);
+    const response = await fetch(
+      `http://localhost:5000/student/filteredStudent/${email}`
+    )
+      .then((res) => res.json())
+      .catch((err) => {
+        console.log(err);
+      });
+    return response;
+  }
+);
+
 export const StudentReducer = createSlice({
   name: "Student",
   initialState: {
     value: 0,
     results: [],
+    user: [],
   },
   reducers: {
     increment: (state) => {
@@ -64,6 +80,12 @@ export const StudentReducer = createSlice({
 
     builder.addCase(RequestExtraCare.fulfilled, (state, action) => {
       Swal.fire("Success", "Application Submitted Successfully", "success");
+    });
+
+    //get individual logged in user data promise
+
+    builder.addCase(GetStudent.fulfilled, (state, action) => {
+      state.user = action.payload;
     });
   },
 });
