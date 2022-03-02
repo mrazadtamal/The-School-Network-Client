@@ -32,7 +32,6 @@ const PrincipalNavbar = () => {
                                     <h2>Principal Dashboard</h2>
                                 </div>
                             </div>
-                           
                         </div>
                         <div className="-mr-2 flex md:hidden">
                             <button
@@ -100,18 +99,18 @@ const PrincipalNavbar = () => {
                                     to="/PrincipalDashboard"
                                     className="hover:bg-gray-700 text-white block px-3 py-2 rounded-md text-base font-medium"
                                 >
-                                    Home 
+                                    Home
                                 </Link>
 
                                 <Link
-                                   to="/PrincipalDashboard/PrincipalPublishNotice"
+                                    to="/PrincipalDashboard/PrincipalPublishNotice"
                                     className="text-gray-300 hover:bg-gray-700 hover:text-white block px-3 py-2 rounded-md text-base font-medium"
                                 >
                                     Publish Notice
                                 </Link>
 
                                 <Link
-                                   to="/PrincipalDashboard/PrincipalAnnouncement"
+                                    to="/PrincipalDashboard/PrincipalAnnouncement"
                                     className="text-gray-300 hover:bg-gray-700 hover:text-white block px-3 py-2 rounded-md text-base font-medium"
                                 >
                                     Announcement
@@ -185,7 +184,6 @@ const PrincipalNavbar = () => {
                                                 >
                                                     Class Three
                                                 </a>
-
                                             </div>
                                         </div>
                                     )}
@@ -197,27 +195,26 @@ const PrincipalNavbar = () => {
                                     to="/PrincipalDashboard/PrincipalManageStudent"
                                     className="text-gray-300 hover:bg-gray-700 hover:text-white block px-3 py-2 rounded-md text-base font-medium"
                                 >
-                                   Mange Student
+                                    Mange Student
                                 </Link>
                                 <Link
                                     to="/PrincipalDashboard/RegisterStudent"
                                     className="text-gray-300 hover:bg-gray-700 hover:text-white block px-3 py-2 rounded-md text-base font-medium"
                                 >
-                                   Register Student
+                                    Register Student
                                 </Link>
                                 <Link
                                     to="/PrincipalDashboard/UploadPayment"
                                     className="text-gray-300 hover:bg-gray-700 hover:text-white block px-3 py-2 rounded-md text-base font-medium"
                                 >
-                                   Upload Monthly Payment
+                                    Upload Monthly Payment
                                 </Link>
                                 <Link
                                     to="/PrincipalDashboard/CheckPaymentStatus"
                                     className="text-gray-300 hover:bg-gray-700 hover:text-white block px-3 py-2 rounded-md text-base font-medium"
                                 >
-                                   Check Payment Status
+                                    Check Payment Status
                                 </Link>
-
                             </div>
                         </div>
                     )}

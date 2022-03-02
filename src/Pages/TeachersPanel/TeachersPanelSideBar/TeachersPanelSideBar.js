@@ -1,337 +1,276 @@
 import React, { useState } from "react";
-import { Fragment } from "react";
-import { Menu, Transition } from "@headlessui/react";
+import { Transition } from "@headlessui/react";
 import { Link } from "react-router-dom";
-
-function classNames(...classes) {
-    return classes.filter(Boolean).join(" ");
-}
+import "../Teachers.css";
 
 const TeachersPanelSideBar = () => {
     const [isOpen, setIsOpen] = useState(false);
+
     return (
         <div>
             <nav className="bg-green-300 lg:h-screen">
                 <div className="mx-auto">
                     <div className="flex lg:flex-col justify-between items-center lg:justify-center">
                         <div className="flex flex-col items-start justify-center">
-                            <div>
-                                <Link
-                                    to="/TeachersDashboard"
-                                    className="block text-blue-900 text-xl font-bold text-center md:mt-6 md:mb-6 ml-2 md:ml-auto"
-                                >
-                                    Teachers Dashboard
-                                </Link>
-                            </div>
-                            <div className="hidden md:block">
-                                <div className="flex flex-col">
-                                    <div>
-                                        <Link
-                                            to="/"
-                                            className="block text-black hover:bg-gray-700 hover:text-white px-3 py-2 rounded-md text-sm font-medium"
-                                        >
-                                            Home
-                                        </Link>
-                                    </div>
-                                    {/* Teachers Profile */}
-                                    <div>
-                                        <Link
-                                            to="/TeachersDashboard/Profile"
-                                            className="block text-black hover:bg-gray-700 hover:text-white px-3 py-2 rounded-md text-sm font-medium"
-                                        >
-                                            View Profile
-                                        </Link>
-                                    </div>
-
-                                    {/* Student List Dropdown menu */}
-                                    <div>
-                                        <Menu
-                                            as="div"
-                                            className="inline-block text-left"
-                                        >
-                                            <div>
-                                                <Menu.Button className="text-black hover:bg-gray-700 hover:text-white px-3 py-2 rounded-md text-sm font-medium">
+                            <aside class="w-full" aria-label="Sidebar">
+                                <div class="overflow-y-auto py-4 px-3 rounded hidden md:block">
+                                    <ul class="space-y-1">
+                                        {/* Dashboard Home */}
+                                        <li className="mb-5">
+                                            <Link
+                                                to="/TeachersDashboard"
+                                                className="font-bold text-xl text-blue-800"
+                                            >
+                                                Teachers Dashboard
+                                            </Link>
+                                        </li>
+                                        {/* Back to home page */}
+                                        <li>
+                                            <Link
+                                                to="/"
+                                                className="teacher-dashboard-link"
+                                            >
+                                                Home
+                                            </Link>
+                                        </li>
+                                        {/* Teacher Profile */}
+                                        <li>
+                                            <Link
+                                                to="/TeachersDashboard/Profile"
+                                                className="teacher-dashboard-link"
+                                            >
+                                                View Profile
+                                            </Link>
+                                        </li>
+                                        {/* Manage Students Dropdown Menu */}
+                                        <li>
+                                            <button
+                                                type="button"
+                                                class="flex items-center p-2 w-full text-base font-medium text-gray-900 rounded-lg transition duration-75 group hover:bg-gray-700 hover:text-white dark:text-white dark:hover:bg-gray-700"
+                                                aria-controls="manage-students"
+                                                data-collapse-toggle="manage-students"
+                                            >
+                                                <span
+                                                    class="flex-1 text-left whitespace-nowrap"
+                                                    sidebar-toggle-item=""
+                                                >
                                                     Manage Students
-                                                </Menu.Button>
-                                            </div>
-
-                                            <Transition
-                                                as={Fragment}
-                                                enter="transition ease-out duration-100"
-                                                enterFrom="transform opacity-0 scale-95"
-                                                enterTo="transform opacity-100 scale-100"
-                                                leave="transition ease-in duration-75"
-                                                leaveFrom="transform opacity-100 scale-100"
-                                                leaveTo="transform opacity-0 scale-95"
+                                                </span>
+                                                <svg
+                                                    sidebar-toggle-item=""
+                                                    class="w-6 h-6"
+                                                    fill="currentColor"
+                                                    viewBox="0 0 20 20"
+                                                    xmlns="http://www.w3.org/2000/svg"
+                                                >
+                                                    <path
+                                                        fill-rule="evenodd"
+                                                        d="M5.293 7.293a1 1 0 011.414 0L10 10.586l3.293-3.293a1 1 0 111.414 1.414l-4 4a1 1 0 01-1.414 0l-4-4a1 1 0 010-1.414z"
+                                                        clip-rule="evenodd"
+                                                    ></path>
+                                                </svg>
+                                            </button>
+                                            <ul
+                                                id="manage-students"
+                                                class="hidden"
                                             >
-                                                <Menu.Items className="origin-top-right absolute mt-2 min-w-max w-36 rounded-md shadow-lg bg-white ring-1 ring-black ring-opacity-5 focus:outline-none">
-                                                    <div className="p-1">
-                                                        <p className="px-2 pt-1 font-medium">
-                                                            Class 1
-                                                        </p>
-                                                        <Menu.Item>
-                                                            {({ active }) => (
-                                                                <Link
-                                                                    to="/TeachersDashboard/ManageStudents"
-                                                                    className={classNames(
-                                                                        active
-                                                                            ? "bg-gray-100 text-gray-900"
-                                                                            : "text-gray-700",
-                                                                        "block px-4 py-1 text-sm"
-                                                                    )}
-                                                                >
-                                                                    Section A
-                                                                </Link>
-                                                            )}
-                                                        </Menu.Item>
-                                                        <Menu.Item>
-                                                            {({ active }) => (
-                                                                <Link
-                                                                    to="/TeachersDashboard/ManageStudents"
-                                                                    className={classNames(
-                                                                        active
-                                                                            ? "bg-gray-100 text-gray-900"
-                                                                            : "text-gray-700",
-                                                                        "block px-4 py-1 text-sm"
-                                                                    )}
-                                                                >
-                                                                    Section B
-                                                                </Link>
-                                                            )}
-                                                        </Menu.Item>
-                                                        <p className="px-2 pt-1 font-medium">
-                                                            Class 2
-                                                        </p>
-                                                        <Menu.Item>
-                                                            {({ active }) => (
-                                                                <Link
-                                                                    to="/TeachersDashboard/ManageStudents"
-                                                                    className={classNames(
-                                                                        active
-                                                                            ? "bg-gray-100 text-gray-900"
-                                                                            : "text-gray-700",
-                                                                        "block px-4 py-1 text-sm"
-                                                                    )}
-                                                                >
-                                                                    Section A
-                                                                </Link>
-                                                            )}
-                                                        </Menu.Item>
-                                                        <Menu.Item>
-                                                            {({ active }) => (
-                                                                <Link
-                                                                    to="/TeachersDashboard/ManageStudents"
-                                                                    className={classNames(
-                                                                        active
-                                                                            ? "bg-gray-100 text-gray-900"
-                                                                            : "text-gray-700",
-                                                                        "block w-full text-left px-4 py-1 text-sm"
-                                                                    )}
-                                                                >
-                                                                    Section B
-                                                                </Link>
-                                                            )}
-                                                        </Menu.Item>
-                                                    </div>
-                                                </Menu.Items>
-                                            </Transition>
-                                        </Menu>
-                                    </div>
-
-                                    {/* Register Student */}
-                                    <div>
-                                        <Link
-                                            to="/TeachersDashboard/RegisterStudent"
-                                            className="block text-black hover:bg-gray-700 hover:text-white px-3 py-2 rounded-md text-sm font-medium"
-                                        >
-                                            Register Student
-                                        </Link>
-                                    </div>
-
-                                    {/* Publish Notice */}
-                                    <div>
-                                        <Link
-                                            to="/TeachersDashboard/NoticePublish"
-                                            className="block text-black hover:bg-gray-700 hover:text-white px-3 py-2 rounded-md text-sm font-medium"
-                                        >
-                                            Publish Notice
-                                        </Link>
-                                    </div>
-                                    {/* Publish Assignment */}
-                                    <div>
-                                        <Link
-                                            to="/TeachersDashboard/publishAssignment"
-                                            className="block text-black hover:bg-gray-700 hover:text-white px-3 py-2 rounded-md text-sm font-medium"
-                                        >
-                                            Publish Assignment
-                                        </Link>
-                                    </div>
-
-                                    {/* Add Result */}
-                                    <div>
-                                        <Menu
-                                            as="div"
-                                            className="inline-block text-left"
-                                        >
-                                            <div>
-                                                <Menu.Button className="block text-black hover:bg-gray-700 hover:text-white px-3 py-2 rounded-md text-sm font-medium">
-                                                    Add Result
-                                                </Menu.Button>
-                                            </div>
-
-                                            <Transition
-                                                as={Fragment}
-                                                enter="transition ease-out duration-100"
-                                                enterFrom="transform opacity-0 scale-95"
-                                                enterTo="transform opacity-100 scale-100"
-                                                leave="transition ease-in duration-75"
-                                                leaveFrom="transform opacity-100 scale-100"
-                                                leaveTo="transform opacity-0 scale-95"
+                                                <h3 className="font-medium pl-6">
+                                                    Class 1
+                                                </h3>
+                                                <li>
+                                                    <Link
+                                                        to="/TeachersDashboard/ManageStudents"
+                                                        className="teacher-dashboard-dropdown-link"
+                                                    >
+                                                        Section A
+                                                    </Link>
+                                                </li>
+                                                <li>
+                                                    <Link
+                                                        to="/TeachersDashboard/ManageStudents"
+                                                        className="teacher-dashboard-dropdown-link"
+                                                    >
+                                                        Section B
+                                                    </Link>
+                                                </li>
+                                                <h3 className="font-medium pl-6">
+                                                    Class 2
+                                                </h3>
+                                                <li>
+                                                    <Link
+                                                        to="/TeachersDashboard/ManageStudents"
+                                                        className="teacher-dashboard-dropdown-link"
+                                                    >
+                                                        Section A
+                                                    </Link>
+                                                </li>
+                                                <li>
+                                                    <Link
+                                                        to="/TeachersDashboard/ManageStudents"
+                                                        className="teacher-dashboard-dropdown-link"
+                                                    >
+                                                        Section B
+                                                    </Link>
+                                                </li>
+                                            </ul>
+                                        </li>
+                                        {/* Register Students */}
+                                        <li>
+                                            <Link
+                                                to="/TeachersDashboard/RegisterStudent"
+                                                className="teacher-dashboard-link"
                                             >
-                                                <Menu.Items className="origin-top-right absolute mt-2 min-w-max w-36 rounded-md shadow-lg bg-white ring-1 ring-black ring-opacity-5 focus:outline-none">
-                                                    <div className="p-1">
-                                                        <p className="px-2 pt-1 font-medium">
-                                                            Class 1
-                                                        </p>
-                                                        <Menu.Item>
-                                                            {({ active }) => (
-                                                                <Link
-                                                                    to="#"
-                                                                    className={classNames(
-                                                                        active
-                                                                            ? "bg-gray-100 text-gray-900"
-                                                                            : "text-gray-700",
-                                                                        "block px-4 py-1 text-sm"
-                                                                    )}
-                                                                >
-                                                                    Section A
-                                                                </Link>
-                                                            )}
-                                                        </Menu.Item>
-                                                        <Menu.Item>
-                                                            {({ active }) => (
-                                                                <Link
-                                                                    to="#"
-                                                                    className={classNames(
-                                                                        active
-                                                                            ? "bg-gray-100 text-gray-900"
-                                                                            : "text-gray-700",
-                                                                        "block px-4 py-1 text-sm"
-                                                                    )}
-                                                                >
-                                                                    Section B
-                                                                </Link>
-                                                            )}
-                                                        </Menu.Item>
-                                                        <p className="px-2 pt-1 font-medium">
-                                                            Class 2
-                                                        </p>
-                                                        <Menu.Item>
-                                                            {({ active }) => (
-                                                                <Link
-                                                                    to="#"
-                                                                    className={classNames(
-                                                                        active
-                                                                            ? "bg-gray-100 text-gray-900"
-                                                                            : "text-gray-700",
-                                                                        "block px-4 py-1 text-sm"
-                                                                    )}
-                                                                >
-                                                                    Section A
-                                                                </Link>
-                                                            )}
-                                                        </Menu.Item>
-                                                        <Menu.Item>
-                                                            {({ active }) => (
-                                                                <Link
-                                                                    to="#"
-                                                                    className={classNames(
-                                                                        active
-                                                                            ? "bg-gray-100 text-gray-900"
-                                                                            : "text-gray-700",
-                                                                        "block w-full text-left px-4 py-1 text-sm"
-                                                                    )}
-                                                                >
-                                                                    Section B
-                                                                </Link>
-                                                            )}
-                                                        </Menu.Item>
-                                                    </div>
-                                                </Menu.Items>
-                                            </Transition>
-                                        </Menu>
-                                    </div>
-                                    {/* Add Routine */}
-                                    <div>
-                                        <Menu
-                                            as="div"
-                                            className="inline-block text-left"
-                                        >
-                                            <div>
-                                                <Menu.Button className="text-black hover:bg-gray-700 hover:text-white px-3 py-2 rounded-md text-sm font-medium">
+                                                Register Students
+                                            </Link>
+                                        </li>
+                                        {/* Publish Notice */}
+                                        <li>
+                                            <Link
+                                                to="/TeachersDashboard/NoticePublish"
+                                                className="teacher-dashboard-link"
+                                            >
+                                                Publish Notice
+                                            </Link>
+                                        </li>
+                                        {/* Publish Assignment */}
+                                        <li>
+                                            <Link
+                                                to="/TeachersDashboard/publishAssignment"
+                                                className="teacher-dashboard-link"
+                                            >
+                                                Publish Assignment
+                                            </Link>
+                                        </li>
+                                        {/* Add Routine Dropdown Menu */}
+                                        <li>
+                                            <button
+                                                type="button"
+                                                class="flex items-center p-2 w-full text-base font-medium text-gray-900 rounded-lg transition duration-75 group hover:bg-gray-700 hover:text-white dark:text-white dark:hover:bg-gray-700"
+                                                aria-controls="add-routine"
+                                                data-collapse-toggle="add-routine"
+                                            >
+                                                <span
+                                                    class="flex-1 text-left whitespace-nowrap"
+                                                    sidebar-toggle-item=""
+                                                >
                                                     Add Routine
-                                                </Menu.Button>
-                                            </div>
-
-                                            <Transition
-                                                as={Fragment}
-                                                enter="transition ease-out duration-100"
-                                                enterFrom="transform opacity-0 scale-95"
-                                                enterTo="transform opacity-100 scale-100"
-                                                leave="transition ease-in duration-75"
-                                                leaveFrom="transform opacity-100 scale-100"
-                                                leaveTo="transform opacity-0 scale-95"
+                                                </span>
+                                                <svg
+                                                    sidebar-toggle-item=""
+                                                    class="w-6 h-6"
+                                                    fill="currentColor"
+                                                    viewBox="0 0 20 20"
+                                                    xmlns="http://www.w3.org/2000/svg"
+                                                >
+                                                    <path
+                                                        fill-rule="evenodd"
+                                                        d="M5.293 7.293a1 1 0 011.414 0L10 10.586l3.293-3.293a1 1 0 111.414 1.414l-4 4a1 1 0 01-1.414 0l-4-4a1 1 0 010-1.414z"
+                                                        clip-rule="evenodd"
+                                                    ></path>
+                                                </svg>
+                                            </button>
+                                            <ul id="add-routine" class="hidden">
+                                                <li>
+                                                    <Link
+                                                        to="/TeachersDashboard/ClassRoutine"
+                                                        className="teacher-dashboard-dropdown-link"
+                                                    >
+                                                        Class Routine
+                                                    </Link>
+                                                </li>
+                                                <li>
+                                                    <Link
+                                                        to="/TeachersDashboard/ExamRoutine"
+                                                        className="teacher-dashboard-dropdown-link"
+                                                    >
+                                                        Exam Routine
+                                                    </Link>
+                                                </li>
+                                            </ul>
+                                        </li>
+                                        {/* Add Result Dropdown Menu */}
+                                        <li>
+                                            <button
+                                                type="button"
+                                                class="flex items-center p-2 w-full text-base font-medium text-gray-900 rounded-lg transition duration-75 group hover:bg-gray-700 hover:text-white dark:text-white dark:hover:bg-gray-700"
+                                                aria-controls="add-result"
+                                                data-collapse-toggle="add-result"
                                             >
-                                                <Menu.Items className="origin-top-right absolute mt-2 min-w-max w-36 rounded-md shadow-lg bg-white ring-1 ring-black ring-opacity-5 focus:outline-none">
-                                                    <div className="p-1">
-                                                        <Menu.Item>
-                                                            {({ active }) => (
-                                                                <Link
-                                                                    to="/TeachersDashboard/ClassRoutine"
-                                                                    className={classNames(
-                                                                        active
-                                                                            ? "bg-gray-100 text-gray-900"
-                                                                            : "text-gray-700",
-                                                                        "block px-4 py-1 text-sm"
-                                                                    )}
-                                                                >
-                                                                    Class
-                                                                    Routine
-                                                                </Link>
-                                                            )}
-                                                        </Menu.Item>
-                                                        <Menu.Item>
-                                                            {({ active }) => (
-                                                                <Link
-                                                                    to="/TeachersDashboard/ExamRoutine"
-                                                                    className={classNames(
-                                                                        active
-                                                                            ? "bg-gray-100 text-gray-900"
-                                                                            : "text-gray-700",
-                                                                        "block px-4 py-1 text-sm"
-                                                                    )}
-                                                                >
-                                                                    Exam Routine
-                                                                </Link>
-                                                            )}
-                                                        </Menu.Item>
-                                                    </div>
-                                                </Menu.Items>
-                                            </Transition>
-                                        </Menu>
-                                    </div>
-                                    {/* See Student Request */}
-                                    <div>
-                                        <Link
-                                            to="/TeachersDashboard/SeeExtraRequestPage"
-                                            className="block text-black hover:bg-gray-700 hover:text-white px-3 py-2 rounded-md text-sm font-medium"
-                                        >
-                                            ExtraCare Student Request
-                                        </Link>
-                                    </div>
+                                                <span
+                                                    class="flex-1 text-left whitespace-nowrap"
+                                                    sidebar-toggle-item=""
+                                                >
+                                                    Add Result
+                                                </span>
+                                                <svg
+                                                    sidebar-toggle-item=""
+                                                    class="w-6 h-6"
+                                                    fill="currentColor"
+                                                    viewBox="0 0 20 20"
+                                                    xmlns="http://www.w3.org/2000/svg"
+                                                >
+                                                    <path
+                                                        fill-rule="evenodd"
+                                                        d="M5.293 7.293a1 1 0 011.414 0L10 10.586l3.293-3.293a1 1 0 111.414 1.414l-4 4a1 1 0 01-1.414 0l-4-4a1 1 0 010-1.414z"
+                                                        clip-rule="evenodd"
+                                                    ></path>
+                                                </svg>
+                                            </button>
+                                            <ul id="add-result" class="hidden">
+                                                <h3 className="font-medium pl-6">
+                                                    Class 1
+                                                </h3>
+                                                <li>
+                                                    <Link
+                                                        to="#"
+                                                        className="teacher-dashboard-dropdown-link"
+                                                    >
+                                                        Section A
+                                                    </Link>
+                                                </li>
+                                                <li>
+                                                    <Link
+                                                        to="#"
+                                                        className="teacher-dashboard-dropdown-link"
+                                                    >
+                                                        Section B
+                                                    </Link>
+                                                </li>
+                                                <h3 className="font-medium pl-6">
+                                                    Class 2
+                                                </h3>
+                                                <li>
+                                                    <Link
+                                                        to="#"
+                                                        className="teacher-dashboard-dropdown-link"
+                                                    >
+                                                        Section A
+                                                    </Link>
+                                                </li>
+                                                <li>
+                                                    <Link
+                                                        to="#"
+                                                        className="teacher-dashboard-dropdown-link"
+                                                    >
+                                                        Section B
+                                                    </Link>
+                                                </li>
+                                            </ul>
+                                        </li>
+                                        {/* Student Extra Care Request */}
+                                        <li>
+                                            <Link
+                                                to="/TeachersDashboard/SeeExtraRequestPage"
+                                                className="teacher-dashboard-link"
+                                            >
+                                                ExtraCare Student Request
+                                            </Link>
+                                        </li>
+                                    </ul>
                                 </div>
-                            </div>
+                            </aside>
                         </div>
+                        {/*-------------- Mobile View Navigation Bar --------------*/}
                         <div className="flex md:hidden">
                             <button
                                 onClick={() => setIsOpen(!isOpen)}
@@ -394,291 +333,256 @@ const TeachersPanelSideBar = () => {
                                 ref={ref}
                                 className="px-2 pt-2 pb-3 space-y-1 sm:px-3"
                             >
-                                <div>
-                                    <Link
-                                        to="/"
-                                        className="block text-black hover:bg-gray-700 hover:text-white px-3 py-2 rounded-md text-sm font-medium"
-                                    >
-                                        Home
-                                    </Link>
-                                </div>
-
-                                {/* Student List Dropdown menu */}
-                                <div>
-                                    <Menu
-                                        as="div"
-                                        className="inline-block text-left"
-                                    >
-                                        <div>
-                                            <Menu.Button className="text-black hover:bg-gray-700 hover:text-white px-3 py-2 rounded-md text-sm font-medium">
+                                <ul class="space-y-1">
+                                    {/* Dashboard Home */}
+                                    <li className="mb-5">
+                                        <Link
+                                            to="/TeachersDashboard"
+                                            className="font-bold text-xl text-blue-800"
+                                        >
+                                            Teachers Dashboard
+                                        </Link>
+                                    </li>
+                                    {/* Back to home page */}
+                                    <li>
+                                        <Link
+                                            to="/"
+                                            className="teacher-dashboard-link"
+                                        >
+                                            Home
+                                        </Link>
+                                    </li>
+                                    {/* Teacher Profile */}
+                                    <li>
+                                        <Link
+                                            to="/TeachersDashboard/Profile"
+                                            className="teacher-dashboard-link"
+                                        >
+                                            View Profile
+                                        </Link>
+                                    </li>
+                                    {/* Manage Students Dropdown Menu */}
+                                    <li>
+                                        <button
+                                            type="button"
+                                            class="flex items-center p-2 w-full text-base font-medium text-gray-900 rounded-lg transition duration-75 group hover:bg-gray-700 hover:text-white dark:text-white dark:hover:bg-gray-700"
+                                            aria-controls="manage-students"
+                                            data-collapse-toggle="manage-students"
+                                        >
+                                            <span
+                                                class="flex-1 text-left whitespace-nowrap"
+                                                sidebar-toggle-item=""
+                                            >
                                                 Manage Students
-                                            </Menu.Button>
-                                        </div>
-
-                                        <Transition
-                                            as={Fragment}
-                                            enter="transition ease-out duration-100"
-                                            enterFrom="transform opacity-0 scale-95"
-                                            enterTo="transform opacity-100 scale-100"
-                                            leave="transition ease-in duration-75"
-                                            leaveFrom="transform opacity-100 scale-100"
-                                            leaveTo="transform opacity-0 scale-95"
+                                            </span>
+                                            <svg
+                                                sidebar-toggle-item=""
+                                                class="w-6 h-6"
+                                                fill="currentColor"
+                                                viewBox="0 0 20 20"
+                                                xmlns="http://www.w3.org/2000/svg"
+                                            >
+                                                <path
+                                                    fill-rule="evenodd"
+                                                    d="M5.293 7.293a1 1 0 011.414 0L10 10.586l3.293-3.293a1 1 0 111.414 1.414l-4 4a1 1 0 01-1.414 0l-4-4a1 1 0 010-1.414z"
+                                                    clip-rule="evenodd"
+                                                ></path>
+                                            </svg>
+                                        </button>
+                                        <ul id="manage-students" class="hidden">
+                                            <h3 className="font-medium pl-6">
+                                                Class 1
+                                            </h3>
+                                            <li>
+                                                <Link
+                                                    to="/TeachersDashboard/ManageStudents"
+                                                    className="teacher-dashboard-dropdown-link"
+                                                >
+                                                    Section A
+                                                </Link>
+                                            </li>
+                                            <li>
+                                                <Link
+                                                    to="/TeachersDashboard/ManageStudents"
+                                                    className="teacher-dashboard-dropdown-link"
+                                                >
+                                                    Section B
+                                                </Link>
+                                            </li>
+                                            <h3 className="font-medium pl-6">
+                                                Class 2
+                                            </h3>
+                                            <li>
+                                                <Link
+                                                    to="/TeachersDashboard/ManageStudents"
+                                                    className="teacher-dashboard-dropdown-link"
+                                                >
+                                                    Section A
+                                                </Link>
+                                            </li>
+                                            <li>
+                                                <Link
+                                                    to="/TeachersDashboard/ManageStudents"
+                                                    className="teacher-dashboard-dropdown-link"
+                                                >
+                                                    Section B
+                                                </Link>
+                                            </li>
+                                        </ul>
+                                    </li>
+                                    {/* Register Students */}
+                                    <li>
+                                        <Link
+                                            to="/TeachersDashboard/RegisterStudent"
+                                            className="teacher-dashboard-link"
                                         >
-                                            <Menu.Items className="origin-top-right absolute mt-2 min-w-max w-36 rounded-md shadow-lg bg-white ring-1 ring-black ring-opacity-5 focus:outline-none">
-                                                <div className="p-1">
-                                                    <p className="px-2 pt-1 font-medium">
-                                                        Class 1
-                                                    </p>
-                                                    <Menu.Item>
-                                                        {({ active }) => (
-                                                            <Link
-                                                                to="/TeachersDashboard/ManageStudents"
-                                                                className={classNames(
-                                                                    active
-                                                                        ? "bg-gray-100 text-gray-900"
-                                                                        : "text-gray-700",
-                                                                    "block px-4 py-1 text-sm"
-                                                                )}
-                                                            >
-                                                                Section A
-                                                            </Link>
-                                                        )}
-                                                    </Menu.Item>
-                                                    <Menu.Item>
-                                                        {({ active }) => (
-                                                            <Link
-                                                                to="/TeachersDashboard/ManageStudents"
-                                                                className={classNames(
-                                                                    active
-                                                                        ? "bg-gray-100 text-gray-900"
-                                                                        : "text-gray-700",
-                                                                    "block px-4 py-1 text-sm"
-                                                                )}
-                                                            >
-                                                                Section B
-                                                            </Link>
-                                                        )}
-                                                    </Menu.Item>
-                                                    <p className="px-2 pt-1 font-medium">
-                                                        Class 2
-                                                    </p>
-                                                    <Menu.Item>
-                                                        {({ active }) => (
-                                                            <Link
-                                                                to="/TeachersDashboard/ManageStudents"
-                                                                className={classNames(
-                                                                    active
-                                                                        ? "bg-gray-100 text-gray-900"
-                                                                        : "text-gray-700",
-                                                                    "block px-4 py-1 text-sm"
-                                                                )}
-                                                            >
-                                                                Section A
-                                                            </Link>
-                                                        )}
-                                                    </Menu.Item>
-                                                    <Menu.Item>
-                                                        {({ active }) => (
-                                                            <Link
-                                                                to="/TeachersDashboard/ManageStudents"
-                                                                className={classNames(
-                                                                    active
-                                                                        ? "bg-gray-100 text-gray-900"
-                                                                        : "text-gray-700",
-                                                                    "block w-full text-left px-4 py-1 text-sm"
-                                                                )}
-                                                            >
-                                                                Section B
-                                                            </Link>
-                                                        )}
-                                                    </Menu.Item>
-                                                </div>
-                                            </Menu.Items>
-                                        </Transition>
-                                    </Menu>
-                                </div>
-
-                                {/* Register Student */}
-                                <div>
-                                    <Link
-                                        to="/TeachersDashboard/RegisterStudent"
-                                        className="block text-black hover:bg-gray-700 hover:text-white px-3 py-2 rounded-md text-sm font-medium"
-                                    >
-                                        Register Student
-                                    </Link>
-                                </div>
-
-                                {/* Publish Notice */}
-                                <div>
-                                    <Link
-                                        to="/TeachersDashboard/NoticePublish"
-                                        className="block text-black hover:bg-gray-700 hover:text-white px-3 py-2 rounded-md text-sm font-medium"
-                                    >
-                                        Publish Notice
-                                    </Link>
-                                </div>
-                                {/* Publish Assignment */}
-                                <div>
-                                    <Link
-                                        to="/TeachersDashboard/publishAssignment"
-                                        className="block text-black hover:bg-gray-700 hover:text-white px-3 py-2 rounded-md text-sm font-medium"
-                                    >
-                                        Publish Assignment
-                                    </Link>
-                                </div>
-
-                                {/* Add Result */}
-                                <div>
-                                    <Menu
-                                        as="div"
-                                        className="inline-block text-left"
-                                    >
-                                        <div>
-                                            <Menu.Button className="block text-black hover:bg-gray-700 hover:text-white px-3 py-2 rounded-md text-sm font-medium">
-                                                Add Result
-                                            </Menu.Button>
-                                        </div>
-
-                                        <Transition
-                                            as={Fragment}
-                                            enter="transition ease-out duration-100"
-                                            enterFrom="transform opacity-0 scale-95"
-                                            enterTo="transform opacity-100 scale-100"
-                                            leave="transition ease-in duration-75"
-                                            leaveFrom="transform opacity-100 scale-100"
-                                            leaveTo="transform opacity-0 scale-95"
+                                            Register Students
+                                        </Link>
+                                    </li>
+                                    {/* Publish Notice */}
+                                    <li>
+                                        <Link
+                                            to="/TeachersDashboard/NoticePublish"
+                                            className="teacher-dashboard-link"
                                         >
-                                            <Menu.Items className="origin-top-right absolute mt-2 min-w-max w-36 rounded-md shadow-lg bg-white ring-1 ring-black ring-opacity-5 focus:outline-none">
-                                                <div className="p-1">
-                                                    <p className="px-2 pt-1 font-medium">
-                                                        Class 1
-                                                    </p>
-                                                    <Menu.Item>
-                                                        {({ active }) => (
-                                                            <Link
-                                                                to="#"
-                                                                className={classNames(
-                                                                    active
-                                                                        ? "bg-gray-100 text-gray-900"
-                                                                        : "text-gray-700",
-                                                                    "block px-4 py-1 text-sm"
-                                                                )}
-                                                            >
-                                                                Section A
-                                                            </Link>
-                                                        )}
-                                                    </Menu.Item>
-                                                    <Menu.Item>
-                                                        {({ active }) => (
-                                                            <Link
-                                                                to="#"
-                                                                className={classNames(
-                                                                    active
-                                                                        ? "bg-gray-100 text-gray-900"
-                                                                        : "text-gray-700",
-                                                                    "block px-4 py-1 text-sm"
-                                                                )}
-                                                            >
-                                                                Section B
-                                                            </Link>
-                                                        )}
-                                                    </Menu.Item>
-                                                    <p className="px-2 pt-1 font-medium">
-                                                        Class 2
-                                                    </p>
-                                                    <Menu.Item>
-                                                        {({ active }) => (
-                                                            <Link
-                                                                to="#"
-                                                                className={classNames(
-                                                                    active
-                                                                        ? "bg-gray-100 text-gray-900"
-                                                                        : "text-gray-700",
-                                                                    "block px-4 py-1 text-sm"
-                                                                )}
-                                                            >
-                                                                Section A
-                                                            </Link>
-                                                        )}
-                                                    </Menu.Item>
-                                                    <Menu.Item>
-                                                        {({ active }) => (
-                                                            <Link
-                                                                to="#"
-                                                                className={classNames(
-                                                                    active
-                                                                        ? "bg-gray-100 text-gray-900"
-                                                                        : "text-gray-700",
-                                                                    "block w-full text-left px-4 py-1 text-sm"
-                                                                )}
-                                                            >
-                                                                Section B
-                                                            </Link>
-                                                        )}
-                                                    </Menu.Item>
-                                                </div>
-                                            </Menu.Items>
-                                        </Transition>
-                                    </Menu>
-                                </div>
-                                {/* Add Routine */}
-                                <div>
-                                    <Menu
-                                        as="div"
-                                        className="inline-block text-left"
-                                    >
-                                        <div>
-                                            <Menu.Button className="text-black hover:bg-gray-700 hover:text-white px-3 py-2 rounded-md text-sm font-medium">
+                                            Publish Notice
+                                        </Link>
+                                    </li>
+                                    {/* Publish Assignment */}
+                                    <li>
+                                        <Link
+                                            to="/TeachersDashboard/publishAssignment"
+                                            className="teacher-dashboard-link"
+                                        >
+                                            Publish Assignment
+                                        </Link>
+                                    </li>
+                                    {/* Add Routine Dropdown Menu */}
+                                    <li>
+                                        <button
+                                            type="button"
+                                            class="flex items-center p-2 w-full text-base font-medium text-gray-900 rounded-lg transition duration-75 group hover:bg-gray-700 hover:text-white dark:text-white dark:hover:bg-gray-700"
+                                            aria-controls="add-routine"
+                                            data-collapse-toggle="add-routine"
+                                        >
+                                            <span
+                                                class="flex-1 text-left whitespace-nowrap"
+                                                sidebar-toggle-item=""
+                                            >
                                                 Add Routine
-                                            </Menu.Button>
-                                        </div>
-
-                                        <Transition
-                                            as={Fragment}
-                                            enter="transition ease-out duration-100"
-                                            enterFrom="transform opacity-0 scale-95"
-                                            enterTo="transform opacity-100 scale-100"
-                                            leave="transition ease-in duration-75"
-                                            leaveFrom="transform opacity-100 scale-100"
-                                            leaveTo="transform opacity-0 scale-95"
+                                            </span>
+                                            <svg
+                                                sidebar-toggle-item=""
+                                                class="w-6 h-6"
+                                                fill="currentColor"
+                                                viewBox="0 0 20 20"
+                                                xmlns="http://www.w3.org/2000/svg"
+                                            >
+                                                <path
+                                                    fill-rule="evenodd"
+                                                    d="M5.293 7.293a1 1 0 011.414 0L10 10.586l3.293-3.293a1 1 0 111.414 1.414l-4 4a1 1 0 01-1.414 0l-4-4a1 1 0 010-1.414z"
+                                                    clip-rule="evenodd"
+                                                ></path>
+                                            </svg>
+                                        </button>
+                                        <ul id="add-routine" class="hidden">
+                                            <li>
+                                                <Link
+                                                    to="/TeachersDashboard/ClassRoutine"
+                                                    className="teacher-dashboard-dropdown-link"
+                                                >
+                                                    Class Routine
+                                                </Link>
+                                            </li>
+                                            <li>
+                                                <Link
+                                                    to="/TeachersDashboard/ExamRoutine"
+                                                    className="teacher-dashboard-dropdown-link"
+                                                >
+                                                    Exam Routine
+                                                </Link>
+                                            </li>
+                                        </ul>
+                                    </li>
+                                    {/* Add Result Dropdown Menu */}
+                                    <li>
+                                        <button
+                                            type="button"
+                                            class="flex items-center p-2 w-full text-base font-medium text-gray-900 rounded-lg transition duration-75 group hover:bg-gray-700 hover:text-white dark:text-white dark:hover:bg-gray-700"
+                                            aria-controls="add-result"
+                                            data-collapse-toggle="add-result"
                                         >
-                                            <Menu.Items className="origin-top-right absolute mt-2 min-w-max w-36 rounded-md shadow-lg bg-white ring-1 ring-black ring-opacity-5 focus:outline-none">
-                                                <div className="p-1">
-                                                    <Menu.Item>
-                                                        {({ active }) => (
-                                                            <Link
-                                                                to="/TeachersDashboard/ClassRoutine"
-                                                                className={classNames(
-                                                                    active
-                                                                        ? "bg-gray-100 text-gray-900"
-                                                                        : "text-gray-700",
-                                                                    "block px-4 py-1 text-sm"
-                                                                )}
-                                                            >
-                                                                Class Routine
-                                                            </Link>
-                                                        )}
-                                                    </Menu.Item>
-                                                    <Menu.Item>
-                                                        {({ active }) => (
-                                                            <Link
-                                                                to="/TeachersDashboard/ExamRoutine"
-                                                                className={classNames(
-                                                                    active
-                                                                        ? "bg-gray-100 text-gray-900"
-                                                                        : "text-gray-700",
-                                                                    "block px-4 py-1 text-sm"
-                                                                )}
-                                                            >
-                                                                Exam Routine
-                                                            </Link>
-                                                        )}
-                                                    </Menu.Item>
-                                                </div>
-                                            </Menu.Items>
-                                        </Transition>
-                                    </Menu>
-                                </div>
+                                            <span
+                                                class="flex-1 text-left whitespace-nowrap"
+                                                sidebar-toggle-item=""
+                                            >
+                                                Add Result
+                                            </span>
+                                            <svg
+                                                sidebar-toggle-item=""
+                                                class="w-6 h-6"
+                                                fill="currentColor"
+                                                viewBox="0 0 20 20"
+                                                xmlns="http://www.w3.org/2000/svg"
+                                            >
+                                                <path
+                                                    fill-rule="evenodd"
+                                                    d="M5.293 7.293a1 1 0 011.414 0L10 10.586l3.293-3.293a1 1 0 111.414 1.414l-4 4a1 1 0 01-1.414 0l-4-4a1 1 0 010-1.414z"
+                                                    clip-rule="evenodd"
+                                                ></path>
+                                            </svg>
+                                        </button>
+                                        <ul id="add-result" class="hidden">
+                                            <h3 className="font-medium pl-6">
+                                                Class 1
+                                            </h3>
+                                            <li>
+                                                <Link
+                                                    to="#"
+                                                    className="teacher-dashboard-dropdown-link"
+                                                >
+                                                    Section A
+                                                </Link>
+                                            </li>
+                                            <li>
+                                                <Link
+                                                    to="#"
+                                                    className="teacher-dashboard-dropdown-link"
+                                                >
+                                                    Section B
+                                                </Link>
+                                            </li>
+                                            <h3 className="font-medium pl-6">
+                                                Class 2
+                                            </h3>
+                                            <li>
+                                                <Link
+                                                    to="#"
+                                                    className="teacher-dashboard-dropdown-link"
+                                                >
+                                                    Section A
+                                                </Link>
+                                            </li>
+                                            <li>
+                                                <Link
+                                                    to="#"
+                                                    className="teacher-dashboard-dropdown-link"
+                                                >
+                                                    Section B
+                                                </Link>
+                                            </li>
+                                        </ul>
+                                    </li>
+                                    {/* Student Extra Care Request */}
+                                    <li>
+                                        <Link
+                                            to="/TeachersDashboard/SeeExtraRequestPage"
+                                            className="teacher-dashboard-link"
+                                        >
+                                            ExtraCare Student Request
+                                        </Link>
+                                    </li>
+                                </ul>
                             </div>
                         </div>
                     )}
