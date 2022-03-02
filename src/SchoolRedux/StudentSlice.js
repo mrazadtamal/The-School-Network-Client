@@ -1,10 +1,10 @@
 import { createAsyncThunk, createSlice } from "@reduxjs/toolkit";
 import Swal from "sweetalert2";
 
-const initialState = {
-  value: 0,
-  notice: [],
-};
+// const initialState = {
+//   value: 0,
+//   notice: [],
+// };
 
 // fetch the data from the database
 //for fetching the data from the api and database we use asyncthunk
@@ -43,25 +43,43 @@ export const RequestExtraCare = createAsyncThunk(
 
 export const GetStudent = createAsyncThunk(
   "Student/GetStudent",
-  async (email) => {
-    console.log("Hitted Get Student", email);
+  async (data) => {
+    console.log("Hitted Get Student", data.email);
     const response = await fetch(
-      `http://localhost:5000/student/filteredStudent/${email}`
+      `http://localhost:5000/student/filteredStudent?email=${data.email}&&term=${data.term}`
     )
       .then((res) => res.json())
       .catch((err) => {
         console.log(err);
       });
+    console.log(response);
     return response;
   }
 );
+
+// get filtered result of every student according to their class name and roll
+// export const GetFilteredResult = createAsyncThunk(
+//   "Student/GetFilteredResult",
+//   async (data) => {
+//     console.log("Hitted Get Filtered Student", data.name);
+//     const response = await fetch(
+//       `http://localhost:5000/student/filteredResult?name=${data.name}&&roll=${data.roll}&&section=${data.section}&&class=${data.class}`
+//     )
+//       .then((res) => res.json())
+//       .catch((err) => {
+//         console.log(err);
+//       });
+//     return response;
+//   }
+// );
 
 export const StudentReducer = createSlice({
   name: "Student",
   initialState: {
     value: 0,
     results: [],
-    user: [],
+    user: {},
+    filteredResult: [],
   },
   reducers: {
     increment: (state) => {
@@ -87,6 +105,11 @@ export const StudentReducer = createSlice({
     builder.addCase(GetStudent.fulfilled, (state, action) => {
       state.user = action.payload;
     });
+
+    // get filtered result for individual student
+    // builder.addCase(GetFilteredResult.fulfilled, (state, action) => {
+    //   state.filteredResult = action.payload;
+    // });
   },
 });
 
