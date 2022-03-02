@@ -39,7 +39,7 @@ export const getStudentInfo = createAsyncThunk(
   "Student/studentProfile",
   async (email) => {
     const response = await fetch(
-      `http://localhost:5000/studentProfile?email=${email}`
+      `http://localhost:5000/student/studentProfile?email=${email}`
     ).then((res) => res.json());
     return response;
   }
@@ -51,7 +51,7 @@ export const updateStudentPP = createAsyncThunk(
   async (data) => {
     console.log("Hitted", data);
     const response = await fetch(
-      `http://localhost:5000/updateStudentPP?email=${data.email}`,
+      `http://localhost:5000/student/updateStudentPP?email=${data.email}`,
       {
         method: "PUT",
         body: data.fd,

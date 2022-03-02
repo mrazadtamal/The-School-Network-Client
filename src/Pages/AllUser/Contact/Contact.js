@@ -73,10 +73,6 @@ const Contact = () => {
             +999333666
           </p>{" "}
           <br /> <br />
-          {/* <p className="font-sans text-sm md:text-lg my-2 md:my-4">
-            Press the chat icon at the right bottom corner to have a live chat
-            with our team.
-          </p> */}
         </div>
 
         <div className="c-right">
@@ -84,27 +80,27 @@ const Contact = () => {
             Get In Touch
           </p>
           {!done && (
-            <form ref={formRef} onSubmit={handleSubmit}>
+            <form className="c-form" ref={formRef} onSubmit={handleSubmit}>
               <input
-                className="bg-primary border-2 border-gray-300 text-black  mr-4"
+                className=" c-input   bg-primary border-2 border-gray-300 text-black  mr-4"
                 type="text"
                 placeholder="Name"
                 name="name"
               />
               <input
-                className="bg-primary border-2 border-gray-300 text-black  "
+                className=" c-input  bg-primary border-2 border-gray-300 text-black  "
                 type="text"
                 placeholder="Email"
                 name="email"
               />
               <textarea
-                className="bg-primary  border-2 rounded-md border-gray-300 text-black  "
+                className="c-textarea bg-primary  border-2 rounded-md border-gray-300 text-black  "
                 rows="4"
                 placeholder="Message"
                 name="message"
               />
 
-              <button className=" bg-yellow-500 text-black rounded-md w-20 h-12 text-center    ">
+              <button className="block w-28 text-white bg-yellow-400 text-sm font-semibold rounded-lg hover:bg-yellow-600 focus:outline-none focus:shadow-outline  hover:shadow-xs p-3 my-4">
                 Submit
               </button>
             </form>
