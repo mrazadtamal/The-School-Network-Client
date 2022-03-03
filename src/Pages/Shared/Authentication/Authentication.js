@@ -44,6 +44,7 @@ const useFirebase = () => {
             // An error happened.
           });
     }
+
     return {
         setUser,
         user,

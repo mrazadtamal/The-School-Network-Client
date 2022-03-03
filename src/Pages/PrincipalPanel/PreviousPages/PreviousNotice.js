@@ -3,8 +3,10 @@ import {useDispatch, useSelector} from 'react-redux';
 import {GetingPreviousNotice, PrincipalNoticePublish, PublishImageNotice, DeleteNotice, PutEditNotice} from '../../../SchoolRedux/PrincipalSlice';
 import { Dialog, Transition } from '@headlessui/react';
 import { BsCalendarCheck } from 'react-icons/bs';
+import useFirebase from '../../Shared/Authentication/Authentication';
 
 const PreviousNotice = () => {
+    const {user} = useFirebase()
     const [notice, setNotice] = useState({})
     const [img, setImg] = useState('')
     const dispatch = useDispatch();
@@ -44,7 +46,7 @@ const PreviousNotice = () => {
     }
   return (
     <div>
-    <h1 className='text-center mt-8 text-5xl font-bold mb-8'>All Previous Notice</h1>
+    {user.email === 'principal@gmail.com' ? <h1 className='text-center mt-8 text-5xl font-bold mb-8'>All Previous Notice</h1> : <h1 className='text-center mt-8 text-5xl font-bold mb-8'>Notice For All Teachers</h1>}
         <div className="previous_notice_section">
                 {
                     previousNotice?.map(notice => 
@@ -59,9 +61,10 @@ const PreviousNotice = () => {
                             }
                             <p className='text-xl font-bold  pt-8 text-blue-900'>{notice?.noticeFrom}</p>
                             <p className='text-xl font-bold   mb-4 text-blue-900'>The School Network</p>
-                            <div className='button_div'>
+                            {user?.email === 'principal@gmail.com' &&    <div className='button_div'>
                                 <button onClick={() => DeleteHandler(notice._id)} className='delete_btn'>DELETE</button> <button onClick={() => EditHandler(notice._id)} className='edit_btn'>EDIT</button>
-                            </div>
+                            </div>}
+                         
                         </div>
                     )
                 }

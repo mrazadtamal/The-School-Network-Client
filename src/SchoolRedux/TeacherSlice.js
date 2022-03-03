@@ -4,8 +4,8 @@ import Swal from "sweetalert2";
 //Teacher getting all request from student
 export const GetExtraCareRequest = createAsyncThunk(
     "Teacher/getExtraCareRequest",
-    async () => {
-        const response = await fetch("http://localhost:5000/requestCare").then(
+    async (teacherclass) => {
+        const response = await fetch(`http://localhost:5000/requestCare?teacherclass=${teacherclass}`).then(
             (res) => res.json()
         );
         return response;
@@ -102,10 +102,25 @@ export const PublishResult = createAsyncThunk(
     }
 );
 
+//Get Individual Care of Student
+export const GetIndividualCare = createAsyncThunk(
+    'Teacher/GetIndividualCare',
+    async (id) => {
+      const response = await fetch(`http://localhost:5000/GetIndividualCare/${id}`).then(res=> res.json()).catch(error => {
+        Swal.fire(
+            '!',
+            'Error!',
+            'error'
+          )
+    });
+      return response
+    }
+);
 const initialState = {
     value: 0,
     extraCares: [],
     teacherInfo: {},
+    IndividualCare: {},
 };
 
 export const TeacherReducer = createSlice({
@@ -148,7 +163,10 @@ export const TeacherReducer = createSlice({
               'Result Publish Success',
               'success'
             )
-          });
+        });
+        builder.addCase(GetIndividualCare.fulfilled, (state, action) => {
+            state.IndividualCare = action.payload
+        });
     },
 });
 
