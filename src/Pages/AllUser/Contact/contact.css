@@ -18,7 +18,6 @@
 }
 
 .c-title {
-  /* font-size: 45px; */
   width: 80%;
 }
 
@@ -40,12 +39,12 @@
   font-weight: 200;
 }
 
-form {
+.c-form {
   margin-top: 20px;
 }
 
-input {
-  width: 50%;
+.c-input {
+  width: 60%;
   height: 50px;
   border: none;
   border-bottom: 1px solid black;
@@ -54,26 +53,17 @@ input {
   padding-left: 10px;
 }
 
-textarea {
+.c-textarea {
   width: 100%;
-  margin: 10px 0px;
+  margin: 10px 0px 5px 0px;
   font-size: 14px;
   padding-left: 10px;
-}
-
-button {
-  border: none;
-  padding: 15px;
-
-  color: white;
-  font-weight: 500;
-  cursor: pointer;
 }
 
 @media screen and (max-width: 480px) {
   .c-wrapper {
     flex-direction: column;
-    padding: 0px 50px;
+    padding: 0px 30px;
   }
 
   .c-title {
@@ -89,20 +79,16 @@ button {
     display: none;
   }
 
-  form {
+  .c-form {
     margin-top: 0px;
     display: flex;
     flex-wrap: wrap;
   }
 
-  input {
+  .c-input {
     width: 35%;
     height: 40px;
     margin: 10px;
     margin-left: 0;
-  }
-
-  button {
-    margin-top: 10px;
   }
 }

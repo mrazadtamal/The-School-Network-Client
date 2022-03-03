@@ -4,18 +4,43 @@ import { Link, NavLink } from "react-router-dom";
 const StudentSidebar = () => {
   return (
     <div className="sm:py-10">
-      <h1 className="text-4xl font-bold text-white text-center">
-        Student Dashboard
+      <h1 className="mt-8 text-center">
+        <span className="text-5xl font-bold text-white ">S</span>
+        <span className=" text-lg font-bold text-white ">tudent Dashboard</span>
       </h1>
-      <div className="flex flex-col justify-center items-center">
+
+      <img
+        className="  rounded-full h-28 w-28 text-center m-auto mt-5 mb-5"
+        src="https://res.cloudinary.com/abidazad/image/upload/v1637747947/user_xsd3a7.png"
+        alt=""
+      />
+
+      <div className="flex flex-col justify-center items-start ml-6 py-3">
+        {/*Home  */}
+
         <NavLink
           to="/StudentDashboard"
           style={({ isActive }) => ({
             color: isActive ? "#0bc28b" : "#FFF",
           })}
         >
-          <p className="text-white">Home</p>
+          <p className="text-white py-0.5">Home</p>
         </NavLink>
+
+        {/* Student Profile */}
+        <NavLink
+          to="/StudentDashboard/StudentProfile"
+          style={({ isActive }) => ({
+            color: isActive ? "#0bc28b" : "#FFF",
+          })}
+        >
+          <p className="text-white py-0.5 hover:bg-yellow-200 w-40 hover:text-black">
+            Student Profile
+          </p>
+        </NavLink>
+
+        {/*Request Extra Care  */}
+
         <NavLink
           to="/StudentDashboard/RequestCare"
           style={({ isActive }) => ({
@@ -23,8 +48,13 @@ const StudentSidebar = () => {
             background: isActive ? "#7600dc" : "black",
           })}
         >
-          <p className="text-white">Request Extra Care</p>
+          <p className="text-white py-0.5 hover:bg-yellow-200 w-40 hover:text-black ">
+            Request Extra Care
+          </p>
         </NavLink>
+
+        {/* Submit Documents */}
+
         <NavLink
           to="/StudentDashboard/SubmitDocuments"
           style={({ isActive }) => ({
@@ -32,8 +62,13 @@ const StudentSidebar = () => {
             background: isActive ? "#7600dc" : "black",
           })}
         >
-          <p className="text-white">Submit Documents</p>
+          <p className="text-white py-0.5 hover:bg-yellow-200 w-40 hover:text-black">
+            Submit Documents
+          </p>
         </NavLink>
+
+        {/* pay */}
+
         <NavLink
           to="/StudentDashboard/StudentPay"
           style={({ isActive }) => ({
@@ -41,8 +76,13 @@ const StudentSidebar = () => {
             background: isActive ? "#7600dc" : "black",
           })}
         >
-          <p className="text-white">Pay</p>
+          <p className="text-white py-0.5 hover:bg-yellow-200 w-40 hover:text-black">
+            Pay
+          </p>
         </NavLink>
+
+        {/* Student Analytics */}
+
         <NavLink
           to="/StudentDashboard/StudentAnalytics"
           style={({ isActive }) => ({
@@ -50,8 +90,13 @@ const StudentSidebar = () => {
             background: isActive ? "#7600dc" : "black",
           })}
         >
-          <p className="text-white">Student Analytics</p>
+          <p className="text-white py-0.5 hover:bg-yellow-200 w-40 hover:text-black">
+            Student Analytics
+          </p>
         </NavLink>
+
+        {/* See Result */}
+
         <NavLink
           to="/StudentDashboard/seeResult"
           style={({ isActive }) => ({
@@ -59,8 +104,13 @@ const StudentSidebar = () => {
             background: isActive ? "#7600dc" : "black",
           })}
         >
-          <p className="text-white">See Result</p>
+          <p className="text-white py-0.5 hover:bg-yellow-200 w-40 hover:text-black">
+            See Result
+          </p>
         </NavLink>
+
+        {/* Transcript */}
+
         <NavLink
           to="/StudentDashboard/transcript"
           style={({ isActive }) => ({
@@ -68,16 +118,9 @@ const StudentSidebar = () => {
             background: isActive ? "#7600dc" : "black",
           })}
         >
-          <p className="text-white">Transcript</p>
-        </NavLink>
-        <NavLink
-          to="/StudentDashboard/StudentProfile"
-          style={({ isActive }) => ({
-            color: isActive ? "#0bc28b" : "#545e6f",
-            background: isActive ? "#7600dc" : "black",
-          })}
-        >
-          <p className="text-white">My Profile</p>
+          <p className="text-white py-0.5   hover:bg-yellow-200 w-40 hover:text-black">
+            Transcript
+          </p>
         </NavLink>
       </div>
     </div>

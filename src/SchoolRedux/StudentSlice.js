@@ -55,10 +55,10 @@ export const GetStudent = createAsyncThunk(
 // get all term result of a student
 export const GetFilteredResult = createAsyncThunk(
   "Student/GetFilteredResult",
-  async (data) => {
-    console.log("Hitted Get Filtered Student", data.email);
+  async (email) => {
+    console.log("Hitted Get Filtered Student", email);
     const response = await fetch(
-      `http://localhost:5000/student/filteredResult?email=${data.email}`
+      `http://localhost:5000/student/filteredResult?email=${email}`
     )
       .then((res) => res.json())
       .catch((err) => {
@@ -69,13 +69,43 @@ export const GetFilteredResult = createAsyncThunk(
   }
 );
 
+// Get the current student
+export const getStudentInfo = createAsyncThunk(
+  "Student/studentProfile",
+  async (email) => {
+    const response = await fetch(
+      `http://localhost:5000/student/studentProfile?email=${email}`
+    ).then((res) => res.json());
+    return response;
+  }
+);
+
+// Update student profile picture
+export const updateStudentPP = createAsyncThunk(
+  "Student/updateStudentPP",
+  async (data) => {
+    console.log("Hitted", data);
+    const response = await fetch(
+      `http://localhost:5000/student/updateStudentPP?email=${data.email}`,
+      {
+        method: "PUT",
+        body: data.fd,
+      }
+    )
+      .then((res) => res.json())
+      .catch((err) => console.log(err));
+    return response;
+  }
+);
+
 export const StudentReducer = createSlice({
   name: "Student",
   initialState: {
     value: 0,
     results: [],
     user: {},
-    filteredResult: {},
+    allResults: [],
+    studentInfo: {},
   },
   reducers: {
     increment: (state) => {
@@ -104,7 +134,14 @@ export const StudentReducer = createSlice({
 
     // get filtered result for individual student
     builder.addCase(GetFilteredResult.fulfilled, (state, action) => {
-      state.filteredResult = action.payload;
+      state.allResults = action.payload;
+    });
+
+    builder.addCase(getStudentInfo.fulfilled, (state, action) => {
+      state.studentInfo = action.payload;
+    });
+    builder.addCase(updateStudentPP.fulfilled, (state, action) => {
+      Swal.fire("Success", "Notice Publish Successfull", "success");
     });
   },
 });
