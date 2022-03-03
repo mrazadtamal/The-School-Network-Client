@@ -42,7 +42,8 @@ import ClassFive from "./Pages/Shared/ResultAdd/ClassFive";
 import ClassOneToTwo from "./Pages/Shared/ResultAdd/ClassOneToTwo";
 import ClassThreeAndFour from "./Pages/Shared/ResultAdd/ClassThreeAndFour";
 import ViewStudentsPerformance from "./Pages/Shared/ViewStudentsPerformance/ViewStudentsPerformance";
-
+import PreviousNotice from "./Pages/PrincipalPanel/PreviousPages/PreviousNotice";
+import PreviousAnnouncement from "./Pages/PrincipalPanel/PreviousPages/PreviousAnnouncement";
 function App() {
     return (
     <div>
@@ -122,10 +123,22 @@ function App() {
                             path="/PrincipalDashboard/ViewStudentsPerformance/:id"
                             element={<ViewStudentsPerformance />}
                         />
+                        <Route
+                            path="/PrincipalDashboard/PreviousNotice"
+                            element={<PreviousNotice />}
+                        />
+                        <Route
+                        path="/PrincipalDashboard/PreviousNotice"
+                        element={<PreviousNotice />}
+                        />
+                        <Route
+                        path="/PrincipalDashboard/PreviousAnnouncement"
+                        element={<PreviousAnnouncement />}
+                        />
                     </Route>
                     {/* --------------Principal Routes End--------------- */}
                     {/* --------------Teacher Routes Start */}
-                    <Route
+                    <Route 
                         path="/TeachersDashboard"
                         element={<TeachersPanel />}
                     >
