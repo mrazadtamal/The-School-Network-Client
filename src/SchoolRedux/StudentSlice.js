@@ -1,11 +1,6 @@
 import { createAsyncThunk, createSlice } from "@reduxjs/toolkit";
 import Swal from "sweetalert2";
 
-// const initialState = {
-//   value: 0,
-//   notice: [],
-// };
-
 // fetch the data from the database
 //for fetching the data from the api and database we use asyncthunk
 export const GetResult = createAsyncThunk("Student/seeResult", async () => {
@@ -57,21 +52,22 @@ export const GetStudent = createAsyncThunk(
   }
 );
 
-// get filtered result of every student according to their class name and roll
-// export const GetFilteredResult = createAsyncThunk(
-//   "Student/GetFilteredResult",
-//   async (data) => {
-//     console.log("Hitted Get Filtered Student", data.name);
-//     const response = await fetch(
-//       `http://localhost:5000/student/filteredResult?name=${data.name}&&roll=${data.roll}&&section=${data.section}&&class=${data.class}`
-//     )
-//       .then((res) => res.json())
-//       .catch((err) => {
-//         console.log(err);
-//       });
-//     return response;
-//   }
-// );
+// get all term result of a student
+export const GetFilteredResult = createAsyncThunk(
+  "Student/GetFilteredResult",
+  async (data) => {
+    console.log("Hitted Get Filtered Student", data.email);
+    const response = await fetch(
+      `http://localhost:5000/student/filteredResult?email=${data.email}`
+    )
+      .then((res) => res.json())
+      .catch((err) => {
+        console.log(err);
+      });
+    console.log(response);
+    return response;
+  }
+);
 
 export const StudentReducer = createSlice({
   name: "Student",
@@ -79,7 +75,7 @@ export const StudentReducer = createSlice({
     value: 0,
     results: [],
     user: {},
-    filteredResult: [],
+    filteredResult: {},
   },
   reducers: {
     increment: (state) => {
@@ -107,9 +103,9 @@ export const StudentReducer = createSlice({
     });
 
     // get filtered result for individual student
-    // builder.addCase(GetFilteredResult.fulfilled, (state, action) => {
-    //   state.filteredResult = action.payload;
-    // });
+    builder.addCase(GetFilteredResult.fulfilled, (state, action) => {
+      state.filteredResult = action.payload;
+    });
   },
 });
 

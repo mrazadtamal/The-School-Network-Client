@@ -1,6 +1,35 @@
-import React from "react";
+import React, { useEffect } from "react";
+import { useDispatch, useSelector } from "react-redux";
+import { GetFilteredResult } from "../../../../SchoolRedux/StudentSlice";
+import useFirebase from "../../../Shared/Authentication/Authentication";
 
 const Transcript = () => {
+  const { user } = useFirebase();
+
+  const dispatch = useDispatch();
+
+  useEffect(() => {
+    if (user.email) {
+      dispatch(GetFilteredResult({ email: user.email }));
+    } else {
+      return;
+    }
+  }, [dispatch, user.email]);
+
+  // get the result from the redux store
+
+  const allResults = useSelector((state) => state.studentStore.filteredResult);
+  console.log("All Terms Results", allResults);
+  console.log("Filter Result", allResults.filteredResult);
+  console.log("CGPA", Number(allResults["filteredResult"][0]["firsttermCgpa"]));
+
+  const avrgCgpa =
+    (Number(allResults["filteredResult"][0]["firsttermCgpa"]) +
+      Number(allResults["filteredResult"][1]["secondtermCgpa"]) +
+      Number(allResults["filteredResult"][2]["thirdtermCgpa"])) /
+    3;
+
+  console.log(avrgCgpa);
   return (
     <div className=" w-full h-full  grid">
       <div className=" ">
@@ -12,16 +41,18 @@ const Transcript = () => {
             <th className="px-4 py-3">Name</th>
             <th className="px-4 py-3">ID Number</th>
             <th className="px-4 py-3">Father Name</th>
+            <th className="px-4 py-3">Mother Name</th>
             <th className="px-4 py-3">Result</th>
             <th className="px-4 py-3">Date Of Birth</th>
           </tr>
 
           <tr className="bg-gray-100 border-b border-gray-200">
-            <td className="px-4 py-3">Azad</td>
-            <td className="px-4 py-3">223344</td>
-            <td className="px-4 py-3">M. Rahman</td>
-            <td className="px-4 py-3">4.70</td>
-            <td className="px-4 py-3">00/00/00</td>
+            <td className="px-4 py-3">{allResults["student"]["name"]}</td>
+            <td className="px-4 py-3">{allResults["student"]["_id"]}</td>
+            <td className="px-4 py-3">{allResults["student"]["fatherName"]}</td>
+            <td className="px-4 py-3">{allResults["student"]["motherName"]}</td>
+            <td className="px-4 py-3">{avrgCgpa}</td>
+            <td className="px-4 py-3">{allResults["student"]["birthDate"]}</td>
           </tr>
 
           {/* <tr className="bg-gray-100 border-b border-gray-200">
@@ -47,20 +78,26 @@ const Transcript = () => {
           </tr>
           <tr className="bg-gray-100 border-b border-gray-200">
             <td className="px-4 py-3">First Semester</td>
-            <td className="px-4 py-3">4.30</td>
+            <td className="px-4 py-3">
+              {allResults.filteredResult[0]["firsttermCgpa"]}
+            </td>
           </tr>
           <tr className="bg-gray-100 border-b border-gray-200">
             <td className="px-4 py-3">Second Semester</td>
-            <td className="px-4 py-3">4.00</td>
+            <td className="px-4 py-3">
+              {allResults.filteredResult[1]["secondtermCgpa"]}
+            </td>
           </tr>
           <tr className="bg-gray-100 border-b border-gray-200">
             <td className="px-4 py-3">last Semester </td>
-            <td className="px-4 py-3">3.70</td>
+            <td className="px-4 py-3">
+              {allResults.filteredResult[2]["thirdtermCgpa"]}
+            </td>
           </tr>
           <br className=" "></br>
           <tr className="bg-gray-100 border-b border-gray-200">
             <td className="px-4 py-3">Total </td>
-            <td className="px-4 py-3">4.00</td>
+            <td className="px-4 py-3">{avrgCgpa}</td>
           </tr>
         </table>
       </div>

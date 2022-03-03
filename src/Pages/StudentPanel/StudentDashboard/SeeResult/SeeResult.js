@@ -33,28 +33,6 @@ const SeeResult = () => {
   return (
     <div className="h-full w-full ">
       <div className=" bg-gray-200 text-black  ">
-        {/* <div className="w-40 bg-gray-600 ml-5 top-10 left-16 ">
-          <button
-            onClick={handleClick}
-            type="button"
-            className="inline-flex text-xl justify-center w-full rounded-md  border-gray-300 shadow-sm px-4 py-2   font-medium  text-white focus:outline-none    "
-          >
-            See Result
-            <svg
-              className="-mr-1 ml-2 h-5 w-5"
-              xmlns="http://www.w3.org/2000/svg"
-              viewBox="0 0 20 20"
-              fill="currentColor"
-              aria-hidden="true"
-            >
-              <path
-                fillRule="evenodd"
-                d="M5.293 7.293a1 1 0 011.414 0L10 10.586l3.293-3.293a1 1 0 111.414 1.414l-4 4a1 1 0 01-1.414 0l-4-4a1 1 0 010-1.414z"
-                clipRule="evenodd"
-              />
-            </svg>
-          </button>
-        </div> */}
         <div className="w-56 mx-auto rounded-md shadow-lg bg-emerald-500 ring-1 ring-black ring-opacity-5 focus:outline-none">
           <div className="rounded-md" role="none">
             <div className="text-center px-3 py-2">
