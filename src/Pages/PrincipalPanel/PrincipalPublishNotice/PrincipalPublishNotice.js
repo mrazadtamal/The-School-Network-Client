@@ -5,8 +5,8 @@ import { BsArrowRightCircleFill } from 'react-icons/bs';
 import {useNavigate} from 'react-router-dom';
 
 const PrincipalPublishNotice = () => {
-    const [notice, setNotice] = useState({})
-    const [img, setImg] = useState('')
+    const [notice, setNotice] = useState({});
+    const [img, setImg] = useState("");
     const dispatch = useDispatch();
     const navigate = useNavigate()
     const SubmitHandler = (e) => {

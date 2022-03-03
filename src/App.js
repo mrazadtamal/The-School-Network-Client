@@ -44,6 +44,8 @@ import ClassThreeAndFour from "./Pages/Shared/ResultAdd/ClassThreeAndFour";
 import ViewStudentsPerformance from "./Pages/Shared/ViewStudentsPerformance/ViewStudentsPerformance";
 import PreviousNotice from "./Pages/PrincipalPanel/PreviousPages/PreviousNotice";
 import PreviousAnnouncement from "./Pages/PrincipalPanel/PreviousPages/PreviousAnnouncement";
+import TeachersProfile from "./Pages/TeachersPanel/TeachersProfile/TeachersProfile";
+
 function App() {
     return (
     <div>
@@ -73,7 +75,7 @@ function App() {
                     >
                         <Route
                             path="/PrincipalDashboard"
-                            element={<PrincipalHome />} 
+                            element={<PrincipalHome />}
                         />
                         <Route
                             path="/PrincipalDashboard/PrincipalPublishNotice"
@@ -145,6 +147,10 @@ function App() {
                         <Route
                             path="/TeachersDashboard"
                             element={<TeachersPanelHome />}
+                        />
+                        <Route
+                            path="/TeachersDashboard/Profile"
+                            element={<TeachersProfile />}
                         />
                         <Route
                             path="/TeachersDashboard/NoticePublish"

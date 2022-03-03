@@ -238,12 +238,16 @@
     color: rgb(92, 0, 0);
 }
 .active_principal_link{
+    border: solid  rgb(7, 255, 243) 1px;
+    border-radius: 5px;
     color: rgb(7, 255, 243);
     cursor: pointer;
     margin-left: 20px;
     display: flex;
     flex-direction: row;
-   font-weight: 600;
+    font-weight: 600;
+    width: 180px;
+    padding: 5px;
 }
 
 .payment_upload_div{

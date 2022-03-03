@@ -94,8 +94,15 @@ const PrincipalSidebar = () => {
           <p className='principal_sidebar_link   text-white mt-4'> <SiSamsungpay className='principal_react_icons' />Check Payment Status</p>
         </Link> */}
 
-    </div>
-  );
+            <Link to="/PrincipalDashboard/CheckPaymentStatus">
+                <p className="principal_sidebar_link   text-white mt-4">
+                    {" "}
+                    <SiSamsungpay className="principal_react_icons" />
+                    Check Payment Status
+                </p>
+            </Link>
+        </div>
+    );
 };
 
 export default PrincipalSidebar;
