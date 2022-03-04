@@ -1,10 +1,18 @@
 import React from 'react';
+import { useState } from 'react';
 import { useForm } from 'react-hook-form';
 import'./Teacherpanel.css'
 const TeachersAssignment = () => {
-    
+
     const { register, handleSubmit,reset } = useForm();
     const onSubmit = data =>{
+        
+        // fetch("", {
+        //     method: "POST",
+        //     headers: { "content-type": "application/json" },
+        //     body: JSON.stringify(data),
+        //   })
+        //     .then((res) => res.json())
         console.log(data)
         reset()
     }
@@ -59,6 +67,7 @@ const TeachersAssignment = () => {
                        rounded-lg text-gray-900 font-medium"
                      type="submit" />
         </form>
+        
           </div>
         </div>
         </div>
