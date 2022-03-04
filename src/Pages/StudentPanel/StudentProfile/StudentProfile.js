@@ -32,8 +32,8 @@ const StudentProfile = () => {
   };
 
   return (
-    <>
-      <div className="bg-gray-100 ">
+    <div className="flex h-full items-center justify-center">
+      <div className="bg-gray-100 shadow-lg">
         <div className="w-full text-white bg-main-color">
           <div
             x-data="{ open: false }"
@@ -244,7 +244,7 @@ const StudentProfile = () => {
           </div>
         </div>
       </div>
-    </>
+    </div>
   );
 };
 
