@@ -4,7 +4,7 @@ import Swal from 'sweetalert2'
 export const PrincipalNoticePublish = createAsyncThunk(
   'Principal/PublishNotice',
   async (data) => {
-    console.log('hitted slice', data)
+
     const response = await fetch('http://localhost:5000/publisNotice',{
       method: 'POST',
       headers:{
@@ -26,7 +26,7 @@ export const PublishImageNotice = createAsyncThunk(
   'Principal/PublishImageNotice',
   async (fd) => {
     console.log('hitted img')
-    const response = await fetch('http://localhost:5000/PublishImageNotice',{
+    const response = await fetch('https://blooming-citadel-14218.herokuapp.com/PublishImageNotice',{
       method: 'POST',
       
       body: fd
@@ -53,7 +53,7 @@ export const GetingPreviousNotice = createAsyncThunk(
 export const DeleteNotice = createAsyncThunk(
   'Principal/DeleteNotice',
   async (id) => {
-    const response = await fetch(`http://localhost:5000/DeleteNotice/${id}`,{
+    const response = await fetch(`https://blooming-citadel-14218.herokuapp.com/DeleteNotice/${id}`,{
       method: 'DELETE'}).then(res=> res.json()).catch(error => {
       Swal.fire(
           '!',
@@ -70,7 +70,7 @@ export const PutEditNotice = createAsyncThunk(
   'Principal/PutEditNotice',
   async (data) => {
     console.log('hitted slice', data)
-    const response = await fetch(`http://localhost:5000/PutEditNotice/${data._id}`,{
+    const response = await fetch(`https://blooming-citadel-14218.herokuapp.com/PutEditNotice/${data._id}`,{
     method: 'PUT',
     headers:{
       'content-type':'application/json'
@@ -108,7 +108,7 @@ export const PublishImageAnnouncement = createAsyncThunk(
   'Principal/PublishImageAnnouncement',
   async (fd) => {
     console.log('hitted img')
-    const response = await fetch('http://localhost:5000/PublishImageAnnouncement',{
+    const response = await fetch('https://blooming-citadel-14218.herokuapp.com/PublishImageAnnouncement',{
       method: 'POST',
       
       body: fd
@@ -135,7 +135,7 @@ export const GetingPreviousAnnouncement = createAsyncThunk(
 export const DeleteAnnouncement = createAsyncThunk(
   'Principal/DeleteAnnouncement',
   async (id) => {
-    const response = await fetch(`http://localhost:5000/DeleteAnnouncement/${id}`,{
+    const response = await fetch(`https://blooming-citadel-14218.herokuapp.com/DeleteAnnouncement/${id}`,{
       method: 'DELETE'}).then(res=> res.json()).catch(error => {
       Swal.fire(
           '!',
@@ -151,7 +151,7 @@ export const PutEditAnnouncement = createAsyncThunk(
   'Principal/PutEditAnnouncement',
   async (data) => {
     console.log('hitted slice', data)
-    const response = await fetch(`http://localhost:5000/PutEditAnnouncement/${data._id}`,{
+    const response = await fetch(`https://blooming-citadel-14218.herokuapp.com/PutEditAnnouncement/${data._id}`,{
     method: 'PUT',
     headers:{
       'content-type':'application/json'
@@ -163,12 +163,58 @@ export const PutEditAnnouncement = createAsyncThunk(
     return response
   }
 )
+//principal geting all previous Announcement
+export const GetAllStudents = createAsyncThunk(
+  'Principal/GetAllStudents',
+  async (stduentclass) => {
+    const response = await fetch(`http://localhost:5000/GetAllStudents?studentclass=${stduentclass}`).then(res=> res.json())
+    return  response;
+   
+  }
+)
+//principal and teacher geting individual performance of student
+export const IndividualPerformance = createAsyncThunk(
+  'Principal/IndividualPerformance',
+  async (id) => {
+    const response = await fetch(`http://localhost:5000/IndividualPerformance/${id}`).then(res=> res.json())
+    return  response;
+   
+  }
+)
+//principal submitting payment
+export const UploadMonthlyPayment = createAsyncThunk(
+  'Principal/UploadMonthlyPayment',
+  async (data) => {
+    console.log('payment', data)
+    const response = await fetch('http://localhost:5000/UploadMonthlyPayment',{
+      method: 'POST',
+      headers:{
+        'content-type':'application/json'
+      },
+      body: JSON.stringify(data)
+    }).then(res=> res.json())
+    return  response;
+   
+  }
+)
+//principal Geting all teachers list
+export const GetAllTeachers = createAsyncThunk(
+  'Principal/GetAllTeachers',
+  async (data) => {
+    const response = await fetch('http://localhost:5000/GetAllTeachers').then(res=> res.json())
+    return  response;
+   
+  }
+)
 export const PrincipalReducer = createSlice({
   name: 'Principal',
   initialState:{
     value: 0,
     notices: [],
-    announcement: []
+    announcement: [],
+    Allstudents: [],
+    performances: [],
+    allTeachers: []
   },
   reducers: {
     increment: (state) => {
@@ -238,6 +284,23 @@ export const PrincipalReducer = createSlice({
           'success'
         )
       })
+      builder.addCase(GetAllStudents.fulfilled, (state, action) => {
+        state.Allstudents = action.payload
+      })
+      builder.addCase(IndividualPerformance.fulfilled, (state, action) => {
+        state.performances = action.payload;
+        console.log('result from redux', action.payload)
+      })
+      builder.addCase(UploadMonthlyPayment.fulfilled, (state, action) => {
+        Swal.fire(
+          'Success',
+          'Payment Upload Successfully',
+          'success'
+        )
+      })
+      builder.addCase(GetAllTeachers.fulfilled, (state, action) => {
+        state.allTeachers = action.payload
+      })
     },
 
 })
@@ -245,4 +308,4 @@ export const PrincipalReducer = createSlice({
 // Action creators are generated for each case reducer function
 export const { increment } = PrincipalReducer.actions
 
-export default PrincipalReducer.reducer
+export default PrincipalReducer.reducer;

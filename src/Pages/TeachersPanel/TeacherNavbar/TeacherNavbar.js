@@ -2,7 +2,7 @@ import React, { useState } from "react";
 import { Link } from "react-router-dom";
 import { Transition } from "@headlessui/react";
 
-const PrincipalNavbar = () => {
+const TeacherNavbar = () => {
     const [isOpen, setIsOpen] = useState(false);
     const [show, setShow] = useState(false);
     const [dropdown, setDropdown] = useState(false);
@@ -224,4 +224,4 @@ const PrincipalNavbar = () => {
     );
 };
 
-export default PrincipalNavbar;
+export default TeacherNavbar;

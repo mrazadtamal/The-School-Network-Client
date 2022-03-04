@@ -1,31 +1,39 @@
 import React, {useEffect} from 'react'
 import { useDispatch, useSelector } from 'react-redux'
-import { GetExtraCareRequest } from '../../../SchoolRedux/TeacherSlice';
-import '../Teachers.css'
+import { GetExtraCareRequest, getTeacherInfo } from '../../../SchoolRedux/TeacherSlice';
+import '../Teachers.css';
+import { BiMessageAltCheck} from 'react-icons/bi';
+import { FaArrowAltCircleRight} from 'react-icons/fa';
+import useFirebase from '../../Shared/Authentication/Authentication';
+import { useNavigate } from 'react-router-dom';
+
 const SeeExtraRequestPage = () => {
-    const dispatch = useDispatch()
+    const dispatch = useDispatch();
+    const {user} = useFirebase();
+    const navigate = useNavigate()
+    useEffect(() => {
+        dispatch(getTeacherInfo(user.email));
+    }, [user.email, dispatch]);
+    
+    const teachersData = useSelector((state) => state.teacherStore.teacherInfo);
 
     useEffect(() => {
-        dispatch(GetExtraCareRequest())
-    }, [dispatch]);
+        if(teachersData.teacherclass){
+            dispatch(GetExtraCareRequest(teachersData.teacherclass))
+        }else{return}
+    }, [dispatch, teachersData.teacherclass, user.email]);
 
     const extraCare = useSelector((state) => state.teacherStore.extraCares);
-    console.log('extraCare', extraCare)
+
   return (
     <div>
     <h1 className='text-center mt-12 text-5xl font-bold'>Extra Care Request From Student</h1>
         <div className="extra_care_section mt-8">
             {
                 extraCare?.map(care => 
-                    <div className='extra_care_div ml-4 p-4'>
-                        <h4 className='font-bold text-xl'>Name: {care.firstName} {care.lastName}</h4>
-                        <h6 className='font-bold'>Class: {care.class}</h6>
-                        <p  className='font-bold'>Email: {care.email}</p>
-                        <p  className='font-bold'>Course Name: {care.courseName}</p>
-                        <p  className='font-bold'>Teacher Name: {care.teacherName}</p>
-                        <p  className='font-bold'>Section: {care.section}</p>
-                        <p>Description: {care.description}</p>
-                        <p>Request Date: {care.createdAt}</p>
+                    <div className='extra_care_div mx-auto p-4 '>
+                    <h4 className='font-bold text-xl care_student_title'><BiMessageAltCheck className='react__button_icons care_icons' size={40}/> Request from {care.firstName} {care.lastName}</h4>
+                    <p onClick={() => navigate(`/TeachersDashboard/ViewIndividualCare/${care._id}`)} className='care_view_btn'>VIEW<FaArrowAltCircleRight className='react__button_icons ml-2' size={25} /></p>
                     </div>
                 )
             }
