@@ -20,10 +20,12 @@ const LogInPage = () => {
   };
 
   const onSubmitHandler = (e) => {
-    fetch(`https://blooming-citadel-14218.herokuapp.com/checkUser?email=${logindata.email}`)
+    fetch(
+      `https://blooming-citadel-14218.herokuapp.com/checkUser?email=${logindata.email}`
+    )
       .then((res) => res.json())
       .then((data) => {
-        console.log(data)
+        console.log(data);
         if (data.userrole === "Principal" && role === "Principal") {
           LoginUser(logindata.email, logindata.password)
             .then((userCredential) => {
@@ -80,7 +82,7 @@ const LogInPage = () => {
           <div className="bg-white shadow-md rounded px-8 pt-6 pb-8 flex flex-col w-1/2 pt-5 mx-auto">
             <div className="mx-auto pt-5 pb-5">
               <select name="role" onBlur={(e) => setRole(e.target.value)}>
-              <option value="">Choose Your Role</option>
+                <option value="">Choose Your Role</option>
                 <option value="Principal">Principal</option>
                 <option value="Teacher">Teacher</option>
                 <option value="Student">Student</option>

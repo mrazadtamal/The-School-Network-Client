@@ -46,7 +46,8 @@ import PreviousNotice from "./Pages/PrincipalPanel/PreviousPages/PreviousNotice"
 import PreviousAnnouncement from "./Pages/PrincipalPanel/PreviousPages/PreviousAnnouncement";
 import TeachersProfile from "./Pages/TeachersPanel/TeachersProfile/TeachersProfile";
 import ViewIndividualCare from "./Pages/TeachersPanel/SeeExtraRequestPage/ViewIndividualCare";
-
+import StudentProfile from "./Pages/StudentPanel/StudentProfile/StudentProfile";
+import SecondSemester from "./Pages/StudentPanel/StudentDashboard/SeeResult/SecondSemester";
 
 function App() {
     return (
@@ -220,6 +221,14 @@ function App() {
                         path="/StudentDashboard/StudentAnalytics"
                         element={<StAnalytics />}
                         />
+                       <Route
+                        path="/StudentDashboard/StudentProfile"
+                        element={<StudentProfile />}
+                        />
+                      <Route
+                        path="/StudentDashboard/secondSemester"
+                        element={<SecondSemester />}
+                         />
                     </Route>
                     {/* --------------------student route end-------------------------*/}
             </Routes>
