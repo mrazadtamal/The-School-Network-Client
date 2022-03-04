@@ -1,63 +1,49 @@
-import React, { useState } from "react";
-import { Link } from "react-router-dom";
+import React, { useEffect, useState } from "react";
+import { useDispatch, useSelector } from "react-redux";
+import {
+  GetFilteredResult,
+  GetResult,
+  GetStudent,
+} from "../../../../SchoolRedux/StudentSlice";
+import useFirebase from "../../../Shared/Authentication/Authentication";
 
 const SeeResult = () => {
   const [show, setShow] = useState(false);
+  const { user } = useFirebase();
+  const [result, setResult] = useState({});
+  const [semester, setSemester] = useState("First-Term");
+  console.log(semester);
+  console.log(user.email);
+
+  const dispatch = useDispatch();
 
   const handleClick = () => {
     setShow(!show);
   };
 
+  // load user data according to the logged in student
+  useEffect(() => {
+    dispatch(GetStudent({ email: user.email, term: `${semester}` }));
+  }, [user.email, dispatch, semester]);
+
+  const filteredResult = useSelector((state) => state.studentStore.user);
+
+  console.log(filteredResult);
+
   return (
     <div className="h-full w-full ">
-      <div className=" bg-gray-200 text-white  ">
-        <div className="w-40 bg-gray-600 ml-5 top-10 left-16 ">
-          <button
-            onClick={handleClick}
-            type="button"
-            className="inline-flex text-xl justify-center w-full rounded-md  border-gray-300 shadow-sm px-4 py-2   font-medium  text-white focus:outline-none    "
-          >
-            See Result
-            <svg
-              className="-mr-1 ml-2 h-5 w-5"
-              xmlns="http://www.w3.org/2000/svg"
-              viewBox="0 0 20 20"
-              fill="currentColor"
-              aria-hidden="true"
-            >
-              <path
-                fillRule="evenodd"
-                d="M5.293 7.293a1 1 0 011.414 0L10 10.586l3.293-3.293a1 1 0 111.414 1.414l-4 4a1 1 0 01-1.414 0l-4-4a1 1 0 010-1.414z"
-                clipRule="evenodd"
-              />
-            </svg>
-          </button>
-        </div>
-
-        {show && (
-          <div className=" z-50 absolute    mt-2 w-56 rounded-md shadow-lg bg-white ring-1 ring-black ring-opacity-5 focus:outline-none">
-            <div className="py-1" role="none">
-              <Link
-                to="/firstSemester"
-                className="text-gray-700 block px-4 py-2 text-sm"
-              >
-                First Semester
-              </Link>
-              <Link
-                to="/secondSemester"
-                className="text-gray-700 block px-4 py-2 text-sm"
-              >
-                Second Semester
-              </Link>
-              <Link
-                to="/lastSemester"
-                className="text-gray-700 block px-4 py-2 text-sm"
-              >
-                Last Semester
-              </Link>
+      <div className=" bg-gray-200 text-black  ">
+        <div className="w-56 mx-auto rounded-md shadow-lg bg-emerald-500 ring-1 ring-black ring-opacity-5 focus:outline-none">
+          <div className="rounded-md" role="none">
+            <div className="text-center px-3 py-2">
+              <select name="term" onChange={(e) => setSemester(e.target.value)}>
+                <option value="First-Term">First Term</option>
+                <option value="Second-Term">Second Term</option>
+                <option value="Third-Term">Third Term</option>
+              </select>
             </div>
           </div>
-        )}
+        </div>
       </div>
 
       {/* result */}
@@ -67,7 +53,12 @@ const SeeResult = () => {
           <div class="py-8">
             <div>
               <h2 class="text-2xl font-semibold leading-tight">
-                First Semester Result
+                {semester} Semester Result :{" "}
+                {semester == "First-Term"
+                  ? filteredResult.firsttermCgpa
+                  : semester == "Second-Term"
+                  ? filteredResult.secondtermCgpa
+                  : filteredResult.thirdtermCgpa}
               </h2>
             </div>
             <div class="-mx-4 sm:-mx-8 px-4 sm:px-8 py-4 overflow-x-auto">
@@ -79,7 +70,13 @@ const SeeResult = () => {
                         Subject
                       </th>
                       <th class="px-5 py-3 border-b-2 border-gray-200 bg-gray-100 text-center text-xs font-semibold text-gray-600 uppercase tracking-wider">
-                        Number
+                        Mid
+                      </th>
+                      <th class="px-5 py-3 border-b-2 border-gray-200 bg-gray-100 text-center text-xs font-semibold text-gray-600 uppercase tracking-wider">
+                        Final Number
+                      </th>
+                      <th class="px-5 py-3 border-b-2 border-gray-200 bg-gray-100 text-center text-xs font-semibold text-gray-600 uppercase tracking-wider">
+                        Total
                       </th>
                       <th class="px-5 py-3 border-b-2 border-gray-200 bg-gray-100 text-center text-xs font-semibold text-gray-600 uppercase tracking-wider">
                         CGPA
@@ -90,84 +87,272 @@ const SeeResult = () => {
                     </tr>
                   </thead>
                   <tbody>
+                    {/* first subject */}
                     <tr>
+                      {/* subject name */}
                       <td class="px-5 py-5 border-b border-gray-200 bg-white text-sm w-2/5">
                         <div class="flex items-center">
                           <div class="ml-3">
                             <p class="text-gray-900 whitespace-no-wrap">
-                              Bangla
+                              {filteredResult.bangla}
                             </p>
                           </div>
                         </div>
                       </td>
+                      {/* mid number */}
                       <td class="px-5 py-5 border-b border-gray-200 bg-white text-sm">
                         <p class="text-gray-900 whitespace-no-wrap text-center">
-                          90
+                          {filteredResult.banglamid}
                         </p>
                       </td>
+                      {/* final number */}
                       <td class="px-5 py-5 border-b border-gray-200 bg-white text-sm">
                         <p class="text-gray-900 whitespace-no-wrap text-center">
-                          3
+                          {filteredResult.banglafinal}
                         </p>
                       </td>
+                      {/* total number */}
+                      <td class="px-5 py-5 border-b border-gray-200 bg-white text-sm">
+                        <p class="text-gray-900 whitespace-no-wrap text-center">
+                          {filteredResult.banglatotal}
+                        </p>
+                      </td>
+                      {/* CGPA */}
+                      <td class="px-5 py-5 border-b border-gray-200 bg-white text-sm">
+                        <p class="text-gray-900 whitespace-no-wrap text-center">
+                          {filteredResult.banglaCgpa}
+                        </p>
+                      </td>
+                      {/* grade */}
                       <td class="px-5 py-5 border-b border-gray-200 bg-white text-sm">
                         <p class="text-gray-900 whitespace-no-wrap text-center">
                           A+
                         </p>
                       </td>
                     </tr>
+                    {/* first subject end */}
+
+                    {/* second Subject start */}
                     <tr>
+                      {/* subject name */}
                       <td class="px-5 py-5 border-b border-gray-200 bg-white text-sm w-2/5">
                         <div class="flex items-center">
                           <div class="ml-3">
                             <p class="text-gray-900 whitespace-no-wrap">
-                              Bangla
+                              {filteredResult.draw}
                             </p>
                           </div>
                         </div>
                       </td>
+                      {/* mid number */}
                       <td class="px-5 py-5 border-b border-gray-200 bg-white text-sm">
                         <p class="text-gray-900 whitespace-no-wrap text-center">
-                          90
+                          {filteredResult.drawmid}
                         </p>
                       </td>
+                      {/* final number */}
                       <td class="px-5 py-5 border-b border-gray-200 bg-white text-sm">
                         <p class="text-gray-900 whitespace-no-wrap text-center">
-                          3
+                          {filteredResult.drawfinal}
                         </p>
                       </td>
+                      {/* total number */}
+                      <td class="px-5 py-5 border-b border-gray-200 bg-white text-sm">
+                        <p class="text-gray-900 whitespace-no-wrap text-center">
+                          {filteredResult.drawtotal}
+                        </p>
+                      </td>
+                      {/* subject grade point*/}
+                      <td class="px-5 py-5 border-b border-gray-200 bg-white text-sm">
+                        <p class="text-gray-900 whitespace-no-wrap text-center">
+                          {filteredResult.drawCgpa}
+                        </p>
+                      </td>
+                      {/* subject grade letter*/}
                       <td class="px-5 py-5 border-b border-gray-200 bg-white text-sm">
                         <p class="text-gray-900 whitespace-no-wrap text-center">
                           A+
                         </p>
                       </td>
                     </tr>
+                    {/* second subject end */}
+
+                    {/* third subject start */}
                     <tr>
+                      {/* subject name */}
                       <td class="px-5 py-5 border-b border-gray-200 bg-white text-sm w-2/5">
                         <div class="flex items-center">
                           <div class="ml-3">
                             <p class="text-gray-900 whitespace-no-wrap">
-                              Bangla
+                              {filteredResult.english}
                             </p>
                           </div>
                         </div>
                       </td>
+                      {/* Mid number */}
                       <td class="px-5 py-5 border-b border-gray-200 bg-white text-sm">
                         <p class="text-gray-900 whitespace-no-wrap text-center">
-                          90
+                          {filteredResult.englishmid}
                         </p>
                       </td>
+                      {/* Final number */}
                       <td class="px-5 py-5 border-b border-gray-200 bg-white text-sm">
                         <p class="text-gray-900 whitespace-no-wrap text-center">
-                          3
+                          {filteredResult.englishfinal}
                         </p>
                       </td>
+                      {/* total number */}
+                      <td class="px-5 py-5 border-b border-gray-200 bg-white text-sm">
+                        <p class="text-gray-900 whitespace-no-wrap text-center">
+                          {filteredResult.englishtotal}
+                        </p>
+                      </td>
+                      {/* subject grade point */}
+                      <td class="px-5 py-5 border-b border-gray-200 bg-white text-sm">
+                        <p class="text-gray-900 whitespace-no-wrap text-center">
+                          {filteredResult.englishCgpa}
+                        </p>
+                      </td>
+                      {/* subject grade letter */}
                       <td class="px-5 py-5 border-b border-gray-200 bg-white text-sm">
                         <p class="text-gray-900 whitespace-no-wrap text-center">
                           A+
                         </p>
                       </td>
                     </tr>
+                    {/* third subject end */}
+                    {/* Fourth subject start */}
+                    <tr>
+                      {/* subject name */}
+                      <td class="px-5 py-5 border-b border-gray-200 bg-white text-sm w-2/5">
+                        <div class="flex items-center">
+                          <div class="ml-3">
+                            <p class="text-gray-900 whitespace-no-wrap">
+                              {filteredResult.gs}
+                            </p>
+                          </div>
+                        </div>
+                      </td>
+                      {/* Mid number */}
+                      <td class="px-5 py-5 border-b border-gray-200 bg-white text-sm">
+                        <p class="text-gray-900 whitespace-no-wrap text-center">
+                          {filteredResult.gsmid}
+                        </p>
+                      </td>
+                      {/* Final number */}
+                      <td class="px-5 py-5 border-b border-gray-200 bg-white text-sm">
+                        <p class="text-gray-900 whitespace-no-wrap text-center">
+                          {filteredResult.gsfinal}
+                        </p>
+                      </td>
+                      {/* total number */}
+                      <td class="px-5 py-5 border-b border-gray-200 bg-white text-sm">
+                        <p class="text-gray-900 whitespace-no-wrap text-center">
+                          {filteredResult.gstotal}
+                        </p>
+                      </td>
+                      {/* subject grade point */}
+                      <td class="px-5 py-5 border-b border-gray-200 bg-white text-sm">
+                        <p class="text-gray-900 whitespace-no-wrap text-center">
+                          {filteredResult.gsCgpa}
+                        </p>
+                      </td>
+                      {/* subject grade letter */}
+                      <td class="px-5 py-5 border-b border-gray-200 bg-white text-sm">
+                        <p class="text-gray-900 whitespace-no-wrap text-center">
+                          A+
+                        </p>
+                      </td>
+                    </tr>
+                    {/* Fourth subject end */}
+                    {/* Fifth subject start */}
+                    <tr>
+                      {/* subject name */}
+                      <td class="px-5 py-5 border-b border-gray-200 bg-white text-sm w-2/5">
+                        <div class="flex items-center">
+                          <div class="ml-3">
+                            <p class="text-gray-900 whitespace-no-wrap">
+                              {filteredResult.math}
+                            </p>
+                          </div>
+                        </div>
+                      </td>
+                      {/* Mid number */}
+                      <td class="px-5 py-5 border-b border-gray-200 bg-white text-sm">
+                        <p class="text-gray-900 whitespace-no-wrap text-center">
+                          {filteredResult.mathmid}
+                        </p>
+                      </td>
+                      {/* Final number */}
+                      <td class="px-5 py-5 border-b border-gray-200 bg-white text-sm">
+                        <p class="text-gray-900 whitespace-no-wrap text-center">
+                          {filteredResult.mathfinal}
+                        </p>
+                      </td>
+                      {/* total number */}
+                      <td class="px-5 py-5 border-b border-gray-200 bg-white text-sm">
+                        <p class="text-gray-900 whitespace-no-wrap text-center">
+                          {filteredResult.mathtotal}
+                        </p>
+                      </td>
+                      {/* subject grade point */}
+                      <td class="px-5 py-5 border-b border-gray-200 bg-white text-sm">
+                        <p class="text-gray-900 whitespace-no-wrap text-center">
+                          {filteredResult.mathCgpa}
+                        </p>
+                      </td>
+                      {/* subject grade letter */}
+                      <td class="px-5 py-5 border-b border-gray-200 bg-white text-sm">
+                        <p class="text-gray-900 whitespace-no-wrap text-center">
+                          A+
+                        </p>
+                      </td>
+                    </tr>
+                    {/* Fifth subject end */}
+                    {/* Sixth subject start */}
+                    <tr>
+                      {/* subject name */}
+                      <td class="px-5 py-5 border-b border-gray-200 bg-white text-sm w-2/5">
+                        <div class="flex items-center">
+                          <div class="ml-3">
+                            <p class="text-gray-900 whitespace-no-wrap">
+                              {filteredResult.religion}
+                            </p>
+                          </div>
+                        </div>
+                      </td>
+                      {/* Mid number */}
+                      <td class="px-5 py-5 border-b border-gray-200 bg-white text-sm">
+                        <p class="text-gray-900 whitespace-no-wrap text-center">
+                          {filteredResult.religionmid}
+                        </p>
+                      </td>
+                      {/* Final number */}
+                      <td class="px-5 py-5 border-b border-gray-200 bg-white text-sm">
+                        <p class="text-gray-900 whitespace-no-wrap text-center">
+                          {filteredResult.religionfinal}
+                        </p>
+                      </td>
+                      {/* total number */}
+                      <td class="px-5 py-5 border-b border-gray-200 bg-white text-sm">
+                        <p class="text-gray-900 whitespace-no-wrap text-center">
+                          {filteredResult.religiontotal}
+                        </p>
+                      </td>
+                      {/* subject grade point */}
+                      <td class="px-5 py-5 border-b border-gray-200 bg-white text-sm">
+                        <p class="text-gray-900 whitespace-no-wrap text-center">
+                          {filteredResult.religionCgpa}
+                        </p>
+                      </td>
+                      {/* subject grade letter */}
+                      <td class="px-5 py-5 border-b border-gray-200 bg-white text-sm">
+                        <p class="text-gray-900 whitespace-no-wrap text-center">
+                          A+
+                        </p>
+                      </td>
+                    </tr>
+                    {/* Sixth subject end */}
                   </tbody>
                 </table>
               </div>
