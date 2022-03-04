@@ -3,7 +3,7 @@ import { useNavigate } from "react-router-dom";
 import useFirebase from "../../Shared/Authentication/Authentication";
 import AllUserNavbar from "../AllUserNavbar/AllUserNavbar";
 import Foooter from "../HomePageComponents/Foooter";
-
+import Swal from 'sweetalert2'
 const LogInPage = () => {
   const [logindata, setLogindata] = useState({});
   const [role, setRole] = useState("");
@@ -63,7 +63,11 @@ const LogInPage = () => {
               console.log("from login user", error.message);
             });
         } else {
-          alert("Sorry Unauthorised User");
+          Swal.fire(
+            'Error!',
+            'UnAuthorised User',
+            'error'
+          )
         }
         e.target.reset();
       });

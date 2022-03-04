@@ -21,6 +21,7 @@
     display: flex;
     flex-direction: row;
    font-weight: 600;
+   color: white;
 }
 .sidebar_colam{
     height: 100vh;
@@ -30,14 +31,6 @@
     z-index: 1;
 }
 
-.principal_sidebar_link {
-  cursor: pointer;
-  margin-left: 20px;
-}
-.principal_sidebar_link {
-  cursor: pointer;
-  margin-left: 20px;
-}
 .principal_sidebar_icon{
     margin-right: 7px;
 }
@@ -152,10 +145,10 @@
 }
 /* ----------------Principal notice publish css start------------- */
 .previous_notice_section{
-    display: grid;
-    grid-template-columns: auto auto auto;
+    /* display: grid;
+    grid-template-columns: auto;
     grid-column-gap: 20px;
-    grid-row-gap: 20px;
+    grid-row-gap: 20px; */
     padding-right: 20px;
     padding-left: 20px;
     justify-content: center;
@@ -175,6 +168,7 @@
     border: solid rgb(0, 11, 73) 2px;
     border-radius: 15px;
     padding: 20px 10px 20px 10px;
+    margin-top: 20px;
 }
 .delete_btn{
     border-radius: 5px;
@@ -230,7 +224,7 @@
     margin-left: 40px;
 }
 .principal_title{
-    color: rgb(255, 196, 1);;
+    color: rgb(255, 196, 1);
 }
 .table_btn{
     border: solid rgb(0, 0, 0) 1px;
@@ -243,6 +237,44 @@
     background-color: rgb(255, 255, 255);
     color: rgb(92, 0, 0);
 }
+.active_principal_link{
+    border: solid  rgb(7, 255, 243) 1px;
+    border-radius: 5px;
+    color: rgb(7, 255, 243);
+    cursor: pointer;
+    margin-left: 20px;
+    display: flex;
+    flex-direction: row;
+    font-weight: 600;
+    width: 180px;
+    padding: 5px;
+}
+
+.payment_upload_div{
+ display: flex;
+ flex-direction: row;
+}
+.teacher_remove_btn{
+    cursor: pointer;
+}
+.goto_previous_notice_div{
+    display: flex;
+    flex-direction: column;
+    align-items: flex-end;
+}
+.see_previous_notice_btn{
+    border: solid 1px rgb(82, 3, 3);
+    border-radius: 5px;
+    color: rgb(82, 3, 3);
+    font-weight: bold;
+}
+.react__button_icons{
+    display: inline;
+}
+.date_text{
+    text-align: end;
+    font-size: 20px;
+}
 @media screen and (max-width: 991px) {
     .principal_navbar{
         display: block;
@@ -254,5 +286,9 @@
         width: 100%;
     
     }
+    .payment_upload_div{
+        display: flex;
+        flex-direction: column;
+       }
 }
 

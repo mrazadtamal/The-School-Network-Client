@@ -2,8 +2,9 @@ import React, { useEffect} from 'react';
 import {useDispatch, useSelector} from 'react-redux';
 import { useLocation, useNavigate } from 'react-router-dom';
 import { GetAllStudents } from '../../../SchoolRedux/PrincipalSlice';
-
-const PrincipalManageStudent = () => {
+import useFirebase from '../Authentication/Authentication'
+const ManageStudent = () => {
+    const {user} = useFirebase()
     const navigate = useNavigate()
     const {state} = useLocation();
     const dispatch = useDispatch()
@@ -12,7 +13,12 @@ const PrincipalManageStudent = () => {
     }, [dispatch, state]);
     const students = useSelector((states) => states.principalStore.Allstudents);
     const ResultViewHandler = (id) => {
-      navigate(`/PrincipalDashboard/ViewStudentsPerformance/${id}`)
+      if(user.email === 'principal@gmail.com'){
+        navigate(`/PrincipalDashboard/ViewStudentsPerformance/${id}`)
+      }
+      else{
+        navigate(`/TeachersDashboard/ViewStudentsPerformance/${id}`)
+      }
     }
     return (
       <div className="bg-white p-8 rounded-md w-full">
@@ -40,9 +46,9 @@ const PrincipalManageStudent = () => {
                   <th className="px-5 py-3 border-b-2 border-gray-800 bg-gray-100 text-left text-sm font-bold text-gray-600 uppercase tracking-wider">
                     View Performance
                   </th>
-                  <th className="px-5 py-3 border-b-2 border-gray-800 bg-gray-100 text-left text-sm font-bold text-gray-600 uppercase tracking-wider">
+                  {user.email === 'principal@gmail.com' && <th className="px-5 py-3 border-b-2 border-gray-800 bg-gray-100 text-left text-sm font-bold text-gray-600 uppercase tracking-wider">
                     Check Payment Status
-                  </th>
+                  </th>}
                 </tr>
             </thead>
               <tbody>
@@ -84,11 +90,11 @@ const PrincipalManageStudent = () => {
                         <span className="relative ">VIEW</span>
                       </span>
                     </td>
-                    <td className="text-center px-5 py-5 border-b border-gray-400 bg-white text-sm">
+                    {user.email === 'principal@gmail.com' && <td className="text-center px-5 py-5 border-b border-gray-400 bg-white text-sm">
                       <span className="relative inline-block px-3 py-1 font-semibold text-blue-900 text-lg font-bold leading-tight table_btn">
                         <span className="relative ">CHECK</span>
                       </span>
-                    </td>
+                    </td>}
                   </tr>)
                 }
               </tbody>
@@ -100,4 +106,4 @@ const PrincipalManageStudent = () => {
     );
 };
 
-export default PrincipalManageStudent;
+export default ManageStudent;

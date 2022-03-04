@@ -1,10 +1,10 @@
 import React, { useState } from 'react';
 import useFirebase from '../../Shared/Authentication/Authentication';
-
+import Swal from 'sweetalert2'
 const RegisterTeacher = () => {
     const [regdata, setRegData] = useState({})
     const {RegisterUser, setUser} = useFirebase();
-
+    
     const OnblurHandler = e => {
         const fieldname = e.target.name;
         const fieldvalue = e.target.value;
@@ -14,7 +14,6 @@ const RegisterTeacher = () => {
         setRegData(newdata)
     }
     const AddTeacherHandler = (e) => {
-        console.log('clicked')
       RegisterUser(regdata.email, regdata.password)
       .then((userCredential) => {
         // Signed in 
@@ -33,9 +32,9 @@ const RegisterTeacher = () => {
     }
 
      //saving teacher to database
-     const SaveTeacher = (email, teachername, role, teacherclass, teachersection, teachernid, teacherphone) => {
-
-      const teacherdata = {email, teachername, role, teacherclass, teachersection, teachernid, teacherphone}
+     const SaveTeacher = (email, teachername, role, teacherclass, teachersection, teachernid, teacherphone, teacheraddress) => {
+     
+      const teacherdata = {email, teachername, role, teacherclass, teachersection, teachernid, teacherphone, teacheraddress}
 
         fetch('http://localhost:5000/addUser', {
             method: 'POST',
@@ -48,7 +47,11 @@ const RegisterTeacher = () => {
         .then(data => {
           if(data)
           {
-            alert('Teacher Added Successfully')
+            Swal.fire(
+                'Success',
+                'Payment Upload Successfully',
+                'success'
+              )
           }
         })
     }

@@ -1,5 +1,5 @@
 import React, {useState} from "react";
-import { Link } from "react-router-dom";
+import { Link, useLocation } from "react-router-dom";
 import { HiSpeakerphone } from 'react-icons/hi';
 import { GiTeacher } from 'react-icons/gi';
 import { FaChalkboardTeacher, FaUserGraduate , FaRegAddressCard} from 'react-icons/fa';
@@ -22,6 +22,8 @@ const PrincipalSidebar = () => {
   const LogoutHandler = () => {
     LogOutUser(navigate)
   }
+  const location = useLocation()
+  
   return (
     <div className="">
       <h1 className="mt-8 text-center">
@@ -36,26 +38,26 @@ const PrincipalSidebar = () => {
       }
      
       <Link to="/PrincipalDashboard"> 
-        <p className='principal_sidebar_link   text-white '><i className="fas fa-home principal_sidebar_icon"></i>Home</p>
+        <p className={location.pathname === '/PrincipalDashboard' ? 'active_principal_link mt-4' : 'principal_sidebar_link   text-white mt-4'}><i className="fas fa-home principal_sidebar_icon"></i>Home</p>
       </Link>
 
         <Link to="/PrincipalDashboard/PrincipalPublishNotice">
-          <p className='principal_sidebar_link   text-white mt-4'><i className="fas fa-sticky-note principal_sidebar_icon"></i>Publish Notice</p>
+          <p className={location.pathname === '/PrincipalDashboard/PrincipalPublishNotice' ? 'active_principal_link mt-4' : 'principal_sidebar_link   text-white mt-4'}><i className="fas fa-sticky-note principal_sidebar_icon"></i>Publish Notice</p>
         </Link>
 
         <Link to="/PrincipalDashboard/PrincipalAnnouncement">
-          <p className='principal_sidebar_link   text-white mt-4'> <HiSpeakerphone className='principal_react_icons'/> Announcement</p>
+          <p className={location.pathname === '/PrincipalDashboard/PrincipalAnnouncement' ? 'active_principal_link mt-4' : 'principal_sidebar_link   text-white mt-4'}> <HiSpeakerphone className='principal_react_icons'/> Announcement</p>
         </Link>
 
         <Link to="/PrincipalDashboard/PrincipalManageTeacher">
-          <p className='principal_sidebar_link   text-white mt-4'>  <GiTeacher className='principal_react_icons' /> Manage Teachers</p>
+          <p className={location.pathname === '/PrincipalDashboard/PrincipalManageTeacher' ? 'active_principal_link mt-4' : 'principal_sidebar_link   text-white mt-4'}>  <GiTeacher className='principal_react_icons' /> Manage Teachers</p>
         </Link>
 
         <Link to="/PrincipalDashboard/RegisterTeacher">
-          <p className='principal_sidebar_link   text-white mt-4'> <FaChalkboardTeacher className='principal_react_icons' /> Register Teachers</p>
+          <p className={location.pathname === '/PrincipalDashboard/RegisterTeacher' ? 'active_principal_link mt-4' : 'principal_sidebar_link   text-white mt-4'}> <FaChalkboardTeacher className='principal_react_icons' /> Register Teachers</p>
         </Link>
         
-        <button onClick={() => setShown2(!shown2)} className="drop_dwon_btn"><span> + Publish Results <IoIosArrowDown className="principal_react_icons"/> </span></button>
+        <p onClick={() => setShown2(!shown2)} className="principal_sidebar_link mt-4"><span> + Publish Results <IoIosArrowDown className="principal_react_icons"/> </span></p>
             {
               shown2 && <ul className="drop_link">
               <li onClick={() => ResultNavigateHandler('ClassOneToTwo', 'Class One')} className="class_text">Class One</li> 
@@ -69,7 +71,7 @@ const PrincipalSidebar = () => {
             }
 
         
-          <button onClick={() => setShown1(!shown1)} className="drop_dwon_btn"><span><FaUserGraduate className='principal_react_icons'/>Manage Students <IoIosArrowDown className="principal_react_icons"/></span></button>
+          <p onClick={() => setShown1(!shown1)} className="principal_sidebar_link mt-4"><span><FaUserGraduate className='principal_react_icons'/>Manage Students <IoIosArrowDown className="principal_react_icons"/></span></p>
           {
             shown1 && <ul className="drop_link">
             <li onClick={() => ManageStudentHandler('PrincipalManageStudent', 'class-one')} className="class_text">Class One</li>
@@ -81,19 +83,26 @@ const PrincipalSidebar = () => {
           }
         
         <Link to="/PrincipalDashboard/RegisterStudent">
-          <p className='principal_sidebar_link   text-white mt-4'> <FaRegAddressCard className='principal_react_icons' />Register Student</p>
+          <p className={location.pathname === '/PrincipalDashboard/RegisterStudent' ? 'active_principal_link mt-4' : 'principal_sidebar_link   text-white mt-4'}> <FaRegAddressCard className='principal_react_icons' />Register Student</p>
         </Link>
 
         <Link to="/PrincipalDashboard/UploadPayment">
-          <p className='principal_sidebar_link   text-white mt-4'> <SiSamsungpay className='principal_react_icons' />Upload Payment</p>
+          <p className={location.pathname === '/PrincipalDashboard/UploadPayment' ? 'active_principal_link mt-4' : 'principal_sidebar_link   text-white mt-4'}> <SiSamsungpay className='principal_react_icons' />Upload Payment</p>
         </Link>
 
         {/* <Link to="/PrincipalDashboard/CheckPaymentStatus">
           <p className='principal_sidebar_link   text-white mt-4'> <SiSamsungpay className='principal_react_icons' />Check Payment Status</p>
         </Link> */}
 
-    </div>
-  );
+            <Link to="/PrincipalDashboard/CheckPaymentStatus">
+                <p className="principal_sidebar_link   text-white mt-4">
+                    {" "}
+                    <SiSamsungpay className="principal_react_icons" />
+                    Check Payment Status
+                </p>
+            </Link>
+        </div>
+    );
 };
 
 export default PrincipalSidebar;

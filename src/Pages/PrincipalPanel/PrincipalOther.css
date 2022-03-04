@@ -22,11 +22,7 @@
       var(--stroke-color);
     
   }
-  /* for browsers that support spread, added in
-  https://drafts.csswg.org/css-text-decor-4/#text-shadow-property
-  currently: none browsers! none of them!
-  I can't even find a test: 
-  https://wpt.fyi/results/css/css-text-decor */
+  
   @supports ( text-shadow: 1px 1px 1px 1px black ) {
     .principal_home_title {
       text-shadow:
