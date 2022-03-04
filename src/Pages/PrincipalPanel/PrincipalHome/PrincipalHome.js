@@ -1,8 +1,10 @@
-import React from "react";
+import React, {useState}from "react";
 import bannarimg from "../../../img/principalhomeimg.jpg";
 import "../Pricipal.css";
 import "../PrincipalOther.css";
+
 const PrincipalHome = () => {
+
   return (
     <div className="container mx-auto ">
       <h1 className="text-6xl text-center text-blue-900 mt-4 principal_home_title">
