@@ -1,672 +1,121 @@
-import React, { useState } from "react";
-import { Fragment } from "react";
-import { Menu, Transition } from "@headlessui/react";
-import { Link } from "react-router-dom";
-
-function classNames(...classes) {
-    return classes.filter(Boolean).join(" ");
-}
+import React, {useEffect, useState} from "react";
+import { Link, useLocation } from "react-router-dom";
+import {  FaUserGraduate , FaRegAddressCard} from 'react-icons/fa';
+import { FiLogOut } from 'react-icons/fi';
+import { SiSamsungpay} from 'react-icons/si';
+import { IoIosArrowDown} from 'react-icons/io';
+import {  useNavigate } from "react-router-dom";
+import useFirebase from "../../Shared/Authentication/Authentication";
+import { useDispatch, useSelector } from "react-redux";
+import { getTeacherInfo } from "../../../SchoolRedux/TeacherSlice";
 
 const TeachersPanelSideBar = () => {
-    const [isOpen, setIsOpen] = useState(false);
-    return (
-        <div>
-            <nav className="bg-green-300 lg:h-screen">
-                <div className="mx-auto">
-                    <div className="flex lg:flex-col items-center justify-center">
-                        <div className="flex flex-col items-start justify-center">
-                            <div>
-                                <Link
-                                    to="/TeachersDashboard"
-                                    className="block text-blue-900 text-xl font-bold text-center md:mt-6 md:mb-6 ml-2 md:ml-auto"
-                                >
-                                    Teachers Dashboard
-                                </Link>
-                            </div>
-                            <div className="hidden md:block">
-                                <div className="flex flex-col">
-                                    <div>
-                                        <Link
-                                            to="/"
-                                            className="block text-black hover:bg-gray-700 hover:text-white px-3 py-2 rounded-md text-sm font-medium"
-                                        >
-                                            Home
-                                        </Link>
-                                    </div>
+  const dispatch = useDispatch();
+  const {user, LogOutUser} = useFirebase()
+  const [shown1, setShown1] = useState(false)
+  const [shown2, setShown2] = useState(false)
+  const [shown3, setShown3] = useState(false)
+  const navigate = useNavigate()
+  const ResultNavigateHandler = (route, classname) => {
+    navigate(`/TeachersDashboard/${route}`, {state: classname})
+  }
+  const ManageStudentHandler = (route, classname) => {
+    navigate(`/TeachersDashboard/${route}`, {state: classname})
+  }
+  const LogoutHandler = () => {
+    LogOutUser(navigate)
+  }
+  const location = useLocation()
+  useEffect(() => {
+    dispatch(getTeacherInfo(user.email));
+}, [user.email, dispatch]);
 
-                                    {/* Student List Dropdown menu */}
-                                    <div>
-                                        <Menu
-                                            as="div"
-                                            className="inline-block text-left"
-                                        >
-                                            <div>
-                                                <Menu.Button className="text-black hover:bg-gray-700 hover:text-white px-3 py-2 rounded-md text-sm font-medium">
-                                                    Manage Students
-                                                </Menu.Button>
-                                            </div>
+const teachersData = useSelector((state) => state.teacherStore.teacherInfo);
+  return (
+    <div className="">
+      {
+        teachersData.img ? <img
+        src={`data:image/jpeg;base64,${teachersData?.img}`}
+        className="mx-auto mt-2 teacher_profile_img"
+        alt=""
+    />  : <img
+    src="https://www.kemhospitalpune.org/wp-content/uploads/2020/12/Profile_avatar_placeholder_large.png"
+    alt=""
+    className="mx-auto mt-2 teacher_profile_img"
+/>
+      }
 
-                                            <Transition
-                                                as={Fragment}
-                                                enter="transition ease-out duration-100"
-                                                enterFrom="transform opacity-0 scale-95"
-                                                enterTo="transform opacity-100 scale-100"
-                                                leave="transition ease-in duration-75"
-                                                leaveFrom="transform opacity-100 scale-100"
-                                                leaveTo="transform opacity-0 scale-95"
-                                            >
-                                                <Menu.Items className="origin-top-right absolute mt-2 min-w-max w-36 rounded-md shadow-lg bg-white ring-1 ring-black ring-opacity-5 focus:outline-none">
-                                                    <div className="p-1">
-                                                        <p className="px-2 pt-1 font-medium">
-                                                            Class 1
-                                                        </p>
-                                                        <Menu.Item>
-                                                            {({ active }) => (
-                                                                <Link
-                                                                    to="/TeachersDashboard/ManageStudents"
-                                                                    className={classNames(
-                                                                        active
-                                                                            ? "bg-gray-100 text-gray-900"
-                                                                            : "text-gray-700",
-                                                                        "block px-4 py-1 text-sm"
-                                                                    )}
-                                                                >
-                                                                    Section A
-                                                                </Link>
-                                                            )}
-                                                        </Menu.Item>
-                                                        <Menu.Item>
-                                                            {({ active }) => (
-                                                                <Link
-                                                                    to="/TeachersDashboard/ManageStudents"
-                                                                    className={classNames(
-                                                                        active
-                                                                            ? "bg-gray-100 text-gray-900"
-                                                                            : "text-gray-700",
-                                                                        "block px-4 py-1 text-sm"
-                                                                    )}
-                                                                >
-                                                                    Section B
-                                                                </Link>
-                                                            )}
-                                                        </Menu.Item>
-                                                        <p className="px-2 pt-1 font-medium">
-                                                            Class 2
-                                                        </p>
-                                                        <Menu.Item>
-                                                            {({ active }) => (
-                                                                <Link
-                                                                    to="/TeachersDashboard/ManageStudents"
-                                                                    className={classNames(
-                                                                        active
-                                                                            ? "bg-gray-100 text-gray-900"
-                                                                            : "text-gray-700",
-                                                                        "block px-4 py-1 text-sm"
-                                                                    )}
-                                                                >
-                                                                    Section A
-                                                                </Link>
-                                                            )}
-                                                        </Menu.Item>
-                                                        <Menu.Item>
-                                                            {({ active }) => (
-                                                                <Link
-                                                                    to="/TeachersDashboard/ManageStudents"
-                                                                    className={classNames(
-                                                                        active
-                                                                            ? "bg-gray-100 text-gray-900"
-                                                                            : "text-gray-700",
-                                                                        "block w-full text-left px-4 py-1 text-sm"
-                                                                    )}
-                                                                >
-                                                                    Section B
-                                                                </Link>
-                                                            )}
-                                                        </Menu.Item>
-                                                    </div>
-                                                </Menu.Items>
-                                            </Transition>
-                                        </Menu>
-                                    </div>
+      {
+        user.email ?  <p onClick={LogoutHandler} className="mt-4 text-center mx-auto mb-4 teacher_logout_btn">LogOut <FiLogOut className="logout_icons"/></p> : ''
+      }
+    <Link to="/TeachersDashboard/Profile">
+          <p className={location.pathname === '/TeachersDashboard/Profile' ? 'active_principal_link mt-4' : 'principal_sidebar_link   text-white mt-4'}><i className="fas fa-sticky-note principal_sidebar_icon"></i>My Profile</p>
+    </Link>
 
-                                    {/* Register Student */}
-                                    <div>
-                                        <Link
-                                            to="/TeachersDashboard/RegisterStudent"
-                                            className="block text-black hover:bg-gray-700 hover:text-white px-3 py-2 rounded-md text-sm font-medium"
-                                        >
-                                            Register Student
-                                        </Link>
-                                    </div>
+      <Link to="/TeachersDashboard"> 
+        <p className={location.pathname === '/TeachersDashboard' ? 'active_principal_link mt-4' : 'principal_sidebar_link   text-white mt-4'}><i className="fas fa-home principal_sidebar_icon"></i>Home</p>
+      </Link>
 
-                                    {/* Publish Notice */}
-                                    <div>
-                                        <Link
-                                            to="/TeachersDashboard/NoticePublish"
-                                            className="block text-black hover:bg-gray-700 hover:text-white px-3 py-2 rounded-md text-sm font-medium"
-                                        >
-                                            Publish Notice
-                                        </Link>
-                                    </div>
-                                    {/* Publish Assignment */}
-                                    <div>
-                                        <Link
-                                            to="/TeachersDashboard/publishAssignment"
-                                            className="block text-black hover:bg-gray-700 hover:text-white px-3 py-2 rounded-md text-sm font-medium"
-                                        >
-                                            Publish Assignment
-                                        </Link>
-                                    </div>
+        <Link to="/TeachersDashboard/NoticePublish">
+          <p className={location.pathname === '/TeachersDashboard/NoticePublish' ? 'active_principal_link mt-4' : 'principal_sidebar_link   text-white mt-4'}><i className="fas fa-sticky-note principal_sidebar_icon"></i>Publish Notice</p>
+        </Link>
 
-                                    {/* Add Result */}
-                                    <div>
-                                        <Menu
-                                            as="div"
-                                            className="inline-block text-left"
-                                        >
-                                            <div>
-                                                <Menu.Button className="block text-black hover:bg-gray-700 hover:text-white px-3 py-2 rounded-md text-sm font-medium">
-                                                    Add Result
-                                                </Menu.Button>
-                                            </div>
+        
+        <p onClick={() => setShown2(!shown2)} className="principal_sidebar_link mt-4"><span> + Publish Results <IoIosArrowDown className="principal_react_icons"/> </span></p>
+            {
+              shown2 && <ul className="drop_link">
+              {teachersData.teacherclass === 'class-one' && <li onClick={() => ResultNavigateHandler('ClassOneToTwo', 'Class One')} className="class_text">Class One</li> }
 
-                                            <Transition
-                                                as={Fragment}
-                                                enter="transition ease-out duration-100"
-                                                enterFrom="transform opacity-0 scale-95"
-                                                enterTo="transform opacity-100 scale-100"
-                                                leave="transition ease-in duration-75"
-                                                leaveFrom="transform opacity-100 scale-100"
-                                                leaveTo="transform opacity-0 scale-95"
-                                            >
-                                                <Menu.Items className="origin-top-right absolute mt-2 min-w-max w-36 rounded-md shadow-lg bg-white ring-1 ring-black ring-opacity-5 focus:outline-none">
-                                                    <div className="p-1">
-                                                        <p className="px-2 pt-1 font-medium">
-                                                            Class 1
-                                                        </p>
-                                                        <Menu.Item>
-                                                            {({ active }) => (
-                                                                <Link
-                                                                    to="#"
-                                                                    className={classNames(
-                                                                        active
-                                                                            ? "bg-gray-100 text-gray-900"
-                                                                            : "text-gray-700",
-                                                                        "block px-4 py-1 text-sm"
-                                                                    )}
-                                                                >
-                                                                    Section A
-                                                                </Link>
-                                                            )}
-                                                        </Menu.Item>
-                                                        <Menu.Item>
-                                                            {({ active }) => (
-                                                                <Link
-                                                                    to="#"
-                                                                    className={classNames(
-                                                                        active
-                                                                            ? "bg-gray-100 text-gray-900"
-                                                                            : "text-gray-700",
-                                                                        "block px-4 py-1 text-sm"
-                                                                    )}
-                                                                >
-                                                                    Section B
-                                                                </Link>
-                                                            )}
-                                                        </Menu.Item>
-                                                        <p className="px-2 pt-1 font-medium">
-                                                            Class 2
-                                                        </p>
-                                                        <Menu.Item>
-                                                            {({ active }) => (
-                                                                <Link
-                                                                    to="#"
-                                                                    className={classNames(
-                                                                        active
-                                                                            ? "bg-gray-100 text-gray-900"
-                                                                            : "text-gray-700",
-                                                                        "block px-4 py-1 text-sm"
-                                                                    )}
-                                                                >
-                                                                    Section A
-                                                                </Link>
-                                                            )}
-                                                        </Menu.Item>
-                                                        <Menu.Item>
-                                                            {({ active }) => (
-                                                                <Link
-                                                                    to="#"
-                                                                    className={classNames(
-                                                                        active
-                                                                            ? "bg-gray-100 text-gray-900"
-                                                                            : "text-gray-700",
-                                                                        "block w-full text-left px-4 py-1 text-sm"
-                                                                    )}
-                                                                >
-                                                                    Section B
-                                                                </Link>
-                                                            )}
-                                                        </Menu.Item>
-                                                    </div>
-                                                </Menu.Items>
-                                            </Transition>
-                                        </Menu>
-                                    </div>
-                                    {/* Add Routine */}
-                                    <div>
-                                        <Menu
-                                            as="div"
-                                            className="inline-block text-left"
-                                        >
-                                            <div>
-                                                <Menu.Button className="text-black hover:bg-gray-700 hover:text-white px-3 py-2 rounded-md text-sm font-medium">
-                                                    Add Routine
-                                                </Menu.Button>
-                                            </div>
+              {teachersData.teacherclass === 'class-two' && <li onClick={() => ResultNavigateHandler('ClassOneToTwo', 'Class Two')} className="class_text">Class Two</li>}
 
-                                            <Transition
-                                                as={Fragment}
-                                                enter="transition ease-out duration-100"
-                                                enterFrom="transform opacity-0 scale-95"
-                                                enterTo="transform opacity-100 scale-100"
-                                                leave="transition ease-in duration-75"
-                                                leaveFrom="transform opacity-100 scale-100"
-                                                leaveTo="transform opacity-0 scale-95"
-                                            >
-                                                <Menu.Items className="origin-top-right absolute mt-2 min-w-max w-36 rounded-md shadow-lg bg-white ring-1 ring-black ring-opacity-5 focus:outline-none">
-                                                    <div className="p-1">
-                                                        <Menu.Item>
-                                                            {({ active }) => (
-                                                                <Link
-                                                                    to="/TeachersDashboard/ClassRoutine"
-                                                                    className={classNames(
-                                                                        active
-                                                                            ? "bg-gray-100 text-gray-900"
-                                                                            : "text-gray-700",
-                                                                        "block px-4 py-1 text-sm"
-                                                                    )}
-                                                                >
-                                                                    Class
-                                                                    Routine
-                                                                </Link>
-                                                            )}
-                                                        </Menu.Item>
-                                                        <Menu.Item>
-                                                            {({ active }) => (
-                                                                <Link
-                                                                    to="/TeachersDashboard/ExamRoutine"
-                                                                    className={classNames(
-                                                                        active
-                                                                            ? "bg-gray-100 text-gray-900"
-                                                                            : "text-gray-700",
-                                                                        "block px-4 py-1 text-sm"
-                                                                    )}
-                                                                >
-                                                                    Exam Routine
-                                                                </Link>
-                                                            )}
-                                                        </Menu.Item>
-                                                    </div>
-                                                </Menu.Items>
-                                            </Transition>
-                                        </Menu>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                        <div className="flex md:hidden">
-                            <button
-                                onClick={() => setIsOpen(!isOpen)}
-                                type="button"
-                                className="bg-gray-900 inline-flex items-center justify-center p-2 rounded text-gray-400 hover:text-white hover:bg-gray-800 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-offset-gray-800 focus:ring-white"
-                                aria-controls="mobile-menu"
-                                aria-expanded="false"
-                            >
-                                <span className="sr-only">Open main menu</span>
-                                {!isOpen ? (
-                                    <svg
-                                        className="block h-6 w-6"
-                                        xmlns="http://www.w3.org/2000/svg"
-                                        fill="none"
-                                        viewBox="0 0 24 24"
-                                        stroke="currentColor"
-                                        aria-hidden="true"
-                                    >
-                                        <path
-                                            strokeLinecap="round"
-                                            strokeLinejoin="round"
-                                            strokeWidth="2"
-                                            d="M4 6h16M4 12h16M4 18h16"
-                                        />
-                                    </svg>
-                                ) : (
-                                    <svg
-                                        className="block h-6 w-6"
-                                        xmlns="http://www.w3.org/2000/svg"
-                                        fill="none"
-                                        viewBox="0 0 24 24"
-                                        stroke="currentColor"
-                                        aria-hidden="true"
-                                    >
-                                        <path
-                                            strokeLinecap="round"
-                                            strokeLinejoin="round"
-                                            strokeWidth="2"
-                                            d="M6 18L18 6M6 6l12 12"
-                                        />
-                                    </svg>
-                                )}
-                            </button>
-                        </div>
-                    </div>
-                </div>
+              {teachersData.teacherclass === 'class-three' && <li onClick={() => ResultNavigateHandler('ClassThreeAndFour', 'Class Three')} className="class_text">Class Three</li>}
 
-                <Transition
-                    show={isOpen}
-                    enter="transition ease-out duration-100 transform"
-                    enterFrom="opacity-0 scale-95"
-                    enterTo="opacity-100 scale-100"
-                    leave="transition ease-in duration-75 transform"
-                    leaveFrom="opacity-100 scale-100"
-                    leaveTo="opacity-0 scale-95"
-                >
-                    {(ref) => (
-                        <div className="md:hidden" id="mobile-menu">
-                            <div
-                                ref={ref}
-                                className="px-2 pt-2 pb-3 space-y-1 sm:px-3"
-                            >
-                                <div>
-                                    <Link
-                                        to="/"
-                                        className="block text-black hover:bg-gray-700 hover:text-white px-3 py-2 rounded-md text-sm font-medium"
-                                    >
-                                        Home
-                                    </Link>
-                                </div>
+              {teachersData.teacherclass === 'class-four' && <li onClick={() => ResultNavigateHandler('ClassThreeAndFour', 'Class Four')} className="class_text">Class Four</li>}
 
-                                {/* Student List Dropdown menu */}
-                                <div>
-                                    <Menu
-                                        as="div"
-                                        className="inline-block text-left"
-                                    >
-                                        <div>
-                                            <Menu.Button className="text-black hover:bg-gray-700 hover:text-white px-3 py-2 rounded-md text-sm font-medium">
-                                                Manage Students
-                                            </Menu.Button>
-                                        </div>
+              {teachersData.teacherclass === 'class-five' && <li onClick={() => ResultNavigateHandler('ClassFive', 'Class Five')} className="class_text">Class Five</li>}
+            </ul>
+            }
 
-                                        <Transition
-                                            as={Fragment}
-                                            enter="transition ease-out duration-100"
-                                            enterFrom="transform opacity-0 scale-95"
-                                            enterTo="transform opacity-100 scale-100"
-                                            leave="transition ease-in duration-75"
-                                            leaveFrom="transform opacity-100 scale-100"
-                                            leaveTo="transform opacity-0 scale-95"
-                                        >
-                                            <Menu.Items className="origin-top-right absolute mt-2 min-w-max w-36 rounded-md shadow-lg bg-white ring-1 ring-black ring-opacity-5 focus:outline-none">
-                                                <div className="p-1">
-                                                    <p className="px-2 pt-1 font-medium">
-                                                        Class 1
-                                                    </p>
-                                                    <Menu.Item>
-                                                        {({ active }) => (
-                                                            <Link
-                                                                to="/TeachersDashboard/ManageStudents"
-                                                                className={classNames(
-                                                                    active
-                                                                        ? "bg-gray-100 text-gray-900"
-                                                                        : "text-gray-700",
-                                                                    "block px-4 py-1 text-sm"
-                                                                )}
-                                                            >
-                                                                Section A
-                                                            </Link>
-                                                        )}
-                                                    </Menu.Item>
-                                                    <Menu.Item>
-                                                        {({ active }) => (
-                                                            <Link
-                                                                to="/TeachersDashboard/ManageStudents"
-                                                                className={classNames(
-                                                                    active
-                                                                        ? "bg-gray-100 text-gray-900"
-                                                                        : "text-gray-700",
-                                                                    "block px-4 py-1 text-sm"
-                                                                )}
-                                                            >
-                                                                Section B
-                                                            </Link>
-                                                        )}
-                                                    </Menu.Item>
-                                                    <p className="px-2 pt-1 font-medium">
-                                                        Class 2
-                                                    </p>
-                                                    <Menu.Item>
-                                                        {({ active }) => (
-                                                            <Link
-                                                                to="/TeachersDashboard/ManageStudents"
-                                                                className={classNames(
-                                                                    active
-                                                                        ? "bg-gray-100 text-gray-900"
-                                                                        : "text-gray-700",
-                                                                    "block px-4 py-1 text-sm"
-                                                                )}
-                                                            >
-                                                                Section A
-                                                            </Link>
-                                                        )}
-                                                    </Menu.Item>
-                                                    <Menu.Item>
-                                                        {({ active }) => (
-                                                            <Link
-                                                                to="/TeachersDashboard/ManageStudents"
-                                                                className={classNames(
-                                                                    active
-                                                                        ? "bg-gray-100 text-gray-900"
-                                                                        : "text-gray-700",
-                                                                    "block w-full text-left px-4 py-1 text-sm"
-                                                                )}
-                                                            >
-                                                                Section B
-                                                            </Link>
-                                                        )}
-                                                    </Menu.Item>
-                                                </div>
-                                            </Menu.Items>
-                                        </Transition>
-                                    </Menu>
-                                </div>
+        
+          <p onClick={() => setShown1(!shown1)} className="principal_sidebar_link mt-4"><span><FaUserGraduate className='principal_react_icons'/>Manage Students <IoIosArrowDown className="principal_react_icons"/></span></p>
+          {
+            shown1 && <ul className="drop_link">
+            {teachersData.teacherclass === 'class-one' && <li onClick={() => ManageStudentHandler('ManageStudent', 'class-one')} className="class_text">Class One</li>}
+            
+            {teachersData.teacherclass === 'class-two' && <li onClick={() => ManageStudentHandler('ManageStudent', 'class-two')} className="class_text">Class Two</li>}
 
-                                {/* Register Student */}
-                                <div>
-                                    <Link
-                                        to="/TeachersDashboard/RegisterStudent"
-                                        className="block text-black hover:bg-gray-700 hover:text-white px-3 py-2 rounded-md text-sm font-medium"
-                                    >
-                                        Register Student
-                                    </Link>
-                                </div>
+            {teachersData.teacherclass === 'class-three' && <li onClick={() => ManageStudentHandler('ManageStudent', 'class-three')} className="class_text">Class Three</li>}
+            
+            {teachersData.teacherclass === 'class-four' && <li onClick={() => ManageStudentHandler('ManageStudent', 'class-four')} className="class_text">Class Four</li>}
+            
+            {teachersData.teacherclass === 'class-five' && <li onClick={() => ManageStudentHandler('ManageStudent', 'class-five')} className="class_text">Class Five</li>}
+          </ul>
+          }
+        
+        <Link to="/TeachersDashboard/RegisterStudent">
+          <p className={location.pathname === '/TeachersDashboard/RegisterStudent' ? 'active_principal_link mt-4' : 'principal_sidebar_link   text-white mt-4'}> <FaRegAddressCard className='principal_react_icons' />Register Student</p>
+        </Link>
 
-                                {/* Publish Notice */}
-                                <div>
-                                    <Link
-                                        to="/TeachersDashboard/NoticePublish"
-                                        className="block text-black hover:bg-gray-700 hover:text-white px-3 py-2 rounded-md text-sm font-medium"
-                                    >
-                                        Publish Notice
-                                    </Link>
-                                </div>
-                                {/* Publish Assignment */}
-                                <div>
-                                    <Link
-                                        to="/TeachersDashboard/publishAssignment"
-                                        className="block text-black hover:bg-gray-700 hover:text-white px-3 py-2 rounded-md text-sm font-medium"
-                                    >
-                                        Publish Assignment
-                                    </Link>
-                                </div>
+        <Link to="/TeachersDashboard/publishAssignment">
+          <p className={location.pathname === '/TeachersDashboard/publishAssignment' ? 'active_principal_link mt-4' : 'principal_sidebar_link   text-white mt-4'}> <SiSamsungpay className='principal_react_icons' />Assign Assignment</p>
+        </Link>
 
-                                {/* Add Result */}
-                                <div>
-                                    <Menu
-                                        as="div"
-                                        className="inline-block text-left"
-                                    >
-                                        <div>
-                                            <Menu.Button className="block text-black hover:bg-gray-700 hover:text-white px-3 py-2 rounded-md text-sm font-medium">
-                                                Add Result
-                                            </Menu.Button>
-                                        </div>
+        <Link to="/TeachersDashboard/SeeExtraRequestPage">
+          <p className={location.pathname === '/TeachersDashboard/SeeExtraRequestPage' ? 'active_principal_link mt-4' : 'principal_sidebar_link   text-white mt-4'}> <SiSamsungpay className='principal_react_icons' />View ExtraCare Request</p>
+        </Link>
 
-                                        <Transition
-                                            as={Fragment}
-                                            enter="transition ease-out duration-100"
-                                            enterFrom="transform opacity-0 scale-95"
-                                            enterTo="transform opacity-100 scale-100"
-                                            leave="transition ease-in duration-75"
-                                            leaveFrom="transform opacity-100 scale-100"
-                                            leaveTo="transform opacity-0 scale-95"
-                                        >
-                                            <Menu.Items className="origin-top-right absolute mt-2 min-w-max w-36 rounded-md shadow-lg bg-white ring-1 ring-black ring-opacity-5 focus:outline-none">
-                                                <div className="p-1">
-                                                    <p className="px-2 pt-1 font-medium">
-                                                        Class 1
-                                                    </p>
-                                                    <Menu.Item>
-                                                        {({ active }) => (
-                                                            <Link
-                                                                to="#"
-                                                                className={classNames(
-                                                                    active
-                                                                        ? "bg-gray-100 text-gray-900"
-                                                                        : "text-gray-700",
-                                                                    "block px-4 py-1 text-sm"
-                                                                )}
-                                                            >
-                                                                Section A
-                                                            </Link>
-                                                        )}
-                                                    </Menu.Item>
-                                                    <Menu.Item>
-                                                        {({ active }) => (
-                                                            <Link
-                                                                to="#"
-                                                                className={classNames(
-                                                                    active
-                                                                        ? "bg-gray-100 text-gray-900"
-                                                                        : "text-gray-700",
-                                                                    "block px-4 py-1 text-sm"
-                                                                )}
-                                                            >
-                                                                Section B
-                                                            </Link>
-                                                        )}
-                                                    </Menu.Item>
-                                                    <p className="px-2 pt-1 font-medium">
-                                                        Class 2
-                                                    </p>
-                                                    <Menu.Item>
-                                                        {({ active }) => (
-                                                            <Link
-                                                                to="#"
-                                                                className={classNames(
-                                                                    active
-                                                                        ? "bg-gray-100 text-gray-900"
-                                                                        : "text-gray-700",
-                                                                    "block px-4 py-1 text-sm"
-                                                                )}
-                                                            >
-                                                                Section A
-                                                            </Link>
-                                                        )}
-                                                    </Menu.Item>
-                                                    <Menu.Item>
-                                                        {({ active }) => (
-                                                            <Link
-                                                                to="#"
-                                                                className={classNames(
-                                                                    active
-                                                                        ? "bg-gray-100 text-gray-900"
-                                                                        : "text-gray-700",
-                                                                    "block w-full text-left px-4 py-1 text-sm"
-                                                                )}
-                                                            >
-                                                                Section B
-                                                            </Link>
-                                                        )}
-                                                    </Menu.Item>
-                                                </div>
-                                            </Menu.Items>
-                                        </Transition>
-                                    </Menu>
-                                </div>
-                                {/* Add Routine */}
-                                <div>
-                                    <Menu
-                                        as="div"
-                                        className="inline-block text-left"
-                                    >
-                                        <div>
-                                            <Menu.Button className="text-black hover:bg-gray-700 hover:text-white px-3 py-2 rounded-md text-sm font-medium">
-                                                Add Routine
-                                            </Menu.Button>
-                                        </div>
+        <p onClick={() => setShown3(!shown3)} className="principal_sidebar_link mt-4"><span><FaUserGraduate className='principal_react_icons'/>Publish Routine <IoIosArrowDown className="principal_react_icons"/></span></p>
+          {
+            shown3 && <ul className="drop_link">
+            <li onClick={() => navigate('/TeachersDashboard/ClassRoutine')} className="class_text">Class Routine</li>
+            <li  onClick={() => navigate('/TeachersDashboard/ExamRoutine')} className="class_text">Exam Routine</li>
+          </ul>
+          }
 
-                                        <Transition
-                                            as={Fragment}
-                                            enter="transition ease-out duration-100"
-                                            enterFrom="transform opacity-0 scale-95"
-                                            enterTo="transform opacity-100 scale-100"
-                                            leave="transition ease-in duration-75"
-                                            leaveFrom="transform opacity-100 scale-100"
-                                            leaveTo="transform opacity-0 scale-95"
-                                        >
-                                            <Menu.Items className="origin-top-right absolute mt-2 min-w-max w-36 rounded-md shadow-lg bg-white ring-1 ring-black ring-opacity-5 focus:outline-none">
-                                                <div className="p-1">
-                                                    <Menu.Item>
-                                                        {({ active }) => (
-                                                            <Link
-                                                                to="/TeachersDashboard/ClassRoutine"
-                                                                className={classNames(
-                                                                    active
-                                                                        ? "bg-gray-100 text-gray-900"
-                                                                        : "text-gray-700",
-                                                                    "block px-4 py-1 text-sm"
-                                                                )}
-                                                            >
-                                                                Class Routine
-                                                            </Link>
-                                                        )}
-                                                    </Menu.Item>
-                                                    <Menu.Item>
-                                                        {({ active }) => (
-                                                            <Link
-                                                                to="/TeachersDashboard/ExamRoutine"
-                                                                className={classNames(
-                                                                    active
-                                                                        ? "bg-gray-100 text-gray-900"
-                                                                        : "text-gray-700",
-                                                                    "block px-4 py-1 text-sm"
-                                                                )}
-                                                            >
-                                                                Exam Routine
-                                                            </Link>
-                                                        )}
-                                                    </Menu.Item>
-                                                </div>
-                                            </Menu.Items>
-                                        </Transition>
-                                    </Menu>
-                                </div>
-                            </div>
-                        </div>
-                    )}
-                </Transition>
-            </nav>
-        </div>
+      <Link to="/TeachersDashboard/ViewNotice">
+          <p className={location.pathname === '/TeachersDashboard/ViewNotice' ? 'active_principal_link mt-4' : 'principal_sidebar_link   text-white mt-4'}> <SiSamsungpay className='principal_react_icons' />View Notice</p>
+        </Link>
+    </div>
     );
 };
 
