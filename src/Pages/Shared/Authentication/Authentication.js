@@ -36,14 +36,15 @@ const useFirebase = () => {
 
    
     //user Log out
-    const LogOutUser = (history) => {
+    const LogOutUser = (navigate) => {
         signOut(auth).then(() => {
             setUser({})
-            history.push('/')
+            navigate('/')
           }).catch((error) => {
             // An error happened.
           });
     }
+
     return {
         setUser,
         user,

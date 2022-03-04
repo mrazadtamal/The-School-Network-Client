@@ -1,7 +1,7 @@
 import React from "react";
 import { useForm } from "react-hook-form";
 import useFirebase from "../Authentication/Authentication";
-
+import Swal from 'sweetalert2'
 const RegisterStudent = () => {
     const {RegisterUser, setUser} = useFirebase();
     const {
@@ -45,7 +45,11 @@ const RegisterStudent = () => {
             console.log('data',data)
         if(data)
         {
-            alert('Student Added Successfully')
+            Swal.fire(
+                'Success',
+                'Announcement Edited Successfully',
+                'success'
+              )
         }
         })
     }
@@ -59,7 +63,7 @@ const RegisterStudent = () => {
             <div className="px-3 mb-2">
                 <form
                     onSubmit={handleSubmit(onSubmit)}
-                    className="grid grid-cols-12 gap-5"
+                    className="grid grid-cols-12 gap-5 principal_notice_publish_form"
                 >
                     {/*--------- Class ---------*/}
                     <div className="col-span-4">
@@ -73,7 +77,7 @@ const RegisterStudent = () => {
                             {...register("class", { required: "true" })}
                         >
                             <option value="class-one">Class One</option>
-                            <option value="class-t">Class Two</option>
+                            <option value="class-two">Class Two</option>
                             <option value="class-three">Class Three</option>
                             <option value="class-four">Class Four</option>
                             <option value="class-five">Class Five</option>
@@ -266,11 +270,11 @@ const RegisterStudent = () => {
                     </div>
                     <div className="col-span-12">
                         <div className="flex justify-center">
-                            <input
+                            <button
                                 type="submit"
-                                value="Register"
-                                className="block bg-blue-500 px-5 py-2 rounded text-gray-900 font-bold"
-                            />
+                                
+                                className="block bg-blue-500 px-5 py-2 rounded text-gray-900 font-bold register_btn"
+                            >Register</button>
                         </div>
                     </div>
                 </form>
