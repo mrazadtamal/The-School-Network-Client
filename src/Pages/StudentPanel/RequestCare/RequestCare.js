@@ -2,19 +2,20 @@ import React, { useState } from "react";
 import { useForm } from "react-hook-form";
 import { useDispatch } from "react-redux";
 import { RequestExtraCare } from "../../../SchoolRedux/StudentSlice";
+import useFirebase from "../../Shared/Authentication/Authentication";
 
 const RequestCare = () => {
   const { register, handleSubmit } = useForm();
-  const [number, setNumber] = useState(0);
+  const { user } = useFirebase();
   const dispatch = useDispatch();
 
   const onSubmit = (data, e) => {
     e.preventDefault();
-    console.log(data);
-    dispatch(RequestExtraCare(data));
+    const newData = { ...data, email: user.email };
+    console.log(newData);
+    dispatch(RequestExtraCare(newData));
   };
 
-  const handleIncrease = () => {};
   return (
     <div className="flex align-center justify-center">
       <div>
@@ -49,30 +50,36 @@ const RequestCare = () => {
 
           <br />
 
-          <div>
+          <div className="flex justify-center items-center">
             <input
               className="w-[48%] border-2 rounded-md px-3 py-2 ml-2 mr-2"
               placeholder="Your Class"
+              type="text"
+              {...register("class")}
+            />
+            <input
+              className="w-[48%] border-2 rounded-md px-3 py-2 ml-2 mr-2"
+              placeholder="Your Roll Number"
               type="number"
-              {...register("class", { min: 1, max: 10 })}
+              {...register("roll")}
             />
 
+            {/* <input
+              className="w-1/3 border-2 rounded-md px-3 py-2"
+              placeholder="issue date"
+              type="date"
+              {...register("date")}
+            /> */}
+          </div>
+
+          <br />
+
+          <div className="flex justify-center items-center">
             <input
               className="w-[48%] border-2 rounded-md px-3 py-2 ml-2 mr-2"
               placeholder="issue date"
               type="date"
               {...register("date")}
-            />
-          </div>
-
-          <br />
-
-          <div>
-            <input
-              className="w-[48%] border-2 rounded-md px-3 py-2 ml-2 mr-2"
-              placeholder="Your Email"
-              type="email"
-              {...register("email")}
             />
 
             <input
@@ -85,7 +92,7 @@ const RequestCare = () => {
 
           <br />
 
-          <div>
+          <div className="flex justify-center items-center">
             <input
               className="w-[48%] border-2 rounded-md px-3 py-2 ml-2 mr-2"
               placeholder="Class Teacher Name"
