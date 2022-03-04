@@ -1,0 +1,9 @@
+.student_notice_board{
+    background-color: #457f31;
+    height: 100vh;
+    border: solid 15px #eccab1;
+    padding: 20px;
+}
+.notice_board_title{
+    color: rgb(255, 255, 255);
+}

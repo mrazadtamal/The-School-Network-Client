@@ -5,7 +5,7 @@ import Swal from "sweetalert2";
 export const GetExtraCareRequest = createAsyncThunk(
     "Teacher/getExtraCareRequest",
     async (teacherclass) => {
-        const response = await fetch(`http://localhost:5000/requestCare?teacherclass=${teacherclass}`).then(
+        const response = await fetch(`https://blooming-citadel-14218.herokuapp.com/requestCare?teacherclass=${teacherclass}`).then(
             (res) => res.json()
         );
         return response;
@@ -16,7 +16,7 @@ export const GetExtraCareRequest = createAsyncThunk(
 export const noticePublishFromTeacher = createAsyncThunk(
     "Teacher/PublishNotice",
     async (data) => {
-        const response = await fetch("http://localhost:5000/PublishNotice", {
+        const response = await fetch("https://blooming-citadel-14218.herokuapp.com/PublishNotice", {
             method: "POST",
             headers: {
                 "content-type": "application/json",
@@ -36,7 +36,7 @@ export const getTeacherInfo = createAsyncThunk(
     "Teacher/TeacherProfile",
     async (email) => {
         const response = await fetch(
-            `http://localhost:5000/TeacherProfile?email=${email}`
+            `https://blooming-citadel-14218.herokuapp.com/TeacherProfile?email=${email}`
         ).then((res) => res.json());
         return response;
     }
@@ -48,7 +48,7 @@ export const updateTeacherDP = createAsyncThunk(
     async (data) => {
         console.log("Hitted", data);
         const response = await fetch(
-            `http://localhost:5000/UpdateTeacherDP?email=${data.email}`,
+            `https://blooming-citadel-14218.herokuapp.com/UpdateTeacherDP?email=${data.email}`,
             {
                 method: "PUT",
                 body: data.fd,
@@ -65,7 +65,7 @@ export const addTeacherInfo = createAsyncThunk(
     "Teacher/AddTeacherInfo",
     async (data) => {
         const response = await fetch(
-            `http://localhost:5000/AddTeacherInfo?email=${data.email}`,
+            `https://blooming-citadel-14218.herokuapp.com/AddTeacherInfo?email=${data.email}`,
             {
                 method: "PUT",
                 headers: {
@@ -85,7 +85,7 @@ export const PublishResult = createAsyncThunk(
     'Teacher/PublishResult',
     async (data) => {
       console.log('hitted result', data)
-      const response = await fetch('http://localhost:5000/PublishResult',{
+      const response = await fetch('https://blooming-citadel-14218.herokuapp.com/PublishResult',{
         method: 'POST',
         headers:{
           'content-type':'application/json'
@@ -106,7 +106,7 @@ export const PublishResult = createAsyncThunk(
 export const GetIndividualCare = createAsyncThunk(
     'Teacher/GetIndividualCare',
     async (id) => {
-      const response = await fetch(`http://localhost:5000/GetIndividualCare/${id}`).then(res=> res.json()).catch(error => {
+      const response = await fetch(`https://blooming-citadel-14218.herokuapp.com/GetIndividualCare/${id}`).then(res=> res.json()).catch(error => {
         Swal.fire(
             '!',
             'Error!',

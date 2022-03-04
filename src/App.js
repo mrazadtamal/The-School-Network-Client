@@ -48,6 +48,8 @@ import TeachersProfile from "./Pages/TeachersPanel/TeachersProfile/TeachersProfi
 import ViewIndividualCare from "./Pages/TeachersPanel/SeeExtraRequestPage/ViewIndividualCare";
 import StudentProfile from "./Pages/StudentPanel/StudentProfile/StudentProfile";
 import SecondSemester from "./Pages/StudentPanel/StudentDashboard/SeeResult/SecondSemester";
+import NoticBoard from "./Pages/StudentPanel/NoticeBoard/NoticeBoard";
+import MonthlyPayment from "./Pages/StudentPanel/MonthlyPayment/MonthlyPayment";
 
 function App() {
     return (
@@ -228,6 +230,14 @@ function App() {
                       <Route
                         path="/StudentDashboard/secondSemester"
                         element={<SecondSemester />}
+                         />
+                         <Route
+                        path="/StudentDashboard/NoticBoard"
+                        element={<NoticBoard />}
+                         />
+                         <Route
+                        path="/StudentDashboard/MonthlyPayment"
+                        element={<MonthlyPayment />}
                          />
                     </Route>
                     {/* --------------------student route end-------------------------*/}
