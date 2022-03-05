@@ -18,9 +18,9 @@ const AlluserHomePage = () => {
             <AllUserNavbar />
             <HomeSlider />
             <TopSections/>
-            <NoticeBoard/>
-            <BlogPosts />
             <Annoucements />
+            <BlogPosts />
+            <NoticeBoard/>
             <ExcellenceBanner />
             <OurRanking/>
             <NewsAndEvents />

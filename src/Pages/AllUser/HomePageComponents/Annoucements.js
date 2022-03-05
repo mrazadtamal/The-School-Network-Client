@@ -1,8 +1,11 @@
-import React from "react";
+import React, { useEffect } from "react";
 import { FcAdvertising } from "react-icons/fc";
+import { useDispatch, useSelector } from "react-redux";
 import Slider from "react-slick";
+import { GetingPreviousAnnouncement } from "../../../SchoolRedux/PrincipalSlice";
 
 const Annoucements = () => {
+  const dispatch = useDispatch();
   const settings = {
     dots: true,
     infinite: true,
@@ -17,196 +20,30 @@ const Annoucements = () => {
       console.log("after change", currentSlide);
     },
   };
+  useEffect(() => {
+    dispatch(GetingPreviousAnnouncement())
+}, [dispatch]);
 
+const previousAnnouncement = useSelector((state) => state.principalStore.announcement);
   return (
     <div className="container mx-auto pr-20 pl-20" data-aos="zoom-in">
       <h2 className="text-center text-5xl pb-2">Annoucements</h2>
       <hr />
       <Slider {...settings}>
-        <div>
-          <div className="bg-white shadow-lg rounded-lg mt-5 p-5">
-            <div className="flex pt-5">
-              <FcAdvertising className="w-10 h-10" />{" "}
-              <h2 className="ml-2 text-2xl">Annoucement Title</h2>
-            </div>
-            <div>
-              <p>
-                Tone of voice is extremely important. Educators tend to speak to
-                one another with buzzwords, technical terms and a tendency to
-                talk down to the general public. The content of web pages and
-                blogs should be a one-on-one discussion without the technical
-                stuff. Consider improving Point #1. Tone of voice is extremely
-                important. Educators tend to speak to one another with
-                buzzwords, technical terms and a tendency to talk down to the
-                general public. The content of web pages and blogs should be a
-                one-on-one discussion without the technical stuff. Consider
-                improving Point #1.
-              </p>
-              <p className="font-bold pt-2">Date:02/09/2022</p>
-            </div>
-          </div>
-        </div>
-
-        <div>
-          <div className="bg-white shadow-lg rounded-lg mt-5 p-5">
-            <div className="flex pt-5">
-              <FcAdvertising className="w-10 h-10" />{" "}
-              <h2 className="ml-2 text-2xl">Annoucement Title</h2>
-            </div>
-            <div>
-              <p>
-                Tone of voice is extremely important. Educators tend to speak to
-                one another with buzzwords, technical terms and a tendency to
-                talk down to the general public. The content of web pages and
-                blogs should be a one-on-one discussion without the technical
-                stuff. Consider improving Point #1. Tone of voice is extremely
-                important. Educators tend to speak to one another with
-                buzzwords, technical terms and a tendency to talk down to the
-                general public. The content of web pages and blogs should be a
-                one-on-one discussion without the technical stuff. Consider
-                improving Point #1.
-              </p>
-              <p className="font-bold pt-2">Date:02/09/2022</p>
-            </div>
-          </div>
-        </div>
-
-        <div>
-          <div className="bg-white shadow-lg rounded-lg mt-5 p-5">
-            <div className="flex pt-5">
-              <FcAdvertising className="w-10 h-10" />{" "}
-              <h2 className="ml-2 text-2xl">Annoucement Title</h2>
-            </div>
-            <div>
-              <p>
-                Tone of voice is extremely important. Educators tend to speak to
-                one another with buzzwords, technical terms and a tendency to
-                talk down to the general public. The content of web pages and
-                blogs should be a one-on-one discussion without the technical
-                stuff. Consider improving Point #1. Tone of voice is extremely
-                important. Educators tend to speak to one another with
-                buzzwords, technical terms and a tendency to talk down to the
-                general public. The content of web pages and blogs should be a
-                one-on-one discussion without the technical stuff. Consider
-                improving Point #1.
-              </p>
-              <p className="font-bold pt-2">Date:02/09/2022</p>
-            </div>
-          </div>
-        </div>
-
-        <div>
-          <div className="bg-white shadow-lg rounded-lg mt-5 p-5">
-            <div className="flex pt-5">
-              <FcAdvertising className="w-10 h-10" />{" "}
-              <h2 className="ml-2 text-2xl">Annoucement Title</h2>
-            </div>
-            <div>
-              <p>
-                Tone of voice is extremely important. Educators tend to speak to
-                one another with buzzwords, technical terms and a tendency to
-                talk down to the general public. The content of web pages and
-                blogs should be a one-on-one discussion without the technical
-                stuff. Consider improving Point #1. Tone of voice is extremely
-                important. Educators tend to speak to one another with
-                buzzwords, technical terms and a tendency to talk down to the
-                general public. The content of web pages and blogs should be a
-                one-on-one discussion without the technical stuff. Consider
-                improving Point #1.
-              </p>
-              <p className="font-bold pt-2">Date:02/09/2022</p>
-            </div>
-          </div>
-        </div>
-
-        <div>
-          <div className="bg-white shadow-lg rounded-lg mt-5 p-5">
-            <div className="flex pt-5">
-              <FcAdvertising className="w-10 h-10" />{" "}
-              <h2 className="ml-2 text-2xl">Annoucement Title</h2>
-            </div>
-            <div>
-              <p>
-                Tone of voice is extremely important. Educators tend to speak to
-                one another with buzzwords, technical terms and a tendency to
-                talk down to the general public. The content of web pages and
-                blogs should be a one-on-one discussion without the technical
-                stuff. Consider improving Point #1. Tone of voice is extremely
-                important. Educators tend to speak to one another with
-                buzzwords, technical terms and a tendency to talk down to the
-                general public. The content of web pages and blogs should be a
-                one-on-one discussion without the technical stuff. Consider
-                improving Point #1.
-              </p>
-              <p className="font-bold pt-2">Date:02/09/2022</p>
-            </div>
-          </div>
-        </div>
-
-        <div>
-          <div className="bg-white shadow-lg rounded-lg mt-5 p-5">
-            <div className="flex pt-5">
-              <FcAdvertising className="w-10 h-10" />{" "}
-              <h2 className="ml-2 text-2xl">Annoucement Title</h2>
-            </div>
-            <div>
-              <p>
-                Tone of voice is extremely important. Educators tend to speak to
-                one another with buzzwords, technical terms and a tendency to
-                talk down to the general public. The content of web pages and
-                blogs should be a one-on-one discussion without the technical
-                stuff. Consider improving Point #1. Tone of voice is extremely
-                important. Educators tend to speak to one another with
-                buzzwords, technical terms and a tendency to talk down to the
-                general public. The content of web pages and blogs should be a
-                one-on-one discussion without the technical stuff. Consider
-                improving Point #1.
-              </p>
-              <p className="font-bold pt-2">Date:02/09/2022</p>
-            </div>
-          </div>
-        </div>
-
-        <div className="bg-white shadow-lg rounded-lg mt-5 p-5">
-          <div className="flex pt-5">
-            <FcAdvertising className="w-10 h-10" />{" "}
-            <h2 className="ml-2 text-2xl">Annoucement Title</h2>
-          </div>
-          <div>
-            <p>
-              Tone of voice is extremely important. Educators tend to speak to
-              one another with buzzwords, technical terms and a tendency to talk
-              down to the general public. The content of web pages and blogs
-              should be a one-on-one discussion without the technical stuff.
-              Consider improving Point #1. Tone of voice is extremely important.
-              Educators tend to speak to one another with buzzwords, technical
-              terms and a tendency to talk down to the general public. The
-              content of web pages and blogs should be a one-on-one discussion
-              without the technical stuff. Consider improving Point #1.
-            </p>
-            <p className="font-bold pt-2">Date:02/09/2022</p>
-          </div>
-        </div>
-        <div className="bg-white shadow-lg rounded-lg mt-5 p-5">
-          <div className="flex pt-5">
-            <FcAdvertising className="w-10 h-10" />{" "}
-            <h2 className="ml-2 text-2xl">Annoucement Title</h2>
-          </div>
-          <div>
-            <p>
-              Tone of voice is extremely important. Educators tend to speak to
-              one another with buzzwords, technical terms and a tendency to talk
-              down to the general public. The content of web pages and blogs
-              should be a one-on-one discussion without the technical stuff.
-              Consider improving Point #1. Tone of voice is extremely important.
-              Educators tend to speak to one another with buzzwords, technical
-              terms and a tendency to talk down to the general public. The
-              content of web pages and blogs should be a one-on-one discussion
-              without the technical stuff. Consider improving Point #1.
-            </p>
-            <p className="font-bold pt-2">Date:02/09/2022</p>
-          </div>
-        </div>
+      {
+              previousAnnouncement?.map(announcement => <div className="bg-white shadow-lg rounded-lg mt-5 p-5">
+              <div className="flex pt-5">
+                <FcAdvertising className="w-10 h-10" />{" "}
+                <h2 className="ml-2 text-2xl">{announcement?.title}</h2>
+              </div>
+              <div className=''>
+                <p>
+                  {announcement?.description}
+                </p>
+                <p className="font-bold pt-2">{announcement?.date}</p>
+              </div>
+            </div>)
+            }
       </Slider>
     </div>
   );
