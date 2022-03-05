@@ -1,5 +1,5 @@
 import React from 'react';
-// import './StudentPay.css';
+import './StudentPay.css';
 
 const StudentPay = () => {
     return (
