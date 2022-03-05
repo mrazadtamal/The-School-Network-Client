@@ -141,6 +141,34 @@ const StudentSidebar = () => {
             Transcript
           </p>
         </NavLink>
+
+      {/* Notice Board */}
+
+        <NavLink
+          to="/StudentDashboard/NoticBoard"
+          style={({ isActive }) => ({
+            color: isActive ? "#0bc28b" : "#545e6f",
+            background: isActive ? "#7600dc" : "black",
+          })}
+        >
+          <p className="text-white py-0.5   hover:bg-yellow-200 w-40 hover:text-black">
+            Notice Board
+          </p>
+        </NavLink>
+
+        {/* Notice Board */}
+
+        <NavLink
+          to="/StudentDashboard/MonthlyPayment"
+          style={({ isActive }) => ({
+            color: isActive ? "#0bc28b" : "#545e6f",
+            background: isActive ? "#7600dc" : "black",
+          })}
+        >
+          <p className="text-white py-0.5   hover:bg-yellow-200 w-40 hover:text-black">
+            Montly Payment List
+          </p>
+        </NavLink>
       </div>
     </div>
   );

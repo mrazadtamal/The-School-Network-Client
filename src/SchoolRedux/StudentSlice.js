@@ -5,7 +5,7 @@ import Swal from "sweetalert2";
 //for fetching the data from the api and database we use asyncthunk
 export const GetResult = createAsyncThunk("Student/seeResult", async () => {
   console.log("Hitted Student Slice");
-  const response = await fetch("http://localhost:5000/student/results")
+  const response = await fetch("https://blooming-citadel-14218.herokuapp.com/student/results")
     .then((res) => res.json())
     .catch((err) => {
       console.log(err);
@@ -19,7 +19,7 @@ export const RequestExtraCare = createAsyncThunk(
   "Student/RequestCare",
   async (data) => {
     console.log("Hitted Extra Care");
-    const response = await fetch("http://localhost:5000/student/requestCare", {
+    const response = await fetch("https://blooming-citadel-14218.herokuapp.com/student/requestCare", {
       method: "POST",
       headers: {
         "content-type": "application/json",
@@ -41,7 +41,7 @@ export const GetStudent = createAsyncThunk(
   async (data) => {
     console.log("Hitted Get Student", data.email);
     const response = await fetch(
-      `http://localhost:5000/student/filteredStudent?email=${data.email}&&term=${data.term}`
+      `https://blooming-citadel-14218.herokuapp.com/student/filteredStudent?email=${data.email}&&term=${data.term}`
     )
       .then((res) => res.json())
       .catch((err) => {
@@ -58,7 +58,7 @@ export const GetFilteredResult = createAsyncThunk(
   async (email) => {
     console.log("Hitted Get Filtered Student", email);
     const response = await fetch(
-      `http://localhost:5000/student/filteredResult?email=${email}`
+      `https://blooming-citadel-14218.herokuapp.com/student/filteredResult?email=${email}`
     )
       .then((res) => res.json())
       .catch((err) => {
@@ -74,7 +74,7 @@ export const getStudentInfo = createAsyncThunk(
   "Student/studentProfile",
   async (email) => {
     const response = await fetch(
-      `http://localhost:5000/student/studentProfile?email=${email}`
+      `https://blooming-citadel-14218.herokuapp.com/student/studentProfile?email=${email}`
     ).then((res) => res.json());
     return response;
   }
@@ -86,7 +86,7 @@ export const updateStudentPP = createAsyncThunk(
   async (data) => {
     console.log("Hitted", data);
     const response = await fetch(
-      `http://localhost:5000/student/updateStudentPP?email=${data.email}`,
+      `https://blooming-citadel-14218.herokuapp.com/student/updateStudentPP?email=${data.email}`,
       {
         method: "PUT",
         body: data.fd,
@@ -97,7 +97,30 @@ export const updateStudentPP = createAsyncThunk(
     return response;
   }
 );
-
+// Update student profile picture
+export const GetStudentNotice = createAsyncThunk(
+  "Student/GetStudentNotice",
+  async (studentclass) => {
+    const response = await fetch(
+      `https://blooming-citadel-14218.herokuapp.com/student/GetStudentNotice?studentclass=${studentclass}`
+    )
+      .then((res) => res.json())
+      .catch((err) => console.log(err));
+    return response;
+  }
+);
+// Update student profile picture
+export const getMontlyPayment = createAsyncThunk(
+  "Student/getMontlyPayment",
+  async (email) => {
+    const response = await fetch(
+      `https://blooming-citadel-14218.herokuapp.com/student/getMontlyPayment?email=${email}`
+    )
+      .then((res) => res.json())
+      .catch((err) => console.log(err));
+    return response;
+  }
+);
 export const StudentReducer = createSlice({
   name: "Student",
   initialState: {
@@ -106,6 +129,8 @@ export const StudentReducer = createSlice({
     user: {},
     allResults: [],
     studentInfo: {},
+    notices: [],
+    montlyPayment: []
   },
   reducers: {
     increment: (state) => {
@@ -142,6 +167,12 @@ export const StudentReducer = createSlice({
     });
     builder.addCase(updateStudentPP.fulfilled, (state, action) => {
       Swal.fire("Success", "Notice Publish Successfull", "success");
+    });
+    builder.addCase(GetStudentNotice.fulfilled, (state, action) => {
+      state.notices = action.payload;
+    });
+    builder.addCase(getMontlyPayment.fulfilled, (state, action) => {
+      state.montlyPayment = action.payload;
     });
   },
 });
