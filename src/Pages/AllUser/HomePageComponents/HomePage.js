@@ -27,7 +27,7 @@ const AlluserHomePage = () => {
       <NewsAndEvents />
       <OurVisitors />
       <Foooter />
-      <MessengerCustomerChat pageId="565903526918990" appId="374831157516077" />
+      <MessengerCustomerChat pageId="100790272569404" appId="374831157516077" />
     </div>
   );
 };
