@@ -32,8 +32,8 @@ const RegisterStudent = () => {
 
     //saving teacher to database
     const SaveStudent = (studentdata) => {
-      
-        fetch('http://localhost:5000/addUser', {
+        console.log('hitted save student', studentdata)
+        fetch('https://blooming-citadel-14218.herokuapp.com/addUser', {
             method: 'POST',
             headers: {
                 'content-type':'application/json'
@@ -47,7 +47,7 @@ const RegisterStudent = () => {
         {
             Swal.fire(
                 'Success',
-                'Announcement Edited Successfully',
+                'Student Added Successfully',
                 'success'
               )
         }
