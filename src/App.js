@@ -20,7 +20,7 @@ import StudentHome from "./Pages/StudentPanel/StudentHome/StudentHome";
 import RequestCare from "./Pages/StudentPanel/RequestCare/RequestCare";
 import PrincipalManageTeacher from "./Pages/PrincipalPanel/PrincipalManageTeacher/PrincipalManageTeacher";
 import RegisterTeacher from "./Pages/PrincipalPanel/RegisterTeacher/RegisterTeacher";
-import PrincipalManageStudent from "./Pages/PrincipalPanel/PrincipalManageStudent/PrincipalManageStudent";
+import PrincipalManageStudent from "./Pages/Shared/ManageStudent/ManageStudent";
 import UploadPayment from "./Pages/PrincipalPanel/UploadPayment/UploadPayment";
 import Canteen from "./Pages/AllUser/Facilities/Canteen";
 import Library from "./Pages/AllUser/Facilities/Library";
@@ -32,19 +32,26 @@ import StudentPay from "./Pages/StudentPanel/StudentPay/StudentPay";
 import StAnalytics from "./Pages/StudentPanel/StudentDashboard/StAnalytics/StAnalytics";
 import SeeResult from "./Pages/StudentPanel/StudentDashboard/SeeResult/SeeResult";
 import Transcript from "./Pages/StudentPanel/StudentDashboard/Transcript/Transcript";
-import ResultAdd from "./Pages/Shared/ResultAdd/ResultAdd";
 import TeachersAssignment from "./Pages/TeachersPanel/TeachersAssignment/TeachersAssignment";
 import RegisterStudent from "./Pages/Shared/RegisterStudent/RegisterStudent";
 import CheckPaymentStatus from "./Pages/PrincipalPanel/CheckPaymentStatus/CheckPaymentStatus";
-import TeachersManageStudent from "./Pages/TeachersPanel/TeachersManageStudent/TeachersManageStudent";
+import ManageStudent from "./Pages/Shared/ManageStudent/ManageStudent";
 import SeeExtraRequestPage from "./Pages/TeachersPanel/SeeExtraRequestPage/SeeExtraRequestPage";
 import Contact from "./Pages/AllUser/Contact/Contact";
+import ClassFive from "./Pages/Shared/ResultAdd/ClassFive";
+import ClassOneToTwo from "./Pages/Shared/ResultAdd/ClassOneToTwo";
+import ClassThreeAndFour from "./Pages/Shared/ResultAdd/ClassThreeAndFour";
+import ViewStudentsPerformance from "./Pages/Shared/ViewStudentsPerformance/ViewStudentsPerformance";
+import PreviousNotice from "./Pages/PrincipalPanel/PreviousPages/PreviousNotice";
+import PreviousAnnouncement from "./Pages/PrincipalPanel/PreviousPages/PreviousAnnouncement";
 import TeachersProfile from "./Pages/TeachersPanel/TeachersProfile/TeachersProfile";
+import ViewIndividualCare from "./Pages/TeachersPanel/SeeExtraRequestPage/ViewIndividualCare";
 import StudentProfile from "./Pages/StudentPanel/StudentProfile/StudentProfile";
+import SecondSemester from "./Pages/StudentPanel/StudentDashboard/SeeResult/SecondSemester";
 
 function App() {
   return (
-    <div className="App">
+    <div>
       <BrowserRouter>
         <Routes>
           {/* --------------All User Homepage Routes Start--------------- */}
@@ -82,15 +89,11 @@ function App() {
             />
             <Route
               path="/PrincipalDashboard/PrincipalManageStudent"
-              element={<PrincipalManageStudent />}
+              element={<ManageStudent />}
             />
             <Route
               path="/PrincipalDashboard/UploadPayment"
               element={<UploadPayment />}
-            />
-            <Route
-              path="/PrincipalDashboard/ResultAdd"
-              element={<ResultAdd />}
             />
             <Route
               path="/PrincipalDashboard/RegisterStudent"
@@ -99,6 +102,22 @@ function App() {
             <Route
               path="/PrincipalDashboard/CheckPaymentStatus"
               element={<CheckPaymentStatus />}
+            />
+            <Route
+              path="/PrincipalDashboard/ViewStudentsPerformance/:id"
+              element={<ViewStudentsPerformance />}
+            />
+            <Route
+              path="/PrincipalDashboard/PreviousNotice"
+              element={<PreviousNotice />}
+            />
+            <Route
+              path="/PrincipalDashboard/PreviousNotice"
+              element={<PreviousNotice />}
+            />
+            <Route
+              path="/PrincipalDashboard/PreviousAnnouncement"
+              element={<PreviousAnnouncement />}
             />
           </Route>
           {/* --------------Principal Routes End--------------- */}
@@ -130,12 +149,36 @@ function App() {
               element={<TeachersAssignment />}
             />
             <Route
-              path="/TeachersDashboard/ManageStudents"
-              element={<TeachersManageStudent />}
-            />
-            <Route
               path="/TeachersDashboard/SeeExtraRequestPage"
               element={<SeeExtraRequestPage />}
+            />
+            <Route
+              path="/TeachersDashboard/ManageStudent"
+              element={<ManageStudent />}
+            />
+            <Route
+              path="/TeachersDashboard/ClassFive"
+              element={<ClassFive />}
+            />
+            <Route
+              path="/TeachersDashboard/ClassOneToTwo"
+              element={<ClassOneToTwo />}
+            />
+            <Route
+              path="/TeachersDashboard/ClassThreeAndFour"
+              element={<ClassThreeAndFour />}
+            />
+            <Route
+              path="/TeachersDashboard/ViewNotice"
+              element={<PreviousNotice />}
+            />
+            <Route
+              path="/TeachersDashboard/ViewStudentsPerformance/:id"
+              element={<ViewStudentsPerformance />}
+            />
+            <Route
+              path="/TeachersDashboard/ViewIndividualCare/:id"
+              element={<ViewIndividualCare />}
             />
           </Route>
           {/* --------------Teacher Routes End-------------- */}
@@ -166,6 +209,10 @@ function App() {
             <Route
               path="/StudentDashboard/StudentProfile"
               element={<StudentProfile />}
+            />
+            <Route
+              path="/StudentDashboard/secondSemester"
+              element={<SecondSemester />}
             />
           </Route>
           {/* --------------------student route end-------------------------*/}

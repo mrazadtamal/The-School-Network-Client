@@ -34,6 +34,41 @@ export const RequestExtraCare = createAsyncThunk(
   }
 );
 
+// get data from the database according to email
+
+export const GetStudent = createAsyncThunk(
+  "Student/GetStudent",
+  async (data) => {
+    console.log("Hitted Get Student", data.email);
+    const response = await fetch(
+      `http://localhost:5000/student/filteredStudent?email=${data.email}&&term=${data.term}`
+    )
+      .then((res) => res.json())
+      .catch((err) => {
+        console.log(err);
+      });
+    console.log(response);
+    return response;
+  }
+);
+
+// get all term result of a student
+export const GetFilteredResult = createAsyncThunk(
+  "Student/GetFilteredResult",
+  async (email) => {
+    console.log("Hitted Get Filtered Student", email);
+    const response = await fetch(
+      `http://localhost:5000/student/filteredResult?email=${email}`
+    )
+      .then((res) => res.json())
+      .catch((err) => {
+        console.log(err);
+      });
+    console.log(response);
+    return response;
+  }
+);
+
 // Get the current student
 export const getStudentInfo = createAsyncThunk(
   "Student/studentProfile",
@@ -63,16 +98,15 @@ export const updateStudentPP = createAsyncThunk(
   }
 );
 
-const initialState = {
-  value: 0,
-  results: [],
-  studentInfo: {},
-};
-
 export const StudentReducer = createSlice({
   name: "Student",
-  initialState,
-
+  initialState: {
+    value: 0,
+    results: [],
+    user: {},
+    allResults: [],
+    studentInfo: {},
+  },
   reducers: {
     increment: (state) => {
       state.value += 1;
@@ -91,6 +125,18 @@ export const StudentReducer = createSlice({
     builder.addCase(RequestExtraCare.fulfilled, (state, action) => {
       Swal.fire("Success", "Application Submitted Successfully", "success");
     });
+
+    //get individual logged in user data promise
+
+    builder.addCase(GetStudent.fulfilled, (state, action) => {
+      state.user = action.payload;
+    });
+
+    // get filtered result for individual student
+    builder.addCase(GetFilteredResult.fulfilled, (state, action) => {
+      state.allResults = action.payload;
+    });
+
     builder.addCase(getStudentInfo.fulfilled, (state, action) => {
       state.studentInfo = action.payload;
     });

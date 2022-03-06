@@ -10,8 +10,9 @@ const TeachersNoticePublish = () => {
 
     const noticeSubmitBtnHandler = (e) => {
         e.preventDefault();
-        // console.log(notice);
-        dispatch(noticePublishFromTeacher(notice));
+        console.log(notice);
+        dispatch(noticePublishFromTeacher({...notice,}));
+        e.target.reset()
     };
 
     return (
@@ -21,7 +22,7 @@ const TeachersNoticePublish = () => {
             </h2>
             <div>
                 <div className="text-center">
-                    <h2 className="text-2xl text-blue-500 font-medium">
+                    <h2 className="text-xl text-blue-500 font-medium">
                         Add local files
                     </h2>
                     {isFileSelected ? (
@@ -44,7 +45,7 @@ const TeachersNoticePublish = () => {
                     />
                 </div>
                 <div className="my-3">
-                    <p className="text-gray-500 text-center">Or</p>
+                    <p className="text-gray-600 text-3xl font-bold text-center">OR</p>
                 </div>
                 <div>
                     <h2 className="text-2xl text-blue-500 font-medium mb-5 text-center">
@@ -68,11 +69,23 @@ const TeachersNoticePublish = () => {
                                 const teacherClass = e.target.value;
                                 setNotice({ ...notice, class: teacherClass });
                             }}
-                        >
-                            <option value="class 1">Class 1</option>
-                            <option value="class 2">Class 2</option>
-                            <option value="class 3">Class 3</option>
+                        >   
+                        <option>Choose Class</option>
+                        <option value="class-one">Class One</option>
+                        <option value="class-two">Class Two</option>
+                        <option value="class-three">Class Three</option>
+                        <option value="class-four">Class Four</option>
+                        <option value="class-five">Class Five</option>
                         </select>
+                        <p className="text-lg font-medium mt-2">Date</p>
+                        <input
+                            type="date"
+                            className="border border-gray-500 rounded w-full"
+                            onBlur={(e) => {
+                                const date = e.target.value;
+                                setNotice({ ...notice, date });
+                            }}
+                        />
                         <p className="text-lg font-medium mt-3">Description</p>
                         <textarea
                             name=""
@@ -84,6 +97,15 @@ const TeachersNoticePublish = () => {
                                 setNotice({ ...notice, description });
                             }}
                         ></textarea>
+                        <p className="text-lg font-medium mt-4">From</p>
+                        <input
+                            type="text"
+                            className="border border-gray-500 rounded w-full"
+                            onBlur={(e) => {
+                                const teacherName = e.target.value;
+                                setNotice({ ...notice, teacherName });
+                            }}
+                        />
                         <input
                             type="submit"
                             value="Publish"
