@@ -1,16 +1,15 @@
 import React from "react";
-import teachersHomePageImg from "../../../img/teachershomepageimg.jpg";
-
+import homelogo from '../../../img/teachersimage/teacher_home_img.webp'
 const TeachersPanelHome = () => {
     return (
         <div>
-            <h1 className="text-center text-5xl text-blue-800 my-5">
+            <h2 className="text-center mt-12 text-5xl teachers_home_title">
+                Teachers Panel 
+            </h2>
+            <h1 className="text-center font-bold text-xl text-gray-500 mt-2">
                 The School Network
             </h1>
-            <h2 className="text-center text-2xl text-blue-600">
-                Teachers Panel Body
-            </h2>
-            <img className="w-1/2 mx-auto" src={teachersHomePageImg} alt="" />
+            <img className="mx-auto" src={homelogo} alt=""/>
         </div>
     );
 };

@@ -12,11 +12,11 @@ const HomeSlider = () => {
     autoplay: true,
   };
   return (
-    <div>
+    <div data-aos="zoom-in">
       <Slider {...settings}>
         <div>
           <img
-            src="https://i.ibb.co/G5MgsVd/cdc-gs-Ri9c-WCIB0-unsplash.jpg"
+            src="https://i.ibb.co/NnqVJ2Z/Sliderimage1.jpg"
             alt="slider image"
             className="object-cover w-full h-96"
           />
@@ -26,14 +26,14 @@ const HomeSlider = () => {
         {/*</div>*/}
         <div>
           <img
-            src="https://i.ibb.co/HYqH4Br/robo-wunderkind-h-Lv-Q4-QEBAE-unsplash.jpg"
+            src="https://i.ibb.co/6RShSY4/slidreimage2.jpg"
             alt="img"
             className="object-cover w-full h-96"
           />
         </div>
         <div>
           <img
-            src="https://i.ibb.co/Wnk6ss2/ivan-aleksic-PDRFee-Dni-Ck-unsplash.jpg"
+            src="https://i.ibb.co/S7VnZXz/sliderimage3.jpg"
             alt="img"
             className="object-cover w-full h-96"
           />
@@ -41,7 +41,7 @@ const HomeSlider = () => {
 
         <div>
           <img
-            src="https://i.ibb.co/4WdL115/pexels-iqwan-alif-1206101-min.jpg"
+            src="https://i.ibb.co/LSkm75z/sliderimage4.jpg"
             alt="img"
             className="object-cover w-full h-96"
           />

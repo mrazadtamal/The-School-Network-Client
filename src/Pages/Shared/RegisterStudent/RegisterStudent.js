@@ -1,15 +1,58 @@
 import React from "react";
 import { useForm } from "react-hook-form";
-
-const TeachersRegisterStudent = () => {
+import useFirebase from "../Authentication/Authentication";
+import Swal from 'sweetalert2'
+const RegisterStudent = () => {
+    const {RegisterUser, setUser} = useFirebase();
     const {
         register,
         handleSubmit,
         watch,
+        reset,
         formState: { errors },
     } = useForm();
-    const onSubmit = (data) => console.log(data);
+    const onSubmit = (data) => {
+        const studentdata = {...data, role: 'Student'}
+ 
+            RegisterUser(data.email, data.password)
+            .then((userCredential) => {
+              // Signed in 
+              const user = userCredential.user;
+              setUser(user);
+              
+              SaveStudent(studentdata)
+            
+              reset()
+              
+          }).catch((error) => {
+               
+              console.log('from register user', error.message)
+          });
+    }
 
+    //saving teacher to database
+    const SaveStudent = (studentdata) => {
+      
+        fetch('http://localhost:5000/addUser', {
+            method: 'POST',
+            headers: {
+                'content-type':'application/json'
+            },
+            body: JSON.stringify(studentdata)
+        })
+        .then(res => res.json())
+        .then(data => {
+            console.log('data',data)
+        if(data)
+        {
+            Swal.fire(
+                'Success',
+                'Announcement Edited Successfully',
+                'success'
+              )
+        }
+        })
+    }
     return (
         <div>
             <div>
@@ -20,7 +63,7 @@ const TeachersRegisterStudent = () => {
             <div className="px-3 mb-2">
                 <form
                     onSubmit={handleSubmit(onSubmit)}
-                    className="grid grid-cols-12 gap-5"
+                    className="grid grid-cols-12 gap-5 principal_notice_publish_form"
                 >
                     {/*--------- Class ---------*/}
                     <div className="col-span-4">
@@ -30,11 +73,14 @@ const TeachersRegisterStudent = () => {
                         <select
                             className="border border-gray-700 rounded p-1 w-full"
                             id="class"
-                            name="class"
+                            name="studentclass"
                             {...register("class", { required: "true" })}
                         >
-                            <option value="kg">KG</option>
-                            <option value="nursery">Nursery</option>
+                            <option value="class-one">Class One</option>
+                            <option value="class-two">Class Two</option>
+                            <option value="class-three">Class Three</option>
+                            <option value="class-four">Class Four</option>
+                            <option value="class-five">Class Five</option>
                         </select>
                     </div>
                     {/*--------- Section ---------*/}
@@ -45,7 +91,7 @@ const TeachersRegisterStudent = () => {
                         <select
                             className="border border-gray-700 rounded p-1 w-full"
                             id="section"
-                            name="section"
+                            name="studentsection"
                             {...register("section", { required: true })}
                         >
                             <option value="section-a">Section-A</option>
@@ -65,6 +111,7 @@ const TeachersRegisterStudent = () => {
                             {...register("roll", { required: true })}
                         />
                     </div>
+                  
                     {/*--------- Name ---------*/}
                     <div className="col-span-6">
                         <label htmlFor="name" className="block font-bold">
@@ -73,7 +120,7 @@ const TeachersRegisterStudent = () => {
                         <input
                             type="text"
                             id="name"
-                            name="name"
+                            name="studentname"
                             className="border border-gray-700 rounded p-1 w-full"
                             {...register("name", { required: true })}
                         />
@@ -223,11 +270,11 @@ const TeachersRegisterStudent = () => {
                     </div>
                     <div className="col-span-12">
                         <div className="flex justify-center">
-                            <input
+                            <button
                                 type="submit"
-                                value="Register"
-                                className="block bg-blue-500 px-5 py-2 rounded text-gray-900 font-bold"
-                            />
+                                
+                                className="block bg-blue-500 px-5 py-2 rounded text-gray-900 font-bold register_btn"
+                            >Register</button>
                         </div>
                     </div>
                 </form>
@@ -236,4 +283,4 @@ const TeachersRegisterStudent = () => {
     );
 };
 
-export default TeachersRegisterStudent;
+export default RegisterStudent;

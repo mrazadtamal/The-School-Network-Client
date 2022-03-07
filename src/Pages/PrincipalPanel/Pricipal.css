@@ -1,5 +1,5 @@
 
-#principal_nav{
+.principal_navbar{
     display: none;
 }
 /* ----------------Principal Home css start------------- */
@@ -21,6 +21,7 @@
     display: flex;
     flex-direction: row;
    font-weight: 600;
+   color: white;
 }
 .sidebar_colam{
     height: 100vh;
@@ -29,38 +30,29 @@
     top: 0px;
     z-index: 1;
 }
-.principal_sidebar_link {
-  cursor: pointer;
-  margin-left: 20px;
-}
-.principal_sidebar_link {
-  cursor: pointer;
-  margin-left: 20px;
-}
+
 .principal_sidebar_icon{
     margin-right: 7px;
 }
 .principal_react_icons{
     color:#ffffff;
     font-weight:bolder;
-  
-    margin-right: 7px;
+    display: inline;
+    margin-right: 5px;
 }
 /* ----------------Principal sidebar css End------------- */
 
-/* ----------------Principal notice publish css start------------- */
+
 .principal_sidebar{
     padding-right: 10px;
 }
 .principal_notice_publish_form{
     border: solid 3px rgb(94, 3, 3);
     border-radius: 15px;
-    width: 100%;
+
     padding: 30px;
 }
-.principal_notice_publish_div{
-    width: 100%;
-}
+
 .principal_form_labels{
     display: block;
     margin-left: 30px;
@@ -70,7 +62,7 @@
 .principal_form_textarea{
     width: 80%;
     outline: none;
-    border: solid rgb(0, 153, 255) 1px;
+    border: solid rgb(65, 99, 122) 1px;
     margin-left: 30px;
     display: block;
     height: 120px;
@@ -117,12 +109,23 @@
     border-radius: 5px;
     width: 350px;
 }
+.publish_result_btn{
+    display: block;
+    margin-left: 30px;
+    margin-top: 15px;
+    background-color: rgb(0, 11, 73);
+    padding: 10px 15px 10px 15px;
+    color: white;
+    font-weight: 600;
+    border-radius: 5px;
+    width: 80%;
+}
 .principal_register_teacher{
     border: solid 3px rgb(94, 3, 3);
     border-radius: 15px;
     padding: 30px;
 }
-/* ----------------Principal notice publish css End------------- */
+
 .principal_form_all_input{
     width: 100%;
     outline: none;
@@ -140,8 +143,140 @@
     color: rgb(0, 11, 73);
     font-weight: 700;
 }
+/* ----------------Principal notice publish css start------------- */
+.previous_notice_section{
+    /* display: grid;
+    grid-template-columns: auto;
+    grid-column-gap: 20px;
+    grid-row-gap: 20px; */
+    padding-right: 20px;
+    padding-left: 20px;
+    justify-content: center;
+    width: 100%;
+}
+.Teacher_notice_section{
+    display: grid;
+    grid-template-columns: auto;
+    grid-column-gap: 20px;
+    grid-row-gap: 20px;
+    padding-right: 20px;
+    padding-left: 20px;
+    justify-content: center;
+    width: 100%;
+}
+.previous_notice_div{
+    border: solid rgb(0, 11, 73) 2px;
+    border-radius: 15px;
+    padding: 20px 10px 20px 10px;
+    margin-top: 20px;
+}
+.delete_btn{
+    border-radius: 5px;
+    border: none;
+    outline: none;
+    background-color: rgb(0, 0, 0);
+    color: #ffffff;
+    padding: 5px;
+}
+.edit_btn{
+    border-radius: 5px;
+    border: none;
+    outline: none;
+    background-color: rgb(255, 81, 0);
+    color: #ffffff;
+    padding: 5px;
+}
+
+.button_div{
+    padding-top: 10px;
+}
+.drop_link{
+    transition: 0.5s ease-in-out;
+   
+}
+.class_text{
+    text-align: center;
+    width: 70%;
+    margin-top: 5px;
+    margin-left: 15px;
+    color: #ffffff;
+    cursor: pointer;
+}
+.class_text:hover{
+    background-color: #7b7878;
+    transition: 1s ease-in-out;
+    border-radius: 5px;
+}
+.drop_dwon_btn{
+    background-color: black;
+    color: #ffffff;
+    font-weight: bold;
+
+    display: block;
+
+}
+/* ----------------Principal notice publish css End------------- */
+.principal_logout_btn{
+    border: solid rgb(255, 196, 1) 0.5px;
+    border-radius: 10px;
+    color: rgb(255, 196, 1);
+    padding: 10px 40px 10px 40px;
+    margin-left: 40px;
+}
+.principal_title{
+    color: rgb(255, 196, 1);
+}
+.table_btn{
+    border: solid rgb(0, 0, 0) 1px;
+    border-radius: 5px;
+    cursor: pointer;
+    background-color: goldenrod;
+    color: black;
+}
+.table_btn:hover{
+    background-color: rgb(255, 255, 255);
+    color: rgb(92, 0, 0);
+}
+.active_principal_link{
+    border: solid  rgb(7, 255, 243) 1px;
+    border-radius: 5px;
+    color: rgb(7, 255, 243);
+    cursor: pointer;
+    margin-left: 20px;
+    display: flex;
+    flex-direction: row;
+    font-weight: 600;
+    width: 180px;
+    padding: 5px;
+}
+
+.payment_upload_div{
+ display: flex;
+ flex-direction: row;
+}
+.teacher_remove_btn{
+    cursor: pointer;
+}
+.goto_previous_notice_div{
+    display: flex;
+    flex-direction: column;
+    align-items: flex-end;
+}
+.see_previous_notice_btn{
+    border: solid 1px rgb(82, 3, 3);
+    border-radius: 5px;
+    color: rgb(82, 3, 3);
+    font-weight: bold;
+}
+.react__button_icons{
+    display: inline;
+}
+.date_text{
+    text-align: end;
+    font-size: 20px;
+}
 @media screen and (max-width: 991px) {
-    #principal_nav{
+    .principal_navbar{
         display: block;
     }
     .sidebar_colam{
@@ -151,5 +286,9 @@
         width: 100%;
     
     }
+    .payment_upload_div{
+        display: flex;
+        flex-direction: column;
+       }
 }
 
