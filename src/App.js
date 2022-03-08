@@ -55,9 +55,10 @@ import StudentPaymentSuccess from "./Pages/StudentPanel/StudentPay/StudentPaymen
 import IndividualPayment from "./Pages/PrincipalPanel/CheckPaymentStatus/IndividualPayment";
 import CheckAdmissionForm from "./Pages/PrincipalPanel/CheckAdmissionForm/CheckAdmissionForm";
 import IndividualForms from "./Pages/PrincipalPanel/CheckAdmissionForm/IndividualForms";
+import OurTeachers from "./Pages/AllUser/HomePageComponents/OurTeacers";
 
 function App() {
-    return (
+  return (
     <div>
         <BrowserRouter>
             <Routes>
@@ -77,6 +78,7 @@ function App() {
                     <Route path="/auditoriam" element={<Auditoraim />} />
                     <Route path="/games" element={<Games />} />
                     <Route path="/contact" element={<Contact />} />
+                     <Route path="/ourTeacehrs" element={<OurTeachers />} />
                     <Route path="/AdmissionSuccess" element={<AdmissionSuccess />} />
                     {/* --------------All User Homepage Routes End--------------- */}
                     {/* --------------Principal Routes Start-------------- */}
