@@ -162,13 +162,52 @@ export const GetClassRoutine = createAsyncThunk(
     }
 );
 
+// Get All Exam Routines
+export const GetExamRoutine = createAsyncThunk(
+    "Teacher/GetExamRoutine",
+    async () => {
+        const response = await fetch(
+            "http://localhost:5000/GetExamRoutine"
+        ).then((res) => res.json());
+        return response;
+    }
+);
+
+// Delete A Class Routine
+export const DeleteClassRoutine = createAsyncThunk(
+    "Teacher/DeleteClassRoutine",
+    async (data) => {
+        const response = await fetch(
+            `http://localhost:5000/DeleteClassRoutine?id=${data}`,
+            {
+                method: "DELETE",
+            }
+        );
+        return response;
+    }
+);
+
+// Delete A Exam Routine
+export const DeleteExamRoutine = createAsyncThunk(
+    "Teacher/DeleteExamRoutine",
+    async (id) => {
+        const response = await fetch(
+            `http://localhost:5000/DeleteExamRoutine?id=${id}`,
+            {
+                method: "DELETE",
+            }
+        );
+        return response;
+    }
+);
+
 const initialState = {
     value: 0,
     extraCares: [],
     teacherInfo: {},
     IndividualCare: {},
-    classRoutines: {},
-    examRoutines: {},
+    classRoutines: [],
+    examRoutines: [],
 };
 
 export const TeacherReducer = createSlice({
@@ -211,8 +250,39 @@ export const TeacherReducer = createSlice({
         builder.addCase(GetIndividualCare.fulfilled, (state, action) => {
             state.IndividualCare = action.payload;
         });
+        builder.addCase(UploadClassRoutine.fulfilled, (state, action) => {
+            Swal.fire(
+                "Success",
+                "Class routine uploaded successfully",
+                "success"
+            );
+        });
+        builder.addCase(UploadExamRoutine.fulfilled, (state, action) => {
+            Swal.fire(
+                "Success",
+                "Class routine uploaded successfully",
+                "success"
+            );
+        });
         builder.addCase(GetClassRoutine.fulfilled, (state, action) => {
             state.classRoutines = action.payload;
+        });
+        builder.addCase(GetExamRoutine.fulfilled, (state, action) => {
+            state.examRoutines = action.payload;
+        });
+        builder.addCase(DeleteClassRoutine.fulfilled, (state, action) => {
+            Swal.fire(
+                "Success",
+                "Class Routine deleted successfully",
+                "success"
+            );
+        });
+        builder.addCase(DeleteExamRoutine.fulfilled, (state, action) => {
+            Swal.fire(
+                "Success",
+                "Class Routine deleted successfully",
+                "success"
+            );
         });
     },
 });

@@ -1,22 +1,15 @@
 import React, { useState, useEffect } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import {
-    GetClassRoutine,
+    DeleteClassRoutine,
     UploadClassRoutine,
+    GetClassRoutine,
 } from "../../../SchoolRedux/TeacherSlice";
 
 const TeachersClassRoutine = () => {
     const dispatch = useDispatch();
     const [classRoutineImg, setClassRoutineImg] = useState("");
     const [classRoutineData, setClassRoutineData] = useState({});
-
-    useEffect(() => {
-        dispatch(GetClassRoutine());
-    }, [dispatch]);
-
-    const classRoutines = useSelector(
-        (state) => state.teacherStore.classRoutines
-    );
 
     const handlePublishClassRoutine = (e) => {
         e.preventDefault();
@@ -26,7 +19,17 @@ const TeachersClassRoutine = () => {
         dispatch(UploadClassRoutine(data));
     };
 
-    console.log(classRoutines);
+    useEffect(() => {
+        dispatch(GetClassRoutine());
+    }, [dispatch]);
+
+    const classRoutines = useSelector(
+        (state) => state.teacherStore.classRoutines
+    );
+
+    const handleRoutineDeleteBtn = (id) => {
+        dispatch(DeleteClassRoutine(id));
+    };
 
     return (
         <div className="text-center h-screen overflow-auto">
@@ -92,7 +95,7 @@ const TeachersClassRoutine = () => {
                     </h1>
                 </div>
                 <div className="grid grid-cols-12 my-3 gap-5">
-                    {/* {classRoutines?.map((routine) => (
+                    {classRoutines?.map((routine) => (
                         <div className="col-span-12 md:col-span-6 lg:col-span-4 bg-blue-200 rounded-lg p-3">
                             <div>
                                 <img
@@ -113,19 +116,27 @@ const TeachersClassRoutine = () => {
                                     {routine.section}
                                 </h3>
                             </div>
-                            <div className="mt-3">
+                            <div className="mt-3 flex justify-around">
                                 <a
                                     href={`data:image/jpeg;base64,${routine?.routineImg}`}
-                                    download
+                                    download={`${routine.class} ${routine.section} routine`}
                                     target="_blank"
                                     rel="noreferrer"
                                     className="inline-block bg-blue-500 text-white font-medium px-2 py-1 rounded"
                                 >
-                                    View Routine
+                                    Download
                                 </a>
+                                <button
+                                    onClick={() =>
+                                        handleRoutineDeleteBtn(routine._id)
+                                    }
+                                    className="inline-block bg-red-500 text-white font-medium px-2 py-1 rounded"
+                                >
+                                    Delete
+                                </button>
                             </div>
                         </div>
-                    ))} */}
+                    ))}
                 </div>
             </div>
         </div>
