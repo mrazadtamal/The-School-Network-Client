@@ -80,7 +80,7 @@ const LogInPage = () => {
       <div className="bg-[url('https://i.ibb.co/8dRgbRP/LoginBg.jpg')] bg-cover ">
         <div className="pb-80  p-50 mx-auto pt-36 container">
           <div className="bg-white shadow-md rounded px-8 pt-6 pb-8 flex flex-col w-1/2 pt-5 mx-auto">
-            <div className="mx-auto pt-5 pb-5">
+            <div className="lg:mx-auto pt-5 pb-5  sm:w-full">
               <select name="role" onBlur={(e) => setRole(e.target.value)}>
                 <option value="">Choose Your Role</option>
                 <option value="Principal">Principal</option>
@@ -120,10 +120,10 @@ const LogInPage = () => {
                 placeholder="******************"
               />
             </div>
-            <div className="flex items-center justify-between">
+            <div className="lg:flex items-center justify-between sm:flex-col-reverse">
               <button
                 onClick={onSubmitHandler}
-                className="bg-cyan-500 hover:bg-cyan-900 text-blue-50  font-bold py-2 px-4 rounded-full"
+                className="bg-cyan-500 hover:bg-cyan-900 text-blue-50  mt-5 font-bold py-2 px-4 rounded-full"
                 type="button"
               >
                 Sign In

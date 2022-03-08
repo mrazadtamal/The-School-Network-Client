@@ -50,9 +50,15 @@ import StudentProfile from "./Pages/StudentPanel/StudentProfile/StudentProfile";
 import SecondSemester from "./Pages/StudentPanel/StudentDashboard/SeeResult/SecondSemester";
 import NoticBoard from "./Pages/StudentPanel/NoticeBoard/NoticeBoard";
 import MonthlyPayment from "./Pages/StudentPanel/MonthlyPayment/MonthlyPayment";
+import AdmissionSuccess from "./Pages/AllUser/Admission/AdmissionSuccess";
+import StudentPaymentSuccess from "./Pages/StudentPanel/StudentPay/StudentPaymentSuccess";
+import IndividualPayment from "./Pages/PrincipalPanel/CheckPaymentStatus/IndividualPayment";
+import CheckAdmissionForm from "./Pages/PrincipalPanel/CheckAdmissionForm/CheckAdmissionForm";
+import IndividualForms from "./Pages/PrincipalPanel/CheckAdmissionForm/IndividualForms";
+import OurTeachers from "./Pages/AllUser/HomePageComponents/OurTeacers";
 
 function App() {
-    return (
+  return (
     <div>
         <BrowserRouter>
             <Routes>
@@ -72,6 +78,8 @@ function App() {
                     <Route path="/auditoriam" element={<Auditoraim />} />
                     <Route path="/games" element={<Games />} />
                     <Route path="/contact" element={<Contact />} />
+                     <Route path="/ourTeacehrs" element={<OurTeachers />} />
+                    <Route path="/AdmissionSuccess" element={<AdmissionSuccess />} />
                     {/* --------------All User Homepage Routes End--------------- */}
                     {/* --------------Principal Routes Start-------------- */}
                     <Route
@@ -129,6 +137,18 @@ function App() {
                         <Route
                         path="/PrincipalDashboard/PreviousAnnouncement"
                         element={<PreviousAnnouncement />}
+                        />
+                        <Route
+                        path="/PrincipalDashboard/IndividualPayment"
+                        element={<IndividualPayment />}
+                        />
+                         <Route
+                        path="/PrincipalDashboard/CheckAdmissionForm"
+                        element={<CheckAdmissionForm />}
+                        />
+                        <Route
+                        path="/PrincipalDashboard/IndividualForms/:id"
+                        element={<IndividualForms />}
                         />
                     </Route>
                     {/* --------------Principal Routes End--------------- */}
@@ -211,7 +231,7 @@ function App() {
                         element={<StudentMyDocuments />}
                         />
                         <Route
-                        path="/StudentDashboard/StudentPay"
+                        path="/StudentDashboard/StudentPay/:id"
                         element={<StudentPay />}
                         />
                         <Route path="/StudentDashboard/seeResult" element={<SeeResult />} />
@@ -238,6 +258,10 @@ function App() {
                          <Route
                         path="/StudentDashboard/MonthlyPayment"
                         element={<MonthlyPayment />}
+                         />
+                         <Route
+                        path="/StudentDashboard/StudentPaymentSuccess"
+                        element={<StudentPaymentSuccess />}
                          />
                     </Route>
                     {/* --------------------student route end-------------------------*/}
