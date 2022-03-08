@@ -275,6 +275,23 @@
     text-align: end;
     font-size: 20px;
 }
+.details_addmission_form{
+    border: rgb(2, 2, 67) 2px solid ;
+    border-radius: 5px;
+    padding: 10px;
+    width: 80%;
+}
+.form_colam_mobile{
+    display: none;
+}
+@media screen and (max-width: 767px) {
+    .form_colam_pc{
+        display: none;
+    }
+    .form_colam_mobile{
+        display: block;
+    }
+}
 @media screen and (max-width: 991px) {
     .principal_navbar{
         display: block;

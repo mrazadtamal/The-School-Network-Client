@@ -84,7 +84,6 @@ export const getStudentInfo = createAsyncThunk(
 export const updateStudentPP = createAsyncThunk(
   "Student/updateStudentPP",
   async (data) => {
-    console.log("Hitted", data);
     const response = await fetch(
       `https://blooming-citadel-14218.herokuapp.com/student/updateStudentPP?email=${data.email}`,
       {
@@ -109,12 +108,28 @@ export const GetStudentNotice = createAsyncThunk(
     return response;
   }
 );
-// Update student profile picture
+// geting monthly payment
 export const getMontlyPayment = createAsyncThunk(
   "Student/getMontlyPayment",
   async (email) => {
     const response = await fetch(
       `https://blooming-citadel-14218.herokuapp.com/student/getMontlyPayment?email=${email}`
+    )
+      .then((res) => res.json())
+      .catch((err) => console.log(err));
+    return response;
+  }
+);
+// Paying montnly payment
+export const PayMonthlyPayment = createAsyncThunk(
+  "Student/PayMonthlyPayment",
+  async (data) => {
+    const response = await fetch(
+      'https://blooming-citadel-14218.herokuapp.com/PayMonthlyPayment',{
+        method: "POST",
+        headers:{"content-type": "application/json"},
+        body: JSON.stringify(data)
+      }
     )
       .then((res) => res.json())
       .catch((err) => console.log(err));
@@ -173,6 +188,9 @@ export const StudentReducer = createSlice({
     });
     builder.addCase(getMontlyPayment.fulfilled, (state, action) => {
       state.montlyPayment = action.payload;
+    });
+    builder.addCase(PayMonthlyPayment.fulfilled, (state, action) => {
+      window.location.replace(action.payload)
     });
   },
 });
