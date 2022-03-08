@@ -19,7 +19,7 @@ const AlluserHomePage = () => {
       <AllUserNavbar />
       <HomeSlider />
       <TopSections />
-      <Annoucements />
+      {/*<Annoucements />*/}
       <BlogPosts />
       <NoticeBoard />
       <ExcellenceBanner />
