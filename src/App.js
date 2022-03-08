@@ -51,6 +51,7 @@ import SecondSemester from "./Pages/StudentPanel/StudentDashboard/SeeResult/Seco
 import NoticBoard from "./Pages/StudentPanel/NoticeBoard/NoticeBoard";
 import MonthlyPayment from "./Pages/StudentPanel/MonthlyPayment/MonthlyPayment";
 import Pdfupload from "./Pages/AllUser/Contact/Pdfupload";
+import OurTeachers from "./Pages/AllUser/HomePageComponents/OurTeacers";
 
 function App() {
   return (
@@ -70,6 +71,7 @@ function App() {
           <Route path="/auditoriam" element={<Auditoraim />} />
           <Route path="/games" element={<Games />} />
           <Route path="/contact" element={<Contact />} />
+          <Route path="/ourTeacehrs" element={<OurTeachers />} />
           <Route path="/pdfupload" element={<Pdfupload />} />
 
           {/* --------------All User Homepage Routes End--------------- */}
