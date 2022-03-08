@@ -3,8 +3,10 @@ import { useDispatch, useSelector } from 'react-redux';
 import { getMontlyPayment } from '../../../SchoolRedux/StudentSlice';
 import useFirebase from '../../Shared/Authentication/Authentication';
 import { BsCalendarCheck } from 'react-icons/bs';
+import { useNavigate } from 'react-router-dom';
 
 const MonthlyPayment = () => {
+    const navigate = useNavigate()
     const { user } = useFirebase();
     const dispatch = useDispatch()
     useEffect(() => {
@@ -64,7 +66,11 @@ const MonthlyPayment = () => {
                             <p className="text-gray-900 whitespace-no-wrap">{payment.lastdate}</p>
                           </td>
                           <td className="px-5 py-5 border-b border-gray-400  text-sm">
-                            <p className="text-white font-bold text-xl whitespace-no-wrap bg-blue-500 text-center rounded-lg pt-2 pb-2">Pay Fee</p>
+                            {
+                              payment?.paymentStatus === 'PAID' ? <p  className="text-green-900 font-bold text-xl whitespace-no-wrap bg-whhite text-center rounded-lg pt-2 pb-2">PAID</p> : <p onClick={() => {
+                                navigate(`/StudentDashboard/StudentPay/${payment._id}`)
+                              }} className="text-white font-bold text-xl whitespace-no-wrap bg-blue-500 text-center rounded-lg pt-2 pb-2 cursor-pointer">Pay Fee</p>
+                            }
                           </td>
                       </tr>)}
                     </tbody>
