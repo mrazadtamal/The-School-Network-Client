@@ -5,9 +5,9 @@ import Swal from "sweetalert2";
 export const GetExtraCareRequest = createAsyncThunk(
     "Teacher/getExtraCareRequest",
     async (teacherclass) => {
-        const response = await fetch(`https://blooming-citadel-14218.herokuapp.com/requestCare?teacherclass=${teacherclass}`).then(
-            (res) => res.json()
-        );
+        const response = await fetch(
+            `https://blooming-citadel-14218.herokuapp.com/requestCare?teacherclass=${teacherclass}`
+        ).then((res) => res.json());
         return response;
     }
 );
@@ -16,13 +16,16 @@ export const GetExtraCareRequest = createAsyncThunk(
 export const noticePublishFromTeacher = createAsyncThunk(
     "Teacher/PublishNotice",
     async (data) => {
-        const response = await fetch("https://blooming-citadel-14218.herokuapp.com/PublishNotice", {
-            method: "POST",
-            headers: {
-                "content-type": "application/json",
-            },
-            body: JSON.stringify(data),
-        })
+        const response = await fetch(
+            "https://blooming-citadel-14218.herokuapp.com/PublishNotice",
+            {
+                method: "POST",
+                headers: {
+                    "content-type": "application/json",
+                },
+                body: JSON.stringify(data),
+            }
+        )
             .then((res) => res.json())
             .catch((error) => {
                 Swal.fire("!", "Error!", "error");
@@ -82,45 +85,90 @@ export const addTeacherInfo = createAsyncThunk(
 
 //Result Publish For Student
 export const PublishResult = createAsyncThunk(
-    'Teacher/PublishResult',
+    "Teacher/PublishResult",
     async (data) => {
-      console.log('hitted result', data)
-      const response = await fetch('https://blooming-citadel-14218.herokuapp.com/PublishResult',{
-        method: 'POST',
-        headers:{
-          'content-type':'application/json'
-        },
-        body: JSON.stringify(data)
-      }).then(res=> res.json()).catch(error => {
-        Swal.fire(
-            '!',
-            'Error!',
-            'error'
-          )
-    });
-      return response
+        console.log("hitted result", data);
+        const response = await fetch(
+            "https://blooming-citadel-14218.herokuapp.com/PublishResult",
+            {
+                method: "POST",
+                headers: {
+                    "content-type": "application/json",
+                },
+                body: JSON.stringify(data),
+            }
+        )
+            .then((res) => res.json())
+            .catch((error) => {
+                Swal.fire("!", "Error!", "error");
+            });
+        return response;
     }
 );
 
 //Get Individual Care of Student
 export const GetIndividualCare = createAsyncThunk(
-    'Teacher/GetIndividualCare',
+    "Teacher/GetIndividualCare",
     async (id) => {
-      const response = await fetch(`https://blooming-citadel-14218.herokuapp.com/GetIndividualCare/${id}`).then(res=> res.json()).catch(error => {
-        Swal.fire(
-            '!',
-            'Error!',
-            'error'
-          )
-    });
-      return response
+        const response = await fetch(
+            `https://blooming-citadel-14218.herokuapp.com/GetIndividualCare/${id}`
+        )
+            .then((res) => res.json())
+            .catch((error) => {
+                Swal.fire("!", "Error!", "error");
+            });
+        return response;
     }
 );
+
+// Upload class routine
+export const UploadClassRoutine = createAsyncThunk(
+    "Teacher/UploadClassRoutine",
+    async (data) => {
+        const response = await fetch(
+            `http://localhost:5000/UploadClassRoutine?class=${data.classRoutineData.class}&&section=${data.classRoutineData.section}`,
+            {
+                method: "POST",
+                body: data.fd,
+            }
+        );
+        return response;
+    }
+);
+
+// Upload Exam Routine
+export const UploadExamRoutine = createAsyncThunk(
+    "Teacher/UploadExamRoutine",
+    async (data) => {
+        const response = await fetch(
+            `http://localhost:5000/UploadExamRoutine?class=${data.class}&&term=${data.term}`,
+            {
+                method: "POST",
+                body: data.fd,
+            }
+        );
+        return response;
+    }
+);
+
+// Get All Class Routines
+export const GetClassRoutine = createAsyncThunk(
+    "Teacher/GetClassRoutine",
+    async () => {
+        const response = await fetch(
+            "http://localhost:5000/GetClassRoutine"
+        ).then((res) => res.json());
+        return response;
+    }
+);
+
 const initialState = {
     value: 0,
     extraCares: [],
     teacherInfo: {},
     IndividualCare: {},
+    classRoutines: {},
+    examRoutines: {},
 };
 
 export const TeacherReducer = createSlice({
@@ -158,14 +206,13 @@ export const TeacherReducer = createSlice({
             Swal.fire("Success", "Information Updated Successfully", "success");
         });
         builder.addCase(PublishResult.fulfilled, (state, action) => {
-            Swal.fire(
-              'Success',
-              'Result Publish Success',
-              'success'
-            )
+            Swal.fire("Success", "Result Publish Success", "success");
         });
         builder.addCase(GetIndividualCare.fulfilled, (state, action) => {
-            state.IndividualCare = action.payload
+            state.IndividualCare = action.payload;
+        });
+        builder.addCase(GetClassRoutine.fulfilled, (state, action) => {
+            state.classRoutines = action.payload;
         });
     },
 });
