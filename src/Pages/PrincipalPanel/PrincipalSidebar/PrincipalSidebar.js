@@ -57,7 +57,7 @@ const PrincipalSidebar = () => {
           <p className={location.pathname === '/PrincipalDashboard/RegisterTeacher' ? 'active_principal_link mt-4' : 'principal_sidebar_link   text-white mt-4'}> <FaChalkboardTeacher className='principal_react_icons' /> Register Teachers</p>
         </Link>
         
-        <p onClick={() => setShown2(!shown2)} className="principal_sidebar_link mt-4"><span> + Publish Results <IoIosArrowDown className="principal_react_icons"/> </span></p>
+        {/* <p onClick={() => setShown2(!shown2)} className="principal_sidebar_link mt-4"><span> + Publish Results <IoIosArrowDown className="principal_react_icons"/> </span></p>
             {
               shown2 && <ul className="drop_link">
               <li onClick={() => ResultNavigateHandler('ClassOneToTwo', 'Class One')} className="class_text">Class One</li> 
@@ -68,7 +68,7 @@ const PrincipalSidebar = () => {
 
               <li onClick={() => ResultNavigateHandler('ClassFive', 'Class Five')} className="class_text">Class Five</li>
             </ul>
-            }
+            } */}
 
         
           <p onClick={() => setShown1(!shown1)} className="principal_sidebar_link mt-4"><span><FaUserGraduate className='principal_react_icons'/>Manage Students <IoIosArrowDown className="principal_react_icons"/></span></p>
