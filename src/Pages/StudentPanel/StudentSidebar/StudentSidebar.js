@@ -86,20 +86,6 @@ const StudentSidebar = () => {
           </p>
         </NavLink>
 
-        {/* pay */}
-
-        <NavLink
-          to="/StudentDashboard/StudentPay"
-          style={({ isActive }) => ({
-            color: isActive ? "#0bc28b" : "#545e6f",
-            background: isActive ? "#7600dc" : "black",
-          })}
-        >
-          <p className="text-white py-0.5 hover:bg-yellow-200 w-40 hover:text-black">
-            Pay
-          </p>
-        </NavLink>
-
         {/* Student Analytics */}
 
         <NavLink
