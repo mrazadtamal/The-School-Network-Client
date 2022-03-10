@@ -55,6 +55,7 @@ import StudentPaymentSuccess from "./Pages/StudentPanel/StudentPay/StudentPaymen
 import IndividualPayment from "./Pages/PrincipalPanel/CheckPaymentStatus/IndividualPayment";
 import CheckAdmissionForm from "./Pages/PrincipalPanel/CheckAdmissionForm/CheckAdmissionForm";
 import IndividualForms from "./Pages/PrincipalPanel/CheckAdmissionForm/IndividualForms";
+import BooksAdd from "./Pages/Shared/LibraryPages/BooksAdd/BooksAdd";
 
 function App() {
     return (
@@ -147,6 +148,10 @@ function App() {
                         <Route
                         path="/PrincipalDashboard/IndividualForms/:id"
                         element={<IndividualForms />}
+                        />
+                        <Route
+                        path="/PrincipalDashboard/BooksAdd"
+                        element={<BooksAdd />}
                         />
                     </Route>
                     {/* --------------Principal Routes End--------------- */}

@@ -12,6 +12,7 @@ const PrincipalSidebar = () => {
   const {user, LogOutUser} = useFirebase()
   const [shown1, setShown1] = useState(false)
   const [shown2, setShown2] = useState(false)
+  const [shown3, setShown3] = useState(false)
   const navigate = useNavigate()
   const PaymentCheckHandler = (route, classname) => {
     navigate(`/PrincipalDashboard/${route}`, {state: classname})
@@ -76,7 +77,7 @@ const PrincipalSidebar = () => {
           <p className={location.pathname === '/PrincipalDashboard/UploadPayment' ? 'active_principal_link mt-4' : 'principal_sidebar_link   text-white mt-4'}> <SiSamsungpay className='principal_react_icons' />Upload Payment</p>
         </Link>
 
-            <p onClick={() => setShown2(!shown2)} className="principal_sidebar_link mt-4"><span><SiSamsungpay className='principal_react_icons'/>Payment Details <IoIosArrowDown className="principal_react_icons"/></span></p>
+          <p onClick={() => setShown2(!shown2)} className="principal_sidebar_link mt-4"><span><SiSamsungpay className='principal_react_icons'/>Payment Details <IoIosArrowDown className="principal_react_icons"/></span></p>
           {
             shown2 && <ul className="drop_link">
             <li onClick={() => PaymentCheckHandler('CheckPaymentStatus', 'class-one')} className="class_text">Class One</li>
@@ -87,9 +88,17 @@ const PrincipalSidebar = () => {
           </ul>
           }
 
-        <Link to="/PrincipalDashboard/CheckAdmissionForm">
-          <p className={location.pathname === '/PrincipalDashboard/CheckAdmissionForm' ? 'active_principal_link mt-4' : 'principal_sidebar_link   text-white mt-4'}> <FaChalkboardTeacher className='principal_react_icons' />Check AdmissionForm</p>
-        </Link>
+          <Link to="/PrincipalDashboard/CheckAdmissionForm">
+            <p className={location.pathname === '/PrincipalDashboard/CheckAdmissionForm' ? 'active_principal_link mt-4' : 'principal_sidebar_link   text-white mt-4'}> <FaChalkboardTeacher className='principal_react_icons' />Check AdmissionForm</p>
+          </Link>
+
+          <p onClick={() => setShown3(!shown3)} className="principal_sidebar_link mt-4"><span><SiSamsungpay className='principal_react_icons'/>Library <IoIosArrowDown className="principal_react_icons"/></span></p>
+          {
+            shown3 && <ul className="drop_link">
+            <Link to="/PrincipalDashboard/BooksAdd"><li className="class_text">Add Books</li></Link>
+            <li className="class_text">Class Two</li>
+          </ul>
+          }
         </div>
     );
 };
