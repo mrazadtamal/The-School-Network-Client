@@ -33,7 +33,7 @@ const RegisterStudent = () => {
     //saving teacher to database
     const SaveStudent = (studentdata) => {
         console.log('hitted save student', studentdata)
-        fetch('https://the-school-network.web.app/addUser', {
+        fetch('https://blooming-citadel-14218.herokuapp.com/addUser', {
             method: 'POST',
             headers: {
                 'content-type':'application/json'

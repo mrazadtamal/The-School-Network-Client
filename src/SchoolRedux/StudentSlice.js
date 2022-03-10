@@ -5,7 +5,7 @@ import Swal from "sweetalert2";
 //for fetching the data from the api and database we use asyncthunk
 export const GetResult = createAsyncThunk("Student/seeResult", async () => {
   console.log("Hitted Student Slice");
-  const response = await fetch("https://the-school-network.web.app/student/results")
+  const response = await fetch("https://blooming-citadel-14218.herokuapp.com/student/results")
     .then((res) => res.json())
     .catch((err) => {
       console.log(err);
@@ -19,7 +19,7 @@ export const RequestExtraCare = createAsyncThunk(
   "Student/RequestCare",
   async (data) => {
     console.log("Hitted Extra Care");
-    const response = await fetch("https://the-school-network.web.app/student/requestCare", {
+    const response = await fetch("https://blooming-citadel-14218.herokuapp.com/student/requestCare", {
       method: "POST",
       headers: {
         "content-type": "application/json",
@@ -41,7 +41,7 @@ export const GetStudent = createAsyncThunk(
   async (data) => {
     console.log("Hitted Get Student", data.email);
     const response = await fetch(
-      `https://the-school-network.web.app/student/filteredStudent?email=${data.email}&&term=${data.term}`
+      `https://blooming-citadel-14218.herokuapp.com/student/filteredStudent?email=${data.email}&&term=${data.term}`
     )
       .then((res) => res.json())
       .catch((err) => {
@@ -58,7 +58,7 @@ export const GetFilteredResult = createAsyncThunk(
   async (email) => {
     console.log("Hitted Get Filtered Student", email);
     const response = await fetch(
-      `https://the-school-network.web.app/student/filteredResult?email=${email}`
+      `https://blooming-citadel-14218.herokuapp.com/student/filteredResult?email=${email}`
     )
       .then((res) => res.json())
       .catch((err) => {
@@ -74,7 +74,7 @@ export const getStudentInfo = createAsyncThunk(
   "Student/studentProfile",
   async (email) => {
     const response = await fetch(
-      `https://the-school-network.web.app/student/studentProfile?email=${email}`
+      `https://blooming-citadel-14218.herokuapp.com/student/studentProfile?email=${email}`
     ).then((res) => res.json());
     return response;
   }
@@ -85,7 +85,7 @@ export const updateStudentPP = createAsyncThunk(
   "Student/updateStudentPP",
   async (data) => {
     const response = await fetch(
-      `https://the-school-network.web.app/student/updateStudentPP?email=${data.email}`,
+      `https://blooming-citadel-14218.herokuapp.com/student/updateStudentPP?email=${data.email}`,
       {
         method: "PUT",
         body: data.fd,
@@ -101,7 +101,7 @@ export const GetStudentNotice = createAsyncThunk(
   "Student/GetStudentNotice",
   async (studentclass) => {
     const response = await fetch(
-      `https://the-school-network.web.app/student/GetStudentNotice?studentclass=${studentclass}`
+      `https://blooming-citadel-14218.herokuapp.com/student/GetStudentNotice?studentclass=${studentclass}`
     )
       .then((res) => res.json())
       .catch((err) => console.log(err));
@@ -113,7 +113,7 @@ export const getMontlyPayment = createAsyncThunk(
   "Student/getMontlyPayment",
   async (email) => {
     const response = await fetch(
-      `https://the-school-network.web.app/student/getMontlyPayment?email=${email}`
+      `https://blooming-citadel-14218.herokuapp.com/student/getMontlyPayment?email=${email}`
     )
       .then((res) => res.json())
       .catch((err) => console.log(err));
@@ -125,7 +125,7 @@ export const PayMonthlyPayment = createAsyncThunk(
   "Student/PayMonthlyPayment",
   async (data) => {
     const response = await fetch(
-      'https://the-school-network.web.app/PayMonthlyPayment',{
+      'https://blooming-citadel-14218.herokuapp.com/PayMonthlyPayment',{
         method: "POST",
         headers:{"content-type": "application/json"},
         body: JSON.stringify(data)

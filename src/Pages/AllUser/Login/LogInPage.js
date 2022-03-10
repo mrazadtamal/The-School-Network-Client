@@ -22,7 +22,7 @@ const LogInPage = () => {
   const onSubmitHandler = (e) => {
     setLoader(true)
     fetch(
-      `https://the-school-network.web.app/checkUser?email=${logindata.email}`
+      `https://blooming-citadel-14218.herokuapp.com/checkUser?email=${logindata.email}`
     )
       .then((res) => res.json())
       .then((data) => {
