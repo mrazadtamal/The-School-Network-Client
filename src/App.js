@@ -51,6 +51,7 @@ import SecondSemester from "./Pages/StudentPanel/StudentDashboard/SeeResult/Seco
 import NoticBoard from "./Pages/StudentPanel/NoticeBoard/NoticeBoard";
 import MonthlyPayment from "./Pages/StudentPanel/MonthlyPayment/MonthlyPayment";
 import Pdfupload from "./Pages/AllUser/Contact/Pdfupload";
+import TeachersAddAttendance from "./Pages/TeachersPanel/TeachersAddAttendance/TeachersAddAttendance";
 
 function App() {
     return (
@@ -199,6 +200,10 @@ function App() {
                         <Route
                             path="/TeachersDashboard/ViewIndividualCare/:id"
                             element={<ViewIndividualCare />}
+                        />
+                        <Route
+                            path="/TeachersDashboard/AddAttendance"
+                            element={<TeachersAddAttendance />}
                         />
                     </Route>
                     {/* --------------Teacher Routes End-------------- */}

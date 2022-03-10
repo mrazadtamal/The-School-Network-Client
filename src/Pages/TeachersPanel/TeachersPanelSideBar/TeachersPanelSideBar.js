@@ -32,7 +32,7 @@ const TeachersPanelSideBar = () => {
 
     const teachersData = useSelector((state) => state.teacherStore.teacherInfo);
     return (
-        <div className="">
+        <div className="h-screen overflow-scroll overflow-x-hidden">
             {teachersData.img ? (
                 <img
                     src={`data:image/jpeg;base64,${teachersData?.img}`}
@@ -287,6 +287,20 @@ const TeachersPanelSideBar = () => {
                     {" "}
                     <SiSamsungpay className="principal_react_icons" />
                     Assign Assignment
+                </p>
+            </Link>
+
+            <Link to="/TeachersDashboard/AddAttendance">
+                <p
+                    className={
+                        location.pathname === "/TeachersDashboard/AddAttendance"
+                            ? "active_principal_link mt-4"
+                            : "principal_sidebar_link   text-white mt-4"
+                    }
+                >
+                    {" "}
+                    <SiSamsungpay className="principal_react_icons" />
+                    Add Attendance
                 </p>
             </Link>
 

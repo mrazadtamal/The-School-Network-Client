@@ -1,3 +1,4 @@
+import { async } from "@firebase/util";
 import { createAsyncThunk, createSlice } from "@reduxjs/toolkit";
 import Swal from "sweetalert2";
 
@@ -39,7 +40,7 @@ export const getTeacherInfo = createAsyncThunk(
     "Teacher/TeacherProfile",
     async (email) => {
         const response = await fetch(
-            `https://blooming-citadel-14218.herokuapp.com/TeacherProfile?email=${email}`
+            `http://localhost:5000/TeacherProfile?email=${email}`
         ).then((res) => res.json());
         return response;
     }
@@ -208,20 +209,23 @@ const initialState = {
     IndividualCare: {},
     classRoutines: [],
     examRoutines: [],
+    studentsData: [],
+    attendanceData: [],
 };
 
 export const TeacherReducer = createSlice({
     name: "Teacher",
     initialState,
     reducers: {
-        increment: (state) => {
-            state.value += 1;
-        },
-        decrement: (state) => {
-            state.value -= 1;
-        },
-        incrementByAmount: (state, action) => {
-            state.value += action.payload;
+        attendanceDataAdd: (state, action) => {
+            const data = action.payload;
+            const studentEmail = data.email;
+            const storedState = state.attendanceData;
+            if ((storedState.email = studentEmail)) {
+                storedState.email.presentDays = data.presentDays;
+            } else {
+                storedState.studentEmail.presentDays = data.presentDays;
+            }
         },
     },
     extraReducers: (builder) => {
@@ -288,7 +292,6 @@ export const TeacherReducer = createSlice({
 });
 
 // Action creators are generated for each case reducer function
-export const { increment, decrement, incrementByAmount } =
-    TeacherReducer.actions;
+export const { attendanceDataAdd } = TeacherReducer.actions;
 
 export default TeacherReducer.reducer;
