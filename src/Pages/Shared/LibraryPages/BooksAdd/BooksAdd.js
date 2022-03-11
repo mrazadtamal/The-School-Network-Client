@@ -1,14 +1,41 @@
 import React, { useState } from 'react';
+import { useDispatch } from 'react-redux';
+import { AddBooks } from '../../../../SchoolRedux/TeacherSlice';
 
 const BooksAdd = () => {
-    const [img, setImg] = useState('')
-    const OnblurHandler = (e) => {
+    const [img, setImg] = useState('');
+    const [bookData, setBookData] = useState({})
+    const dispatch = useDispatch();
 
+    const OnblurHandler = (e) => {
+        const fieldname = e.target.name;
+        const fieldvalue = e.target.value;
+  
+        const newdata = {...bookData};
+        newdata[fieldname] = fieldvalue;
+        setBookData(newdata)
+    }
+
+    const OnSubmitHandler = (e) => {
+        e.preventDefault()
+        if(!img){
+            return;
+        }
+        const fd = new FormData();
+        fd.append('bookName', bookData.bookName);
+        fd.append('writerName', bookData.writerName);
+        fd.append('availableBook', bookData.availableBook);
+        fd.append('category', bookData.category);
+        fd.append('description', bookData.description);
+        fd.append('bookImg', img);
+        
+        dispatch(AddBooks(fd))
+        e.terget.reset()
     }
   return (
     <div>
         <h1 className="text-3xl text-blue-900 text-center my-8 font-bold">Add Books To Library</h1>
-        <form>
+        <form onSubmit={OnSubmitHandler}>
             <div className='grid grid-cols-1 md:grid-cols-2 lg:grid-cols-2 gap-5 mb-8'>
                 <div>
                     <label htmlFor="first-name" className="block principal_form_all_labels">Book Name</label>

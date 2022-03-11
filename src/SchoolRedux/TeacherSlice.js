@@ -131,6 +131,23 @@ export const ChangeRequestHandler = createAsyncThunk(
     }
 );
 
+//Teacher adding to library 
+export const AddBooks = createAsyncThunk(
+    'Teacher/AddBooks',
+    async (data) => {
+      const response = await fetch('http://localhost:5000/AddBook',{
+          method: 'POST',
+          body: data
+      }).then(res=> res.json()).catch(error => {
+        Swal.fire(
+            '!',
+            'Error!',
+            'error'
+          )
+    });
+      return response
+    }
+);
 const initialState = {
     value: 0,
     extraCares: [],
@@ -187,6 +204,13 @@ export const TeacherReducer = createSlice({
             Swal.fire(
                 "Success",
                 "",
+                "success"
+            );
+        });
+        builder.addCase(AddBooks.fulfilled, (state, action) => {
+            Swal.fire(
+                "Success",
+                "Book Added Successfull",
                 "success"
             );
         });
