@@ -44,6 +44,7 @@ const LogInPage = () => {
                 'User Password/Email is Wrong',
                 'error'
               )
+              setLoader(false)
             });
         } else if (data.userrole === "Teacher" && role === "Teacher") {
           LoginUser(logindata.email, logindata.password)
@@ -61,7 +62,8 @@ const LogInPage = () => {
             'Error!',
             'User Password/Email is Wrong',
             'error'
-          )
+              )
+              setLoader(false)
             });
         } else if (data.userrole === "Student" && role === "Student") {
           LoginUser(logindata.email, logindata.password)
@@ -80,6 +82,7 @@ const LogInPage = () => {
             'User Password/Email is Wrong',
             'error'
           )
+          setLoader(false)
             });
         } else {
           Swal.fire(
@@ -87,6 +90,7 @@ const LogInPage = () => {
             'UnAuthorised User',
             'error'
           )
+          setLoader(false)
         }
         e.target.reset();
       });
