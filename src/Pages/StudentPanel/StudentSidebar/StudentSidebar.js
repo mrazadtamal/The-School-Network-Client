@@ -5,7 +5,7 @@ import { getStudentInfo } from "../../../SchoolRedux/StudentSlice";
 import useFirebase from "../../Shared/Authentication/Authentication";
 
 const StudentSidebar = () => {
-  const { user } = useFirebase();
+  const { user, LogOutUser } = useFirebase();
   const dispatch = useDispatch();
   useEffect(() => {
     dispatch(getStudentInfo(user.email));
@@ -128,7 +128,7 @@ const StudentSidebar = () => {
           </p>
         </NavLink>
 
-      {/* Notice Board */}
+        {/* Notice Board */}
 
         <NavLink
           to="/StudentDashboard/NoticBoard"
@@ -155,6 +155,16 @@ const StudentSidebar = () => {
             Montly Payment List
           </p>
         </NavLink>
+        <button
+          onClick={() => {
+            LogOutUser();
+          }}
+          className="my-5"
+        >
+          <span className=" bg-red-400 w-20 h-10 p-2 text-black hover:bg-red-500 rounded">
+            Logout
+          </span>
+        </button>
       </div>
     </div>
   );

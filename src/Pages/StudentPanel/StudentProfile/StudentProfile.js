@@ -48,18 +48,7 @@ const StudentProfile = () => {
               </a>
             </div>
             <nav className="flex-col flex-grow pb-4 md:pb-0 hidden md:flex md:justify-end md:flex-row">
-              <div className="relative" x-data="{ open: false }">
-                <button
-                  onClick={() => {
-                    LogOutUser();
-                  }}
-                  className=""
-                >
-                  <span className=" bg-red-400 w-20 h-10 p-2 text-black hover:bg-red-500">
-                    Logout
-                  </span>
-                </button>
-              </div>
+              <div className="relative" x-data="{ open: false }"></div>
             </nav>
           </div>
         </div>
