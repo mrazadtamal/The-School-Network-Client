@@ -53,7 +53,7 @@ const Transcript = () => {
 
   return (
     <>
-      <div className="transcript rounded-md shadow-lg w-[60%] mx-auto bg-gray-200 h-[90%] grid mt-5">
+      <div className="transcript rounded-md shadow-lg lg:w-[60rem] md:w-[38rem] mx-auto bg-gray-200 sm:h-[100vh] xl:h-[90vh] grid xs:h-[100vh] mt-5">
         <div className="mt-[8rem] mb-[-4rem]">
           <h1 className="text-center text-4xl font-bold">The School Network</h1>
           <img
@@ -66,7 +66,7 @@ const Transcript = () => {
           <p>
             Name:<b> {studentData?.name}</b>
           </p>
-          <p>
+          <p className="">
             Father's Name:<b> {studentData?.fatherName}</b>
           </p>
           <p>
