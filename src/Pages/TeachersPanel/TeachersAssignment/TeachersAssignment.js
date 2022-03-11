@@ -1,21 +1,29 @@
-import React from 'react';
-import { useState } from 'react';
+import React, { useState } from 'react';
 import { useForm } from 'react-hook-form';
+import { useDispatch } from 'react-redux';
+import { assignmentPublish, PublishImageAssing} from '../../../SchoolRedux/TeacherSlice';
 import'./Teacherpanel.css'
 const TeachersAssignment = () => {
+   const dispatch = useDispatch();
+   const [img, setImg] = useState("");
 
     const { register, handleSubmit,reset } = useForm();
     const onSubmit = data =>{
-        
-        // fetch("", {
-        //     method: "POST",
-        //     headers: { "content-type": "application/json" },
-        //     body: JSON.stringify(data),
-        //   })
-        //     .then((res) => res.json())
-        console.log(data)
-        reset()
+   
+      dispatch(assignmentPublish(data))
+      reset()
+      console.log(data)
     }
+    const SubmitHandler = (e) => {
+      e.preventDefault()
+
+    
+              const fd = new FormData();
+              fd.append('noticeImage', img)
+              dispatch(PublishImageAssing(fd))
+              e.target.reset()
+    }
+    
     return (
         <div>
                <div className='text-center w-full m-auto mt-5'>
@@ -24,12 +32,14 @@ const TeachersAssignment = () => {
             
   
                    <p class='text-3xl text-sky-400/100'>Published Assignment</p>
+
                   
-            <form onSubmit={handleSubmit(onSubmit)}>
-                        <label class="block mx-2">
+               <form className='flex' onSubmit={SubmitHandler}>
+               <label class="block mx-2">
                         <span class="sr-only">Choose File</span>
                         <input 
                         type="file" 
+                        onBlur={(e) => setImg(e.target.files[0])}
                         class="block w-full text-sm text-slate-500
                              file:mr-4 file:py-2 file:px-4
                              file:rounded-full file:border-0
@@ -38,6 +48,28 @@ const TeachersAssignment = () => {
                              hover:file:bg-violet-100
                              "/>
                       </label>
+                      <input 
+                    className="block  my-3 px-5 
+                      py-1 bg-cyan-500 hover:bg-cyan-600
+                       rounded-lg text-gray-900 font-medium"
+                     type="submit" />
+               </form>
+                     
+                      
+            <form onSubmit={handleSubmit(onSubmit)}>
+                        {/* <label class="block mx-2">
+                        <span class="sr-only">Choose File</span>
+                        <input 
+                        type="file" 
+                        {...register("img")}
+                        class="block w-full text-sm text-slate-500
+                             file:mr-4 file:py-2 file:px-4
+                             file:rounded-full file:border-0
+                             file:text-sm file:font-semibold
+                             file:bg-violet-50 file:text-violet-700
+                             hover:file:bg-violet-100
+                             "/>
+                      </label> */}
              <p className='mb-4'>Or</p>
 
                       <label class="relative block mt-5 mb-2">

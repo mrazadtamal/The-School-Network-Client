@@ -130,12 +130,51 @@ export const ChangeRequestHandler = createAsyncThunk(
       return response
     }
 );
+// Publish assing from teachers
+export const assignmentPublish = createAsyncThunk(
+    "Teacher/assignmentPublish",
+    async (data) => {
+        console.log(data)
+        const response = await fetch("http://localhost:5000/assignmentPublish", {
+            method: "POST",
+            headers: {
+                "content-type": "application/json",
+            },
+            body: JSON.stringify(data),
+        })
+            .then((res) => res.json())
+            .catch((error) => {
+                console.log(error)
+            });
+        return response;
+    }
+);
+//Principal Publisshing image notice
+export const PublishImageAssing = createAsyncThunk(
+    'Teacher/PublishImageAssing',
+    async (fd) => {
+      const response = await fetch('http://localhost:5000/PublishImageAssing',{
+        method: 'POST',
+        body: fd
+      }).then(res=> res.json()).catch(error => {
+        Swal.fire(
+            '!',
+            'Error!',
+            'error'
+          )
+    });
+      return response
+    }
+  )
+
 
 const initialState = {
     value: 0,
     extraCares: [],
     teacherInfo: {},
     IndividualCare: {},
+    assingnmentPublish:{},
+    
 };
 
 export const TeacherReducer = createSlice({
@@ -189,7 +228,22 @@ export const TeacherReducer = createSlice({
                 "",
                 "success"
             );
+        }); 
+        builder.addCase(assignmentPublish.fulfilled, (state, action) => {
+            Swal.fire(
+                "Success",
+                "Assignment Published Successfully ",
+                "success"
+            );
         });
+        builder.addCase(PublishImageAssing.fulfilled, (state, action) => {
+            Swal.fire(
+              'Success',
+              'Assingment img Publish Successfull',
+              'success'
+            )
+          })
+     
     },
 });
 
