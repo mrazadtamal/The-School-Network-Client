@@ -121,3 +121,10 @@ print and (-ms-high-contrast: none) {
       
     }
   }
+
+  .success_title{
+      color: aqua;
+  }
+  .success_div{
+      z-index: 1;
+  }

@@ -92,3 +92,8 @@
     margin-left: 0;
   }
 }
+.phone_num_input{
+  border: solid  2px rgb(255, 8, 206);
+  border-radius: 5px;
+  width: 400px;
+}
