@@ -149,7 +149,17 @@ export const assignmentPublish = createAsyncThunk(
         return response;
     }
 );
-//Principal Publisshing image notice
+//Teacher geting all previous Assignment
+export const GetingPreviosuAssignment = createAsyncThunk(
+    "Teacher/GetingPreviosuAssignment",
+    async () => {
+        const response = await fetch(
+            "http://localhost:5000/GetingPreviosuAssignment"
+        ).then((res) => res.json());
+        return response;
+    }
+);
+//Teacher Publisshing image assingment
 export const PublishImageAssing = createAsyncThunk(
     'Teacher/PublishImageAssing',
     async (fd) => {
@@ -166,14 +176,26 @@ export const PublishImageAssing = createAsyncThunk(
       return response
     }
   )
-
+// Delete A DeleteAssignment
+export const DeleteAssignment = createAsyncThunk(
+    "Teacher/DeleteAssignment",
+    async (id) => {
+        const response = await fetch(
+            `http://localhost:5000/DeleteAssignment/${id}`,
+            {
+                method: "DELETE",
+            }
+        );
+        return response;
+    }
+);
 
 const initialState = {
     value: 0,
     extraCares: [],
     teacherInfo: {},
     IndividualCare: {},
-    assingnmentPublish:{},
+    assignments:[],
     
 };
 
@@ -243,6 +265,16 @@ export const TeacherReducer = createSlice({
               'success'
             )
           })
+          builder.addCase(GetingPreviosuAssignment.fulfilled, (state, action) => {
+            state.assignments = action.payload
+          })
+          builder.addCase(DeleteAssignment.fulfilled, (state, action) => {
+            Swal.fire(
+                "Success",
+                "Class Routine deleted successfully",
+                "success"
+            );
+        });
      
     },
 });
