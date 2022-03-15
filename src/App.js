@@ -57,6 +57,8 @@ import CheckAdmissionForm from "./Pages/PrincipalPanel/CheckAdmissionForm/CheckA
 import IndividualForms from "./Pages/PrincipalPanel/CheckAdmissionForm/IndividualForms";
 import BooksAdd from "./Pages/Shared/LibraryPages/BooksAdd/BooksAdd";
 import OurTeachers from "./Pages/AllUser/HomePageComponents/OurTeacers";
+import ManageBooks from "./Pages/Shared/LibraryPages/BooksManage/ManageBooks";
+
 
 function App() {
   return (
@@ -79,7 +81,7 @@ function App() {
                     <Route path="/auditoriam" element={<Auditoraim />} />
                     <Route path="/games" element={<Games />} />
                     <Route path="/contact" element={<Contact />} />
-                     <Route path="/ourTeacehrs" element={<OurTeachers />} />
+                    <Route path="/ourTeacehrs" element={<OurTeachers />} />
                     <Route path="/AdmissionSuccess" element={<AdmissionSuccess />} />
                     {/* --------------All User Homepage Routes End--------------- */}
                     {/* --------------Principal Routes Start-------------- */}
@@ -221,6 +223,14 @@ function App() {
                         <Route
                             path="/TeachersDashboard/ViewIndividualCare/:id"
                             element={<ViewIndividualCare />}
+                        />
+                        <Route
+                        path="/TeachersDashboard/BooksAdd"
+                        element={<BooksAdd />}
+                        />
+                        <Route
+                        path="/TeachersDashboard/ManageBooks"
+                        element={<ManageBooks />}
                         />
                     </Route>
                     {/* --------------Teacher Routes End-------------- */}

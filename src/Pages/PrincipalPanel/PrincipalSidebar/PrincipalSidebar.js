@@ -92,13 +92,13 @@ const PrincipalSidebar = () => {
             <p className={location.pathname === '/PrincipalDashboard/CheckAdmissionForm' ? 'active_principal_link mt-4' : 'principal_sidebar_link   text-white mt-4'}> <FaChalkboardTeacher className='principal_react_icons' />Check AdmissionForm</p>
           </Link>
 
-          <p onClick={() => setShown3(!shown3)} className="principal_sidebar_link mt-4"><span><SiSamsungpay className='principal_react_icons'/>Library <IoIosArrowDown className="principal_react_icons"/></span></p>
+          {/* <p onClick={() => setShown3(!shown3)} className="principal_sidebar_link mt-4"><span><SiSamsungpay className='principal_react_icons'/>Library <IoIosArrowDown className="principal_react_icons"/></span></p>
           {
             shown3 && <ul className="drop_link">
             <Link to="/PrincipalDashboard/BooksAdd"><li className="class_text">Add Books</li></Link>
             <li className="class_text">Class Two</li>
           </ul>
-          }
+          } */}
         </div>
     );
 };

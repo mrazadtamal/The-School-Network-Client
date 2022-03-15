@@ -33,7 +33,7 @@ const BooksAdd = () => {
         e.terget.reset()
     }
   return (
-    <div>
+    <div className="pl-8 pr-8">
         <h1 className="text-3xl text-blue-900 text-center my-8 font-bold">Add Books To Library</h1>
         <form onSubmit={OnSubmitHandler}>
             <div className='grid grid-cols-1 md:grid-cols-2 lg:grid-cols-2 gap-5 mb-8'>

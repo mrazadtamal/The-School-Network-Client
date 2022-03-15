@@ -247,6 +247,19 @@ export const IndividualAdmissionForm = createAsyncThunk(
    
   }
 )
+
+//principal getting individual  payment details
+export const RemoveTeacher = createAsyncThunk(
+  'Principal/RemoveTeacher',
+  async (id) => {
+
+    const response = await fetch(`http://localhost:5000/RemoveTeacher/${id}`,{
+      method: 'DELETE'
+    }).then(res=> res.json())
+    return  response;
+   
+  }
+)
 export const PrincipalReducer = createSlice({
   name: 'Principal',
   initialState:{
@@ -356,6 +369,13 @@ export const PrincipalReducer = createSlice({
       })
       builder.addCase(IndividualAdmissionForm.fulfilled, (state, action) => {
         state.admissionForm = action.payload
+      })
+      builder.addCase(RemoveTeacher.fulfilled, (state, action) => {
+        Swal.fire(
+          'Success',
+          'Teacher Removed Successfully',
+          'success'
+        )
       })
     },
 
