@@ -1,6 +1,7 @@
 import React, { useEffect } from 'react';
 import {useDispatch, useSelector} from 'react-redux';
-import { GetAllTeachers } from '../../../SchoolRedux/PrincipalSlice';
+import Swal from 'sweetalert2';
+import { GetAllTeachers, RemoveTeacher } from '../../../SchoolRedux/PrincipalSlice';
 
 const PrincipalManageTeacher = () => {
     const dispatch = useDispatch();
@@ -10,7 +11,25 @@ const PrincipalManageTeacher = () => {
     },[dispatch]);
 
     const teachers = useSelector(state => state.principalStore.allTeachers);
-    console.log('',teachers)
+    
+    const RemoveTeacherHandler = (id) => {
+      console.log(id)
+        Swal.fire({
+          title: 'Are you sure?',
+          text: "You won't be able to revert this!",
+          icon: 'warning',
+          showCancelButton: true,
+          confirmButtonColor: '#3085d6',
+          cancelButtonColor: '#d33',
+          confirmButtonText: 'Yes, delete it!'
+        }).then((result) => {
+          if (result.isConfirmed) {
+            dispatch(RemoveTeacher(id))
+          }
+        })
+
+      
+    }
     return (
     <div>
       <h1 className='text-center text-xl font-bold mt-8'>ALL TEACHERS LIST OF SCHOOL</h1>
@@ -75,7 +94,7 @@ const PrincipalManageTeacher = () => {
                             </p>
                           </td>
                           <td className="px-5 py-5 border-b border-gray-400  text-sm">
-                            <p className="text-white font-bold font-xl whitespace-no-wrap bg-blue-900 p-2 teacher_remove_btn">
+                            <p onClick={() => RemoveTeacherHandler(teacher._id)} className="text-white font-bold font-xl whitespace-no-wrap bg-blue-900 p-2 teacher_remove_btn">
                               Remove Teacher
                             </p>
                           </td>
