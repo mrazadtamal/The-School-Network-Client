@@ -9,7 +9,7 @@ const StudentDashboard = () => {
       <div className="bg-black lg:col-span-2 md:col-span-2 lg:h-[100vh] md:h-[100vh] sm:h-full">
         <StudentSidebar />
       </div>
-      <div className="lg:col-span-10 md:col-span-10 lg:h-[100vh] md:h-[100vh] sm:h-full">
+      <div className="lg:col-span-10 md:col-span-10 lg:h-[100vh] md:h-[100vh] sm:h-[100vh]">
         <Outlet />
       </div>
     </div>

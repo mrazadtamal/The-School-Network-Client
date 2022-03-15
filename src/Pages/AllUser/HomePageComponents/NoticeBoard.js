@@ -31,7 +31,7 @@ const NoticeBoard = () => {
         previousAnnouncement?.map(announcement => <div  className="bg-white shadow-lg rounded-lg mt-5 p-5 container mx-auto w-2/3" data-aos="zoom-in">
 
 
-          <div className="flex mb-8 pt-5">
+          <div className="flex mb-8 pt-5 overflow-x-auto	">
             <div>
               <div className="bg-cyan-600 pl-3 pr-3 text-lime-50">June</div>
               <div className="bg-green-900	 pl-3 pr-3 text-lime-50">{announcement?.date}</div>

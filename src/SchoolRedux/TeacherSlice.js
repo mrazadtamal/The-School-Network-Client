@@ -190,13 +190,44 @@ export const DeleteAssignment = createAsyncThunk(
     }
 );
 
+//Teacher adding to library 
+export const AddBooks = createAsyncThunk(
+    'Teacher/AddBooks',
+    async (data) => {
+      const response = await fetch('http://localhost:5000/AddBook',{
+          method: 'POST',
+          body: data
+      }).then(res=> res.json()).catch(error => {
+        Swal.fire(
+            '!',
+            'Error!',
+            'error'
+          )
+    });
+      return response
+    }
+);
+//Teacher adding to library 
+export const GetAllBooks = createAsyncThunk(
+    'Teacher/GetAllBooks',
+    async (data) => {
+      const response = await fetch('http://localhost:5000/GetAllBooks').then(res=> res.json()).catch(error => {
+        Swal.fire(
+            '!',
+            'Error!',
+            'error'
+          )
+    });
+      return response
+    }
+);
 const initialState = {
     value: 0,
     extraCares: [],
     teacherInfo: {},
     IndividualCare: {},
     assignments:[],
-    
+    Books: []
 };
 
 export const TeacherReducer = createSlice({
@@ -275,7 +306,16 @@ export const TeacherReducer = createSlice({
                 "success"
             );
         });
-     
+        builder.addCase(AddBooks.fulfilled, (state, action) => {
+            Swal.fire(
+                "Success",
+                "Book Added Successfull",
+                "success"
+            );
+        });
+        builder.addCase(GetAllBooks.fulfilled, (state, action) => {
+            state.Books = action.payload
+        });
     },
 });
 
