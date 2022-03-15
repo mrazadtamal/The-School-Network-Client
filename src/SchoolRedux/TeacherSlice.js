@@ -130,6 +130,65 @@ export const ChangeRequestHandler = createAsyncThunk(
       return response
     }
 );
+// Publish assing from teachers
+export const assignmentPublish = createAsyncThunk(
+    "Teacher/assignmentPublish",
+    async (data) => {
+        console.log(data)
+        const response = await fetch("http://localhost:5000/assignmentPublish", {
+            method: "POST",
+            headers: {
+                "content-type": "application/json",
+            },
+            body: JSON.stringify(data),
+        })
+            .then((res) => res.json())
+            .catch((error) => {
+                console.log(error)
+            });
+        return response;
+    }
+);
+//Teacher geting all previous Assignment
+export const GetingPreviosuAssignment = createAsyncThunk(
+    "Teacher/GetingPreviosuAssignment",
+    async () => {
+        const response = await fetch(
+            "http://localhost:5000/GetingPreviosuAssignment"
+        ).then((res) => res.json());
+        return response;
+    }
+);
+//Teacher Publisshing image assingment
+export const PublishImageAssing = createAsyncThunk(
+    'Teacher/PublishImageAssing',
+    async (fd) => {
+      const response = await fetch('http://localhost:5000/PublishImageAssing',{
+        method: 'POST',
+        body: fd
+      }).then(res=> res.json()).catch(error => {
+        Swal.fire(
+            '!',
+            'Error!',
+            'error'
+          )
+    });
+      return response
+    }
+  )
+// Delete A DeleteAssignment
+export const DeleteAssignment = createAsyncThunk(
+    "Teacher/DeleteAssignment",
+    async (id) => {
+        const response = await fetch(
+            `http://localhost:5000/DeleteAssignment/${id}`,
+            {
+                method: "DELETE",
+            }
+        );
+        return response;
+    }
+);
 
 //Teacher adding to library 
 export const AddBooks = createAsyncThunk(
@@ -167,6 +226,7 @@ const initialState = {
     extraCares: [],
     teacherInfo: {},
     IndividualCare: {},
+    assignments:[],
     Books: []
 };
 
@@ -219,6 +279,30 @@ export const TeacherReducer = createSlice({
             Swal.fire(
                 "Success",
                 "",
+                "success"
+            );
+        }); 
+        builder.addCase(assignmentPublish.fulfilled, (state, action) => {
+            Swal.fire(
+                "Success",
+                "Assignment Published Successfully ",
+                "success"
+            );
+        });
+        builder.addCase(PublishImageAssing.fulfilled, (state, action) => {
+            Swal.fire(
+              'Success',
+              'Assingment img Publish Successfull',
+              'success'
+            )
+          })
+          builder.addCase(GetingPreviosuAssignment.fulfilled, (state, action) => {
+            state.assignments = action.payload
+          })
+          builder.addCase(DeleteAssignment.fulfilled, (state, action) => {
+            Swal.fire(
+                "Success",
+                "Class Routine deleted successfully",
                 "success"
             );
         });
