@@ -49,10 +49,7 @@ const PrincipalPublishNotice = () => {
                     setNotice({...notice, date})
                 }} className='principal_form_inputs' type="date" placeholder='Notice Title' />
                 <label className='principal_form_labels font-bold'>Write Notice</label>
-                <textarea onBlur={(e) => {
-                    const description = e.target.value;
-                    setNotice({...notice, description})
-                }} className='principal_form_textarea' as="text" />
+                <textarea className='principal_form_textarea' as="text" />
                 <label className='principal_form_labels font-bold'>Notice From</label>
                 <input onBlur={(e) => {
                     const noticeFrom = e.target.value;
