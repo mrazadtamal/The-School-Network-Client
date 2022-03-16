@@ -101,13 +101,12 @@ const handleAssignmentDeleteBtn = (id) => {
                 type="text"
                  {...register("description")} placeholder="Assignment Description"/> <br />
                
-                <select className='block' {...register("class")}>
-        <option value="Choose">Choose class</option>
-        <option value="Class 1">Class 1</option>
-        <option value="Class 2">Class 2</option>
-        <option value="Class 3">Class 3</option>
-        <option value="Class 4">Class 4</option>
-        <option value="Class 5">Class 5</option>
+                <select className='block' {...register("class")} placeholder='Choose Class'>
+        <option value={1}>Class 1</option>
+        <option value={2}>Class 2</option>
+        <option value={3}>Class 3</option>
+        <option value={4}>Class 4</option>
+        <option value={5}>Class 5</option>
       </select>
                    <br />
               <input 
