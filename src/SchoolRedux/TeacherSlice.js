@@ -120,6 +120,21 @@ export const GetIndividualCare = createAsyncThunk(
     return response;
   }
 );
+//Teacher changing status of Request care
+export const ChangeRequestHandler = createAsyncThunk(
+  "Teacher/ChangeRequestHandler",
+  async (data) => {
+    const response = await fetch(
+      `https://blooming-citadel-14218.herokuapp.com/ChangeRequestHandler?status=${data.status}&&id=${data.id}`
+    )
+      .then((res) => res.json())
+      .catch((error) => {
+        Swal.fire("!", "Error!", "error");
+      });
+    return response;
+  }
+);
+
 const initialState = {
   value: 0,
   extraCares: [],
@@ -155,6 +170,10 @@ export const TeacherReducer = createSlice({
       });
       builder.addCase(GetIndividualCare.fulfilled, (state, action) => {
         state.IndividualCare = action.payload;
+      });
+      builder.addCase(ChangeRequestHandler.fulfilled, (state, action) => {
+        console.log("Status", action.payload);
+        Swal.fire("Success", "", "success");
       });
     },
     incrementByAmount: (state, action) => {

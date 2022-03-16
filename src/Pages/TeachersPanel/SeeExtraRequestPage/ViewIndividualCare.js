@@ -1,18 +1,23 @@
-import React, {useEffect} from 'react'
+import React, {useEffect, useState} from 'react'
 import { useDispatch, useSelector } from 'react-redux'
 import useFirebase from '../../Shared/Authentication/Authentication';
 import { useParams } from 'react-router-dom';
-import { GetIndividualCare } from '../../../SchoolRedux/TeacherSlice';
+import { ChangeRequestHandler, GetIndividualCare } from '../../../SchoolRedux/TeacherSlice';
 
 const ViewIndividualCare = () => {
     const dispatch = useDispatch();
     const {user} = useFirebase()
-    const {id} = useParams()
+    const {id} = useParams();
+    const [demo, setDemo] = useState({})
     useEffect(() => {
         dispatch(GetIndividualCare(id))
-    }, [id, dispatch]);
+    }, [id, dispatch, demo]);
     const care = useSelector(state => state.teacherStore.IndividualCare);
 
+    const CareStatusHandler = (status, id) => {
+      dispatch(ChangeRequestHandler({status: status, id: id}))
+      setDemo(care)
+    }
   return (
     <div className='individual_care_section'>
     <div className='individual_care_div mx-auto'>
@@ -28,7 +33,9 @@ const ViewIndividualCare = () => {
         <h6 className='font-bold text-l'>Roll {care?.roll}</h6>
         <h6 className='font-bold text-l mt-2'>Section {care.section}</h6>
         <div className='mt-4'>
-            <button className='reject_btn '>REJECT</button><button className='accept_btn mx-8'>ACCEPT</button>
+            {
+              care.status === 'Accepted' || care.status === 'Rejected' ? <p className='text-green-900 font-bold text-xl'>{care.status}</p> : <><button onClick={() => CareStatusHandler('Rejected', care._id)} className='reject_btn '>REJECT</button><button onClick={() => CareStatusHandler('Accepted', care._id)} className='accept_btn mx-8'>ACCEPT</button></>
+            }
         </div>
     </div>
     </div>
