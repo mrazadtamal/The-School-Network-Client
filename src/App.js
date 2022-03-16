@@ -58,6 +58,7 @@ import IndividualForms from "./Pages/PrincipalPanel/CheckAdmissionForm/Individua
 import BooksAdd from "./Pages/Shared/LibraryPages/BooksAdd/BooksAdd";
 import OurTeachers from "./Pages/AllUser/HomePageComponents/OurTeacers";
 import ManageBooks from "./Pages/Shared/LibraryPages/BooksManage/ManageBooks";
+import EditBook from "./Pages/Shared/LibraryPages/BooksManage/EditBook/EditBook";
 
 
 function App() {
@@ -232,6 +233,10 @@ function App() {
                         path="/TeachersDashboard/ManageBooks"
                         element={<ManageBooks />}
                         />
+                        <Route
+                        path="/TeachersDashboard/EditBook/:id"
+                        element={<EditBook />}
+                        />
                     </Route>
                     {/* --------------Teacher Routes End-------------- */}
                     {/* --------------------student route start-----------------------*/}
@@ -277,6 +282,10 @@ function App() {
                          <Route
                         path="/StudentDashboard/StudentPaymentSuccess"
                         element={<StudentPaymentSuccess />}
+                         />
+                          <Route
+                        path="/StudentDashboard/LibraryBooks"
+                        element={<ManageBooks />}
                          />
                     </Route>
                     {/* --------------------student route end-------------------------*/}

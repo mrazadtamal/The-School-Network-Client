@@ -207,11 +207,47 @@ export const AddBooks = createAsyncThunk(
       return response
     }
 );
-//Teacher adding to library 
+//Teacher geting all books
 export const GetAllBooks = createAsyncThunk(
     'Teacher/GetAllBooks',
     async (data) => {
       const response = await fetch('http://localhost:5000/GetAllBooks').then(res=> res.json()).catch(error => {
+        Swal.fire(
+            '!',
+            'Error!',
+            'error'
+          )
+    });
+      return response
+    }
+);
+
+//Teacher Get Edit Book library 
+export const GetEditBook = createAsyncThunk(
+    'Teacher/GetEditBook',
+    async (id) => {
+      const response = await fetch(`http://localhost:5000/GetEditBook/${id}`).then(res=> res.json()).catch(error => {
+        Swal.fire(
+            '!',
+            'Error!',
+            'error'
+          )
+    });
+      return response
+    }
+);
+//Teacher Get Edit Book library 
+export const SubmitEditedBook = createAsyncThunk(
+    'Teacher/SubmitEditedBook',
+    async (data) => {
+      const response = await fetch(`http://localhost:5000/SubmitEditedBook/${data.id}`,{
+          method: 'PUT',
+          headers:{
+            'content-type':'application/json'
+          },
+          body: JSON.stringify(data.book)
+          
+      }).then(res=> res.json()).catch(error => {
         Swal.fire(
             '!',
             'Error!',
@@ -227,7 +263,8 @@ const initialState = {
     teacherInfo: {},
     IndividualCare: {},
     assignments:[],
-    Books: []
+    Books: [],
+    book: {}
 };
 
 export const TeacherReducer = createSlice({
@@ -296,10 +333,10 @@ export const TeacherReducer = createSlice({
               'success'
             )
           })
-          builder.addCase(GetingPreviosuAssignment.fulfilled, (state, action) => {
-            state.assignments = action.payload
-          })
-          builder.addCase(DeleteAssignment.fulfilled, (state, action) => {
+        builder.addCase(GetingPreviosuAssignment.fulfilled, (state, action) => {
+        state.assignments = action.payload
+        })
+        builder.addCase(DeleteAssignment.fulfilled, (state, action) => {
             Swal.fire(
                 "Success",
                 "Class Routine deleted successfully",
@@ -315,6 +352,16 @@ export const TeacherReducer = createSlice({
         });
         builder.addCase(GetAllBooks.fulfilled, (state, action) => {
             state.Books = action.payload
+        });
+        builder.addCase(GetEditBook.fulfilled, (state, action) => {
+            state.book = action.payload
+        });
+        builder.addCase(SubmitEditedBook.fulfilled, (state, action) => {
+            Swal.fire(
+                "Success",
+                "Book Updated Successfull",
+                "success"
+            );
         });
     },
 });
