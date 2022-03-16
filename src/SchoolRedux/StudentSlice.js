@@ -146,6 +146,22 @@ export const PayMonthlyPayment = createAsyncThunk(
     return response;
   }
 );
+
+//student assingment submit pdf
+export const StudnetAssignmentSubmit = createAsyncThunk(
+  "Student/StudnetAssignmentSubmit",
+  async (data) => {
+    console.log("data from std", data);
+    const response = await fetch("http://localhost:5000/pdfUpload", {
+      method: "POST",
+      // headers: { "content-type": "application/json" },
+      body: data,
+    })
+      .then((res) => res.json())
+      .catch((err) => console.log(err));
+    return response;
+  }
+);
 export const StudentReducer = createSlice({
   name: "Student",
   initialState: {
@@ -201,6 +217,9 @@ export const StudentReducer = createSlice({
     });
     builder.addCase(PayMonthlyPayment.fulfilled, (state, action) => {
       window.location.replace(action.payload);
+    });
+    builder.addCase(StudnetAssignmentSubmit.fulfilled, (state, action) => {
+      Swal.fire("Success", "Assingment Published Successfully", "success");
     });
   },
 });
