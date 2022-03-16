@@ -100,6 +100,16 @@ const handleAssignmentDeleteBtn = (id) => {
                  focus:border-sky-500 focus:ring-sky-500 focus:ring-1 sm:text-sm"
                 type="text"
                  {...register("description")} placeholder="Assignment Description"/> <br />
+               
+                <select className='block' {...register("class")}>
+        <option value="Choose">Choose class</option>
+        <option value="Class 1">Class 1</option>
+        <option value="Class 2">Class 2</option>
+        <option value="Class 3">Class 3</option>
+        <option value="Class 4">Class 4</option>
+        <option value="Class 5">Class 5</option>
+      </select>
+                   <br />
               <input 
                     className="block  my-3 px-5 
                       py-1 bg-cyan-500 hover:bg-cyan-600
