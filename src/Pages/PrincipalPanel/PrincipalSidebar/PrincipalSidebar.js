@@ -16,8 +16,9 @@ const PrincipalSidebar = () => {
     const { user, LogOutUser } = useFirebase();
     const [shown1, setShown1] = useState(false);
     const [shown2, setShown2] = useState(false);
+    const [shown3, setShown3] = useState(false);
     const navigate = useNavigate();
-    const ResultNavigateHandler = (route, classname) => {
+    const PaymentCheckHandler = (route, classname) => {
         navigate(`/PrincipalDashboard/${route}`, { state: classname });
     };
     const ManageStudentHandler = (route, classname) => {
@@ -119,19 +120,6 @@ const PrincipalSidebar = () => {
                 </p>
             </Link>
 
-            {/* <p onClick={() => setShown2(!shown2)} className="principal_sidebar_link mt-4"><span> + Publish Results <IoIosArrowDown className="principal_react_icons"/> </span></p>
-            {
-              shown2 && <ul className="drop_link">
-              <li onClick={() => ResultNavigateHandler('ClassOneToTwo', 'Class One')} className="class_text">Class One</li> 
-              <li onClick={() => ResultNavigateHandler('ClassOneToTwo', 'Class Two')} className="class_text">Class Two</li>
-
-              <li onClick={() => ResultNavigateHandler('ClassThreeAndFour', 'Class Three')} className="class_text">Class Three</li>
-              <li onClick={() => ResultNavigateHandler('ClassThreeAndFour', 'Class Four')} className="class_text">Class Four</li>
-
-              <li onClick={() => ResultNavigateHandler('ClassFive', 'Class Five')} className="class_text">Class Five</li>
-            </ul>
-            } */}
-
             <p
                 onClick={() => setShown1(!shown1)}
                 className="principal_sidebar_link mt-4"
@@ -232,17 +220,98 @@ const PrincipalSidebar = () => {
                 </p>
             </Link>
 
-            {/* <Link to="/PrincipalDashboard/CheckPaymentStatus">
-          <p className='principal_sidebar_link   text-white mt-4'> <SiSamsungpay className='principal_react_icons' />Check Payment Status</p>
-        </Link> */}
-
-            <Link to="/PrincipalDashboard/CheckPaymentStatus">
-                <p className="principal_sidebar_link   text-white mt-4">
-                    {" "}
+            <p
+                onClick={() => setShown2(!shown2)}
+                className="principal_sidebar_link mt-4"
+            >
+                <span>
                     <SiSamsungpay className="principal_react_icons" />
-                    Check Payment Status
+                    Payment Details{" "}
+                    <IoIosArrowDown className="principal_react_icons" />
+                </span>
+            </p>
+            {shown2 && (
+                <ul className="drop_link">
+                    <li
+                        onClick={() =>
+                            PaymentCheckHandler(
+                                "CheckPaymentStatus",
+                                "class-one"
+                            )
+                        }
+                        className="class_text"
+                    >
+                        Class One
+                    </li>
+                    <li
+                        onClick={() =>
+                            PaymentCheckHandler(
+                                "CheckPaymentStatus",
+                                "class-two"
+                            )
+                        }
+                        className="class_text"
+                    >
+                        Class Two
+                    </li>
+                    <li
+                        onClick={() =>
+                            PaymentCheckHandler(
+                                "CheckPaymentStatus",
+                                "class-three"
+                            )
+                        }
+                        className="class_text"
+                    >
+                        Class Three
+                    </li>
+                    <li
+                        onClick={() =>
+                            PaymentCheckHandler(
+                                "CheckPaymentStatus",
+                                "class-four"
+                            )
+                        }
+                        className="class_text"
+                    >
+                        Class Four
+                    </li>
+                    <li
+                        onClick={() =>
+                            PaymentCheckHandler(
+                                "CheckPaymentStatus",
+                                "class-five"
+                            )
+                        }
+                        className="class_text"
+                    >
+                        Class Five
+                    </li>
+                </ul>
+            )}
+
+            <Link to="/PrincipalDashboard/CheckAdmissionForm">
+                <p
+                    className={
+                        location.pathname ===
+                        "/PrincipalDashboard/CheckAdmissionForm"
+                            ? "active_principal_link mt-4"
+                            : "principal_sidebar_link   text-white mt-4"
+                    }
+                >
+                    {" "}
+                    <FaChalkboardTeacher className="principal_react_icons" />
+                    Check AdmissionForm
                 </p>
             </Link>
+
+            {/* <p onClick={() => setShown3(!shown3)} className="principal_sidebar_link mt-4"><span><SiSamsungpay className='principal_react_icons'/>Library <IoIosArrowDown className="principal_react_icons"/></span></p>
+          {
+            shown3 && <ul className="drop_link">
+            <Link to="/PrincipalDashboard/BooksAdd"><li className="class_text">Add Books</li></Link>
+            <li className="class_text">Class Two</li>
+          </ul>
+          } */}
         </div>
     );
 };

@@ -25,22 +25,16 @@ export const PrincipalNoticePublish = createAsyncThunk(
 export const PublishImageNotice = createAsyncThunk(
     "Principal/PublishImageNotice",
     async (fd) => {
-        console.log("hitted img");
         const response = await fetch(
             "https://blooming-citadel-14218.herokuapp.com/PublishImageNotice",
             {
                 method: "POST",
-
                 body: fd,
             }
         )
             .then((res) => res.json())
             .catch((error) => {
-                // Swal.fire(
-                //     '!',
-                //     'Error!',
-                //     'error'
-                //   )
+                Swal.fire("!", "Error!", "error");
             });
         return response;
     }
@@ -238,6 +232,66 @@ export const GetAllTeachers = createAsyncThunk(
         return response;
     }
 );
+//principal submitting payment
+export const PostAdmissionData = createAsyncThunk(
+    "Principal/PostAdmissionData",
+    async (data) => {
+        console.log("payment hitted");
+        const response = await fetch(
+            "https://blooming-citadel-14218.herokuapp.com/addmissionpayment",
+            {
+                method: "POST",
+                body: data,
+            }
+        ).then((res) => res.json());
+        return response;
+    }
+);
+//principal getting individual  payment details
+export const GetlPaymentDetails = createAsyncThunk(
+    "Principal/GetlPaymentDetails",
+    async (email) => {
+        const response = await fetch(
+            `https://blooming-citadel-14218.herokuapp.com/GetlPaymentDetails?email=${email}`
+        ).then((res) => res.json());
+        return response;
+    }
+);
+//principal getting individual  payment details
+export const GetAdmissionForms = createAsyncThunk(
+    "Principal/GetAdmissionForms",
+    async () => {
+        console.log("hitted slciie");
+        const response = await fetch(
+            "https://blooming-citadel-14218.herokuapp.com/GetAdmissionForms"
+        ).then((res) => res.json());
+        return response;
+    }
+);
+//principal getting individual  payment details
+export const IndividualAdmissionForm = createAsyncThunk(
+    "Principal/IndividualAdmissionForm",
+    async (id) => {
+        const response = await fetch(
+            `https://blooming-citadel-14218.herokuapp.com/IndividualAdmissionForm/${id}`
+        ).then((res) => res.json());
+        return response;
+    }
+);
+
+//principal getting individual  payment details
+export const RemoveTeacher = createAsyncThunk(
+    "Principal/RemoveTeacher",
+    async (id) => {
+        const response = await fetch(
+            `http://localhost:5000/RemoveTeacher/${id}`,
+            {
+                method: "DELETE",
+            }
+        ).then((res) => res.json());
+        return response;
+    }
+);
 export const PrincipalReducer = createSlice({
     name: "Principal",
     initialState: {
@@ -247,6 +301,9 @@ export const PrincipalReducer = createSlice({
         Allstudents: [],
         performances: [],
         allTeachers: [],
+        PaymentDetails: [],
+        admissionForms: [],
+        admissionForm: {},
     },
     reducers: {
         increment: (state) => {
@@ -306,6 +363,21 @@ export const PrincipalReducer = createSlice({
         });
         builder.addCase(GetAllTeachers.fulfilled, (state, action) => {
             state.allTeachers = action.payload;
+        });
+        builder.addCase(PostAdmissionData.fulfilled, (state, action) => {
+            window.location.replace(action.payload);
+        });
+        builder.addCase(GetlPaymentDetails.fulfilled, (state, action) => {
+            state.PaymentDetails = action.payload;
+        });
+        builder.addCase(GetAdmissionForms.fulfilled, (state, action) => {
+            state.admissionForms = action.payload;
+        });
+        builder.addCase(IndividualAdmissionForm.fulfilled, (state, action) => {
+            state.admissionForm = action.payload;
+        });
+        builder.addCase(RemoveTeacher.fulfilled, (state, action) => {
+            Swal.fire("Success", "Teacher Removed Successfully", "success");
         });
     },
 });

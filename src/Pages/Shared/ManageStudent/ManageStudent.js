@@ -110,16 +110,6 @@ const ManageStudent = () => {
                                                 </span>
                                             </span>
                                         </td>
-                                        {user.email ===
-                                            "principal@gmail.com" && (
-                                            <td className="text-center px-5 py-5 border-b border-gray-400 bg-white text-sm">
-                                                <span className="relative inline-block px-3 py-1 font-semibold text-blue-900 text-lg font-bold leading-tight table_btn">
-                                                    <span className="relative ">
-                                                        CHECK
-                                                    </span>
-                                                </span>
-                                            </td>
-                                        )}
                                     </tr>
                                 ))}
                             </tbody>

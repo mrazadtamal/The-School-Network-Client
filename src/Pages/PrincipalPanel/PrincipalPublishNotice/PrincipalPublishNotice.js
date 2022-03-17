@@ -36,7 +36,7 @@ const PrincipalPublishNotice = () => {
                 }} className='see_previous_notice_btn'>SEE PREVIOUS NOTICE <BsArrowRightCircleFill className='react__button_icons' size={20}/></button>
             </div>
                 <label className='principal_form_labels font-bold'>Upload Notice</label>
-                <span className='principal_form_span'><input className='principal_file_input mt-2' onBlur={(e) => setImg(e.target.files[0])}  type="file" /></span>
+                <span className='principal_form_span'><input className=' mt-2' onBlur={(e) => setImg(e.target.files[0])}  type="file" /></span>
                 <h1 className='text-center mt-4 text-3xl font-bold text-gray-700'>OR</h1>
                 <label className='principal_form_labels font-bold'>Notice Title</label>
                 <input onBlur={(e) => {
@@ -49,10 +49,7 @@ const PrincipalPublishNotice = () => {
                     setNotice({...notice, date})
                 }} className='principal_form_inputs' type="date" placeholder='Notice Title' />
                 <label className='principal_form_labels font-bold'>Write Notice</label>
-                <textarea onBlur={(e) => {
-                    const description = e.target.value;
-                    setNotice({...notice, description})
-                }} className='principal_form_textarea' as="text" />
+                <textarea className='principal_form_textarea' as="text" />
                 <label className='principal_form_labels font-bold'>Notice From</label>
                 <input onBlur={(e) => {
                     const noticeFrom = e.target.value;

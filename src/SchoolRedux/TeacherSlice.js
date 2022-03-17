@@ -40,7 +40,7 @@ export const getTeacherInfo = createAsyncThunk(
     "Teacher/TeacherProfile",
     async (email) => {
         const response = await fetch(
-            `http://localhost:5000/TeacherProfile?email=${email}`
+            `https://blooming-citadel-14218.herokuapp.com/TeacherProfile?email=${email}`
         ).then((res) => res.json());
         return response;
     }
@@ -121,102 +121,105 @@ export const GetIndividualCare = createAsyncThunk(
         return response;
     }
 );
-
-// Upload class routine
-export const UploadClassRoutine = createAsyncThunk(
-    "Teacher/UploadClassRoutine",
+//Teacher changing status of Request care
+export const ChangeRequestHandler = createAsyncThunk(
+    "Teacher/ChangeRequestHandler",
     async (data) => {
         const response = await fetch(
-            `http://localhost:5000/UploadClassRoutine?class=${data.classRoutineData.class}&&section=${data.classRoutineData.section}`,
-            {
-                method: "POST",
-                body: data.fd,
-            }
-        );
+            `https://blooming-citadel-14218.herokuapp.com/ChangeRequestHandler?status=${data.status}&&id=${data.id}`
+        )
+            .then((res) => res.json())
+            .catch((error) => {
+                Swal.fire("!", "Error!", "error");
+            });
         return response;
     }
 );
-
-// Upload Exam Routine
-export const UploadExamRoutine = createAsyncThunk(
-    "Teacher/UploadExamRoutine",
-    async (data) => {
-        const response = await fetch(
-            `http://localhost:5000/UploadExamRoutine?class=${data.class}&&term=${data.term}`,
-            {
-                method: "POST",
-                body: data.fd,
-            }
-        );
-        return response;
-    }
-);
-
-// Get All Class Routines
-export const GetClassRoutine = createAsyncThunk(
-    "Teacher/GetClassRoutine",
-    async () => {
-        const response = await fetch(
-            "http://localhost:5000/GetClassRoutine"
-        ).then((res) => res.json());
-        return response;
-    }
-);
-
-// Get All Exam Routines
-export const GetExamRoutine = createAsyncThunk(
-    "Teacher/GetExamRoutine",
-    async () => {
-        const response = await fetch(
-            "http://localhost:5000/GetExamRoutine"
-        ).then((res) => res.json());
-        return response;
-    }
-);
-
-// Delete A Class Routine
-export const DeleteClassRoutine = createAsyncThunk(
-    "Teacher/DeleteClassRoutine",
-    async (data) => {
-        const response = await fetch(
-            `http://localhost:5000/DeleteClassRoutine?id=${data}`,
-            {
-                method: "DELETE",
-            }
-        );
-        return response;
-    }
-);
-
-// Delete A Exam Routine
-export const DeleteExamRoutine = createAsyncThunk(
-    "Teacher/DeleteExamRoutine",
-    async (id) => {
-        const response = await fetch(
-            `http://localhost:5000/DeleteExamRoutine?id=${id}`,
-            {
-                method: "DELETE",
-            }
-        );
-        return response;
-    }
-);
-
-// Add Individual Attendance Data in Database
-export const AddAttendanceData = createAsyncThunk(
-    "Teacher/AddAttendanceData",
+// Publish assing from teachers
+export const assignmentPublish = createAsyncThunk(
+    "Teacher/assignmentPublish",
     async (data) => {
         console.log(data);
         const response = await fetch(
-            "http://localhost:5000/AddAttendanceData",
+            "http://localhost:5000/assignmentPublish",
             {
-                method: "PUT",
+                method: "POST",
                 headers: {
                     "content-type": "application/json",
                 },
                 body: JSON.stringify(data),
             }
+        )
+            .then((res) => res.json())
+            .catch((error) => {
+                console.log(error);
+            });
+        return response;
+    }
+);
+//Teacher geting all previous Assignment
+export const GetingPreviosuAssignment = createAsyncThunk(
+    "Teacher/GetingPreviosuAssignment",
+    async () => {
+        const response = await fetch(
+            "http://localhost:5000/GetingPreviosuAssignment"
+        ).then((res) => res.json());
+        return response;
+    }
+);
+//Teacher Publisshing image assingment
+export const PublishImageAssing = createAsyncThunk(
+    "Teacher/PublishImageAssing",
+    async (fd) => {
+        const response = await fetch(
+            "http://localhost:5000/PublishImageAssing",
+            {
+                method: "POST",
+                body: fd,
+            }
+        )
+            .then((res) => res.json())
+            .catch((error) => {
+                Swal.fire("!", "Error!", "error");
+            });
+        return response;
+    }
+);
+// Delete A DeleteAssignment
+export const DeleteAssignment = createAsyncThunk(
+    "Teacher/DeleteAssignment",
+    async (id) => {
+        const response = await fetch(
+            `http://localhost:5000/DeleteAssignment/${id}`,
+            {
+                method: "DELETE",
+            }
         );
+        return response;
+    }
+);
+
+//Teacher adding to library
+export const AddBooks = createAsyncThunk("Teacher/AddBooks", async (data) => {
+    const response = await fetch("http://localhost:5000/AddBook", {
+        method: "POST",
+        body: data,
+    })
+        .then((res) => res.json())
+        .catch((error) => {
+            Swal.fire("!", "Error!", "error");
+        });
+    return response;
+});
+//Teacher adding to library
+export const GetAllBooks = createAsyncThunk(
+    "Teacher/GetAllBooks",
+    async (data) => {
+        const response = await fetch("http://localhost:5000/GetAllBooks")
+            .then((res) => res.json())
+            .catch((error) => {
+                Swal.fire("!", "Error!", "error");
+            });
         return response;
     }
 );
@@ -226,15 +229,24 @@ const initialState = {
     extraCares: [],
     teacherInfo: {},
     IndividualCare: {},
-    classRoutines: [],
-    examRoutines: [],
-    studentsData: [],
+    assignments: [],
+    Books: [],
 };
 
 export const TeacherReducer = createSlice({
     name: "Teacher",
     initialState,
-    reducers: {},
+    reducers: {
+        increment: (state) => {
+            state.value += 1;
+        },
+        decrement: (state) => {
+            state.value -= 1;
+        },
+        incrementByAmount: (state, action) => {
+            state.value += action.payload;
+        },
+    },
     extraReducers: (builder) => {
         builder.addCase(GetExtraCareRequest.fulfilled, (state, action) => {
             state.extraCares = action.payload;
@@ -261,39 +273,39 @@ export const TeacherReducer = createSlice({
         builder.addCase(GetIndividualCare.fulfilled, (state, action) => {
             state.IndividualCare = action.payload;
         });
-        builder.addCase(UploadClassRoutine.fulfilled, (state, action) => {
+        builder.addCase(ChangeRequestHandler.fulfilled, (state, action) => {
+            console.log("Status", action.payload);
+            Swal.fire("Success", "", "success");
+        });
+        builder.addCase(assignmentPublish.fulfilled, (state, action) => {
             Swal.fire(
                 "Success",
-                "Class routine uploaded successfully",
+                "Assignment Published Successfully ",
                 "success"
             );
         });
-        builder.addCase(UploadExamRoutine.fulfilled, (state, action) => {
+        builder.addCase(PublishImageAssing.fulfilled, (state, action) => {
             Swal.fire(
                 "Success",
-                "Class routine uploaded successfully",
+                "Assingment img Publish Successfull",
                 "success"
             );
         });
-        builder.addCase(GetClassRoutine.fulfilled, (state, action) => {
-            state.classRoutines = action.payload;
+        builder.addCase(GetingPreviosuAssignment.fulfilled, (state, action) => {
+            state.assignments = action.payload;
         });
-        builder.addCase(GetExamRoutine.fulfilled, (state, action) => {
-            state.examRoutines = action.payload;
-        });
-        builder.addCase(DeleteClassRoutine.fulfilled, (state, action) => {
-            Swal.fire(
-                "Success",
-                "Class Routine deleted successfully",
-                "success"
-            );
-        });
-        builder.addCase(DeleteExamRoutine.fulfilled, (state, action) => {
+        builder.addCase(DeleteAssignment.fulfilled, (state, action) => {
             Swal.fire(
                 "Success",
                 "Class Routine deleted successfully",
                 "success"
             );
+        });
+        builder.addCase(AddBooks.fulfilled, (state, action) => {
+            Swal.fire("Success", "Book Added Successfull", "success");
+        });
+        builder.addCase(GetAllBooks.fulfilled, (state, action) => {
+            state.Books = action.payload;
         });
     },
 });
