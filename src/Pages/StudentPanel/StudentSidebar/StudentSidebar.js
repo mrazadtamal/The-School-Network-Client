@@ -1,12 +1,13 @@
 import React, { useEffect } from "react";
 import { useDispatch, useSelector } from "react-redux";
-import { Link, NavLink } from "react-router-dom";
+import { Link, NavLink, useNavigate } from "react-router-dom";
 import { getStudentInfo } from "../../../SchoolRedux/StudentSlice";
 import useFirebase from "../../Shared/Authentication/Authentication";
 
 const StudentSidebar = () => {
   const { user, LogOutUser } = useFirebase();
   const dispatch = useDispatch();
+  const navigate = useNavigate() 
   useEffect(() => {
     dispatch(getStudentInfo(user.email));
   }, [user.email, dispatch]);
@@ -157,7 +158,7 @@ const StudentSidebar = () => {
         </NavLink>
         <button
           onClick={() => {
-            LogOutUser();
+            LogOutUser(navigate);
           }}
           className="my-5"
         >
