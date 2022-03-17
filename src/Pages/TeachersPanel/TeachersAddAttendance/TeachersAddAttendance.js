@@ -4,14 +4,15 @@ import { GetAllStudents } from "../../../SchoolRedux/PrincipalSlice";
 import "./TeachersAddAttendance.css";
 import useFirebase from "../../Shared/Authentication/Authentication";
 import {
-    attendanceDataAdd,
+    AddAttendanceData,
     getTeacherInfo,
 } from "./../../../SchoolRedux/TeacherSlice";
 
 const TeachersAddAttendance = () => {
     const dispatch = useDispatch();
     const { user } = useFirebase();
-    const [month, setMonth] = useState("january");
+    const [selectedMonth, setSelectedMonth] = useState("january");
+    const [attData, setAttData] = useState({});
 
     useEffect(() => {
         dispatch(getTeacherInfo(user.email));
@@ -25,13 +26,11 @@ const TeachersAddAttendance = () => {
 
     const students = useSelector((state) => state.principalStore.Allstudents);
 
-    const attendanceData = useSelector(
-        (state) => state.teacherStore.attendanceData
-    );
-
-    useEffect(() => {
-        console.log(attendanceData);
-    });
+    const handleAttendanceSubmitBtn = (attData) => {
+        dispatch(AddAttendanceData(attData));
+        document.getElementsByClassName("presentInputField").value = "";
+        document.getElementsByClassName("absentInputField").value = "";
+    };
 
     return (
         <div className="px-6 md:px-10 lg:px-14 text-center">
@@ -45,7 +44,7 @@ const TeachersAddAttendance = () => {
                         className="border border-gray-500 rounded p-1 w-32"
                         name="month"
                         id="month"
-                        onChange={(e) => setMonth(e.target.value)}
+                        onChange={(e) => setSelectedMonth(e.target.value)}
                     >
                         <option value="january">January</option>
                         <option value="february">February</option>
@@ -70,11 +69,12 @@ const TeachersAddAttendance = () => {
                                 <th>Roll</th>
                                 <th>Present</th>
                                 <th>Absent</th>
+                                <th>Submit</th>
                             </tr>
                         </thead>
                         <tbody>
                             {students.map((student) => (
-                                <tr>
+                                <tr key={student.email}>
                                     <td data-title="Student Photo">
                                         <div className="flex justify-center">
                                             <img
@@ -91,38 +91,57 @@ const TeachersAddAttendance = () => {
                                     <td data-title="Present">
                                         <input
                                             type="number"
-                                            className="w-full md:w-auto"
+                                            className="presentInputField w-full md:w-auto"
                                             onBlur={(e) => {
                                                 const presentDays =
                                                     e.target.value;
                                                 const email = student.email;
+                                                const month = selectedMonth;
                                                 const data = {
+                                                    ...attData,
                                                     email,
+                                                    month,
                                                     presentDays,
                                                 };
-                                                dispatch(
-                                                    attendanceDataAdd(data)
-                                                );
+                                                setAttData(data);
                                             }}
                                         />
                                     </td>
                                     <td data-title="Absent">
                                         <input
                                             type="number"
-                                            className="w-full md:w-auto"
+                                            className="absentInputField w-full md:w-auto"
+                                            onBlur={(e) => {
+                                                const absentDays =
+                                                    e.target.value;
+                                                const email = student.email;
+                                                const month = selectedMonth;
+                                                const data = {
+                                                    ...attData,
+                                                    email,
+                                                    month,
+                                                    absentDays,
+                                                };
+                                                setAttData(data);
+                                            }}
                                         />
+                                    </td>
+                                    <td data-title="Submit">
+                                        <button
+                                            onClick={() =>
+                                                handleAttendanceSubmitBtn(
+                                                    attData
+                                                )
+                                            }
+                                            className="bg-blue-500 px-3 py-1 rounded font-medium text-md"
+                                        >
+                                            Submit
+                                        </button>
                                     </td>
                                 </tr>
                             ))}
                         </tbody>
                     </table>
-                </div>
-                <div className="text-right">
-                    <input
-                        type="submit"
-                        value="Submit"
-                        className="mt-5 bg-blue-500 px-5 py-2 rounded font-medium text-md"
-                    />
                 </div>
             </div>
         </div>

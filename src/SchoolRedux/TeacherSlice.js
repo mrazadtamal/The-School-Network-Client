@@ -202,6 +202,25 @@ export const DeleteExamRoutine = createAsyncThunk(
     }
 );
 
+// Add Individual Attendance Data in Database
+export const AddAttendanceData = createAsyncThunk(
+    "Teacher/AddAttendanceData",
+    async (data) => {
+        console.log(data);
+        const response = await fetch(
+            "http://localhost:5000/AddAttendanceData",
+            {
+                method: "PUT",
+                headers: {
+                    "content-type": "application/json",
+                },
+                body: JSON.stringify(data),
+            }
+        );
+        return response;
+    }
+);
+
 const initialState = {
     value: 0,
     extraCares: [],
@@ -210,24 +229,12 @@ const initialState = {
     classRoutines: [],
     examRoutines: [],
     studentsData: [],
-    attendanceData: [],
 };
 
 export const TeacherReducer = createSlice({
     name: "Teacher",
     initialState,
-    reducers: {
-        attendanceDataAdd: (state, action) => {
-            const data = action.payload;
-            const studentEmail = data.email;
-            const storedState = state.attendanceData;
-            if ((storedState.email = studentEmail)) {
-                storedState.email.presentDays = data.presentDays;
-            } else {
-                storedState.studentEmail.presentDays = data.presentDays;
-            }
-        },
-    },
+    reducers: {},
     extraReducers: (builder) => {
         builder.addCase(GetExtraCareRequest.fulfilled, (state, action) => {
             state.extraCares = action.payload;
