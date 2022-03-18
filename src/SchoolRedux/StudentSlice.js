@@ -5,7 +5,9 @@ import Swal from "sweetalert2";
 //for fetching the data from the api and database we use asyncthunk
 export const GetResult = createAsyncThunk("Student/seeResult", async () => {
   console.log("Hitted Student Slice");
-  const response = await fetch("https://blooming-citadel-14218.herokuapp.com/student/results")
+  const response = await fetch(
+    "https://blooming-citadel-14218.herokuapp.com/student/results"
+  )
     .then((res) => res.json())
     .catch((err) => {
       console.log(err);
@@ -19,13 +21,16 @@ export const RequestExtraCare = createAsyncThunk(
   "Student/RequestCare",
   async (data) => {
     console.log("Hitted Extra Care");
-    const response = await fetch("https://blooming-citadel-14218.herokuapp.com/student/requestCare", {
-      method: "POST",
-      headers: {
-        "content-type": "application/json",
-      },
-      body: JSON.stringify(data),
-    })
+    const response = await fetch(
+      "https://blooming-citadel-14218.herokuapp.com/student/requestCare",
+      {
+        method: "POST",
+        headers: {
+          "content-type": "application/json",
+        },
+        body: JSON.stringify(data),
+      }
+    )
       .then((res) => res.json())
       .catch((err) => {
         console.log(err);
@@ -48,7 +53,11 @@ export const GetStudent = createAsyncThunk(
         console.log(err);
       });
     console.log(response);
-    return response;
+    if (response !== null) {
+      return response;
+    } else {
+      return {};
+    }
   }
 );
 
@@ -125,12 +134,29 @@ export const PayMonthlyPayment = createAsyncThunk(
   "Student/PayMonthlyPayment",
   async (data) => {
     const response = await fetch(
-      'https://blooming-citadel-14218.herokuapp.com/PayMonthlyPayment',{
+      "https://blooming-citadel-14218.herokuapp.com/PayMonthlyPayment",
+      {
         method: "POST",
-        headers:{"content-type": "application/json"},
-        body: JSON.stringify(data)
+        headers: { "content-type": "application/json" },
+        body: JSON.stringify(data),
       }
     )
+      .then((res) => res.json())
+      .catch((err) => console.log(err));
+    return response;
+  }
+);
+
+//student assingment submit pdf
+export const StudnetAssignmentSubmit = createAsyncThunk(
+  "Student/StudnetAssignmentSubmit",
+  async (data) => {
+    console.log("data from std", data);
+    const response = await fetch("http://localhost:5000/pdfUpload", {
+      method: "POST",
+      // headers: { "content-type": "application/json" },
+      body: data,
+    })
       .then((res) => res.json())
       .catch((err) => console.log(err));
     return response;
@@ -145,7 +171,7 @@ export const StudentReducer = createSlice({
     allResults: [],
     studentInfo: {},
     notices: [],
-    montlyPayment: []
+    montlyPayment: [],
   },
   reducers: {
     increment: (state) => {
@@ -190,7 +216,10 @@ export const StudentReducer = createSlice({
       state.montlyPayment = action.payload;
     });
     builder.addCase(PayMonthlyPayment.fulfilled, (state, action) => {
-      window.location.replace(action.payload)
+      window.location.replace(action.payload);
+    });
+    builder.addCase(StudnetAssignmentSubmit.fulfilled, (state, action) => {
+      Swal.fire("Success", "Assingment Published Successfully", "success");
     });
   },
 });
