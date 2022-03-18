@@ -47,7 +47,7 @@ const StudentAssignmentSubmit = () => {
                 <label className="flex flex-col rounded-lg border-4 border-dashed w-full h-40 p-10 group text-center">
                   <div className="h-full w-full text-center flex flex-col  justify-center items-center  ">
                     <p className="  cursor-pointer text-gray-500 ">
-                      select a file from your computer
+                      select a file from your computer</p>
                   {/* <div className="h-full w-full text-center flex flex-col items-center justify-center items-center  ">
                     <p className="pointer-none text-gray-500 ">
                       <span className="text-sm">Drag and drop</span> files here
@@ -68,7 +68,9 @@ const StudentAssignmentSubmit = () => {
                     name="pdf"
                     onBlur={(e) => setpdfdata(e.target.files[0])}
                   />
-                </label>
+                
+              </div>
+              </label>
               </div>
             </div>
             <p className="text-sm text-gray-300">
