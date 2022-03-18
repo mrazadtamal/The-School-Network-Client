@@ -16,26 +16,18 @@ const StudentSidebar = () => {
 
   return (
     <div className="sm:py-10">
-      <h1 className="my-5 text-left ml-6">
+      <h1 className="mt-8 text-center">
         <span className="text-5xl font-bold text-white ">S</span>
         <span className=" text-lg font-bold text-white ">tudent Dashboard</span>
       </h1>
 
-      {studentData.img ? (
-        <img
-          src={`data:image/jpeg;base64,${studentData?.img}`}
-          className="w-[50%] rounded-full mx-auto"
-          alt=""
-        />
-      ) : (
-        <img
-          src="https://res.cloudinary.com/abidazad/image/upload/v1637747947/user_xsd3a7.png"
-          alt=""
-          className=" w-80"
-        />
-      )}
+      <img
+        className="  rounded-full h-28 w-28 text-center m-auto mt-5 mb-5"
+        src="https://res.cloudinary.com/abidazad/image/upload/v1637747947/user_xsd3a7.png"
+        alt=""
+      />
 
-      <div className="flex flex-col justify-center items-start tex-left ml-6 right py-3">
+      <div className="flex flex-col justify-center items-start ml-6 py-3">
         {/*Home  */}
 
         <NavLink
@@ -128,6 +120,21 @@ const StudentSidebar = () => {
             Transcript
           </p>
         </NavLink>
+
+        {/*  Concession Form */}
+
+        <NavLink
+          to="/StudentDashboard/concessionForm"
+          style={({ isActive }) => ({
+            color: isActive ? "#0bc28b" : "#545e6f",
+            background: isActive ? "#7600dc" : "black",
+          })}
+        >
+          <p className="text-white py-0.5   hover:bg-yellow-200 w-40 hover:text-black">
+            Concession Form
+          </p>
+        </NavLink>
+
 
         {/* Notice Board */}
 

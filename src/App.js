@@ -57,11 +57,11 @@ import CheckAdmissionForm from "./Pages/PrincipalPanel/CheckAdmissionForm/CheckA
 import IndividualForms from "./Pages/PrincipalPanel/CheckAdmissionForm/IndividualForms";
 import BooksAdd from "./Pages/Shared/LibraryPages/BooksAdd/BooksAdd";
 import OurTeachers from "./Pages/AllUser/HomePageComponents/OurTeacers";
+import ConcessionForm from "./Pages/StudentPanel/ConcessionForm/ConcessionForm";
 import ManageBooks from "./Pages/Shared/LibraryPages/BooksManage/ManageBooks";
 import EditBook from "./Pages/Shared/LibraryPages/BooksManage/EditBook/EditBook";
 import LentBookForm from "./Pages/StudentPanel/LibraryStudentSection/LentBookForm";
 import BookView from "./Pages/StudentPanel/LibraryStudentSection/BookView";
-
 
 function App() {
   return (
@@ -293,6 +293,10 @@ function App() {
                         path="/StudentDashboard/LentBookForm"
                         element={<LentBookForm />}
                          />
+                        <Route
+                        path="/StudentDashboard/concessionForm"
+                        element={<ConcessionForm />}
+                      />
                     </Route>
                     {/* --------------------student route end-------------------------*/}
             </Routes>

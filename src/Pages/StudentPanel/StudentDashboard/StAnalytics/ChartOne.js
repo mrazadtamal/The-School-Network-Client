@@ -6,12 +6,12 @@ const ChartOne = () => {
     <div className=" ml-5 mt-10">
       <Chart
         type="pie"
-        width={400}
-        height={400}
-        series={[300, 100, 239, 300, 397]}
+        width={450}
+        height={350}
+        series={[300, 100, 355, 200, 400]}
         options={{
           title: {
-            text: "pie chart",
+            text: "Student Data",
           },
         }}
       ></Chart>
