@@ -1,5 +1,6 @@
 import { createAsyncThunk, createSlice } from '@reduxjs/toolkit'
 import Swal from 'sweetalert2'
+
 //Principal Publisshing Text notice
 export const PrincipalNoticePublish = createAsyncThunk(
   'Principal/PublishNotice',
@@ -8,7 +9,8 @@ export const PrincipalNoticePublish = createAsyncThunk(
     const response = await fetch('https://blooming-citadel-14218.herokuapp.com/publisNotice',{
       method: 'POST',
       headers:{
-        'content-type':'application/json'
+        'content-type':'application/json',
+        
       },
       body: JSON.stringify(data)
     }).then(res=> res.json()).catch(error => {
@@ -27,6 +29,7 @@ export const PublishImageNotice = createAsyncThunk(
   async (fd) => {
     const response = await fetch('https://blooming-citadel-14218.herokuapp.com/PublishImageNotice',{
       method: 'POST',
+      
       body: fd
     }).then(res=> res.json()).catch(error => {
       Swal.fire(
@@ -42,7 +45,7 @@ export const PublishImageNotice = createAsyncThunk(
 export const GetingPreviousNotice = createAsyncThunk(
   'Principal/getPreviousNotice',
   async () => {
-    const response = await fetch('https://blooming-citadel-14218.herokuapp.com/PreviousNotice').then(res=> res.json())
+    const response = await fetch('https://blooming-citadel-14218.herokuapp.com/PreviousNotice',).then(res=> res.json())
     return  response;
    
   }
@@ -52,7 +55,7 @@ export const DeleteNotice = createAsyncThunk(
   'Principal/DeleteNotice',
   async (id) => {
     const response = await fetch(`https://blooming-citadel-14218.herokuapp.com/DeleteNotice/${id}`,{
-      method: 'DELETE'}).then(res=> res.json()).catch(error => {
+      method: 'DELETE' ,}).then(res=> res.json()).catch(error => {
       Swal.fire(
           '!',
           'Error!',
@@ -71,7 +74,8 @@ export const PutEditNotice = createAsyncThunk(
     const response = await fetch(`https://blooming-citadel-14218.herokuapp.com/PutEditNotice/${data._id}`,{
     method: 'PUT',
     headers:{
-      'content-type':'application/json'
+      'content-type':'application/json',
+      
     },
     body: JSON.stringify(data)
     }).then(res=> res.json()).catch(error => {
@@ -88,7 +92,8 @@ export const PrincipalAnnouncementPublish = createAsyncThunk(
     const response = await fetch('https://blooming-citadel-14218.herokuapp.com/publisAnnouncement',{
       method: 'POST',
       headers:{
-        'content-type':'application/json'
+        'content-type':'application/json',
+        
       },
       body: JSON.stringify(data)
     }).then(res=> res.json()).catch(error => {
@@ -108,14 +113,13 @@ export const PublishImageAnnouncement = createAsyncThunk(
     console.log('hitted img')
     const response = await fetch('https://blooming-citadel-14218.herokuapp.com/PublishImageAnnouncement',{
       method: 'POST',
-      
       body: fd
     }).then(res=> res.json()).catch(error => {
-      // Swal.fire(
-      //     '!',
-      //     'Error!',
-      //     'error'
-      //   )
+      Swal.fire(
+          '!',
+          'Error!',
+          'error'
+        )
   });
     return response
   }
@@ -152,7 +156,8 @@ export const PutEditAnnouncement = createAsyncThunk(
     const response = await fetch(`https://blooming-citadel-14218.herokuapp.com/PutEditAnnouncement/${data._id}`,{
     method: 'PUT',
     headers:{
-      'content-type':'application/json'
+      'content-type':'application/json',
+      
     },
     body: JSON.stringify(data)
     }).then(res=> res.json()).catch(error => {
@@ -187,7 +192,8 @@ export const UploadMonthlyPayment = createAsyncThunk(
     const response = await fetch('https://blooming-citadel-14218.herokuapp.com/UploadMonthlyPayment',{
       method: 'POST',
       headers:{
-        'content-type':'application/json'
+        'content-type':'application/json',
+        
       },
       body: JSON.stringify(data)
     }).then(res=> res.json())
@@ -199,7 +205,7 @@ export const UploadMonthlyPayment = createAsyncThunk(
 export const GetAllTeachers = createAsyncThunk(
   'Principal/GetAllTeachers',
   async (data) => {
-    const response = await fetch('https://blooming-citadel-14218.herokuapp.com/GetAllTeachers').then(res=> res.json())
+    const response = await fetch('https://blooming-citadel-14218.herokuapp.com/GetAllTeachers',).then(res=> res.json())
     return  response;
    
   }
@@ -208,9 +214,10 @@ export const GetAllTeachers = createAsyncThunk(
 export const PostAdmissionData = createAsyncThunk(
   'Principal/PostAdmissionData',
   async (data) => {
-    console.log('payment hitted',)
+   
     const response = await fetch('https://blooming-citadel-14218.herokuapp.com/addmissionpayment',{
       method: 'POST',
+      
       body: data
     }).then(res=> res.json())
     return  response;
@@ -231,7 +238,6 @@ export const GetlPaymentDetails = createAsyncThunk(
 export const GetAdmissionForms = createAsyncThunk(
   'Principal/GetAdmissionForms',
   async () => {
-    console.log('hitted slciie')
     const response = await fetch('https://blooming-citadel-14218.herokuapp.com/GetAdmissionForms').then(res=> res.json())
     return  response;
    
@@ -253,7 +259,7 @@ export const RemoveTeacher = createAsyncThunk(
   'Principal/RemoveTeacher',
   async (id) => {
 
-    const response = await fetch(`http://localhost:5000/RemoveTeacher/${id}`,{
+    const response = await fetch(`https://blooming-citadel-14218.herokuapp.com/RemoveTeacher/${id}`,{
       method: 'DELETE'
     }).then(res=> res.json())
     return  response;
