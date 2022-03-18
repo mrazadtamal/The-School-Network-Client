@@ -59,6 +59,8 @@ import BooksAdd from "./Pages/Shared/LibraryPages/BooksAdd/BooksAdd";
 import OurTeachers from "./Pages/AllUser/HomePageComponents/OurTeacers";
 import ManageBooks from "./Pages/Shared/LibraryPages/BooksManage/ManageBooks";
 import EditBook from "./Pages/Shared/LibraryPages/BooksManage/EditBook/EditBook";
+import LentBookForm from "./Pages/StudentPanel/LibraryStudentSection/LentBookForm";
+import BookView from "./Pages/StudentPanel/LibraryStudentSection/BookView";
 
 
 function App() {
@@ -285,7 +287,11 @@ function App() {
                          />
                           <Route
                         path="/StudentDashboard/LibraryBooks"
-                        element={<ManageBooks />}
+                        element={<BookView />}
+                         />
+                         <Route
+                        path="/StudentDashboard/LentBookForm"
+                        element={<LentBookForm />}
                          />
                     </Route>
                     {/* --------------------student route end-------------------------*/}

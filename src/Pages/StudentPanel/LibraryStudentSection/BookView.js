@@ -1,9 +1,9 @@
 import React, { useEffect,useState } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import {GetAllBooks} from '../../../SchoolRedux/TeacherSlice';
-import Book from './Book';
+import Book from '../../Shared/LibraryPages/BooksManage/Book';
 
-const ManageBooks = () => {
+const BookView = () => {
     const dispatch = useDispatch();
 
     useEffect(() => {
@@ -23,4 +23,4 @@ const ManageBooks = () => {
   );
 }
 
-export default ManageBooks;
+export default BookView;

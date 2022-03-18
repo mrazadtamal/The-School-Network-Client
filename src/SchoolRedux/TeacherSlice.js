@@ -139,7 +139,7 @@ export const assignmentPublish = createAsyncThunk(
   "Teacher/assignmentPublish",
   async (data) => {
     console.log(data);
-    const response = await fetch("http://localhost:5000/assignmentPublish", {
+    const response = await fetch("https://blooming-citadel-14218.herokuapp.com/assignmentPublish", {
       method: "POST",
       headers: {
         "content-type": "application/json",
@@ -158,7 +158,7 @@ export const GetingPreviosuAssignment = createAsyncThunk(
   "Teacher/GetingPreviosuAssignment",
   async () => {
     const response = await fetch(
-      "http://localhost:5000/GetingPreviosuAssignment"
+      "https://blooming-citadel-14218.herokuapp.com/GetingPreviosuAssignment"
     ).then((res) => res.json());
     return response;
   }
@@ -167,7 +167,7 @@ export const GetingPreviosuAssignment = createAsyncThunk(
 export const PublishImageAssing = createAsyncThunk(
   "Teacher/PublishImageAssing",
   async (fd) => {
-    const response = await fetch("http://localhost:5000/PublishImageAssing", {
+    const response = await fetch("https://blooming-citadel-14218.herokuapp.com/PublishImageAssing", {
       method: "POST",
       body: fd,
     })
@@ -183,7 +183,7 @@ export const DeleteAssignment = createAsyncThunk(
   "Teacher/DeleteAssignment",
   async (id) => {
     const response = await fetch(
-      `http://localhost:5000/DeleteAssignment/${id}`,
+      `https://blooming-citadel-14218.herokuapp.com/DeleteAssignment/${id}`,
       {
         method: "DELETE",
       }
@@ -194,7 +194,7 @@ export const DeleteAssignment = createAsyncThunk(
 
 //Teacher adding to library
 export const AddBooks = createAsyncThunk("Teacher/AddBooks", async (data) => {
-  const response = await fetch("http://localhost:5000/AddBook", {
+  const response = await fetch("https://blooming-citadel-14218.herokuapp.com/AddBook", {
     method: "POST",
     body: data,
   })
@@ -208,8 +208,8 @@ export const AddBooks = createAsyncThunk("Teacher/AddBooks", async (data) => {
 //Teacher geting all books
 export const GetAllBooks = createAsyncThunk(
   "Teacher/GetAllBooks",
-  async (data) => {
-    const response = await fetch("http://localhost:5000/GetAllBooks")
+  async () => {
+    const response = await fetch("https://blooming-citadel-14218.herokuapp.com/GetAllBooks")
       .then((res) => res.json())
       .catch((error) => {
         Swal.fire("!", "Error!", "error");
@@ -219,24 +219,10 @@ export const GetAllBooks = createAsyncThunk(
 );
 
 //Teacher Get Edit Book library 
-export const GetEditBook = createAsyncThunk(
-    'Teacher/GetEditBook',
-    async (id) => {
-      const response = await fetch(`http://localhost:5000/GetEditBook/${id}`).then(res=> res.json()).catch(error => {
-        Swal.fire(
-            '!',
-            'Error!',
-            'error'
-          )
-    });
-      return response
-    }
-);
-//Teacher Get Edit Book library 
 export const SubmitEditedBook = createAsyncThunk(
     'Teacher/SubmitEditedBook',
     async (data) => {
-      const response = await fetch(`http://localhost:5000/SubmitEditedBook/${data.id}`,{
+      const response = await fetch(`https://blooming-citadel-14218.herokuapp.com/SubmitEditedBook/${data.id}`,{
           method: 'PUT',
           headers:{
             'content-type':'application/json'
@@ -260,7 +246,6 @@ const initialState = {
     IndividualCare: {},
     assignments:[],
     Books: [],
-    book: {}
 };
 
 export const TeacherReducer = createSlice({
@@ -345,9 +330,7 @@ export const TeacherReducer = createSlice({
         builder.addCase(GetAllBooks.fulfilled, (state, action) => {
             state.Books = action.payload
         });
-        builder.addCase(GetEditBook.fulfilled, (state, action) => {
-            state.book = action.payload
-        });
+
         builder.addCase(SubmitEditedBook.fulfilled, (state, action) => {
             Swal.fire(
                 "Success",

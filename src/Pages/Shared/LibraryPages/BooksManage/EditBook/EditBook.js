@@ -1,25 +1,19 @@
 import React, { useState , useEffect} from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import {useParams} from 'react-router-dom'
-import {GetEditBook, SubmitEditedBook} from '../../../../../SchoolRedux/TeacherSlice';
+import {SubmitEditedBook} from '../../../../../SchoolRedux/TeacherSlice';
 
 const EditBook = () => {
-
     const dispatch = useDispatch();
     const {id} = useParams()
+    const [bookData, setBookData] = useState({})
 
     useEffect(() => {
-        dispatch(GetEditBook(id))
-    }, [dispatch,id]);
-
-    const book = useSelector((state) => state.teacherStore.book)
-
-    console.log('this is edit book', book)
-    const [bookData, setBookData] = useState(book)
-    console.log('this is bookData', bookData)
-    useEffect(() => {
-        setBookData(book)
-    },[book])
+       fetch(`https://blooming-citadel-14218.herokuapp.com/GetEditBook/${id}`)
+       .then(res=> res.json())
+       .then(data => setBookData(data))
+    }, [id]);
+    
     const OnblurHandler = (e) => {
         const fieldname = e.target.name;
         const fieldvalue = e.target.value;
