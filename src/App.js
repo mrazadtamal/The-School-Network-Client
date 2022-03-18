@@ -57,8 +57,8 @@ import CheckAdmissionForm from "./Pages/PrincipalPanel/CheckAdmissionForm/CheckA
 import IndividualForms from "./Pages/PrincipalPanel/CheckAdmissionForm/IndividualForms";
 import BooksAdd from "./Pages/Shared/LibraryPages/BooksAdd/BooksAdd";
 import OurTeachers from "./Pages/AllUser/HomePageComponents/OurTeacers";
+import ConcessionForm from "./Pages/StudentPanel/ConcessionForm/ConcessionForm";
 import ManageBooks from "./Pages/Shared/LibraryPages/BooksManage/ManageBooks";
-
 
 function App() {
   return (
@@ -278,6 +278,10 @@ function App() {
                         path="/StudentDashboard/StudentPaymentSuccess"
                         element={<StudentPaymentSuccess />}
                          />
+                        <Route
+                        path="/StudentDashboard/concessionForm"
+                        element={<ConcessionForm />}
+                      />
                     </Route>
                     {/* --------------------student route end-------------------------*/}
             </Routes>
