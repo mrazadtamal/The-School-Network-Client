@@ -1,5 +1,6 @@
 import { createAsyncThunk, createSlice } from "@reduxjs/toolkit";
 import Swal from "sweetalert2";
+
 //Principal Publisshing Text notice
 export const PrincipalNoticePublish = createAsyncThunk(
   "Principal/PublishNotice",
@@ -29,6 +30,7 @@ export const PublishImageNotice = createAsyncThunk(
       "https://blooming-citadel-14218.herokuapp.com/PublishImageNotice",
       {
         method: "POST",
+
         body: fd,
       }
     )
@@ -120,17 +122,12 @@ export const PublishImageAnnouncement = createAsyncThunk(
       "https://blooming-citadel-14218.herokuapp.com/PublishImageAnnouncement",
       {
         method: "POST",
-
         body: fd,
       }
     )
       .then((res) => res.json())
       .catch((error) => {
-        // Swal.fire(
-        //     '!',
-        //     'Error!',
-        //     'error'
-        //   )
+        Swal.fire("!", "Error!", "error");
       });
     return response;
   }
@@ -236,11 +233,11 @@ export const GetAllTeachers = createAsyncThunk(
 export const PostAdmissionData = createAsyncThunk(
   "Principal/PostAdmissionData",
   async (data) => {
-    console.log("payment hitted");
     const response = await fetch(
       "https://blooming-citadel-14218.herokuapp.com/addmissionpayment",
       {
         method: "POST",
+
         body: data,
       }
     ).then((res) => res.json());
@@ -261,7 +258,6 @@ export const GetlPaymentDetails = createAsyncThunk(
 export const GetAdmissionForms = createAsyncThunk(
   "Principal/GetAdmissionForms",
   async () => {
-    console.log("hitted slciie");
     const response = await fetch(
       "https://blooming-citadel-14218.herokuapp.com/GetAdmissionForms"
     ).then((res) => res.json());
