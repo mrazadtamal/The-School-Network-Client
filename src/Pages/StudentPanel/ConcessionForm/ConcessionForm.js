@@ -62,10 +62,7 @@ const ConcessionForm = () => {
         >
           {/*--------- Class ---------*/}
           <div className="col-span-4">
-            <label
-              htmlFor="class"
-              className=" after:content-['*']  after:ml-1  after:text-red-700 text-[#1151FF]   block font-bold"
-            >
+            <label htmlFor="class" className="block font-bold">
               Class
             </label>
             <select
@@ -84,10 +81,7 @@ const ConcessionForm = () => {
 
           {/*--------- Section ---------*/}
           <div className="col-span-4">
-            <label
-              htmlFor="section"
-              className=" after:content-['*']  after:ml-1  after:text-red-700 text-[#1151FF] block font-bold"
-            >
+            <label htmlFor="section" className="block font-bold">
               Section
             </label>
             <select
@@ -102,10 +96,7 @@ const ConcessionForm = () => {
           </div>
           {/*--------- Roll ---------*/}
           <div className="col-span-4">
-            <label
-              htmlFor="roll"
-              className="after:content-['*']  after:ml-1  after:text-red-700 text-[#1151FF]  block font-bold"
-            >
+            <label htmlFor="roll" className="block font-bold">
               Student Roll
             </label>
             <input

@@ -139,7 +139,7 @@ export const assignmentPublish = createAsyncThunk(
   "Teacher/assignmentPublish",
   async (data) => {
     console.log(data);
-    const response = await fetch("http://localhost:5000/assignmentPublish", {
+    const response = await fetch("https://blooming-citadel-14218.herokuapp.com/assignmentPublish", {
       method: "POST",
       headers: {
         "content-type": "application/json",
@@ -158,7 +158,7 @@ export const GetingPreviosuAssignment = createAsyncThunk(
   "Teacher/GetingPreviosuAssignment",
   async () => {
     const response = await fetch(
-      "http://localhost:5000/GetingPreviosuAssignment"
+      "https://blooming-citadel-14218.herokuapp.com/GetingPreviosuAssignment"
     ).then((res) => res.json());
     return response;
   }
@@ -167,7 +167,7 @@ export const GetingPreviosuAssignment = createAsyncThunk(
 export const PublishImageAssing = createAsyncThunk(
   "Teacher/PublishImageAssing",
   async (fd) => {
-    const response = await fetch("http://localhost:5000/PublishImageAssing", {
+    const response = await fetch("https://blooming-citadel-14218.herokuapp.com/PublishImageAssing", {
       method: "POST",
       body: fd,
     })
@@ -183,7 +183,7 @@ export const DeleteAssignment = createAsyncThunk(
   "Teacher/DeleteAssignment",
   async (id) => {
     const response = await fetch(
-      `http://localhost:5000/DeleteAssignment/${id}`,
+      `https://blooming-citadel-14218.herokuapp.com/DeleteAssignment/${id}`,
       {
         method: "DELETE",
       }
@@ -194,7 +194,7 @@ export const DeleteAssignment = createAsyncThunk(
 
 //Teacher adding to library
 export const AddBooks = createAsyncThunk("Teacher/AddBooks", async (data) => {
-  const response = await fetch("http://localhost:5000/AddBook", {
+  const response = await fetch("https://blooming-citadel-14218.herokuapp.com/AddBook", {
     method: "POST",
     body: data,
   })
@@ -202,13 +202,14 @@ export const AddBooks = createAsyncThunk("Teacher/AddBooks", async (data) => {
     .catch((error) => {
       Swal.fire("!", "Error!", "error");
     });
-  return response;
-});
-//Teacher adding to library
+      return response
+    }
+);
+//Teacher geting all books
 export const GetAllBooks = createAsyncThunk(
   "Teacher/GetAllBooks",
-  async (data) => {
-    const response = await fetch("http://localhost:5000/GetAllBooks")
+  async () => {
+    const response = await fetch("https://blooming-citadel-14218.herokuapp.com/GetAllBooks")
       .then((res) => res.json())
       .catch((error) => {
         Swal.fire("!", "Error!", "error");
@@ -216,13 +217,35 @@ export const GetAllBooks = createAsyncThunk(
     return response;
   }
 );
+
+//Teacher Get Edit Book library 
+export const SubmitEditedBook = createAsyncThunk(
+    'Teacher/SubmitEditedBook',
+    async (data) => {
+      const response = await fetch(`https://blooming-citadel-14218.herokuapp.com/SubmitEditedBook/${data.id}`,{
+          method: 'PUT',
+          headers:{
+            'content-type':'application/json'
+          },
+          body: JSON.stringify(data.book)
+          
+      }).then(res=> res.json()).catch(error => {
+        Swal.fire(
+            '!',
+            'Error!',
+            'error'
+          )
+    });
+      return response
+    }
+);
 const initialState = {
-  value: 0,
-  extraCares: [],
-  teacherInfo: {},
-  IndividualCare: {},
-  assignments: [],
-  Books: [],
+    value: 0,
+    extraCares: [],
+    teacherInfo: {},
+    IndividualCare: {},
+    assignments:[],
+    Books: [],
 };
 
 export const TeacherReducer = createSlice({
@@ -232,58 +255,89 @@ export const TeacherReducer = createSlice({
     increment: (state) => {
       state.value += 1;
     },
-<<<<<<< HEAD
-    extraReducers: (builder) => {
-      builder.addCase(GetExtraCareRequest.fulfilled, (state, action) => {
-        state.extraCares = action.payload;
-      });
-      builder.addCase(noticePublishFromTeacher.fulfilled, (state, action) => {
-        Swal.fire("Success", "Notice Published Successfully", "success");
-      });
-      builder.addCase(getTeacherInfo.fulfilled, (state, action) => {
-        state.teacherInfo = action.payload;
-      });
-      builder.addCase(updateTeacherDP.fulfilled, (state, action) => {
-        Swal.fire("Success", "Profile Picture Updated Successfully", "success");
-      });
-      builder.addCase(addTeacherInfo.fulfilled, (state, action) => {
-        Swal.fire("Success", "Information Updated Successfully", "success");
-      });
-      builder.addCase(PublishResult.fulfilled, (state, action) => {
-        Swal.fire("Success", "Result Publish Success", "success");
-      });
-      builder.addCase(GetIndividualCare.fulfilled, (state, action) => {
-        state.IndividualCare = action.payload;
-      });
-      builder.addCase(ChangeRequestHandler.fulfilled, (state, action) => {
-        console.log("Status", action.payload);
-        Swal.fire("Success", "", "success");
-      });
-      builder.addCase(assignmentPublish.fulfilled, (state, action) => {
-        Swal.fire("Success", "Assignment Published Successfully ", "success");
-      });
-      builder.addCase(PublishImageAssing.fulfilled, (state, action) => {
-        Swal.fire("Success", "Assingment img Publish Successfull", "success");
-      });
-      builder.addCase(GetingPreviosuAssignment.fulfilled, (state, action) => {
-        state.assignments = action.payload;
-      });
-      builder.addCase(DeleteAssignment.fulfilled, (state, action) => {
-        Swal.fire("Success", "Class Routine deleted successfully", "success");
-      });
-      builder.addCase(AddBooks.fulfilled, (state, action) => {
-        Swal.fire("Success", "Book Added Successfull", "success");
-      });
-      builder.addCase(GetAllBooks.fulfilled, (state, action) => {
-        state.Books = action.payload;
-      });
-=======
     decrement: (state) => {
       state.value -= 1;
->>>>>>> 8a2bc292b2bcfd26c1f17bdce4a2554ea0abb9e4
     },
-    incrementByAmount: (state, action) => {
-      state.value += action.payload;
+    extraReducers: (builder) => {
+        builder.addCase(GetExtraCareRequest.fulfilled, (state, action) => {
+            state.extraCares = action.payload;
+        });
+        builder.addCase(noticePublishFromTeacher.fulfilled, (state, action) => {
+            Swal.fire("Success", "Notice Published Successfully", "success");
+        });
+        builder.addCase(getTeacherInfo.fulfilled, (state, action) => {
+            state.teacherInfo = action.payload;
+        });
+        builder.addCase(updateTeacherDP.fulfilled, (state, action) => {
+            Swal.fire(
+                "Success",
+                "Profile Picture Updated Successfully",
+                "success"
+            );
+        });
+        builder.addCase(addTeacherInfo.fulfilled, (state, action) => {
+            Swal.fire("Success", "Information Updated Successfully", "success");
+        });
+        builder.addCase(PublishResult.fulfilled, (state, action) => {
+            Swal.fire(
+              'Success',
+              'Result Publish Success',
+              'success'
+            )
+        });
+        builder.addCase(GetIndividualCare.fulfilled, (state, action) => {
+            state.IndividualCare = action.payload
+        });
+        builder.addCase(ChangeRequestHandler.fulfilled, (state, action) => {
+            console.log('Status', action.payload)
+            Swal.fire(
+                "Success",
+                "",
+                "success"
+            );
+        }); 
+        builder.addCase(assignmentPublish.fulfilled, (state, action) => {
+            Swal.fire(
+                "Success",
+                "Assignment Published Successfully ",
+                "success"
+            );
+        });
+        builder.addCase(PublishImageAssing.fulfilled, (state, action) => {
+            Swal.fire(
+              'Success',
+              'Assingment img Publish Successfull',
+              'success'
+            )
+          })
+        builder.addCase(GetingPreviosuAssignment.fulfilled, (state, action) => {
+        state.assignments = action.payload
+        })
+        builder.addCase(DeleteAssignment.fulfilled, (state, action) => {
+            Swal.fire(
+                "Success",
+                "Class Routine deleted successfully",
+                "success"
+            );
+        });
+        builder.addCase(AddBooks.fulfilled, (state, action) => {
+            Swal.fire(
+                "Success",
+                "Book Added Successfull",
+                "success"
+            );
+        });
+        builder.addCase(GetAllBooks.fulfilled, (state, action) => {
+            state.Books = action.payload
+        });
+
+        builder.addCase(SubmitEditedBook.fulfilled, (state, action) => {
+            Swal.fire(
+                "Success",
+                "Book Updated Successfull",
+                "success"
+            );
+        });
     },
   },
   extraReducers: (builder) => {
