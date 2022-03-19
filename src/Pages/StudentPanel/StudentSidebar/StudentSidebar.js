@@ -1,12 +1,17 @@
 import React, { useEffect } from "react";
 import { useDispatch, useSelector } from "react-redux";
+<<<<<<< HEAD
 import { Link, NavLink } from "react-router-dom";
+=======
+import { Link, NavLink, useNavigate } from "react-router-dom";
+>>>>>>> 8a2bc292b2bcfd26c1f17bdce4a2554ea0abb9e4
 import { getStudentInfo } from "../../../SchoolRedux/StudentSlice";
 import useFirebase from "../../Shared/Authentication/Authentication";
 
 const StudentSidebar = () => {
   const { user, LogOutUser } = useFirebase();
   const dispatch = useDispatch();
+  const navigate = useNavigate() 
   useEffect(() => {
     dispatch(getStudentInfo(user.email));
   }, [user.email, dispatch]);
@@ -142,6 +147,10 @@ const StudentSidebar = () => {
           </p>
         </NavLink>
 
+<<<<<<< HEAD
+=======
+
+>>>>>>> 8a2bc292b2bcfd26c1f17bdce4a2554ea0abb9e4
         {/* Notice Board */}
 
         <NavLink
@@ -171,7 +180,7 @@ const StudentSidebar = () => {
         </NavLink>
         <button
           onClick={() => {
-            LogOutUser();
+            LogOutUser(navigate);
           }}
           className="my-5"
         >
