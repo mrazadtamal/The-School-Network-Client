@@ -59,6 +59,9 @@ import BooksAdd from "./Pages/Shared/LibraryPages/BooksAdd/BooksAdd";
 import OurTeachers from "./Pages/AllUser/HomePageComponents/OurTeacers";
 import ConcessionForm from "./Pages/StudentPanel/ConcessionForm/ConcessionForm";
 import ManageBooks from "./Pages/Shared/LibraryPages/BooksManage/ManageBooks";
+import EditBook from "./Pages/Shared/LibraryPages/BooksManage/EditBook/EditBook";
+import LentBookForm from "./Pages/StudentPanel/LibraryStudentSection/LentBookForm";
+import BookView from "./Pages/StudentPanel/LibraryStudentSection/BookView";
 
 function App() {
   return (
@@ -233,6 +236,10 @@ function App() {
                         path="/TeachersDashboard/ManageBooks"
                         element={<ManageBooks />}
                         />
+                        <Route
+                        path="/TeachersDashboard/EditBook/:id"
+                        element={<EditBook />}
+                        />
                     </Route>
                     {/* --------------Teacher Routes End-------------- */}
                     {/* --------------------student route start-----------------------*/}
@@ -278,6 +285,14 @@ function App() {
                          <Route
                         path="/StudentDashboard/StudentPaymentSuccess"
                         element={<StudentPaymentSuccess />}
+                         />
+                          <Route
+                        path="/StudentDashboard/LibraryBooks"
+                        element={<BookView />}
+                         />
+                         <Route
+                        path="/StudentDashboard/LentBookForm"
+                        element={<LentBookForm />}
                          />
                         <Route
                         path="/StudentDashboard/concessionForm"

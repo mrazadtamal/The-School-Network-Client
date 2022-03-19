@@ -15,6 +15,8 @@ const TeachersPanelSideBar = () => {
   const [shown1, setShown1] = useState(false)
   const [shown2, setShown2] = useState(false)
   const [shown3, setShown3] = useState(false)
+  const [shown4, setShown4] = useState(false)
+
   const navigate = useNavigate()
   const ResultNavigateHandler = (route, classname) => {
     navigate(`/TeachersDashboard/${route}`, {state: classname})
@@ -115,6 +117,15 @@ const teachersData = useSelector((state) => state.teacherStore.teacherInfo);
       <Link to="/TeachersDashboard/ViewNotice">
           <p className={location.pathname === '/TeachersDashboard/ViewNotice' ? 'active_principal_link mt-4' : 'principal_sidebar_link   text-white mt-4'}> <SiSamsungpay className='principal_react_icons' />View Notice</p>
         </Link>
+
+        
+          <p onClick={() => setShown4(!shown4)} className="principal_sidebar_link mt-4"><span><SiSamsungpay className='principal_react_icons'/>Library <IoIosArrowDown className="principal_react_icons"/></span></p>
+          {
+            shown4 && <ul className="drop_link">
+            <Link to="/TeachersDashboard/BooksAdd"><li className="class_text">Add Books</li></Link>
+            <Link to="/TeachersDashboard/ManageBooks"><li className="class_text">Manage Books</li></Link>
+          </ul>
+          }
     </div>
     );
 };
