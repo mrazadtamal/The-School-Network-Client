@@ -32,7 +32,7 @@ const PreviousAnnouncement = () => {
         setDemo(previousAnnouncement)
     }
     const EditHandler = (id) => {
-        fetch(`https://blooming-citadel-14218.herokuapp.com/GetEditAnnouncement/${id}`)
+        fetch(`http://localhost:5000/GetEditAnnouncement/${id}`)
         .then(res => res.json()).then(data => {
             setEditnotice(data)
             setOpen(true)

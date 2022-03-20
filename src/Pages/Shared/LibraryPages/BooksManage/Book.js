@@ -3,17 +3,10 @@ import { useDispatch, useSelector } from 'react-redux';
 import { useNavigate } from 'react-router-dom';
 import useFirebase from '../../Authentication/Authentication';
 
-const Book = ({book}) => {
-  const {user} = useFirebase()
-  const [userRole,setUserRole] = useState({})
+const Book = ({book, userRole}) => {
+
   const naigate = useNavigate()
-  useEffect(() => {
-    fetch(
-      `https://blooming-citadel-14218.herokuapp.com/checkUser?email=${user.email}`
-    )
-    .then(res => res.json())
-    .then(data => setUserRole(data))
-  },[user.email])
+
   return (
     <div>
          <img

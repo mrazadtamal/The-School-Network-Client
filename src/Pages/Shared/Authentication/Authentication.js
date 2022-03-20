@@ -37,7 +37,7 @@ const useFirebase = () => {
         setUser({});
       }
     });
-  }, []);
+  }, [auth]);
 
   //user Log out
   const LogOutUser = (navigate) => {
