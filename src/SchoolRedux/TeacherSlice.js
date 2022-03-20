@@ -202,9 +202,8 @@ export const AddBooks = createAsyncThunk("Teacher/AddBooks", async (data) => {
     .catch((error) => {
       Swal.fire("!", "Error!", "error");
     });
-      return response
-    }
-);
+  return response;
+});
 //Teacher geting all books
 export const GetAllBooks = createAsyncThunk(
   "Teacher/GetAllBooks",
@@ -240,12 +239,12 @@ export const SubmitEditedBook = createAsyncThunk(
     }
 );
 const initialState = {
-    value: 0,
-    extraCares: [],
-    teacherInfo: {},
-    IndividualCare: {},
-    assignments:[],
-    Books: [],
+  value: 0,
+  extraCares: [],
+  teacherInfo: {},
+  IndividualCare: {},
+  assignments: [],
+  Books: [],
 };
 
 export const TeacherReducer = createSlice({
@@ -259,85 +258,53 @@ export const TeacherReducer = createSlice({
       state.value -= 1;
     },
     extraReducers: (builder) => {
-        builder.addCase(GetExtraCareRequest.fulfilled, (state, action) => {
-            state.extraCares = action.payload;
-        });
-        builder.addCase(noticePublishFromTeacher.fulfilled, (state, action) => {
-            Swal.fire("Success", "Notice Published Successfully", "success");
-        });
-        builder.addCase(getTeacherInfo.fulfilled, (state, action) => {
-            state.teacherInfo = action.payload;
-        });
-        builder.addCase(updateTeacherDP.fulfilled, (state, action) => {
-            Swal.fire(
-                "Success",
-                "Profile Picture Updated Successfully",
-                "success"
-            );
-        });
-        builder.addCase(addTeacherInfo.fulfilled, (state, action) => {
-            Swal.fire("Success", "Information Updated Successfully", "success");
-        });
-        builder.addCase(PublishResult.fulfilled, (state, action) => {
-            Swal.fire(
-              'Success',
-              'Result Publish Success',
-              'success'
-            )
-        });
-        builder.addCase(GetIndividualCare.fulfilled, (state, action) => {
-            state.IndividualCare = action.payload
-        });
-        builder.addCase(ChangeRequestHandler.fulfilled, (state, action) => {
-            console.log('Status', action.payload)
-            Swal.fire(
-                "Success",
-                "",
-                "success"
-            );
-        }); 
-        builder.addCase(assignmentPublish.fulfilled, (state, action) => {
-            Swal.fire(
-                "Success",
-                "Assignment Published Successfully ",
-                "success"
-            );
-        });
-        builder.addCase(PublishImageAssing.fulfilled, (state, action) => {
-            Swal.fire(
-              'Success',
-              'Assingment img Publish Successfull',
-              'success'
-            )
-          })
-        builder.addCase(GetingPreviosuAssignment.fulfilled, (state, action) => {
-        state.assignments = action.payload
-        })
-        builder.addCase(DeleteAssignment.fulfilled, (state, action) => {
-            Swal.fire(
-                "Success",
-                "Class Routine deleted successfully",
-                "success"
-            );
-        });
-        builder.addCase(AddBooks.fulfilled, (state, action) => {
-            Swal.fire(
-                "Success",
-                "Book Added Successfull",
-                "success"
-            );
-        });
-        builder.addCase(GetAllBooks.fulfilled, (state, action) => {
-            state.Books = action.payload
-        });
+      builder.addCase(GetExtraCareRequest.fulfilled, (state, action) => {
+        state.extraCares = action.payload;
+      });
+      builder.addCase(noticePublishFromTeacher.fulfilled, (state, action) => {
+        Swal.fire("Success", "Notice Published Successfully", "success");
+      });
+      builder.addCase(getTeacherInfo.fulfilled, (state, action) => {
+        state.teacherInfo = action.payload;
+      });
+      builder.addCase(updateTeacherDP.fulfilled, (state, action) => {
+        Swal.fire("Success", "Profile Picture Updated Successfully", "success");
+      });
+      builder.addCase(addTeacherInfo.fulfilled, (state, action) => {
+        Swal.fire("Success", "Information Updated Successfully", "success");
+      });
+      builder.addCase(PublishResult.fulfilled, (state, action) => {
+        Swal.fire("Success", "Result Publish Success", "success");
+      });
+      builder.addCase(GetIndividualCare.fulfilled, (state, action) => {
+        state.IndividualCare = action.payload;
+      });
+      builder.addCase(ChangeRequestHandler.fulfilled, (state, action) => {
+        console.log("Status", action.payload);
+        Swal.fire("Success", "", "success");
+      });
+      builder.addCase(assignmentPublish.fulfilled, (state, action) => {
+        Swal.fire("Success", "Assignment Published Successfully ", "success");
+      });
+      builder.addCase(PublishImageAssing.fulfilled, (state, action) => {
+        Swal.fire("Success", "Assingment img Publish Successfull", "success");
+      });
+      builder.addCase(GetingPreviosuAssignment.fulfilled, (state, action) => {
+        state.assignments = action.payload;
+      });
+      builder.addCase(DeleteAssignment.fulfilled, (state, action) => {
+        Swal.fire("Success", "Class Routine deleted successfully", "success");
+      });
+      builder.addCase(AddBooks.fulfilled, (state, action) => {
+        Swal.fire("Success", "Book Added Successfull", "success");
+      });
+      builder.addCase(GetAllBooks.fulfilled, (state, action) => {
+        state.Books = action.payload;
+      });
 
-        builder.addCase(SubmitEditedBook.fulfilled, (state, action) => {
-            Swal.fire(
-                "Success",
-                "Book Updated Successfull",
-                "success"
-            );
-        });
+      builder.addCase(SubmitEditedBook.fulfilled, (state, action) => {
+        Swal.fire("Success", "Book Updated Successfull", "success");
+      });
     },
   },
   extraReducers: (builder) => {
