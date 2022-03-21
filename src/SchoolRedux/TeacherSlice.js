@@ -310,11 +310,30 @@ export const AddBooks = createAsyncThunk("Teacher/AddBooks", async (data) => {
         });
     return response;
 });
-//Teacher adding to library
-export const GetAllBooks = createAsyncThunk(
-    "Teacher/GetAllBooks",
+//Teacher geting all books
+export const GetAllBooks = createAsyncThunk("Teacher/GetAllBooks", async () => {
+    const response = await fetch("http://localhost:5000/GetAllBooks")
+        .then((res) => res.json())
+        .catch((error) => {
+            Swal.fire("!", "Error!", "error");
+        });
+    return response;
+});
+
+//Teacher Get Edit Book library
+export const SubmitEditedBook = createAsyncThunk(
+    "Teacher/SubmitEditedBook",
     async (data) => {
-        const response = await fetch("http://localhost:5000/GetAllBooks")
+        const response = await fetch(
+            `http://localhost:5000/SubmitEditedBook/${data.id}`,
+            {
+                method: "PUT",
+                headers: {
+                    "content-type": "application/json",
+                },
+                body: JSON.stringify(data.book),
+            }
+        )
             .then((res) => res.json())
             .catch((error) => {
                 Swal.fire("!", "Error!", "error");
@@ -322,7 +341,6 @@ export const GetAllBooks = createAsyncThunk(
         return response;
     }
 );
-
 const initialState = {
     value: 0,
     extraCares: [],
@@ -413,6 +431,10 @@ export const TeacherReducer = createSlice({
         });
         builder.addCase(GetAllBooks.fulfilled, (state, action) => {
             state.Books = action.payload;
+        });
+
+        builder.addCase(SubmitEditedBook.fulfilled, (state, action) => {
+            Swal.fire("Success", "Book Updated Successfull", "success");
         });
     },
 });

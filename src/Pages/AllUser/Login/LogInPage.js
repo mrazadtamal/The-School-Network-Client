@@ -14,77 +14,30 @@ const LogInPage = () => {
         const fieldname = e.target.name;
         const fieldvalue = e.target.value;
 
-        const newdata = { ...logindata };
-        newdata[fieldname] = fieldvalue;
-        setLogindata("log in data", newdata, role);
-    };
-    console.log(logindata);
+    const newdata = { ...logindata };
+    newdata[fieldname] = fieldvalue;
+    setLogindata(newdata)
+  };
 
-    const onSubmitHandler = (e) => {
-        setLoader(true);
-        fetch(
-            `https://blooming-citadel-14218.herokuapp.com/checkUser?email=${logindata.email}`
-        )
-            .then((res) => res.json())
-            .then((data) => {
-                if (data.userrole === "Principal" && role === "Principal") {
-                    LoginUser(logindata.email, logindata.password)
-                        .then((userCredential) => {
-                            // Signed in
-                            const user = userCredential.user;
-                            // ...
-                            setUser(user);
-                            navigate("/PrincipalDashboard");
-                            setLoader(false);
-                        })
-                        .catch((error) => {
-                            console.log("from login user", error.message);
-                            Swal.fire(
-                                "Error!",
-                                "User Password/Email is Wrong",
-                                "error"
-                            );
-                        });
-                } else if (data.userrole === "Teacher" && role === "Teacher") {
-                    LoginUser(logindata.email, logindata.password)
-                        .then((userCredential) => {
-                            // Signed in
-                            const user = userCredential.user;
-                            // ...
-                            setUser(user);
-                            navigate("/TeachersDashboard");
-                            setLoader(false);
-                        })
-                        .catch((error) => {
-                            console.log("from login user", error.message);
-                            Swal.fire(
-                                "Error!",
-                                "User Password/Email is Wrong",
-                                "error"
-                            );
-                        });
-                } else if (data.userrole === "Student" && role === "Student") {
-                    LoginUser(logindata.email, logindata.password)
-                        .then((userCredential) => {
-                            // Signed in
-                            const user = userCredential.user;
-                            // ...
-                            setUser(user);
-                            navigate("/StudentDashboard");
-                            setLoader(false);
-                        })
-                        .catch((error) => {
-                            console.log("from login user", error.message);
-                            Swal.fire(
-                                "Error!",
-                                "User Password/Email is Wrong",
-                                "error"
-                            );
-                        });
-                } else {
-                    Swal.fire("Error!", "UnAuthorised User", "error");
-                }
-                e.target.reset();
+  const onSubmitHandler = (e) => {
+    setLoader(true);
+    fetch(
+      `http://localhost:5000/checkUser?email=${logindata.email}`)
+      .then((res) => res.json())
+      .then((data) => {
+        if (data.userrole === "Principal" && role === "Principal") {
+          LoginUser(logindata.email, logindata.password)
+            .then((userCredential) => {
+              // Signed in
+              const user = userCredential.user;
+              // ...
+              setUser(user);
+              navigate("/PrincipalDashboard");
+              setLoader(false);
+            })
+            .catch((error) => {
+              console.log("from login user", error.message);
+              Swal.fire("Error!", "User Password/Email is Wrong", "error");
             });
         e.preventDefault();
     };

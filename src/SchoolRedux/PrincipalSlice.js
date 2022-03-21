@@ -1,19 +1,17 @@
 import { createAsyncThunk, createSlice } from "@reduxjs/toolkit";
 import Swal from "sweetalert2";
+
 //Principal Publisshing Text notice
 export const PrincipalNoticePublish = createAsyncThunk(
     "Principal/PublishNotice",
     async (data) => {
-        const response = await fetch(
-            "https://blooming-citadel-14218.herokuapp.com/publisNotice",
-            {
-                method: "POST",
-                headers: {
-                    "content-type": "application/json",
-                },
-                body: JSON.stringify(data),
-            }
-        )
+        const response = await fetch("http://localhost:5000/publisNotice", {
+            method: "POST",
+            headers: {
+                "content-type": "application/json",
+            },
+            body: JSON.stringify(data),
+        })
             .then((res) => res.json())
             .catch((error) => {
                 Swal.fire("!", "Error!", "error");
@@ -26,9 +24,10 @@ export const PublishImageNotice = createAsyncThunk(
     "Principal/PublishImageNotice",
     async (fd) => {
         const response = await fetch(
-            "https://blooming-citadel-14218.herokuapp.com/PublishImageNotice",
+            "http://localhost:5000/PublishImageNotice",
             {
                 method: "POST",
+
                 body: fd,
             }
         )
@@ -44,7 +43,7 @@ export const GetingPreviousNotice = createAsyncThunk(
     "Principal/getPreviousNotice",
     async () => {
         const response = await fetch(
-            "https://blooming-citadel-14218.herokuapp.com/PreviousNotice"
+            "http://localhost:5000/PreviousNotice"
         ).then((res) => res.json());
         return response;
     }
@@ -54,7 +53,7 @@ export const DeleteNotice = createAsyncThunk(
     "Principal/DeleteNotice",
     async (id) => {
         const response = await fetch(
-            `https://blooming-citadel-14218.herokuapp.com/DeleteNotice/${id}`,
+            `http://localhost:5000/DeleteNotice/${id}`,
             {
                 method: "DELETE",
             }
@@ -73,7 +72,7 @@ export const PutEditNotice = createAsyncThunk(
     async (data) => {
         console.log("hitted slice", data);
         const response = await fetch(
-            `https://blooming-citadel-14218.herokuapp.com/PutEditNotice/${data._id}`,
+            `http://localhost:5000/PutEditNotice/${data._id}`,
             {
                 method: "PUT",
                 headers: {
@@ -95,7 +94,7 @@ export const PrincipalAnnouncementPublish = createAsyncThunk(
     async (data) => {
         console.log("hitted slice", data);
         const response = await fetch(
-            "https://blooming-citadel-14218.herokuapp.com/publisAnnouncement",
+            "http://localhost:5000/publisAnnouncement",
             {
                 method: "POST",
                 headers: {
@@ -117,20 +116,15 @@ export const PublishImageAnnouncement = createAsyncThunk(
     async (fd) => {
         console.log("hitted img");
         const response = await fetch(
-            "https://blooming-citadel-14218.herokuapp.com/PublishImageAnnouncement",
+            "http://localhost:5000/PublishImageAnnouncement",
             {
                 method: "POST",
-
                 body: fd,
             }
         )
             .then((res) => res.json())
             .catch((error) => {
-                // Swal.fire(
-                //     '!',
-                //     'Error!',
-                //     'error'
-                //   )
+                Swal.fire("!", "Error!", "error");
             });
         return response;
     }
@@ -140,7 +134,7 @@ export const GetingPreviousAnnouncement = createAsyncThunk(
     "Principal/getPreviousAnnouncement",
     async () => {
         const response = await fetch(
-            "https://blooming-citadel-14218.herokuapp.com/PreviousAnnouncement"
+            "http://localhost:5000/PreviousAnnouncement"
         ).then((res) => res.json());
         return response;
     }
@@ -150,7 +144,7 @@ export const DeleteAnnouncement = createAsyncThunk(
     "Principal/DeleteAnnouncement",
     async (id) => {
         const response = await fetch(
-            `https://blooming-citadel-14218.herokuapp.com/DeleteAnnouncement/${id}`,
+            `http://localhost:5000/DeleteAnnouncement/${id}`,
             {
                 method: "DELETE",
             }
@@ -168,7 +162,7 @@ export const PutEditAnnouncement = createAsyncThunk(
     async (data) => {
         console.log("hitted slice", data);
         const response = await fetch(
-            `https://blooming-citadel-14218.herokuapp.com/PutEditAnnouncement/${data._id}`,
+            `http://localhost:5000/PutEditAnnouncement/${data._id}`,
             {
                 method: "PUT",
                 headers: {
@@ -199,7 +193,7 @@ export const IndividualPerformance = createAsyncThunk(
     "Principal/IndividualPerformance",
     async (id) => {
         const response = await fetch(
-            `https://blooming-citadel-14218.herokuapp.com/IndividualPerformance/${id}`
+            `http://localhost:5000/IndividualPerformance/${id}`
         ).then((res) => res.json());
         return response;
     }
@@ -210,7 +204,7 @@ export const UploadMonthlyPayment = createAsyncThunk(
     async (data) => {
         console.log("payment", data);
         const response = await fetch(
-            "https://blooming-citadel-14218.herokuapp.com/UploadMonthlyPayment",
+            "http://localhost:5000/UploadMonthlyPayment",
             {
                 method: "POST",
                 headers: {
@@ -227,7 +221,7 @@ export const GetAllTeachers = createAsyncThunk(
     "Principal/GetAllTeachers",
     async (data) => {
         const response = await fetch(
-            "https://blooming-citadel-14218.herokuapp.com/GetAllTeachers"
+            "http://localhost:5000/GetAllTeachers"
         ).then((res) => res.json());
         return response;
     }
@@ -236,11 +230,11 @@ export const GetAllTeachers = createAsyncThunk(
 export const PostAdmissionData = createAsyncThunk(
     "Principal/PostAdmissionData",
     async (data) => {
-        console.log("payment hitted");
         const response = await fetch(
-            "https://blooming-citadel-14218.herokuapp.com/addmissionpayment",
+            "http://localhost:5000/addmissionpayment",
             {
                 method: "POST",
+
                 body: data,
             }
         ).then((res) => res.json());
@@ -252,7 +246,7 @@ export const GetlPaymentDetails = createAsyncThunk(
     "Principal/GetlPaymentDetails",
     async (email) => {
         const response = await fetch(
-            `https://blooming-citadel-14218.herokuapp.com/GetlPaymentDetails?email=${email}`
+            `http://localhost:5000/GetlPaymentDetails?email=${email}`
         ).then((res) => res.json());
         return response;
     }
@@ -261,9 +255,8 @@ export const GetlPaymentDetails = createAsyncThunk(
 export const GetAdmissionForms = createAsyncThunk(
     "Principal/GetAdmissionForms",
     async () => {
-        console.log("hitted slciie");
         const response = await fetch(
-            "https://blooming-citadel-14218.herokuapp.com/GetAdmissionForms"
+            "http://localhost:5000/GetAdmissionForms"
         ).then((res) => res.json());
         return response;
     }
@@ -273,7 +266,7 @@ export const IndividualAdmissionForm = createAsyncThunk(
     "Principal/IndividualAdmissionForm",
     async (id) => {
         const response = await fetch(
-            `https://blooming-citadel-14218.herokuapp.com/IndividualAdmissionForm/${id}`
+            `http://localhost:5000/IndividualAdmissionForm/${id}`
         ).then((res) => res.json());
         return response;
     }
