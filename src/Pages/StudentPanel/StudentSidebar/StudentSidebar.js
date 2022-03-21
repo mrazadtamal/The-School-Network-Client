@@ -21,11 +21,19 @@ const StudentSidebar = () => {
         <span className=" text-lg font-bold text-white ">tudent Dashboard</span>
       </h1>
 
-      <img
-        className="  rounded-full h-28 w-28 text-center m-auto mt-5 mb-5"
-        src="https://res.cloudinary.com/abidazad/image/upload/v1637747947/user_xsd3a7.png"
-        alt=""
-      />
+      {studentData.img ? (
+        <img
+          src={`data:image/jpeg;base64,${studentData?.img}`}
+          className="w-[50%] rounded-full mx-auto"
+          alt=""
+        />
+      ) : (
+        <img
+          src="https://res.cloudinary.com/abidazad/image/upload/v1637747947/user_xsd3a7.png"
+          alt=""
+          className=" w-80"
+        />
+      )}
 
       <div className="flex flex-col justify-center items-start ml-6 py-3">
         {/*Home  */}

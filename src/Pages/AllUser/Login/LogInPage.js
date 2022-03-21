@@ -16,13 +16,12 @@ const LogInPage = () => {
 
     const newdata = { ...logindata };
     newdata[fieldname] = fieldvalue;
-    setLogindata(newdata)
+    setLogindata(newdata);
   };
 
   const onSubmitHandler = (e) => {
     setLoader(true);
-    fetch(
-      `https://blooming-citadel-14218.herokuapp.com/checkUser?email=${logindata.email}`)
+    fetch(`http://localhost:5000/checkUser?email=${logindata.email}`)
       .then((res) => res.json())
       .then((data) => {
         if (data.userrole === "Principal" && role === "Principal") {

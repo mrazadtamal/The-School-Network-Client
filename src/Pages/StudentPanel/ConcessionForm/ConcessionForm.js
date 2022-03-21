@@ -48,6 +48,24 @@ const ConcessionForm = () => {
       });
   };
 
+  //saving teacher to database
+  //   const SaveStudent = (studentdata) => {
+  //     console.log("concession form ", studentdata);
+  //     fetch("https://blooming-citadel-14218.herokuapp.com/ConcessionForm", {
+  //       method: "POST",
+  //       headers: {
+  //         "content-type": "application/json",
+  //       },
+  //       body: JSON.stringify(studentdata),
+  //     })
+  //       .then((res) => res.json())
+  //       .then((data) => {
+  //         console.log("data", data);
+  //         if (data) {
+  //           Swal.fire("Success", "Student Added Successfully", "success");
+  //         }
+  //       });
+  //   };
   return (
     <div>
       <div>
