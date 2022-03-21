@@ -5,9 +5,7 @@ import Swal from "sweetalert2";
 //for fetching the data from the api and database we use asyncthunk
 export const GetResult = createAsyncThunk("Student/seeResult", async () => {
   console.log("Hitted Student Slice");
-  const response = await fetch(
-    "http://localhost:5000/student/results"
-  )
+  const response = await fetch("http://localhost:5000/student/results")
     .then((res) => res.json())
     .catch((err) => {
       console.log(err);
@@ -21,16 +19,13 @@ export const RequestExtraCare = createAsyncThunk(
   "Student/RequestCare",
   async (data) => {
     console.log("Hitted Extra Care");
-    const response = await fetch(
-      "http://localhost:5000/student/requestCare",
-      {
-        method: "POST",
-        headers: {
-          "content-type": "application/json",
-        },
-        body: JSON.stringify(data),
-      }
-    )
+    const response = await fetch("http://localhost:5000/student/requestCare", {
+      method: "POST",
+      headers: {
+        "content-type": "application/json",
+      },
+      body: JSON.stringify(data),
+    })
       .then((res) => res.json())
       .catch((err) => {
         console.log(err);
@@ -133,14 +128,11 @@ export const getMontlyPayment = createAsyncThunk(
 export const PayMonthlyPayment = createAsyncThunk(
   "Student/PayMonthlyPayment",
   async (data) => {
-    const response = await fetch(
-      "http://localhost:5000/PayMonthlyPayment",
-      {
-        method: "POST",
-        headers: { "content-type": "application/json" },
-        body: JSON.stringify(data),
-      }
-    )
+    const response = await fetch("http://localhost:5000/PayMonthlyPayment", {
+      method: "POST",
+      headers: { "content-type": "application/json" },
+      body: JSON.stringify(data),
+    })
       .then((res) => res.json())
       .catch((err) => console.log(err));
     return response;
@@ -152,19 +144,40 @@ export const StudnetAssignmentSubmit = createAsyncThunk(
   "Student/StudnetAssignmentSubmit",
   async (data) => {
     console.log("data from std", data);
-    const response = await fetch(
-      "http://localhost:5000/pdfUpload",
-      {
-        method: "POST",
-        // headers: { "content-type": "application/json" },
-        body: data,
-      }
-    )
+    const response = await fetch("http://localhost:5000/pdfUpload", {
+      method: "POST",
+      // headers: { "content-type": "application/json" },
+      body: data,
+    })
       .then((res) => res.json())
       .catch((err) => console.log(err));
     return response;
   }
 );
+
+// student ConcessionForm ----
+export const studentConcessionForm = createAsyncThunk(
+  "Student/ConcessionForm",
+  async (data) => {
+    console.log("Hitted student Concession Form");
+    const response = await fetch(
+      "http://localhost:5000/student/concessionForm",
+      {
+        method: "POST",
+        headers: {
+          "content-type": "application/json",
+        },
+        body: JSON.stringify(data),
+      }
+    )
+      .then((res) => res.json())
+      .catch((err) => {
+        console.log(err);
+      });
+    return response;
+  }
+);
+
 export const StudentReducer = createSlice({
   name: "Student",
   initialState: {
@@ -193,6 +206,12 @@ export const StudentReducer = createSlice({
 
     builder.addCase(RequestExtraCare.fulfilled, (state, action) => {
       Swal.fire("Success", "Application Submitted Successfully", "success");
+    });
+
+    // student ConcessionForm ----
+
+    builder.addCase(studentConcessionForm.fulfilled, (state, action) => {
+      Swal.fire("Success", "Concession Form Submitted Successfully", "success");
     });
 
     //get individual logged in user data promise

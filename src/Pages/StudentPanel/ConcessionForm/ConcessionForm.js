@@ -1,71 +1,22 @@
-import React from "react";
+import React, { useState } from "react";
 import { useForm } from "react-hook-form";
-import Swal from "sweetalert2";
-import useFirebase from "./../../Shared/Authentication/Authentication";
+
+import { useDispatch } from "react-redux";
+import { studentConcessionForm } from "../../../SchoolRedux/StudentSlice";
+import useFirebase from "../../Shared/Authentication/Authentication";
 
 const ConcessionForm = () => {
-  const { RegisterUser, setUser } = useFirebase();
-  const {
-    register,
-    handleSubmit,
-    watch,
-    reset,
-    formState: { errors },
-  } = useForm();
+  const { register, handleSubmit } = useForm();
+  const { user } = useFirebase();
+  const dispatch = useDispatch();
 
-  const onSubmit = (data) => {
-    const formData = { ...data, role: "Student" };
-
-    RegisterUser(data.email, data.password)
-      .then((userCredential) => {
-        // Signed in
-        const user = userCredential.user;
-        setUser(user);
-        SaveStudent(formData);
-        reset();
-      })
-      .catch((error) => {
-        console.log("from register user", error.message);
-      });
+  const onSubmit = (data, e) => {
+    e.preventDefault();
+    const newData = { ...data, email: user.email };
+    console.log(newData);
+    dispatch(studentConcessionForm(newData));
   };
 
-  // saving form to database
-  const SaveStudent = (formData) => {
-    console.log("concession form ", formData);
-    fetch("http://localhost:5000/student/ConcessionForm", {
-      method: "POST",
-      headers: {
-        "content-type": "application/json",
-      },
-      body: JSON.stringify(formData),
-    })
-      .then((res) => res.json())
-      .then((data) => {
-        console.log("data", data);
-        if (data) {
-          Swal.fire("Success", "Concession Form Successfully", "success");
-        }
-      });
-  };
-
-  //saving teacher to database
-  //   const SaveStudent = (studentdata) => {
-  //     console.log("concession form ", studentdata);
-  //     fetch("https://blooming-citadel-14218.herokuapp.com/ConcessionForm", {
-  //       method: "POST",
-  //       headers: {
-  //         "content-type": "application/json",
-  //       },
-  //       body: JSON.stringify(studentdata),
-  //     })
-  //       .then((res) => res.json())
-  //       .then((data) => {
-  //         console.log("data", data);
-  //         if (data) {
-  //           Swal.fire("Success", "Student Added Successfully", "success");
-  //         }
-  //       });
-  //   };
   return (
     <div>
       <div>
@@ -217,7 +168,7 @@ const ConcessionForm = () => {
               Father Monthly Income
             </label>
             <input
-              type="text"
+              type="number"
               id="fatherMonthlyIncome"
               name="fatherMonthlyIncome"
               className="border border-gray-700 rounded p-1 w-full"
@@ -231,7 +182,7 @@ const ConcessionForm = () => {
               Father Contact No :
             </label>
             <input
-              type="text"
+              type="number"
               id="fatherContactNo"
               name="fatherContactNo"
               className="border border-gray-700 rounded p-1 w-full"
@@ -255,12 +206,11 @@ const ConcessionForm = () => {
 
           <div className="col-span-12">
             <div className="flex justify-center">
-              <button
+              <input
+                className="w-1/4 border-2 bg-green-300 hover:bg-green-400 hover:cursor-pointer rounded-md px-3 py-2"
+                value="Request"
                 type="submit"
-                className="block bg-gray-500 px-5 py-2 rounded text-white font-bold register_btn"
-              >
-                Request
-              </button>
+              />
             </div>
           </div>
         </form>
