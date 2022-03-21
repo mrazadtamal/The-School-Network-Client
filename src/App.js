@@ -58,6 +58,7 @@ import IndividualForms from "./Pages/PrincipalPanel/CheckAdmissionForm/Individua
 import BooksAdd from "./Pages/Shared/LibraryPages/BooksAdd/BooksAdd";
 import OurTeachers from "./Pages/AllUser/HomePageComponents/OurTeacers";
 import ManageBooks from "./Pages/Shared/LibraryPages/BooksManage/ManageBooks";
+import TeachersAddAttendance from "./Pages/TeachersPanel/TeachersAddAttendance/TeachersAddAttendance";
 
 function App() {
     return (
@@ -193,6 +194,10 @@ function App() {
                         <Route
                             path="/TeachersDashboard/publishAssignment"
                             element={<TeachersAssignment />}
+                        />
+                        <Route
+                            path="/TeachersDashboard/AddAttendance"
+                            element={<TeachersAddAttendance />}
                         />
                         <Route
                             path="/TeachersDashboard/SeeExtraRequestPage"

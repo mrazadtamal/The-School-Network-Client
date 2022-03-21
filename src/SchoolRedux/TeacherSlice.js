@@ -1,4 +1,3 @@
-import { async } from "@firebase/util";
 import { createAsyncThunk, createSlice } from "@reduxjs/toolkit";
 import Swal from "sweetalert2";
 
@@ -121,6 +120,106 @@ export const GetIndividualCare = createAsyncThunk(
         return response;
     }
 );
+
+// Upload class routine
+export const UploadClassRoutine = createAsyncThunk(
+    "Teacher/UploadClassRoutine",
+    async (data) => {
+        const response = await fetch(
+            `http://localhost:5000/UploadClassRoutine?class=${data.classRoutineData.class}&&section=${data.classRoutineData.section}`,
+            {
+                method: "POST",
+                body: data.fd,
+            }
+        );
+        return response;
+    }
+);
+
+// Upload Exam Routine
+export const UploadExamRoutine = createAsyncThunk(
+    "Teacher/UploadExamRoutine",
+    async (data) => {
+        const response = await fetch(
+            `http://localhost:5000/UploadExamRoutine?class=${data.class}&&term=${data.term}`,
+            {
+                method: "POST",
+                body: data.fd,
+            }
+        );
+        return response;
+    }
+);
+
+// Get All Class Routines
+export const GetClassRoutine = createAsyncThunk(
+    "Teacher/GetClassRoutine",
+    async () => {
+        const response = await fetch(
+            "http://localhost:5000/GetClassRoutine"
+        ).then((res) => res.json());
+        return response;
+    }
+);
+
+// Get All Exam Routines
+export const GetExamRoutine = createAsyncThunk(
+    "Teacher/GetExamRoutine",
+    async () => {
+        const response = await fetch(
+            "http://localhost:5000/GetExamRoutine"
+        ).then((res) => res.json());
+        return response;
+    }
+);
+
+// Delete A Class Routine
+export const DeleteClassRoutine = createAsyncThunk(
+    "Teacher/DeleteClassRoutine",
+    async (data) => {
+        const response = await fetch(
+            `http://localhost:5000/DeleteClassRoutine?id=${data}`,
+            {
+                method: "DELETE",
+            }
+        );
+        return response;
+    }
+);
+
+// Delete A Exam Routine
+export const DeleteExamRoutine = createAsyncThunk(
+    "Teacher/DeleteExamRoutine",
+    async (id) => {
+        const response = await fetch(
+            `http://localhost:5000/DeleteExamRoutine?id=${id}`,
+            {
+                method: "DELETE",
+            }
+        );
+        return response;
+    }
+);
+
+// Add Individual Attendance Data in Database
+export const AddAttendanceData = createAsyncThunk(
+    "Teacher/AddAttendanceData",
+    async (data) => {
+        console.log(data);
+        const response = await fetch(
+            "http://localhost:5000/AddAttendanceData",
+            {
+                method: "PUT",
+                headers: {
+                    "content-type": "application/json",
+                },
+                body: JSON.stringify(data),
+            }
+        );
+        return response;
+    }
+);
+
 //Teacher changing status of Request care
 export const ChangeRequestHandler = createAsyncThunk(
     "Teacher/ChangeRequestHandler",
@@ -229,6 +328,8 @@ const initialState = {
     extraCares: [],
     teacherInfo: {},
     IndividualCare: {},
+    classRoutines: [],
+    examRoutines: [],
     assignments: [],
     Books: [],
 };
@@ -272,6 +373,12 @@ export const TeacherReducer = createSlice({
         });
         builder.addCase(GetIndividualCare.fulfilled, (state, action) => {
             state.IndividualCare = action.payload;
+        });
+        builder.addCase(GetClassRoutine.fulfilled, (state, action) => {
+            state.classRoutines = action.payload;
+        });
+        builder.addCase(GetExamRoutine.fulfilled, (state, action) => {
+            state.examRoutines = action.payload;
         });
         builder.addCase(ChangeRequestHandler.fulfilled, (state, action) => {
             console.log("Status", action.payload);
