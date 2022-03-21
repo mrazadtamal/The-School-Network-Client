@@ -1,53 +1,53 @@
 import React from "react";
 import { useForm } from "react-hook-form";
-// import useFirebase from "../Authentication/Authentication";
 import Swal from "sweetalert2";
+import useFirebase from "./../../Shared/Authentication/Authentication";
 
 const ConcessionForm = () => {
-  //   const { RegisterUser, setUser } = useFirebase();
-  //   const {
-  //     register,
-  //     handleSubmit,
-  //     watch,
-  //     reset,
-  //     formState: { errors },
-  //   } = useForm();
-  //   const onSubmit = (data) => {
-  //     const studentdata = { ...data, role: "Student" };
+  const { RegisterUser, setUser } = useFirebase();
+  const {
+    register,
+    handleSubmit,
+    watch,
+    reset,
+    formState: { errors },
+  } = useForm();
 
-  //     RegisterUser(data.email, data.password)
-  //       .then((userCredential) => {
-  //         // Signed in
-  //         const user = userCredential.user;
-  //         setUser(user);
+  const onSubmit = (data) => {
+    const formData = { ...data, role: "Student" };
 
-  //         SaveStudent(studentdata);
+    RegisterUser(data.email, data.password)
+      .then((userCredential) => {
+        // Signed in
+        const user = userCredential.user;
+        setUser(user);
+        SaveStudent(formData);
+        reset();
+      })
+      .catch((error) => {
+        console.log("from register user", error.message);
+      });
+  };
 
-  //         reset();
-  //       })
-  //       .catch((error) => {
-  //         console.log("from register user", error.message);
-  //       });
-  //   };
+  // saving form to database
+  const SaveStudent = (formData) => {
+    console.log("concession form ", formData);
+    fetch("http://localhost:5000/student/ConcessionForm", {
+      method: "POST",
+      headers: {
+        "content-type": "application/json",
+      },
+      body: JSON.stringify(formData),
+    })
+      .then((res) => res.json())
+      .then((data) => {
+        console.log("data", data);
+        if (data) {
+          Swal.fire("Success", "Concession Form Successfully", "success");
+        }
+      });
+  };
 
-  //saving teacher to database
-  //   const SaveStudent = (studentdata) => {
-  //     console.log("concession form ", studentdata);
-  //     fetch("http://localhost:5000/ConcessionForm", {
-  //       method: "POST",
-  //       headers: {
-  //         "content-type": "application/json",
-  //       },
-  //       body: JSON.stringify(studentdata),
-  //     })
-  //       .then((res) => res.json())
-  //       .then((data) => {
-  //         console.log("data", data);
-  //         if (data) {
-  //           Swal.fire("Success", "Student Added Successfully", "success");
-  //         }
-  //       });
-  //   };
   return (
     <div>
       <div>
@@ -57,7 +57,7 @@ const ConcessionForm = () => {
       </div>
       <div className="px-3 mb-2">
         <form
-          //   onSubmit={handleSubmit(onSubmit)}
+          onSubmit={handleSubmit(onSubmit)}
           className="grid grid-cols-12 gap-5 "
         >
           {/*--------- Class ---------*/}
@@ -69,7 +69,7 @@ const ConcessionForm = () => {
               className="border border-gray-700 rounded p-1 w-full"
               id="class"
               name="studentclass"
-              //   {...register("class", { required: "true" })}
+              {...register("class", { required: "true" })}
             >
               <option value="class-one">Class One</option>
               <option value="class-two">Class Two</option>
@@ -88,12 +88,13 @@ const ConcessionForm = () => {
               className="border border-gray-700 rounded p-1 w-full"
               id="section"
               name="studentsection"
-              //   {...register("section", { required: true })}
+              {...register("section", { required: true })}
             >
               <option value="section-a">Section-A</option>
               <option value="section-b">Section-B</option>
             </select>
           </div>
+
           {/*--------- Roll ---------*/}
           <div className="col-span-4">
             <label htmlFor="roll" className="block font-bold">
@@ -104,7 +105,7 @@ const ConcessionForm = () => {
               id="roll"
               name="roll"
               className="border border-gray-700 rounded p-1 w-full"
-              //   {...register("roll", { required: true })}
+              {...register("roll", { required: true })}
             />
           </div>
 
@@ -118,7 +119,7 @@ const ConcessionForm = () => {
               id="name"
               name="studentname"
               className="border border-gray-700 rounded p-1 w-full"
-              //   {...register("name", { required: true })}
+              {...register("name", { required: true })}
             />
           </div>
 
@@ -132,7 +133,7 @@ const ConcessionForm = () => {
               id="phone"
               name="phone"
               className="border border-gray-700 rounded p-1 w-full"
-              //   {...register("phone", { required: true })}
+              {...register("phone", { required: true })}
             />
           </div>
 
@@ -146,7 +147,7 @@ const ConcessionForm = () => {
               id="email"
               name="email"
               className="border border-gray-700 rounded p-1 w-full"
-              //   {...register("email", { required: true })}
+              {...register("email", { required: true })}
             />
           </div>
 
@@ -160,7 +161,7 @@ const ConcessionForm = () => {
               id="fatherName"
               name="fatherName"
               className="border border-gray-700 rounded p-1 w-full"
-              //   {...register("fatherName", { required: true })}
+              {...register("fatherName", { required: true })}
             />
           </div>
 
@@ -174,13 +175,13 @@ const ConcessionForm = () => {
               id="motherName"
               name="motherName"
               className="border border-gray-700 rounded p-1 w-full"
-              //   {...register("motherName", { required: true })}
+              {...register("motherName", { required: true })}
             />
           </div>
 
-          {/*--------- Father name ---------*/}
+          {/*---------  Father Occupation ---------*/}
           <div className="col-span-6">
-            <label htmlFor="fatherName" className="block font-bold">
+            <label htmlFor="fatherOccupation" className="block font-bold">
               Father Occupation
             </label>
             <input
@@ -188,48 +189,52 @@ const ConcessionForm = () => {
               id="fatherOccupation"
               name="fatherOccupation"
               className="border border-gray-700 rounded p-1 w-full"
-              //   {...register("fatherOccupation", { required: true })}
+              {...register("fatherOccupation", { required: true })}
             />
           </div>
+
           {/*---------  Father Monthly Income---------*/}
           <div className="col-span-6">
-            <label htmlFor="motherName" className="block font-bold">
+            <label htmlFor="fatherMonthlyIncome" className="block font-bold">
               Father Monthly Income
             </label>
             <input
               type="text"
-              id="motherName"
-              name="motherName"
+              id="fatherMonthlyIncome"
+              name="fatherMonthlyIncome"
               className="border border-gray-700 rounded p-1 w-full"
-              //   {...register("motherName", { required: true })}
+              {...register("fatherMonthlyIncome", { required: true })}
             />
           </div>
+
           {/*---------   Father Contact No :  ---------*/}
           <div className="col-span-6">
-            <label htmlFor="motherName" className="block font-bold">
+            <label htmlFor="fatherContactNo" className="block font-bold">
               Father Contact No :
             </label>
             <input
               type="text"
-              id="motherName"
-              name="motherName"
+              id="fatherContactNo"
+              name="fatherContactNo"
               className="border border-gray-700 rounded p-1 w-full"
-              //   {...register("motherName", { required: true })}
+              {...register("fatherContactNo", { required: true })}
             />
           </div>
-          {/*--------- Address ---------*/}
+
+          {/*---------  Details ---------*/}
           <div className="col-span-12">
-            <label htmlFor="address" className="block font-bold">
+            <label htmlFor="details" className="block font-bold">
               Details :
             </label>
             <textarea
               type="text"
-              id="address"
-              name="address"
+              id="details"
+              name="details"
               className="border border-gray-700 rounded p-1 w-full"
-              //   {...register("address", { required: true })}
+              {...register("details", { required: true })}
             />
           </div>
+
           <div className="col-span-12">
             <div className="flex justify-center">
               <button
