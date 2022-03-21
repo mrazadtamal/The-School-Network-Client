@@ -16,16 +16,13 @@ export const GetExtraCareRequest = createAsyncThunk(
 export const noticePublishFromTeacher = createAsyncThunk(
   "Teacher/PublishNotice",
   async (data) => {
-    const response = await fetch(
-      "http://localhost:5000/PublishNotice",
-      {
-        method: "POST",
-        headers: {
-          "content-type": "application/json",
-        },
-        body: JSON.stringify(data),
-      }
-    )
+    const response = await fetch("http://localhost:5000/PublishNotice", {
+      method: "POST",
+      headers: {
+        "content-type": "application/json",
+      },
+      body: JSON.stringify(data),
+    })
       .then((res) => res.json())
       .catch((error) => {
         Swal.fire("!", "Error!", "error");
@@ -88,16 +85,13 @@ export const PublishResult = createAsyncThunk(
   "Teacher/PublishResult",
   async (data) => {
     console.log("hitted result", data);
-    const response = await fetch(
-      "http://localhost:5000/PublishResult",
-      {
-        method: "POST",
-        headers: {
-          "content-type": "application/json",
-        },
-        body: JSON.stringify(data),
-      }
-    )
+    const response = await fetch("http://localhost:5000/PublishResult", {
+      method: "POST",
+      headers: {
+        "content-type": "application/json",
+      },
+      body: JSON.stringify(data),
+    })
       .then((res) => res.json())
       .catch((error) => {
         Swal.fire("!", "Error!", "error");
@@ -205,10 +199,29 @@ export const AddBooks = createAsyncThunk("Teacher/AddBooks", async (data) => {
   return response;
 });
 //Teacher geting all books
-export const GetAllBooks = createAsyncThunk(
-  "Teacher/GetAllBooks",
-  async () => {
-    const response = await fetch("http://localhost:5000/GetAllBooks")
+export const GetAllBooks = createAsyncThunk("Teacher/GetAllBooks", async () => {
+  const response = await fetch("http://localhost:5000/GetAllBooks")
+    .then((res) => res.json())
+    .catch((error) => {
+      Swal.fire("!", "Error!", "error");
+    });
+  return response;
+});
+
+//Teacher Get Edit Book library
+export const SubmitEditedBook = createAsyncThunk(
+  "Teacher/SubmitEditedBook",
+  async (data) => {
+    const response = await fetch(
+      `http://localhost:5000/SubmitEditedBook/${data.id}`,
+      {
+        method: "PUT",
+        headers: {
+          "content-type": "application/json",
+        },
+        body: JSON.stringify(data.book),
+      }
+    )
       .then((res) => res.json())
       .catch((error) => {
         Swal.fire("!", "Error!", "error");
@@ -217,26 +230,20 @@ export const GetAllBooks = createAsyncThunk(
   }
 );
 
-//Teacher Get Edit Book library 
-export const SubmitEditedBook = createAsyncThunk(
-    'Teacher/SubmitEditedBook',
-    async (data) => {
-      const response = await fetch(`http://localhost:5000/SubmitEditedBook/${data.id}`,{
-          method: 'PUT',
-          headers:{
-            'content-type':'application/json'
-          },
-          body: JSON.stringify(data.book)
-          
-      }).then(res=> res.json()).catch(error => {
-        Swal.fire(
-            '!',
-            'Error!',
-            'error'
-          )
-    });
-      return response
-    }
+// teacher video publish
+export const teacherVideoUpload = createAsyncThunk(
+  "Teacher/TeacherVideoUpload",
+  async (data) => {
+    console.log("data from teacher", data);
+    const response = await fetch("http://localhost:5000/videoUpload", {
+      method: "POST",
+      // headers: { "content-type": "application/json" },
+      body: data,
+    })
+      .then((res) => console.log(res.json()))
+      .catch((err) => console.log(err));
+    return response;
+  }
 );
 const initialState = {
   value: 0,
@@ -350,6 +357,10 @@ export const TeacherReducer = createSlice({
     });
     builder.addCase(GetAllBooks.fulfilled, (state, action) => {
       state.Books = action.payload;
+    });
+    // teacher video upload
+    builder.addCase(teacherVideoUpload.fulfilled, (state, action) => {
+      Swal.fire("Success", "Video Uploaded Successfully", "success");
     });
   },
 });

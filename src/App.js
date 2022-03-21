@@ -62,6 +62,8 @@ import ManageBooks from "./Pages/Shared/LibraryPages/BooksManage/ManageBooks";
 import EditBook from "./Pages/Shared/LibraryPages/BooksManage/EditBook/EditBook";
 import LentBookForm from "./Pages/StudentPanel/LibraryStudentSection/LentBookForm";
 import BookView from "./Pages/StudentPanel/LibraryStudentSection/BookView";
+import VideoSubmission from "./Pages/TeachersPanel/VideoSubmission/VideoSubmission";
+import VideosFromTeacher from "./Pages/StudentPanel/VideosFromTeacher/VideosFromTeacher";
 
 function App() {
   return (
@@ -218,6 +220,10 @@ function App() {
               path="/TeachersDashboard/EditBook/:id"
               element={<EditBook />}
             />
+            <Route
+              path="/TeachersDashboard/videoSubmission"
+              element={<VideoSubmission />}
+            />
           </Route>
           {/* --------------Teacher Routes End-------------- */}
           {/* --------------------student route start-----------------------*/}
@@ -275,6 +281,10 @@ function App() {
             <Route
               path="/StudentDashboard/concessionForm"
               element={<ConcessionForm />}
+            />
+            <Route
+              path="/StudentDashboard/videos"
+              element={<VideosFromTeacher />}
             />
           </Route>
           {/* --------------------student route end-------------------------*/}

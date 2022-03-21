@@ -1,13 +1,13 @@
 import React, { useEffect } from "react";
 import { useDispatch, useSelector } from "react-redux";
-import { Link, NavLink , useNavigate} from "react-router-dom";
+import { Link, NavLink, useNavigate } from "react-router-dom";
 import { getStudentInfo } from "../../../SchoolRedux/StudentSlice";
 import useFirebase from "../../Shared/Authentication/Authentication";
 
 const StudentSidebar = () => {
   const { user, LogOutUser } = useFirebase();
   const dispatch = useDispatch();
-  const navigate = useNavigate()
+  const navigate = useNavigate();
   useEffect(() => {
     dispatch(getStudentInfo(user.email));
   }, [user.email, dispatch]);
@@ -143,7 +143,6 @@ const StudentSidebar = () => {
           </p>
         </NavLink>
 
-
         {/* Notice Board */}
 
         <NavLink
@@ -172,9 +171,9 @@ const StudentSidebar = () => {
           </p>
         </NavLink>
 
-          {/*Library */}
+        {/*Library */}
 
-          <NavLink
+        <NavLink
           to="/StudentDashboard/LibraryBooks"
           style={({ isActive }) => ({
             color: isActive ? "#0bc28b" : "#545e6f",
@@ -185,6 +184,18 @@ const StudentSidebar = () => {
             Library
           </p>
         </NavLink>
+        {/* videos */}
+        <NavLink
+          to="/StudentDashboard/videos"
+          style={({ isActive }) => ({
+            color: isActive ? "#0bc28b" : "#545e6f",
+            background: isActive ? "#7600dc" : "black",
+          })}
+        >
+          <p className="text-white py-0.5   hover:bg-yellow-200 w-40 hover:text-black">
+            Videos For You
+          </p>
+        </NavLink>
 
         <button
           onClick={() => {
@@ -192,7 +203,7 @@ const StudentSidebar = () => {
           }}
           className="my-5"
         >
-          <span  className=" bg-red-400 w-20 h-10 p-2 text-black hover:bg-red-500 rounded">
+          <span className=" bg-red-400 w-20 h-10 p-2 text-black hover:bg-red-500 rounded">
             Logout
           </span>
         </button>
