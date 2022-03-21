@@ -155,7 +155,7 @@ export const StudnetAssignmentSubmit = createAsyncThunk(
   }
 );
 
-// student ConcessionForm ----
+// student ConcessionForm submit ----
 export const studentConcessionForm = createAsyncThunk(
   "Student/ConcessionForm",
   async (data) => {
@@ -178,6 +178,19 @@ export const studentConcessionForm = createAsyncThunk(
   }
 );
 
+// get student Attendance Collections
+export const studentAttendanceCollections = createAsyncThunk(
+  "Student/studentAttendanceCollections",
+  async (email) => {
+    const response = await fetch(
+      `http://localhost:5000/student/studentAttendanceCollections?email=${email}`
+    )
+      .then((res) => res.json())
+      .catch((err) => console.log(err));
+    return response;
+  }
+);
+
 export const StudentReducer = createSlice({
   name: "Student",
   initialState: {
@@ -188,6 +201,7 @@ export const StudentReducer = createSlice({
     studentInfo: {},
     notices: [],
     montlyPayment: [],
+    attendance: [],
   },
   reducers: {
     increment: (state) => {
@@ -228,15 +242,23 @@ export const StudentReducer = createSlice({
     builder.addCase(getStudentInfo.fulfilled, (state, action) => {
       state.studentInfo = action.payload;
     });
+
     builder.addCase(updateStudentPP.fulfilled, (state, action) => {
       Swal.fire("Success", "Notice Publish Successfull", "success");
     });
     builder.addCase(GetStudentNotice.fulfilled, (state, action) => {
       state.notices = action.payload;
     });
+
     builder.addCase(getMontlyPayment.fulfilled, (state, action) => {
       state.montlyPayment = action.payload;
     });
+
+    // get student Attendance Collections
+    builder.addCase(studentAttendanceCollections.fulfilled, (state, action) => {
+      state.attendance = action.payload;
+    });
+
     builder.addCase(PayMonthlyPayment.fulfilled, (state, action) => {
       window.location.replace(action.payload);
     });

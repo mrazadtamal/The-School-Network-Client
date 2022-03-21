@@ -1,7 +1,24 @@
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
+import { useDispatch, useSelector } from "react-redux";
 import ReactApexChart from "react-apexcharts";
+// import { useNavigate } from "react-router-dom";
+import useFirebase from "./../../../Shared/Authentication/Authentication";
+import { studentAttendanceCollections } from "../../../../SchoolRedux/StudentSlice";
 
 const ChartTwo = () => {
+  // const navigate = useNavigate();
+  const { user } = useFirebase();
+  const dispatch = useDispatch();
+  useEffect(() => {
+    dispatch(studentAttendanceCollections(user.email));
+  }, [user.email, dispatch]);
+
+  const attendanceCollections = useSelector(
+    (state) => state.studentStore.attendance
+  );
+
+  console.log(attendanceCollections);
+
   const [chart, setChart] = useState({
     series: [
       {

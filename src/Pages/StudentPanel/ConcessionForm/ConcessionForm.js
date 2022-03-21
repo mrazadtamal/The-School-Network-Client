@@ -31,7 +31,10 @@ const ConcessionForm = () => {
         >
           {/*--------- Class ---------*/}
           <div className="col-span-4">
-            <label htmlFor="class" className="block font-bold">
+            <label
+              htmlFor="class"
+              className="block font-bold after:content-['*']  after:ml-1  after:text-red-700 text-[#1151FF]"
+            >
               Class
             </label>
             <select
@@ -50,7 +53,10 @@ const ConcessionForm = () => {
 
           {/*--------- Section ---------*/}
           <div className="col-span-4">
-            <label htmlFor="section" className="block font-bold">
+            <label
+              htmlFor="section"
+              className="block font-bold after:content-['*']  after:ml-1  after:text-red-700 text-[#1151FF]"
+            >
               Section
             </label>
             <select
@@ -66,7 +72,10 @@ const ConcessionForm = () => {
 
           {/*--------- Roll ---------*/}
           <div className="col-span-4">
-            <label htmlFor="roll" className="block font-bold">
+            <label
+              htmlFor="roll"
+              className="block font-bold after:content-['*']  after:ml-1  after:text-red-700 text-[#1151FF]"
+            >
               Student Roll
             </label>
             <input
@@ -80,7 +89,10 @@ const ConcessionForm = () => {
 
           {/*--------- Name ---------*/}
           <div className="col-span-6">
-            <label htmlFor="name" className="block font-bold">
+            <label
+              htmlFor="name"
+              className="block font-bold after:content-['*']  after:ml-1  after:text-red-700 text-[#1151FF]"
+            >
               Student Full Name
             </label>
             <input
@@ -94,7 +106,10 @@ const ConcessionForm = () => {
 
           {/*--------- Phone number ---------*/}
           <div className="col-span-6">
-            <label htmlFor="phone" className="block font-bold">
+            <label
+              htmlFor="phone"
+              className="block font-bold after:content-['*']  after:ml-1  after:text-red-700 text-[#1151FF]"
+            >
               Phone Number
             </label>
             <input
@@ -108,7 +123,10 @@ const ConcessionForm = () => {
 
           {/*--------- Email ---------*/}
           <div className="col-span-6">
-            <label htmlFor="email" className="block font-bold">
+            <label
+              htmlFor="email"
+              className="block font-bold after:content-['*']  after:ml-1  after:text-red-700 text-[#1151FF]"
+            >
               Email Address
             </label>
             <input
@@ -122,7 +140,10 @@ const ConcessionForm = () => {
 
           {/*--------- Father name ---------*/}
           <div className="col-span-6">
-            <label htmlFor="fatherName" className="block font-bold">
+            <label
+              htmlFor="fatherName"
+              className="block font-bold after:content-['*']  after:ml-1  after:text-red-700 text-[#1151FF]"
+            >
               Father Name
             </label>
             <input
@@ -136,7 +157,10 @@ const ConcessionForm = () => {
 
           {/*--------- Mother name ---------*/}
           <div className="col-span-6">
-            <label htmlFor="motherName" className="block font-bold">
+            <label
+              htmlFor="motherName"
+              className="block font-bold after:content-['*']  after:ml-1  after:text-red-700 text-[#1151FF]"
+            >
               Mother Name
             </label>
             <input
@@ -150,7 +174,10 @@ const ConcessionForm = () => {
 
           {/*---------  Father Occupation ---------*/}
           <div className="col-span-6">
-            <label htmlFor="fatherOccupation" className="block font-bold">
+            <label
+              htmlFor="fatherOccupation"
+              className="block font-bold after:content-['*']  after:ml-1  after:text-red-700 text-[#1151FF]"
+            >
               Father Occupation
             </label>
             <input
@@ -164,7 +191,10 @@ const ConcessionForm = () => {
 
           {/*---------  Father Monthly Income---------*/}
           <div className="col-span-6">
-            <label htmlFor="fatherMonthlyIncome" className="block font-bold">
+            <label
+              htmlFor="fatherMonthlyIncome"
+              className="block font-bold after:content-['*']  after:ml-1  after:text-red-700 text-[#1151FF]"
+            >
               Father Monthly Income
             </label>
             <input
@@ -178,7 +208,10 @@ const ConcessionForm = () => {
 
           {/*---------   Father Contact No :  ---------*/}
           <div className="col-span-6">
-            <label htmlFor="fatherContactNo" className="block font-bold">
+            <label
+              htmlFor="fatherContactNo"
+              className="block font-bold after:content-['*']  after:ml-1  after:text-red-700 text-[#1151FF]"
+            >
               Father Contact No :
             </label>
             <input
@@ -192,7 +225,10 @@ const ConcessionForm = () => {
 
           {/*---------  Details ---------*/}
           <div className="col-span-12">
-            <label htmlFor="details" className="block font-bold">
+            <label
+              htmlFor="details"
+              className="block font-bold after:content-['*']  after:ml-1  after:text-red-700 text-[#1151FF]"
+            >
               Details :
             </label>
             <textarea
@@ -207,7 +243,7 @@ const ConcessionForm = () => {
           <div className="col-span-12">
             <div className="flex justify-center">
               <input
-                className="w-1/4 border-2 bg-green-300 hover:bg-green-400 hover:cursor-pointer rounded-md px-3 py-2"
+                className="w-1/5 border-2  text-[#1151FF]     bg-green-300 hover:bg-green-400 hover:cursor-pointer rounded-md px-3 py-2"
                 value="Request"
                 type="submit"
               />
