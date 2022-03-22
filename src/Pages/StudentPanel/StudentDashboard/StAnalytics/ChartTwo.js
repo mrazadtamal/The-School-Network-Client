@@ -18,7 +18,7 @@ const ChartTwo = () => {
 
   // console.log(attendanceCollections);
 
-  const [chart, setChart] = useState({});
+  // const [chart, setChart] = useState({});
 
   // const month = attendanceCollections.filter((item) => item.month);
   // console.log("month", month);
