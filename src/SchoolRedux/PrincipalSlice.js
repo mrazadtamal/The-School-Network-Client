@@ -25,6 +25,7 @@ export const PublishImageNotice = createAsyncThunk(
   async (fd) => {
     const response = await fetch("http://localhost:5000/PublishImageNotice", {
       method: "POST",
+
       body: fd,
     })
       .then((res) => res.json())
@@ -260,12 +261,9 @@ export const IndividualAdmissionForm = createAsyncThunk(
 export const RemoveTeacher = createAsyncThunk(
   "Principal/RemoveTeacher",
   async (id) => {
-    const response = await fetch(
-      `https://blooming-citadel-14218.herokuapp.com/RemoveTeacher/${id}`,
-      {
-        method: "DELETE",
-      }
-    ).then((res) => res.json());
+    const response = await fetch(`http://localhost:5000/RemoveTeacher/${id}`, {
+      method: "DELETE",
+    }).then((res) => res.json());
     return response;
   }
 );

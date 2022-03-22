@@ -54,6 +54,7 @@ import AdmissionSuccess from "./Pages/AllUser/Admission/AdmissionSuccess";
 import StudentPaymentSuccess from "./Pages/StudentPanel/StudentPay/StudentPaymentSuccess";
 import IndividualPayment from "./Pages/PrincipalPanel/CheckPaymentStatus/IndividualPayment";
 import CheckAdmissionForm from "./Pages/PrincipalPanel/CheckAdmissionForm/CheckAdmissionForm";
+import ConcessionFormP from "./Pages/PrincipalPanel/ConcessionForm/ConcessionForm";
 import IndividualForms from "./Pages/PrincipalPanel/CheckAdmissionForm/IndividualForms";
 import BooksAdd from "./Pages/Shared/LibraryPages/BooksAdd/BooksAdd";
 import OurTeachers from "./Pages/AllUser/HomePageComponents/OurTeacers";
@@ -62,6 +63,7 @@ import ManageBooks from "./Pages/Shared/LibraryPages/BooksManage/ManageBooks";
 import EditBook from "./Pages/Shared/LibraryPages/BooksManage/EditBook/EditBook";
 import LentBookForm from "./Pages/StudentPanel/LibraryStudentSection/LentBookForm";
 import BookView from "./Pages/StudentPanel/LibraryStudentSection/BookView";
+import ViewIndividual from "./Pages/PrincipalPanel/ConcessionForm/ViewIndividual";
 
 function App() {
   return (
@@ -144,6 +146,10 @@ function App() {
               element={<CheckAdmissionForm />}
             />
             <Route
+              path="/PrincipalDashboard/ConcessionForm"
+              element={<ConcessionFormP />}
+            />
+            <Route
               path="/PrincipalDashboard/IndividualForms/:id"
               element={<IndividualForms />}
             />
@@ -208,6 +214,10 @@ function App() {
             <Route
               path="/TeachersDashboard/ViewIndividualCare/:id"
               element={<ViewIndividualCare />}
+            />
+            <Route
+              path="/TeachersDashboard/ViewIndividual/:id"
+              element={<ViewIndividual />}
             />
             <Route path="/TeachersDashboard/BooksAdd" element={<BooksAdd />} />
             <Route

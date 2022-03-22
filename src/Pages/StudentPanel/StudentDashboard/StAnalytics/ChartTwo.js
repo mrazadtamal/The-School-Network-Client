@@ -1,14 +1,13 @@
 import React, { useState, useEffect } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import ReactApexChart from "react-apexcharts";
-// import { useNavigate } from "react-router-dom";
 import useFirebase from "./../../../Shared/Authentication/Authentication";
 import { studentAttendanceCollections } from "../../../../SchoolRedux/StudentSlice";
 
 const ChartTwo = () => {
-  // const navigate = useNavigate();
   const { user } = useFirebase();
   const dispatch = useDispatch();
+
   useEffect(() => {
     dispatch(studentAttendanceCollections(user.email));
   }, [user.email, dispatch]);
@@ -17,9 +16,14 @@ const ChartTwo = () => {
     (state) => state.studentStore.attendance
   );
 
-  console.log(attendanceCollections);
+  // console.log(attendanceCollections);
 
-  const [chart, setChart] = useState({
+  const [chart, setChart] = useState({});
+
+  // const month = attendanceCollections.filter((item) => item.month);
+  // console.log("month", month);
+
+  const data = {
     series: [
       {
         name: "Total Days",
@@ -84,13 +88,12 @@ const ChartTwo = () => {
         // },
       },
     },
-  });
-
+  };
   return (
     <>
       <ReactApexChart
-        options={chart.options}
-        series={chart.series}
+        options={data.options}
+        series={data.series}
         type="bar"
         height={450}
         width={500}
