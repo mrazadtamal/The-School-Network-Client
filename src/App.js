@@ -64,6 +64,7 @@ import LentBookForm from "./Pages/StudentPanel/LibraryStudentSection/LentBookFor
 import BookView from "./Pages/StudentPanel/LibraryStudentSection/BookView";
 import VideoSubmission from "./Pages/TeachersPanel/VideoSubmission/VideoSubmission";
 import VideosFromTeacher from "./Pages/StudentPanel/VideosFromTeacher/VideosFromTeacher";
+import WatchVideo from "./Pages/StudentPanel/WatchVideo/WatchVideo";
 
 function App() {
   return (
@@ -285,6 +286,10 @@ function App() {
             <Route
               path="/StudentDashboard/videos"
               element={<VideosFromTeacher />}
+            />
+            <Route
+              path="/StudentDashboard/watchVideo/:id"
+              element={<WatchVideo />}
             />
           </Route>
           {/* --------------------student route end-------------------------*/}

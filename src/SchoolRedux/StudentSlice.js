@@ -174,6 +174,25 @@ export const GetVideos = createAsyncThunk("Student/GetVideos", async (data) => {
   }
 });
 
+// get the specific video with unique id
+export const GetVideoById = createAsyncThunk(
+  "Student/GetVideoById",
+  async (data) => {
+    console.log("Hitted GetVideoById", data.id);
+    const response = await fetch(`http://localhost:5000/video/${data.id}`)
+      .then((res) => res.json())
+      .catch((err) => {
+        console.log(err);
+      });
+    console.log(response);
+    if (response !== null) {
+      return response;
+    } else {
+      return {};
+    }
+  }
+);
+
 export const StudentReducer = createSlice({
   name: "Student",
   initialState: {
@@ -186,6 +205,7 @@ export const StudentReducer = createSlice({
     montlyPayment: [],
     // all the video data will be stored in this array
     videos: [],
+    video: {},
   },
   reducers: {
     increment: (state) => {
@@ -239,6 +259,10 @@ export const StudentReducer = createSlice({
     // set all the videos to the state
     builder.addCase(GetVideos.fulfilled, (state, action) => {
       state.videos = action.payload;
+    });
+    // set the specific video to the state
+    builder.addCase(GetVideoById.fulfilled, (state, action) => {
+      state.video = action.payload;
     });
   },
 });

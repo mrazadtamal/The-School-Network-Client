@@ -1,4 +1,5 @@
 import React from "react";
+import { Link } from "react-router-dom";
 
 const SingleVideoData = ({ video }) => {
   return (
@@ -24,7 +25,9 @@ const SingleVideoData = ({ video }) => {
           <p class="text-gray-900 whitespace-no-wrap">{video.author_email}</p>
         </td>
         <td class="px-5 py-5 border-b border-gray-200 bg-white text-sm">
-          <p class="text-gray-900 whitespace-no-wrap">{video.date}</p>
+          <p class="text-gray-900 whitespace-no-wrap">
+            {video.date.slice(0, 10)}
+          </p>
         </td>
         <td class="px-5 py-5 border-b border-gray-200 bg-white text-sm">
           <p class="text-gray-900 whitespace-no-wrap">{video.target_class}</p>
@@ -35,7 +38,12 @@ const SingleVideoData = ({ video }) => {
               aria-hidden
               class="absolute inset-0 bg-green-200 opacity-50 rounded-full"
             ></span>
-            <span class="relative">Watch</span>
+            <Link
+              to={`/StudentDashboard/watchVideo/${video._id}`}
+              class="relative"
+            >
+              Watch
+            </Link>
           </span>
         </td>
       </tr>
