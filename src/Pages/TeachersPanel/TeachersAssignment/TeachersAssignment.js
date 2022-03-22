@@ -6,21 +6,21 @@ import'./Teacherpanel.css'
 const TeachersAssignment = () => {
    const dispatch = useDispatch();
    const [img, setImg] = useState("");
+   const [classAssignment, setClassAssignment] = useState({});
 
     const { register, handleSubmit,reset } = useForm();
     const onSubmit = data =>{
-   
-      dispatch(assignmentPublish(data))
+           dispatch(assignmentPublish(data))
       reset()
       console.log(data)
     }
     const SubmitHandler = (e) => {
       e.preventDefault()
 
-    
-              const fd = new FormData();
-              fd.append('noticeImage', img)
-              dispatch(PublishImageAssing(fd))
+             const fd = new FormData();
+              fd.append('assignmentImage', img)
+              const data = {...classAssignment, fd };
+              dispatch(PublishImageAssing(data))
               e.target.reset()
     }
     useEffect(() => {
@@ -39,11 +39,11 @@ const handleAssignmentDeleteBtn = (id) => {
     return (
         <div>
                <div className='text-center w-full m-auto mt-5'>
-            <div className='w-2/4 mx-auto container teacher-side p-5 '>
-            <p class='text-3xl text-sky-400/100'>Published Assignment</p>
+               <div className='w-2/4 mx-auto container teacher-side p-5 '>
+               <p class='text-3xl text-sky-400/100'>Published Assignment</p>
 
                   
-               <form className='flex' onSubmit={SubmitHandler}>
+            <form className='flex' onSubmit={SubmitHandler}>
                <label class="block mx-2">
                         <span class="sr-only">Choose File</span>
                         <input 
@@ -57,35 +57,35 @@ const handleAssignmentDeleteBtn = (id) => {
                              hover:file:bg-violet-100
                              "/>
                       </label>
+                  <select
+                            type="text"
+                            className="border border-gray-500 rounded w-4/2"
+                            onChange={(e) => {
+                                const clas = e.target.value;
+                                setClassAssignment({ ...classAssignment, class: clas });
+                            }}
+                        >   
+                        <option>Choose Class</option>
+                        <option value="class-one">Class One</option>
+                        <option value="class-two">Class Two</option>
+                        <option value="class-three">Class Three</option>
+                        <option value="class-four">Class Four</option>
+                        <option value="class-five">Class Five</option>
+                  </select>
                       <input 
-                    className="block  my-3 px-5 
+                      className="block mx-2 my-3 px-5 
                       py-1 bg-cyan-500 hover:bg-cyan-600
                        rounded-lg text-gray-900 font-medium"
                      type="submit" />
-               </form>
+            </form>
                      
                       
             <form onSubmit={handleSubmit(onSubmit)}>
-                        {/* <label class="block mx-2">
-                        <span class="sr-only">Choose File</span>
-                        <input 
-                        type="file" 
-                        {...register("img")}
-                        class="block w-full text-sm text-slate-500
-                             file:mr-4 file:py-2 file:px-4
-                             file:rounded-full file:border-0
-                             file:text-sm file:font-semibold
-                             file:bg-violet-50 file:text-violet-700
-                             hover:file:bg-violet-100
-                             "/>
-                      </label> */}
-             <p className='mb-4'>Or</p>
-
-                      <label class="relative block mt-5 mb-2">
-
-                   <input 
-                   className="placeholder:italic
-                    placeholder:text-slate-400 block bg-white
+                   <p className='mb-4'>Or</p>
+                     <label class="relative block mt-5 mb-2">
+                    <input 
+                     className="placeholder:italic
+                     placeholder:text-slate-400 block bg-white
                      w-full border border-slate-300 rounded-md
                       py-2 pl-9 pr-3 shadow-sm focus:outline-none
                     focus:border-sky-500 focus:ring-sky-500 focus:ring-1 sm:text-sm"
@@ -99,15 +99,16 @@ const handleAssignmentDeleteBtn = (id) => {
                   py-2 pl-9 pr-3 shadow-sm focus:outline-none
                  focus:border-sky-500 focus:ring-sky-500 focus:ring-1 sm:text-sm"
                 type="text"
-                 {...register("description")} placeholder="Assignment Description"/> <br />
-               
-                <select className='block' {...register("class")} placeholder='Choose Class'>
-        <option value={1}>Class 1</option>
-        <option value={2}>Class 2</option>
-        <option value={3}>Class 3</option>
-        <option value={4}>Class 4</option>
-        <option value={5}>Class 5</option>
-      </select>
+                 {...register("description")} placeholder="Assignment Description"/>
+               <br />
+               <select className='block' {...register("class")} placeholder='Choose Class'>
+                        <option>Choose Class</option>
+                        <option value="class-one">Class One</option>
+                        <option value="class-two">Class Two</option>
+                        <option value="class-three">Class Three</option>
+                        <option value="class-four">Class Four</option>
+                        <option value="class-five">Class Five</option>
+              </select>
                    <br />
               <input 
                     className="block  my-3 px-5 
@@ -142,8 +143,7 @@ const handleAssignmentDeleteBtn = (id) => {
          }
         </div>
         </div>
-      
-        </div>
+       </div>
     );
 };
 

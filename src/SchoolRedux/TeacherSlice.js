@@ -166,10 +166,10 @@ export const GetingPreviosuAssignment = createAsyncThunk(
 //Teacher Publisshing image assingment
 export const PublishImageAssing = createAsyncThunk(
   "Teacher/PublishImageAssing",
-  async (fd) => {
-    const response = await fetch("http://localhost:5000/PublishImageAssing", {
+  async (data) => {
+    const response = await fetch(`http://localhost:5000/PublishImageAssing?class=${data.class}`, {
       method: "POST",
-      body: fd,
+      body: data.fd,
     })
       .then((res) => res.json())
       .catch((error) => {
