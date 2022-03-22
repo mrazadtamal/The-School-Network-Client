@@ -179,13 +179,13 @@ export const GetVideoById = createAsyncThunk(
   "Student/GetVideoById",
   async (data) => {
     console.log("Hitted GetVideoById", data.id);
-    const response = await fetch(`http://localhost:5000/video/${data.id}`)
+    const response = await fetch(`http://localhost:5000/video?id=${data.id}`)
       .then((res) => res.json())
       .catch((err) => {
         console.log(err);
       });
     console.log(response);
-    if (response !== null) {
+    if (response !== null || undefined) {
       return response;
     } else {
       return {};

@@ -31,7 +31,7 @@ const VideoSubmission = () => {
     formData.append("video", videoData);
     formData.append("email", user.email);
     formData.append("title", infoData.title);
-    formData.append("class", infoData.class);
+    formData.append("class", infoData.class.toLowerCase());
     dispatch(teacherVideoUpload(formData));
     console.log(formData);
 
