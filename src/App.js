@@ -62,6 +62,7 @@ import ManageBooks from "./Pages/Shared/LibraryPages/BooksManage/ManageBooks";
 import EditBook from "./Pages/Shared/LibraryPages/BooksManage/EditBook/EditBook";
 import LentBookForm from "./Pages/StudentPanel/LibraryStudentSection/LentBookForm";
 import BookView from "./Pages/StudentPanel/LibraryStudentSection/BookView";
+import AllNoticesPage from "./Pages/AllUser/HomePageComponents/AllNoticePage/AllNoticesPage";
 
 function App() {
   return (
@@ -83,6 +84,7 @@ function App() {
           <Route path="/contact" element={<Contact />} />
           <Route path="/ourTeacehrs" element={<OurTeachers />} />
           <Route path="/AdmissionSuccess" element={<AdmissionSuccess />} />
+          <Route path="/AllNotices" element={<AllNoticesPage />} />
           {/* --------------All User Homepage Routes End--------------- */}
           {/* --------------Principal Routes Start-------------- */}
           <Route path="/PrincipalDashboard" element={<PrincipalDashboard />}>
