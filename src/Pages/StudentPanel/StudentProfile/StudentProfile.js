@@ -9,7 +9,6 @@ import useFirebase from "./../../Shared/Authentication/Authentication";
 const StudentProfile = () => {
   const dispatch = useDispatch();
   const { user } = useFirebase();
-  const { LogOutUser } = useFirebase();
 
   const [profilePic, setProfilePic] = useState("");
 
@@ -60,21 +59,21 @@ const StudentProfile = () => {
                 {studentData.img ? (
                   <img
                     src={`data:image/jpeg;base64,${studentData?.img}`}
-                    className=" w-72"
+                    className=" w-60 "
                     alt=""
                   />
                 ) : (
                   <img
                     src="https://res.cloudinary.com/abidazad/image/upload/v1637747947/user_xsd3a7.png"
                     alt=""
-                    className=" w-80"
+                    className=" w-60"
                   />
                 )}
               </div>
               <form onSubmit={updateDPBtnHandler}>
                 <div>
                   <button
-                    className="block text-white bg-green-400 hover:bg-green-700  focus:ring-blue-300 font-bold rounded-lg text-sm px-3 py-2 text-center "
+                    className="block mt-3 text-white bg-green-400 hover:bg-green-700  focus:ring-blue-300 font-bold rounded-lg text-sm px-3 py-2 text-center "
                     type="button"
                     data-modal-toggle="defaultModal"
                   >
@@ -225,9 +224,9 @@ const StudentProfile = () => {
                     </div>
                   </div>
                 </div>
-                <button className="block w-40 text-white bg-green-400 text-sm font-semibold rounded-lg hover:bg-green-600 focus:outline-none focus:shadow-outline  hover:shadow-xs p-3 my-4">
+                {/* <button className="block w-40 text-white bg-green-400 text-sm font-semibold rounded-lg hover:bg-green-600 focus:outline-none focus:shadow-outline  hover:shadow-xs p-3 my-4">
                   Edit Profile
-                </button>
+                </button> */}
               </div>
             </div>
           </div>
