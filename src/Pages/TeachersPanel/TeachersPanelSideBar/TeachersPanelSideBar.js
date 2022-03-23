@@ -117,6 +117,18 @@ const teachersData = useSelector((state) => state.teacherStore.teacherInfo);
       <Link to="/TeachersDashboard/ViewNotice">
           <p className={location.pathname === '/TeachersDashboard/ViewNotice' ? 'active_principal_link mt-4' : 'principal_sidebar_link   text-white mt-4'}> <SiSamsungpay className='principal_react_icons' />View Notice</p>
         </Link>
+        
+              <Link to="/TeachersDashboard/videoSubmission">
+        <p
+          className={
+            location.pathname === "/TeachersDashboard/videoSubmission"
+              ? "active_principal_link mt-4"
+              : "principal_sidebar_link   text-white mt-4"
+          }
+        >
+          Upload Class
+        </p>
+      </Link>
 
     </div>
     );

@@ -224,6 +224,43 @@ export const GetNotification = createAsyncThunk(
     return response;
   }
 );
+// get all the videos available for the logged in user
+
+export const GetVideos = createAsyncThunk("Student/GetVideos", async (data) => {
+  console.log("Hitted GetVideos", data.class);
+  const response = await fetch(
+    `http://localhost:5000/videos?class=${data.class}`
+  )
+    .then((res) => res.json())
+    .catch((err) => {
+      console.log(err);
+    });
+  console.log(response);
+  if (response !== null) {
+    return response;
+  } else {
+    return {};
+  }
+});
+
+// get the specific video with unique id
+export const GetVideoById = createAsyncThunk(
+  "Student/GetVideoById",
+  async (data) => {
+    console.log("Hitted GetVideoById", data.id);
+    const response = await fetch(`http://localhost:5000/video?id=${data.id}`)
+      .then((res) => res.json())
+      .catch((err) => {
+        console.log(err);
+      });
+    console.log(response);
+    if (response !== null || undefined) {
+      return response;
+    } else {
+      return {};
+    }
+  }
+);
 
 export const StudentReducer = createSlice({
   name: "Student",
@@ -237,7 +274,9 @@ export const StudentReducer = createSlice({
     montlyPayment: [],
     LentBookList: {},
     CategoryBook: [],
-    Notifications: []
+    Notifications: [],
+    videos: [],
+    video: {},
   },
   reducers: {
     increment: (state) => {
@@ -302,6 +341,14 @@ export const StudentReducer = createSlice({
     });
     builder.addCase(GetNotification.fulfilled, (state, action) => {
       state.Notifications = action.payload
+    });
+        // set all the videos to the state
+    builder.addCase(GetVideos.fulfilled, (state, action) => {
+      state.videos = action.payload;
+    });
+    // set the specific video to the state
+    builder.addCase(GetVideoById.fulfilled, (state, action) => {
+      state.video = action.payload;
     });
   },
 });

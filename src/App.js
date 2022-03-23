@@ -71,6 +71,9 @@ import CheckLendBookList from "./Pages/LibrarianDashboard/CheckLendBookList";
 import CategoryPage from "./Pages/StudentPanel/LibraryStudentSection/CategoryPage";
 import BookAnalytics from "./Pages/LibrarianDashboard/BookAnalytics";
 import NotificationPage from "./Pages/StudentPanel/NotificationPage/NotificationPage";
+import VideoSubmission from "./Pages/TeachersPanel/VideoSubmission/VideoSubmission";
+import VideosFromTeacher from "./Pages/StudentPanel/VideosFromTeacher/VideosFromTeacher";
+import WatchVideo from "./Pages/StudentPanel/WatchVideo/WatchVideo";
 
 function App() {
   return (
@@ -241,6 +244,10 @@ function App() {
                             path="/TeachersDashboard/ViewIndividualCare/:id"
                             element={<ViewIndividualCare />}
                         />
+                        <Route
+                        path="/TeachersDashboard/videoSubmission"
+                        element={<VideoSubmission />}
+                      />
                     </Route>
                     {/* --------------Teacher Routes End-------------- */}
                     {/* --------------------student route start-----------------------*/}
@@ -295,6 +302,14 @@ function App() {
                         <Route
                         path="/StudentDashboard/concessionForm"
                         element={<ConcessionForm />}
+                      />
+                         <Route
+                        path="/StudentDashboard/videos"
+                        element={<VideosFromTeacher />}
+                      />
+                      <Route
+                        path="/StudentDashboard/watchVideo/:id"
+                        element={<WatchVideo />}
                       />
                     </Route>
             {/* -----------students library route-------------- */}

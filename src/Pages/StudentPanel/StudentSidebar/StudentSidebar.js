@@ -198,6 +198,19 @@ const StudentSidebar = () => {
           </p>
         </NavLink>
           
+        {/* videos */}
+        <NavLink
+          to="/StudentDashboard/videos"
+          style={({ isActive }) => ({
+            color: isActive ? "#0bc28b" : "#545e6f",
+            background: isActive ? "#7600dc" : "black",
+          })}
+        >
+          <p className="text-white py-0.5   hover:bg-yellow-200 w-40 hover:text-black">
+            Videos For You
+          </p>
+        </NavLink>
+        
         <button
           onClick={() => {
             LogOutUser(navigate);

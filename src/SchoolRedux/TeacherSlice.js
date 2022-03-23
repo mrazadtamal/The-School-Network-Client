@@ -282,6 +282,21 @@ export const NotifyStudents = createAsyncThunk(
     return response;
   }
 );
+// teacher video publish
+export const teacherVideoUpload = createAsyncThunk(
+  "Teacher/TeacherVideoUpload",
+  async (data) => {
+    console.log("data from teacher", data);
+    const response = await fetch("http://localhost:5000/videoUpload", {
+      method: "POST",
+      // headers: { "content-type": "application/json" },
+      body: data,
+    })
+      .then((res) => console.log(res.json()))
+      .catch((err) => console.log(err));
+    return response;
+  }
+);
 const initialState = {
     value: 0,
     extraCares: [],
@@ -363,6 +378,10 @@ export const TeacherReducer = createSlice({
       builder.addCase(NotifyStudents.fulfilled, (state, action) => {
         Swal.fire("Success", "Notification Successfully Send", "success");
       });
+    // teacher video upload
+    builder.addCase(teacherVideoUpload.fulfilled, (state, action) => {
+      Swal.fire("Success", "Video Uploaded Successfully", "success");
+    });
     },
 });
 
