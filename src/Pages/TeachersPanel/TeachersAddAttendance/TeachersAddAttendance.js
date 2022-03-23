@@ -12,6 +12,7 @@ const TeachersAddAttendance = () => {
     const dispatch = useDispatch();
     const { user } = useFirebase();
     const [selectedMonth, setSelectedMonth] = useState("january");
+    const [totalDaysClass, setTotalDaysClass] = useState(0);
     const [attData, setAttData] = useState({});
 
     useEffect(() => {
@@ -38,27 +39,39 @@ const TeachersAddAttendance = () => {
                 Add Students Attendance
             </h1>
             <div>
-                <div className="text-left mb-5">
-                    <p className="text-md font-bold mt-4">Select Month:</p>
-                    <select
-                        className="border border-gray-500 rounded p-1 w-32"
-                        name="month"
-                        id="month"
-                        onChange={(e) => setSelectedMonth(e.target.value)}
-                    >
-                        <option value="january">January</option>
-                        <option value="february">February</option>
-                        <option value="march">March</option>
-                        <option value="april">April</option>
-                        <option value="may">May</option>
-                        <option value="june">June</option>
-                        <option value="july">July</option>
-                        <option value="august">August</option>
-                        <option value="september">September</option>
-                        <option value="october">October</option>
-                        <option value="november">November</option>
-                        <option value="december">December</option>
-                    </select>
+                <div className="md:flex md:gap-10">
+                    <div className="text-left mb-5">
+                        <p className="text-md font-bold mt-4">Select Month:</p>
+                        <select
+                            className="border border-gray-500 rounded p-1 w-32"
+                            name="month"
+                            id="month"
+                            onChange={(e) => setSelectedMonth(e.target.value)}
+                        >
+                            <option value="january">January</option>
+                            <option value="february">February</option>
+                            <option value="march">March</option>
+                            <option value="april">April</option>
+                            <option value="may">May</option>
+                            <option value="june">June</option>
+                            <option value="july">July</option>
+                            <option value="august">August</option>
+                            <option value="september">September</option>
+                            <option value="october">October</option>
+                            <option value="november">November</option>
+                            <option value="december">December</option>
+                        </select>
+                    </div>
+                    <div className="text-left mb-5">
+                        <p className="text-md font-bold mt-4">
+                            Total Class Days
+                        </p>
+                        <input
+                            type="number"
+                            onBlur={(e) => setTotalDaysClass(e.target.value)}
+                            className="border border-gray-500 rounded p-1 w-32"
+                        />
+                    </div>
                 </div>
                 <div>
                     <table className="order-table">
@@ -97,10 +110,13 @@ const TeachersAddAttendance = () => {
                                                     e.target.value;
                                                 const email = student.email;
                                                 const month = selectedMonth;
+                                                const totalClass =
+                                                    totalDaysClass;
                                                 const data = {
                                                     ...attData,
                                                     email,
                                                     month,
+                                                    totalClass,
                                                     presentDays,
                                                 };
                                                 setAttData(data);
@@ -116,10 +132,13 @@ const TeachersAddAttendance = () => {
                                                     e.target.value;
                                                 const email = student.email;
                                                 const month = selectedMonth;
+                                                const totalClass =
+                                                    totalDaysClass;
                                                 const data = {
                                                     ...attData,
                                                     email,
                                                     month,
+                                                    totalClass,
                                                     absentDays,
                                                 };
                                                 setAttData(data);

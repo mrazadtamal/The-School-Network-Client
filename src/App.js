@@ -63,6 +63,9 @@ import EditBook from "./Pages/Shared/LibraryPages/BooksManage/EditBook/EditBook"
 import LentBookForm from "./Pages/StudentPanel/LibraryStudentSection/LentBookForm";
 import BookView from "./Pages/StudentPanel/LibraryStudentSection/BookView";
 import TeachersAddAttendance from "./Pages/TeachersPanel/TeachersAddAttendance/TeachersAddAttendance";
+import StudentSubmitAssignment from "./Pages/StudentPanel/StudentDashboard/StudentMyDocuments/StudentSubmitAssignment";
+import ExamRoutine from "./Pages/StudentPanel/ExamRoutine/ExamRoutine";
+import ClassRoutine from "./Pages/StudentPanel/ClassRoutine/ClassRoutine";
 
 function App() {
     return (
@@ -264,7 +267,7 @@ function App() {
                         />
                         <Route
                             path="/StudentDashboard/SubmitDocuments"
-                            element={<StudentMyDocuments />}
+                            element={<StudentSubmitAssignment />}
                         />
                         <Route
                             path="/StudentDashboard/StudentPay/:id"
@@ -313,6 +316,14 @@ function App() {
                         <Route
                             path="/StudentDashboard/concessionForm"
                             element={<ConcessionForm />}
+                        />
+                        <Route
+                            path="/StudentDashboard/classRoutine"
+                            element={<ClassRoutine />}
+                        />
+                        <Route
+                            path="/StudentDashboard/examRoutine"
+                            element={<ExamRoutine />}
                         />
                     </Route>
                     {/* --------------------student route end-------------------------*/}

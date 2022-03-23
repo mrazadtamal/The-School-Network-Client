@@ -205,7 +205,6 @@ export const DeleteExamRoutine = createAsyncThunk(
 export const AddAttendanceData = createAsyncThunk(
     "Teacher/AddAttendanceData",
     async (data) => {
-        console.log(data);
         const response = await fetch(
             "http://localhost:5000/AddAttendanceData",
             {
