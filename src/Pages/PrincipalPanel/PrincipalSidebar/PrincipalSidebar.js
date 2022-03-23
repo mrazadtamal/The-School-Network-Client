@@ -96,6 +96,20 @@ const PrincipalSidebar = () => {
           <p className={location.pathname === '/PrincipalDashboard/RegisterOtherStaff' ? 'active_principal_link mt-4' : 'principal_sidebar_link   text-white mt-4'}> <FaChalkboardTeacher className='principal_react_icons' /> Register Other Staff</p>
         </Link>
 
+      <Link to="/PrincipalDashboard/ConcessionForm">
+        <p
+          className={
+            location.pathname === "/PrincipalDashboard/ConcessionForm"
+              ? "active_principal_link mt-4"
+              : "principal_sidebar_link   text-white mt-4"
+          }
+        >
+          {" "}
+          <FaChalkboardTeacher className="principal_react_icons" />
+          Concession Form
+        </p>
+      </Link>
+
         </div>
     );
 };
