@@ -13,6 +13,7 @@ const LogInPage = () => {
     const OnBlurHandler = (e) => {
         const fieldname = e.target.name;
         const fieldvalue = e.target.value;
+
         const newdata = { ...logindata };
         newdata[fieldname] = fieldvalue;
         setLogindata(newdata);
@@ -40,6 +41,7 @@ const LogInPage = () => {
                                 "User Password/Email is Wrong",
                                 "error"
                             );
+                            setLoader(false);
                         });
                 } else if (data.userrole === "Teacher" && role === "Teacher") {
                     LoginUser(logindata.email, logindata.password)
@@ -58,6 +60,7 @@ const LogInPage = () => {
                                 "User Password/Email is Wrong",
                                 "error"
                             );
+                            setLoader(false);
                         });
                 } else if (data.userrole === "Student" && role === "Student") {
                     LoginUser(logindata.email, logindata.password)
@@ -76,9 +79,33 @@ const LogInPage = () => {
                                 "User Password/Email is Wrong",
                                 "error"
                             );
+                            setLoader(false);
+                        });
+                } else if (
+                    data.userrole === "Librarian" &&
+                    role === "Librarian"
+                ) {
+                    LoginUser(logindata.email, logindata.password)
+                        .then((userCredential) => {
+                            // Signed in
+                            const user = userCredential.user;
+                            // ...
+                            setUser(user);
+                            navigate("/LibrarianDashboard");
+                            setLoader(false);
+                        })
+                        .catch((error) => {
+                            console.log("from login user", error.message);
+                            Swal.fire(
+                                "Error!",
+                                "User Password/Email is Wrong",
+                                "error"
+                            );
+                            setLoader(false);
                         });
                 } else {
                     Swal.fire("Error!", "UnAuthorised User", "error");
+                    setLoader(false);
                 }
                 e.target.reset();
             });
@@ -101,6 +128,7 @@ const LogInPage = () => {
                             <option value="Principal">Principal</option>
                             <option value="Teacher">Teacher</option>
                             <option value="Student">Student</option>
+                            <option value="Librarian">Librarian</option>
                         </select>
 
                         <div class="mt-10">

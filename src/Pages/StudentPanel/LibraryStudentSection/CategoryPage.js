@@ -1,21 +1,22 @@
 import React, { useEffect,useState } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
-import {GetAllBooks} from '../../../SchoolRedux/TeacherSlice';
-import {YourLentBookList } from '../../../SchoolRedux/StudentSlice';
+import {GetCategoryBook, YourLentBookList } from '../../../SchoolRedux/StudentSlice';
 import Book from './Book';
 import LibraryNavbar from './LibraryNavbar/LibraryNavbar';
 import './Library.css';
 import useFirebase from '../../Shared/Authentication/Authentication';
+import { useLocation } from 'react-router-dom';
 
 
-const BookView = () => {
+const CategoryPage = () => {
     const dispatch = useDispatch();
     const { user } = useFirebase();
+    const {state} = useLocation();
 
     useEffect(() => {
-        dispatch(GetAllBooks())
-    },[])
-    const Books = useSelector((state) => state.teacherStore.Books)
+        dispatch(GetCategoryBook(state))
+    },[state, dispatch])
+    const Books = useSelector((states) => states.studentStore.CategoryBook)
     
       useEffect(() => {
           dispatch(YourLentBookList(user.email))
@@ -23,11 +24,12 @@ const BookView = () => {
   
   const BookList = useSelector((state) => state.studentStore.LentBookList)
 
+  console.log('Books', Books)
   return (
     <div className=''>
       <LibraryNavbar />
       <div className='library_header'>
-          <h1 className="library_title text-5xl">The School Network Library</h1>
+          <h1 className="library_title text-5xl">ALL {state} Books Here</h1>
       </div>
         
         <div className='book_container mx-auto pt-8 pl-8 pb-8'>
@@ -39,4 +41,4 @@ const BookView = () => {
   );
 }
 
-export default BookView;
+export default CategoryPage;

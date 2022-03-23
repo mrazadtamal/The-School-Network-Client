@@ -297,7 +297,8 @@ export const DeleteAssignment = createAsyncThunk(
     }
 );
 
-//Teacher adding to library
+// -----------------------Lirbrary thunks--------------
+//librarian adding book to library
 export const AddBooks = createAsyncThunk("Teacher/AddBooks", async (data) => {
     const response = await fetch("http://localhost:5000/AddBook", {
         method: "POST",
@@ -309,7 +310,7 @@ export const AddBooks = createAsyncThunk("Teacher/AddBooks", async (data) => {
         });
     return response;
 });
-//Teacher geting all books
+//librarian geting all books
 export const GetAllBooks = createAsyncThunk("Teacher/GetAllBooks", async () => {
     const response = await fetch("http://localhost:5000/GetAllBooks")
         .then((res) => res.json())
@@ -319,7 +320,7 @@ export const GetAllBooks = createAsyncThunk("Teacher/GetAllBooks", async () => {
     return response;
 });
 
-//Teacher Get Edit Book library
+//librarian Get Edit Book library
 export const SubmitEditedBook = createAsyncThunk(
     "Teacher/SubmitEditedBook",
     async (data) => {
@@ -340,6 +341,61 @@ export const SubmitEditedBook = createAsyncThunk(
         return response;
     }
 );
+
+//librarian deleting to library
+export const DeleteBook = createAsyncThunk("Teacher/DeleteBook", async (id) => {
+    const response = await fetch(`http://localhost:5000/DeleteBook/${id}`, {
+        method: "DELETE",
+    })
+        .then((res) => res.json())
+        .catch((error) => {
+            Swal.fire("!", "Error!", "error");
+        });
+    return response;
+});
+//librarian geting all lend books
+export const GetAllLendBooks = createAsyncThunk(
+    "Teacher/GetAllLendBooks",
+    async () => {
+        const response = await fetch("http://localhost:5000/GetAllLendBooks")
+            .then((res) => res.json())
+            .catch((error) => {
+                Swal.fire("!", "Error!", "error");
+            });
+        return response;
+    }
+);
+//librarian geting all lend books
+export const NotifyStudents = createAsyncThunk(
+    "Teacher/NotifyStudents",
+    async (data) => {
+        const response = await fetch("http://localhost:5000/NotifyStudents", {
+            method: "POST",
+            headers: { "content-type": "application/json" },
+            body: JSON.stringify(data),
+        })
+            .then((res) => res.json())
+            .catch((error) => {
+                Swal.fire("!", "Error!", "error");
+            });
+        return response;
+    }
+);
+// teacher video publish
+export const teacherVideoUpload = createAsyncThunk(
+    "Teacher/TeacherVideoUpload",
+    async (data) => {
+        console.log("data from teacher", data);
+        const response = await fetch("http://localhost:5000/videoUpload", {
+            method: "POST",
+            // headers: { "content-type": "application/json" },
+            body: data,
+        })
+            .then((res) => console.log(res.json()))
+            .catch((err) => console.log(err));
+        return response;
+    }
+);
 const initialState = {
     value: 0,
     extraCares: [],
@@ -349,6 +405,7 @@ const initialState = {
     examRoutines: [],
     assignments: [],
     Books: [],
+    AllLendBook: [],
 };
 
 export const TeacherReducer = createSlice({
@@ -391,12 +448,6 @@ export const TeacherReducer = createSlice({
         builder.addCase(GetIndividualCare.fulfilled, (state, action) => {
             state.IndividualCare = action.payload;
         });
-        builder.addCase(GetClassRoutine.fulfilled, (state, action) => {
-            state.classRoutines = action.payload;
-        });
-        builder.addCase(GetExamRoutine.fulfilled, (state, action) => {
-            state.examRoutines = action.payload;
-        });
         builder.addCase(ChangeRequestHandler.fulfilled, (state, action) => {
             console.log("Status", action.payload);
             Swal.fire("Success", "", "success");
@@ -425,15 +476,33 @@ export const TeacherReducer = createSlice({
                 "success"
             );
         });
+        builder.addCase(GetClassRoutine.fulfilled, (state, action) => {
+            state.classRoutines = action.payload;
+        });
+        builder.addCase(GetExamRoutine.fulfilled, (state, action) => {
+            state.examRoutines = action.payload;
+        });
         builder.addCase(AddBooks.fulfilled, (state, action) => {
             Swal.fire("Success", "Book Added Successfull", "success");
         });
         builder.addCase(GetAllBooks.fulfilled, (state, action) => {
             state.Books = action.payload;
         });
-
         builder.addCase(SubmitEditedBook.fulfilled, (state, action) => {
             Swal.fire("Success", "Book Updated Successfull", "success");
+        });
+        builder.addCase(DeleteBook.fulfilled, (state, action) => {
+            Swal.fire("Success", "Book Deleted Successfully", "success");
+        });
+        builder.addCase(GetAllLendBooks.fulfilled, (state, action) => {
+            state.AllLendBook = action.payload;
+        });
+        builder.addCase(NotifyStudents.fulfilled, (state, action) => {
+            Swal.fire("Success", "Notification Successfully Send", "success");
+        });
+        // teacher video upload
+        builder.addCase(teacherVideoUpload.fulfilled, (state, action) => {
+            Swal.fire("Success", "Video Uploaded Successfully", "success");
         });
     },
 });

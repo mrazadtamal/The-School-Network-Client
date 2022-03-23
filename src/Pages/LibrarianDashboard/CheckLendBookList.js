@@ -1,38 +1,23 @@
-import React, { useEffect,useState } from 'react';
+import React, { useEffect } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
-import { useNavigate } from 'react-router-dom';
-import Swal from 'sweetalert2';
-import {DeleteBook, GetAllBooks} from '../../../../SchoolRedux/TeacherSlice';
+import { GetAllLendBooks, NotifyStudents } from '../../SchoolRedux/TeacherSlice';
 
-const ManageBooks = () => {
+
+const CheckLendBookList = () => {
     const dispatch = useDispatch();
-    const navigate = useNavigate()
-    const [count, setCount] = useState(0)
+    const dates = new Date().toLocaleDateString()
     useEffect(() => {
-        dispatch(GetAllBooks())
-    },[count,dispatch])
-    const Books = useSelector((state) => state.teacherStore.Books)
-    const DeleteBookHandler = (id) => {
-      Swal.fire({
-        title: 'Are you sure?',
-        text: "You won't be able to revert this!",
-        icon: 'warning',
-        showCancelButton: true,
-        confirmButtonColor: '#3085d6',
-        cancelButtonColor: '#d33',
-        confirmButtonText: 'Yes, delete it!'
-      }).then((result) => {
-        if (result.isConfirmed) {
-          dispatch(DeleteBook(id))
-          setCount(count + 1)
-        }
-      })
-
-     
+        dispatch(GetAllLendBooks())
+    },[dispatch])
+    const Books = useSelector((state) => state.teacherStore.AllLendBook)
+    const NotifyHandler = (data) => {
+      const message = 'Please Ruturn Your Lended Book. Your date is over';
+      const Notification = {...data, message, received: dates};
+      dispatch(NotifyStudents(Notification))
     }
   return (
   <div className="bg-white p-8 rounded-md w-full">
-        <h1 className="text-3xl text-blue-900 text-center my-8 font-bold">All Library Books Here</h1>
+        <h1 className="text-3xl text-blue-900 text-center my-8 font-bold">All Students Lended Book List</h1>
         <div>
           <div className="-mx-4 sm:-mx-8 px-4 sm:px-8 py-4 overflow-x-auto">
             <div className="inline-block min-w-full shadow rounded-lg overflow-hidden">
@@ -46,15 +31,23 @@ const ManageBooks = () => {
                       Writer Name
                     </th>
                     <th className="px-5 py-3 border-b-2 border-gray-800 bg-gray-100 text-left text-sm font-bold text-gray-600 uppercase tracking-wider">
-                      Available Books
+                      Student Name
                     </th>
                     <th className="px-5 py-3 border-b-2 border-gray-800 bg-gray-100 text-left text-sm font-bold text-gray-600 uppercase tracking-wider">
-                      Edit
+                      Roll
                     </th>
                     <th className="px-5 py-3 border-b-2 border-gray-800 bg-gray-100 text-left text-sm font-bold text-gray-600 uppercase tracking-wider">
-                      Delete
+                      Class
                     </th>
-
+                    <th className="px-5 py-3 border-b-2 border-gray-800 bg-gray-100 text-left text-sm font-bold text-gray-600 uppercase tracking-wider">
+                      Lended Date
+                    </th>
+                    <th className="px-5 py-3 border-b-2 border-gray-800 bg-gray-100 text-left text-sm font-bold text-gray-600 uppercase tracking-wider">
+                      Status
+                    </th>
+                    <th className="px-5 py-3 border-b-2 border-gray-800 bg-gray-100 text-left text-sm font-bold text-gray-600 uppercase tracking-wider">
+                      Action
+                    </th>
                   </tr>
               </thead>
                 <tbody>
@@ -84,19 +77,27 @@ const ManageBooks = () => {
                         </p>
                       </td>
                       <td className="px-5 py-5 border-b border-gray-400 bg-white text-sm">
-                        <p className="text-gray-900 whitespace-no-wrap">{book?.availableBook}</p>
+                        <p className="text-gray-900 whitespace-no-wrap">{book?.name}</p>
                       </td>
                       <td className="px-5 py-5 border-b border-gray-400 bg-white text-sm">
-                        <span onClick={() => navigate(`/TeachersDashboard/EditBook/${book._id}`)} className="relative inline-block px-3 py-1 font-semibold bg-blue-900 border-lg rounded  text-white text-lg font-bold cursor-pointer leading-tight border-gray-400 py-2">
-                          <span className="relative ">EDIT</span>
-                        </span>
+                        <p className="text-gray-900 whitespace-no-wrap">{book?.roll}</p>
                       </td>
-                      <td className=" px-5 py-5 border-b border-gray-400 bg-white text-sm">
-                      <span onClick={() => DeleteBookHandler(book._id)}  className="relative inline-block px-3 py-1 font-semibold bg-yellow-300 border-lg rounded  text-blue-900 text-lg font-bold leading-tight cursor-pointer border-gray-400 py-2">
-                          <span className="relative ">DELETE</span>
-                        </span>
+                      <td className="px-5 py-5 border-b border-gray-400 bg-white text-sm">
+                        <p className="text-gray-900 whitespace-no-wrap">{book?.class}</p>
                       </td>
-                    </tr>)
+                      <td className="px-5 py-5 border-b border-gray-400 bg-white text-sm">
+                        <p className="text-gray-900 whitespace-no-wrap">{book?.lentDate}</p>
+                      </td>
+                      <td className="px-5 py-5 border-b border-gray-400 bg-white text-sm">
+                      <p className="text-blue-900 font-bold whitespace-no-wrap">{book?.status === 'Not Returned' ? book?.status : <>Returned at {book?.status}</>}</p>
+                      </td>
+                      {
+                        book?.status === 'Not Returned' ? <td className="px-5  py-5 border-b border-gray-400 bg-white text-sm">
+                        <p onClick={() => NotifyHandler({email: book.email, bookName: book.bookName})} className="text-white cursor-pointer text-center font-bold rounded py-2 whitespace-no-wrap bg-indigo-900">Notify For Return</p>
+                      </td> : ''
+                      }
+                    </tr>
+                    )
                   }
                 </tbody>
               </table>
@@ -108,4 +109,4 @@ const ManageBooks = () => {
   );
 }
 
-export default ManageBooks;
+export default CheckLendBookList;

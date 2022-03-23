@@ -365,26 +365,6 @@ const TeachersPanelSideBar = () => {
                     View Notice
                 </p>
             </Link>
-
-            <p
-                onClick={() => setShown4(!shown4)}
-                className="principal_sidebar_link mt-4"
-            >
-                <span>
-                    <SiSamsungpay className="principal_react_icons" />
-                    Library <IoIosArrowDown className="principal_react_icons" />
-                </span>
-            </p>
-            {shown4 && (
-                <ul className="drop_link">
-                    <Link to="/TeachersDashboard/BooksAdd">
-                        <li className="class_text">Add Books</li>
-                    </Link>
-                    <Link to="/TeachersDashboard/ManageBooks">
-                        <li className="class_text">Manage Books</li>
-                    </Link>
-                </ul>
-            )}
         </div>
     );
 };

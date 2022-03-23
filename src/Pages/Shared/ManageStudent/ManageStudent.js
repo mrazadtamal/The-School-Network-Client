@@ -8,13 +8,10 @@ const ManageStudent = () => {
     const navigate = useNavigate();
     const { state } = useLocation();
     const dispatch = useDispatch();
-
     useEffect(() => {
         dispatch(GetAllStudents(state));
     }, [dispatch, state]);
-
     const students = useSelector((states) => states.principalStore.Allstudents);
-
     const ResultViewHandler = (id) => {
         if (user.email === "principal@gmail.com") {
             navigate(`/PrincipalDashboard/ViewStudentsPerformance/${id}`);
@@ -22,7 +19,6 @@ const ManageStudent = () => {
             navigate(`/TeachersDashboard/ViewStudentsPerformance/${id}`);
         }
     };
-
     return (
         <div className="bg-white p-8 rounded-md w-full">
             <div>
@@ -49,11 +45,6 @@ const ManageStudent = () => {
                                     <th className="px-5 py-3 border-b-2 border-gray-800 bg-gray-100 text-left text-sm font-bold text-gray-600 uppercase tracking-wider">
                                         View Performance
                                     </th>
-                                    {user.email === "principal@gmail.com" && (
-                                        <th className="px-5 py-3 border-b-2 border-gray-800 bg-gray-100 text-left text-sm font-bold text-gray-600 uppercase tracking-wider">
-                                            Check Payment Status
-                                        </th>
-                                    )}
                                 </tr>
                             </thead>
                             <tbody>

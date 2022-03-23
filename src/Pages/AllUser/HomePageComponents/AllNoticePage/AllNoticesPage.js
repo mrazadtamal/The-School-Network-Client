@@ -1,11 +1,13 @@
 import React, { useEffect } from "react";
 import { FcAdvertising } from "react-icons/fc";
 import { Link } from "react-router-dom";
-import { GetingPreviousAnnouncement } from "../../../SchoolRedux/PrincipalSlice";
+import { GetingPreviousAnnouncement } from "../../../../SchoolRedux/PrincipalSlice";
 import { useDispatch, useSelector } from "react-redux";
+import AllUserNavbar from "../../AllUserNavbar/AllUserNavbar";
+import Foooter from "../../HomePageComponents/Foooter";
 
-const NoticeBoard = () => {
-  const dispatch = useDispatch();
+const AllNoticesPage = () => {
+    const dispatch = useDispatch();
 
   useEffect(() => {
     dispatch(GetingPreviousAnnouncement());
@@ -13,9 +15,11 @@ const NoticeBoard = () => {
   const previousAnnouncement = useSelector(
     (state) => state.principalStore.announcement
   );
-
-  return (
-    <div className="bg-yellow-300	pt-6 pb-10">
+    return (
+        <div>
+            <AllUserNavbar/
+            >
+            <div className="bg-yellow-300	pt-6 pb-10">
       <h2 className="pt-10 pb-10 text-center text-3xl">
         Important Notices and Information :
       </h2>
@@ -43,16 +47,20 @@ const NoticeBoard = () => {
           <div className="border-b-2 border-indigo-500"></div>
         </div>
       ))}
-      <div className="pt-16 pb-4 text-center ">
+      {/* <div className="pt-16 pb-4 text-center ">
         <Link to="/AllNotices">
           <button className="bg-emerald-900  p-2 pr-4 rounded-full pl-4 text-cyan-50">
             See All Notice
           </button>
         </Link>
-      </div>
-      s
+      </div> */}
+     
     </div>
-  );
+
+            <Foooter/>
+            
+        </div>
+    );
 };
 
-export default NoticeBoard;
+export default AllNoticesPage;

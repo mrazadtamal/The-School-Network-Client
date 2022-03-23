@@ -3,6 +3,8 @@ import "./contact.css";
 import { useRef, useState } from "react";
 
 import emailjs from "@emailjs/browser";
+import Footer from "../HomePageComponents/Foooter";
+import AllUserNavbar from "../AllUserNavbar/AllUserNavbar";
 
 const Contact = () => {
   const formRef = useRef();
@@ -30,7 +32,11 @@ const Contact = () => {
   };
 
   return (
+
+    <div>
+      <AllUserNavbar/>
     <div className="c">
+
       <div className="c-wrapper">
         <div className="flex flex-col w-full lg:w-2/5 p-8 text-white">
           <p className="text-3xl md:text-5xl text-yellow-500 my-3 leading-relaxed md:leading-snug">
@@ -108,6 +114,8 @@ const Contact = () => {
           {done && <h1 className="text-white mt-36 text-4xl"> Thank you</h1>}
         </div>
       </div>
+    </div>
+    <Footer/>
     </div>
   );
 };
