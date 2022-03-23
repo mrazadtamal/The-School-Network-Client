@@ -266,6 +266,30 @@ export const RemoveTeacher = createAsyncThunk(
    
   }
 );
+//Get Individual ConcessionForm data
+export const GetSingleData = createAsyncThunk(
+  "Principal/GetSingleData",
+  async (id) => {
+    const response = await fetch(`http://localhost:5000/GetSingleData/${id}`)
+      .then((res) => res.json())
+      .catch((error) => {
+        Swal.fire("!", "Error!", "error");
+      });
+    return response;
+  }
+);
+
+//principal Gating all ConcessionForm data
+export const ConcessionFormData = createAsyncThunk(
+  "Principal/ConcessionFormData",
+  async (data) => {
+    const response = await fetch(
+      "http://localhost:5000/ConcessionFormData"
+    ).then((res) => res.json());
+    return response;
+  }
+);
+
 export const PrincipalReducer = createSlice({
   name: "Principal",
   initialState: {
@@ -278,6 +302,8 @@ export const PrincipalReducer = createSlice({
     PaymentDetails: [],
     admissionForms: [],
     admissionForm: {},
+    ConcessionData: [],
+    SingleData: {},
   },
   reducers: {
     increment: (state) => {
@@ -342,6 +368,13 @@ export const PrincipalReducer = createSlice({
     });
     builder.addCase(RemoveTeacher.fulfilled, (state, action) => {
       Swal.fire("Success", "Teacher Removed Successfully", "success");
+    });
+    builder.addCase(ConcessionFormData.fulfilled, (state, action) => {
+      state.ConcessionData = action.payload;
+    });
+
+    builder.addCase(GetSingleData.fulfilled, (state, action) => {
+      state.SingleData = action.payload;
     });
   },
 });

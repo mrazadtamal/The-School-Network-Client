@@ -74,6 +74,8 @@ import NotificationPage from "./Pages/StudentPanel/NotificationPage/Notification
 import VideoSubmission from "./Pages/TeachersPanel/VideoSubmission/VideoSubmission";
 import VideosFromTeacher from "./Pages/StudentPanel/VideosFromTeacher/VideosFromTeacher";
 import WatchVideo from "./Pages/StudentPanel/WatchVideo/WatchVideo";
+import ConcessionFormP from "./Pages/PrincipalPanel/ConcessionForm/ConcessionForm";
+import SingleData from "./Pages/PrincipalPanel/ConcessionForm/SingleData";
 
 function App() {
   return (
@@ -177,6 +179,15 @@ function App() {
                         path="/PrincipalDashboard/RegisterOtherStaff"
                         element={<RegisterOtherStaff />}
                         />
+                       <Route
+                        path="/PrincipalDashboard/ConcessionForm"
+                        element={<ConcessionFormP />}
+                      />
+
+                      <Route
+                        path="/PrincipalDashboard/SingleData/:id"
+                        element={<SingleData />}
+                      />
                     </Route>
                     {/* --------------Principal Routes End--------------- */}
                     {/* --------------Teacher Routes Start */}
