@@ -1,0 +1,71 @@
+.book_container{
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    grid-column-gap: 20px;
+    grid-row-gap: 20px;
+}
+.library_header{
+    background: rgba(0,0,0,0.6) url('../../../img/library_bnnaerimg.jpg');
+    background-blend-mode: darken;
+    background-repeat: no-repeat;
+    background-size: cover;
+    background-position: center center;
+    height: 50vh;
+    width: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+.library_title {
+    font-size: calc( 1em + 7vmin );
+    font-weight: 900;
+    color: rgb(255, 255, 255);
+    
+    --x-offset: -0.0825em;
+    --y-offset: 0.0825em;
+    --stroke: 0.025em;
+    --background-color: rgb(0, 0, 0);
+    --stroke-color: rgb(17, 17, 17);
+    
+    text-shadow: 
+      
+      var(--x-offset)
+      var(--y-offset)
+      0px
+      var(--background-color), 
+      
+      calc( var(--x-offset) - var(--stroke) )
+      calc( var(--y-offset) + var(--stroke) )
+      0px
+      var(--stroke-color);
+    
+  }
+  @supports ( text-shadow: 1px 1px 1px 1px black ) {
+    .library_title {
+      text-shadow:
+        
+        var(--x-offset)
+        var(--y-offset)
+        0px
+        0px
+        var(--background-color), 
+        
+        var(--x-offset) 
+        var(--y-offset)
+        var(--stroke)
+        0px
+        var(--stroke-color);
+      
+    }
+  }
+
+  /* -------------students notification css---------- */
+  .notification_div{
+    box-shadow: rgba(0, 0, 0, 0.16) 0px 3px 6px, rgba(0, 0, 0, 0.23) 0px 3px 6px;
+    border-radius: 10px;
+    background-color: rgb(255, 255, 255);
+  }
+  .notification_container{
+    background-color: rgb(228, 224, 224);
+    border-radius: 10px;
+  }

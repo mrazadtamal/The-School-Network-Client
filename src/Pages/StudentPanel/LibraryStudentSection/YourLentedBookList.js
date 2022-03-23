@@ -1,38 +1,32 @@
-import React, { useEffect,useState } from 'react';
+import React, { useEffect, useState } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
-import { useNavigate } from 'react-router-dom';
-import Swal from 'sweetalert2';
-import {DeleteBook, GetAllBooks} from '../../../../SchoolRedux/TeacherSlice';
+import { ReturnBook, YourLentBookList } from '../../../SchoolRedux/StudentSlice';
+import useFirebase from '../../Shared/Authentication/Authentication';
+import LibraryNavbar from './LibraryNavbar/LibraryNavbar';
 
-const ManageBooks = () => {
-    const dispatch = useDispatch();
-    const navigate = useNavigate()
-    const [count, setCount] = useState(0)
+const YourLentedBookList = () => {
+  const [count, setCount] = useState(0)
+  const { user } = useFirebase();
+  const dispatch = useDispatch();
+  
     useEffect(() => {
-        dispatch(GetAllBooks())
-    },[count,dispatch])
-    const Books = useSelector((state) => state.teacherStore.Books)
-    const DeleteBookHandler = (id) => {
-      Swal.fire({
-        title: 'Are you sure?',
-        text: "You won't be able to revert this!",
-        icon: 'warning',
-        showCancelButton: true,
-        confirmButtonColor: '#3085d6',
-        cancelButtonColor: '#d33',
-        confirmButtonText: 'Yes, delete it!'
-      }).then((result) => {
-        if (result.isConfirmed) {
-          dispatch(DeleteBook(id))
-          setCount(count + 1)
-        }
-      })
+        dispatch(YourLentBookList(user.email))
+    },[count,dispatch,user.email])
 
-     
-    }
+const BookList = useSelector((state) => state.studentStore.LentBookList)
+
+
+const ReturnBookHandler = (returnData) => {
+  dispatch(ReturnBook(returnData))
+  setCount(count + 1)
+}
+
   return (
-  <div className="bg-white p-8 rounded-md w-full">
-        <h1 className="text-3xl text-blue-900 text-center my-8 font-bold">All Library Books Here</h1>
+   <div style={{width: '100%'}}>
+           <LibraryNavbar />
+      {
+        BookList.LendList?.length === 0 ? <h1 className="text-5xl my-12 font-bold text-yellow-400 text-center">No Books Lented Yet</h1> : <div className="bg-white p-8 rounded-md w-full">
+          <h1 className='text-3xl text-center font-bold text-blue-800 my-8'>Your Lented Book-List</h1>
         <div>
           <div className="-mx-4 sm:-mx-8 px-4 sm:px-8 py-4 overflow-x-auto">
             <div className="inline-block min-w-full shadow rounded-lg overflow-hidden">
@@ -46,20 +40,20 @@ const ManageBooks = () => {
                       Writer Name
                     </th>
                     <th className="px-5 py-3 border-b-2 border-gray-800 bg-gray-100 text-left text-sm font-bold text-gray-600 uppercase tracking-wider">
-                      Available Books
+                      Lent Date
                     </th>
                     <th className="px-5 py-3 border-b-2 border-gray-800 bg-gray-100 text-left text-sm font-bold text-gray-600 uppercase tracking-wider">
-                      Edit
+                      Status
                     </th>
                     <th className="px-5 py-3 border-b-2 border-gray-800 bg-gray-100 text-left text-sm font-bold text-gray-600 uppercase tracking-wider">
-                      Delete
+                      Return Book
                     </th>
 
                   </tr>
               </thead>
                 <tbody>
                   {
-                    Books?.map(book => <tr>
+                    BookList.LendList?.map(book => <tr>
                       <td className="px-5 py-5 border-b border-gray-400 bg-white text-sm">
                         <div className="flex items-center">
                           <div className="flex-shrink-0 w-10 h-10">
@@ -84,17 +78,17 @@ const ManageBooks = () => {
                         </p>
                       </td>
                       <td className="px-5 py-5 border-b border-gray-400 bg-white text-sm">
-                        <p className="text-gray-900 whitespace-no-wrap">{book?.availableBook}</p>
+                        <p className="text-gray-900 whitespace-no-wrap">{book?.lentDate}</p>
                       </td>
                       <td className="px-5 py-5 border-b border-gray-400 bg-white text-sm">
-                        <span onClick={() => navigate(`/TeachersDashboard/EditBook/${book._id}`)} className="relative inline-block px-3 py-1 font-semibold bg-blue-900 border-lg rounded  text-white text-lg font-bold cursor-pointer leading-tight border-gray-400 py-2">
-                          <span className="relative ">EDIT</span>
-                        </span>
+                        <p className="text-blue-900 font-bold whitespace-no-wrap">{book?.status === 'Not Returned' ? book?.status : <>Returned at {book?.status}</>}</p>
                       </td>
                       <td className=" px-5 py-5 border-b border-gray-400 bg-white text-sm">
-                      <span onClick={() => DeleteBookHandler(book._id)}  className="relative inline-block px-3 py-1 font-semibold bg-yellow-300 border-lg rounded  text-blue-900 text-lg font-bold leading-tight cursor-pointer border-gray-400 py-2">
-                          <span className="relative ">DELETE</span>
-                        </span>
+                        {book.status === 'Not Returned' ? <span onClick={() => ReturnBookHandler({bookId: book.bookId, id: book._id})} className="relative inline-block px-3 py-1 font-semibold bg-pink-600 text-white text-lg font-bold leading-tight border-gray-400 py-2 cursor-pointer">
+                          <span className="relative ">RETURN BOOK</span>
+                        </span> : <span className="relative inline-block px-3 py-1 font-semibold  text-green-500 text-lg font-bold leading-tight border-gray-400 py-2">
+                          <span className="relative ">RETURNED</span>
+                        </span>}
                       </td>
                     </tr>)
                   }
@@ -103,9 +97,10 @@ const ManageBooks = () => {
             </div>
           </div>
         </div>
-  </div>
-
+      </div>
+      }
+   </div>
   );
 }
 
-export default ManageBooks;
+export default YourLentedBookList;

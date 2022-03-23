@@ -1,7 +1,7 @@
 import React, { useState } from 'react';
 import useFirebase from '../../Shared/Authentication/Authentication';
 import Swal from 'sweetalert2'
-const RegisterTeacher = () => {
+const RegisterOtherStaff = () => {
     const [regdata, setRegData] = useState({})
     const {RegisterUser, setUser} = useFirebase();
     
@@ -19,7 +19,7 @@ const RegisterTeacher = () => {
         // Signed in 
         const user = userCredential.user;
         setUser(user);
-        SaveTeacher(regdata.email, regdata.teachername, regdata.role, regdata.teacherclass, regdata.teachersection,regdata.teachernid, regdata.teacherphone, regdata.teacheraddress)
+        SaveTeacher(regdata.email, regdata.staffName, regdata.role, regdata.staffNid, regdata.staffPhone, regdata.staffAddress)
 
         e.target.reset()
         
@@ -32,11 +32,11 @@ const RegisterTeacher = () => {
     }
 
      //saving teacher to database
-     const SaveTeacher = (email, teachername, role, teacherclass, teachersection, teachernid, teacherphone, teacheraddress) => {
+     const SaveTeacher = (email, staffName, role, staffNid, staffPhone, staffAddress) => {
      
-      const teacherdata = {email, teachername, role, teacherclass, teachersection, teachernid, teacherphone, teacheraddress}
+      const teacherdata = {email, staffName, role, staffNid, staffPhone, staffAddress}
 
-        fetch('http://localhost:5000/addUser', {
+        fetch('https://blooming-citadel-14218.herokuapp.com/addUser', {
             method: 'POST',
             headers: {
                 'content-type':'application/json'
@@ -49,7 +49,7 @@ const RegisterTeacher = () => {
           {
             Swal.fire(
                 'Success',
-                'Teacher Added Successfully',
+                'Staff Added Successfully',
                 'success'
               )
           }
@@ -57,7 +57,7 @@ const RegisterTeacher = () => {
     }
     return (
       <div className="mt-4" style={{width: '100%'}}>
-            <h1 className='text-3xl font-bold text-center mt-4'>Register Teacher</h1>
+            <h1 className='text-3xl font-bold text-center mt-4'>Register Staff In School</h1>
             <form onSubmit={AddTeacherHandler} className='principal_register_teacher mt-8'>
                 <div className='grid lg:grid-cols-12 sm:grid-cols-12 md:grid-cols-12 gap-6'>
                     <div className="col-span-12">
@@ -66,7 +66,7 @@ const RegisterTeacher = () => {
                         </label>
                         <input
                         type="text"
-                        name="teachername"
+                        name="staffName"
                         onBlur={OnblurHandler}
                         className="mt-1 principal_form_all_input"
                         />
@@ -106,7 +106,7 @@ const RegisterTeacher = () => {
                     </label>
                     <input
                         type="number"
-                        name="teacherphone"
+                        name="staffPhone"
                         onBlur={OnblurHandler}
                         className="mt-1 principal_form_all_input"
                     />
@@ -118,56 +118,24 @@ const RegisterTeacher = () => {
                     </label>
                     <input
                         type="text"
-                        name="teachernid"
+                        name="staffNid"
                         onBlur={OnblurHandler}
                         className="mt-1 principal_form_all_input"
                     />
                     </div>
                 </div>
                 <div className='grid lg:grid-cols-12 sm:grid-cols-12 md:grid-cols-12 gap-6'>
-                    <div className="col-span-4 mt-8">
+                    <div className="col-span-12 mt-8">
                     <label htmlFor="country" className="block principal_form_all_labels">
-                        Class Teacher Of
+                        Role
                     </label>
                     <select
-                         name="teacherclass"
+                         name="role"
                          onBlur={OnblurHandler}
                         className="mt-1 block w-full py-2 px-3 border border-gray-300 bg-white rounded-md shadow-sm focus:outline-none focus:ring-indigo-500 focus:border-indigo-500 sm:text-sm"
                     >
-                        <option value="class-one">Class One</option>
-                        <option value="class-two">Class Two</option>
-                        <option value="class-three">Class Three</option>
-                        <option value="class-four">Class Four</option>
-                        <option value="class-five">Class Five</option>
-                    </select>
-                    </div>
-                    
-                    <div className="col-span-4 mt-8">
-                    <label htmlFor="country" className="block principal_form_all_labels">
-                        Section
-                    </label>
-                    <select
-                         name="teachersection"
-                         onBlur={OnblurHandler}
-                        className="mt-1 block w-full py-2 px-3 border border-gray-300 bg-white rounded-md shadow-sm focus:outline-none focus:ring-indigo-500 focus:border-indigo-500 sm:text-sm"
-                    >
-                        <option value="section-A">A</option>
-                        <option value="section-B">B</option>
-                    </select>
-                    </div>
-
-                    <div className="col-span-4 mt-8">
-                    <label htmlFor="country" className="block principal_form_all_labels">
-                        Roles
-                    </label>
-                    <select
-                        name="role"
-                        onBlur={OnblurHandler}
-                        className="mt-1 block w-full py-2 px-3 border border-gray-300 bg-white rounded-md shadow-sm focus:outline-none focus:ring-indigo-500 focus:border-indigo-500 sm:text-sm"
-                    >
-                        <option value="Teacher">Teacher</option>
-                        <option value="VicePrincipal">VicePrincipal</option>
-                        <option value="Principal">Principal</option>
+                        <option>Choose Role</option>
+                        <option value="Librarian">Librarian</option>
                     </select>
                     </div>
                 </div>
@@ -177,7 +145,7 @@ const RegisterTeacher = () => {
                             Address
                         </label>
                         <textarea
-                             name="teacheraddress"
+                             name="staffAddress"
                              onBlur={OnblurHandler}
                             autoComplete="street-address"
                             className="mt-1 principal_form_all_input"
@@ -190,4 +158,4 @@ const RegisterTeacher = () => {
     );
 };
 
-export default RegisterTeacher;
+export default RegisterOtherStaff;

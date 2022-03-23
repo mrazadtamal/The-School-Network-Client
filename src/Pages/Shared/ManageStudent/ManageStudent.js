@@ -46,9 +46,7 @@ const ManageStudent = () => {
                   <th className="px-5 py-3 border-b-2 border-gray-800 bg-gray-100 text-left text-sm font-bold text-gray-600 uppercase tracking-wider">
                     View Performance
                   </th>
-                  {user.email === 'principal@gmail.com' && <th className="px-5 py-3 border-b-2 border-gray-800 bg-gray-100 text-left text-sm font-bold text-gray-600 uppercase tracking-wider">
-                    Check Payment Status
-                  </th>}
+
                 </tr>
             </thead>
               <tbody>

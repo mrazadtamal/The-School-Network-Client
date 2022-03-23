@@ -192,7 +192,9 @@ export const DeleteAssignment = createAsyncThunk(
   }
 );
 
-//Teacher adding to library
+
+// -----------------------Lirbrary thunks--------------
+//librarian adding book to library
 export const AddBooks = createAsyncThunk("Teacher/AddBooks", async (data) => {
   const response = await fetch("http://localhost:5000/AddBook", {
     method: "POST",
@@ -202,9 +204,10 @@ export const AddBooks = createAsyncThunk("Teacher/AddBooks", async (data) => {
     .catch((error) => {
       Swal.fire("!", "Error!", "error");
     });
-  return response;
-});
-//Teacher geting all books
+      return response
+    }
+);
+//librarian geting all books
 export const GetAllBooks = createAsyncThunk(
   "Teacher/GetAllBooks",
   async () => {
@@ -217,7 +220,7 @@ export const GetAllBooks = createAsyncThunk(
   }
 );
 
-//Teacher Get Edit Book library 
+//librarian Get Edit Book library 
 export const SubmitEditedBook = createAsyncThunk(
     'Teacher/SubmitEditedBook',
     async (data) => {
@@ -238,13 +241,55 @@ export const SubmitEditedBook = createAsyncThunk(
       return response
     }
 );
+
+//librarian deleting to library
+export const DeleteBook = createAsyncThunk("Teacher/DeleteBook",
+ async (id) => {
+  const response = await fetch(`http://localhost:5000/DeleteBook/${id}`, {
+    method: "DELETE"})
+    .then((res) => res.json())
+    .catch((error) => {
+      Swal.fire("!", "Error!", "error");
+    });
+      return response
+    }
+);
+//librarian geting all lend books
+export const GetAllLendBooks = createAsyncThunk(
+  "Teacher/GetAllLendBooks",
+  async () => {
+    const response = await fetch("http://localhost:5000/GetAllLendBooks")
+      .then((res) => res.json())
+      .catch((error) => {
+        Swal.fire("!", "Error!", "error");
+      });
+    return response;
+  }
+);
+//librarian geting all lend books
+export const NotifyStudents = createAsyncThunk(
+  "Teacher/NotifyStudents",
+  async (data) => {
+    const response = await fetch("http://localhost:5000/NotifyStudents",{
+      method: 'POST',
+      headers:{'content-type':'application/json'},
+      body: JSON.stringify(data)
+    })
+      .then((res) => res.json())
+      .catch((error) => {
+        Swal.fire("!", "Error!", "error");
+      });
+    return response;
+  }
+);
 const initialState = {
-  value: 0,
-  extraCares: [],
-  teacherInfo: {},
-  IndividualCare: {},
-  assignments: [],
-  Books: [],
+    value: 0,
+    extraCares: [],
+    teacherInfo: {},
+    IndividualCare: {},
+    assignments:[],
+    Books: [],
+    AllLendBook: []
 };
 
 export const TeacherReducer = createSlice({
@@ -257,6 +302,7 @@ export const TeacherReducer = createSlice({
     decrement: (state) => {
       state.value -= 1;
     },
+  },
     extraReducers: (builder) => {
       builder.addCase(GetExtraCareRequest.fulfilled, (state, action) => {
         state.extraCares = action.payload;
@@ -301,57 +347,23 @@ export const TeacherReducer = createSlice({
       builder.addCase(GetAllBooks.fulfilled, (state, action) => {
         state.Books = action.payload;
       });
-
       builder.addCase(SubmitEditedBook.fulfilled, (state, action) => {
-        Swal.fire("Success", "Book Updated Successfull", "success");
+        Swal.fire(
+            "Success",
+            "Book Updated Successfull",
+            "success"
+        );
+    });
+      builder.addCase(DeleteBook.fulfilled, (state, action) => {
+        Swal.fire("Success", "Book Deleted Successfully", "success");
+      });
+      builder.addCase(GetAllLendBooks.fulfilled, (state, action) => {
+        state.AllLendBook = action.payload;
+      });
+      builder.addCase(NotifyStudents.fulfilled, (state, action) => {
+        Swal.fire("Success", "Notification Successfully Send", "success");
       });
     },
-  },
-  extraReducers: (builder) => {
-    builder.addCase(GetExtraCareRequest.fulfilled, (state, action) => {
-      state.extraCares = action.payload;
-    });
-    builder.addCase(noticePublishFromTeacher.fulfilled, (state, action) => {
-      Swal.fire("Success", "Notice Published Successfully", "success");
-    });
-    builder.addCase(getTeacherInfo.fulfilled, (state, action) => {
-      state.teacherInfo = action.payload;
-    });
-    builder.addCase(updateTeacherDP.fulfilled, (state, action) => {
-      Swal.fire("Success", "Profile Picture Updated Successfully", "success");
-    });
-    builder.addCase(addTeacherInfo.fulfilled, (state, action) => {
-      Swal.fire("Success", "Information Updated Successfully", "success");
-    });
-    builder.addCase(PublishResult.fulfilled, (state, action) => {
-      Swal.fire("Success", "Result Publish Success", "success");
-    });
-    builder.addCase(GetIndividualCare.fulfilled, (state, action) => {
-      state.IndividualCare = action.payload;
-    });
-    builder.addCase(ChangeRequestHandler.fulfilled, (state, action) => {
-      console.log("Status", action.payload);
-      Swal.fire("Success", "", "success");
-    });
-    builder.addCase(assignmentPublish.fulfilled, (state, action) => {
-      Swal.fire("Success", "Assignment Published Successfully ", "success");
-    });
-    builder.addCase(PublishImageAssing.fulfilled, (state, action) => {
-      Swal.fire("Success", "Assingment img Publish Successfull", "success");
-    });
-    builder.addCase(GetingPreviosuAssignment.fulfilled, (state, action) => {
-      state.assignments = action.payload;
-    });
-    builder.addCase(DeleteAssignment.fulfilled, (state, action) => {
-      Swal.fire("Success", "Class Routine deleted successfully", "success");
-    });
-    builder.addCase(AddBooks.fulfilled, (state, action) => {
-      Swal.fire("Success", "Book Added Successfull", "success");
-    });
-    builder.addCase(GetAllBooks.fulfilled, (state, action) => {
-      state.Books = action.payload;
-    });
-  },
 });
 
 // Action creators are generated for each case reducer function
