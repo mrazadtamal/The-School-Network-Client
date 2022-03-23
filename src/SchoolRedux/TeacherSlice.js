@@ -287,7 +287,7 @@ export const teacherVideoUpload = createAsyncThunk(
   "Teacher/TeacherVideoUpload",
   async (data) => {
     console.log("data from teacher", data);
-    const response = await fetch("http://localhost:5000/videoUpload", {
+    const response = await fetch("https://blooming-citadel-14218.herokuapp.com/videoUpload", {
       method: "POST",
       // headers: { "content-type": "application/json" },
       body: data,

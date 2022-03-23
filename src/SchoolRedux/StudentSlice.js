@@ -229,7 +229,7 @@ export const GetNotification = createAsyncThunk(
 export const GetVideos = createAsyncThunk("Student/GetVideos", async (data) => {
   console.log("Hitted GetVideos", data.class);
   const response = await fetch(
-    `http://localhost:5000/videos?class=${data.class}`
+    `https://blooming-citadel-14218.herokuapp.com/videos?class=${data.class}`
   )
     .then((res) => res.json())
     .catch((err) => {
@@ -248,7 +248,7 @@ export const GetVideoById = createAsyncThunk(
   "Student/GetVideoById",
   async (data) => {
     console.log("Hitted GetVideoById", data.id);
-    const response = await fetch(`http://localhost:5000/video?id=${data.id}`)
+    const response = await fetch(`https://blooming-citadel-14218.herokuapp.com/video?id=${data.id}`)
       .then((res) => res.json())
       .catch((err) => {
         console.log(err);
