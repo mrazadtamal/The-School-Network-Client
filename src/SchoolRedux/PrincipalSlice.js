@@ -45,6 +45,18 @@ export const GetingPreviousNotice = createAsyncThunk(
     return response;
   }
 );
+
+//principal Gating all ConcessionForm data
+export const ConcessionFormData = createAsyncThunk(
+  "Principal/ConcessionFormData",
+  async (data) => {
+    const response = await fetch(
+      "http://localhost:5000/ConcessionFormData"
+    ).then((res) => res.json());
+    return response;
+  }
+);
+
 //Principal Deleting  Notice
 export const DeleteNotice = createAsyncThunk(
   "Principal/DeleteNotice",
@@ -204,6 +216,7 @@ export const UploadMonthlyPayment = createAsyncThunk(
     return response;
   }
 );
+
 //principal Geting all teachers list
 export const GetAllTeachers = createAsyncThunk(
   "Principal/GetAllTeachers",
@@ -214,6 +227,7 @@ export const GetAllTeachers = createAsyncThunk(
     return response;
   }
 );
+
 //principal submitting payment
 export const PostAdmissionData = createAsyncThunk(
   "Principal/PostAdmissionData",
@@ -267,6 +281,20 @@ export const RemoveTeacher = createAsyncThunk(
     return response;
   }
 );
+
+//Get Individual ConcessionForm data
+export const GetSingleData = createAsyncThunk(
+  "Principal/GetSingleData",
+  async (id) => {
+    const response = await fetch(`http://localhost:5000/GetSingleData/${id}`)
+      .then((res) => res.json())
+      .catch((error) => {
+        Swal.fire("!", "Error!", "error");
+      });
+    return response;
+  }
+);
+
 export const PrincipalReducer = createSlice({
   name: "Principal",
   initialState: {
@@ -279,6 +307,8 @@ export const PrincipalReducer = createSlice({
     PaymentDetails: [],
     admissionForms: [],
     admissionForm: {},
+    ConcessionData: [],
+    SingleData: {},
   },
   reducers: {
     increment: (state) => {
@@ -323,12 +353,22 @@ export const PrincipalReducer = createSlice({
       state.performances = action.payload;
       console.log("result from redux", action.payload);
     });
+
     builder.addCase(UploadMonthlyPayment.fulfilled, (state, action) => {
       Swal.fire("Success", "Payment Upload Successfully", "success");
     });
     builder.addCase(GetAllTeachers.fulfilled, (state, action) => {
       state.allTeachers = action.payload;
     });
+
+    builder.addCase(ConcessionFormData.fulfilled, (state, action) => {
+      state.ConcessionData = action.payload;
+    });
+
+    builder.addCase(GetSingleData.fulfilled, (state, action) => {
+      state.SingleData = action.payload;
+    });
+
     builder.addCase(PostAdmissionData.fulfilled, (state, action) => {
       window.location.replace(action.payload);
     });

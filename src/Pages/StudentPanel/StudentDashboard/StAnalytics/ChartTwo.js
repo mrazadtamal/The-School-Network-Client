@@ -16,7 +16,7 @@ const ChartTwo = () => {
     (state) => state.studentStore.attendance
   );
 
-  // console.log(attendanceCollections);
+  console.log(attendanceCollections);
 
   // const [chart, setChart] = useState({});
 

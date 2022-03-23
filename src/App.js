@@ -63,7 +63,7 @@ import ManageBooks from "./Pages/Shared/LibraryPages/BooksManage/ManageBooks";
 import EditBook from "./Pages/Shared/LibraryPages/BooksManage/EditBook/EditBook";
 import LentBookForm from "./Pages/StudentPanel/LibraryStudentSection/LentBookForm";
 import BookView from "./Pages/StudentPanel/LibraryStudentSection/BookView";
-import ViewIndividual from "./Pages/PrincipalPanel/ConcessionForm/ViewIndividual";
+import SingleData from "./Pages/PrincipalPanel/ConcessionForm/SingleData";
 
 function App() {
   return (
@@ -149,6 +149,11 @@ function App() {
               path="/PrincipalDashboard/ConcessionForm"
               element={<ConcessionFormP />}
             />
+
+            <Route
+              path="/PrincipalDashboard/SingleData/:id"
+              element={<SingleData />}
+            />
             <Route
               path="/PrincipalDashboard/IndividualForms/:id"
               element={<IndividualForms />}
@@ -215,10 +220,7 @@ function App() {
               path="/TeachersDashboard/ViewIndividualCare/:id"
               element={<ViewIndividualCare />}
             />
-            <Route
-              path="/TeachersDashboard/ViewIndividual/:id"
-              element={<ViewIndividual />}
-            />
+
             <Route path="/TeachersDashboard/BooksAdd" element={<BooksAdd />} />
             <Route
               path="/TeachersDashboard/ManageBooks"
