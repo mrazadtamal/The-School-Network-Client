@@ -262,6 +262,42 @@ export const GetVideoById = createAsyncThunk(
   }
 );
 
+// student ConcessionForm submit ----
+export const studentConcessionForm = createAsyncThunk(
+  "Student/ConcessionForm",
+  async (data) => {
+    console.log("Hitted student Concession Form");
+    const response = await fetch(
+      "http://localhost:5000/student/concessionForm",
+      {
+        method: "POST",
+        headers: {
+          "content-type": "application/json",
+        },
+        body: JSON.stringify(data),
+      }
+    )
+      .then((res) => res.json())
+      .catch((err) => {
+        console.log(err);
+      });
+    return response;
+  }
+);
+
+// get student Attendance Collections
+export const studentAttendanceCollections = createAsyncThunk(
+  "Student/studentAttendanceCollections",
+  async (email) => {
+    const response = await fetch(
+      `http://localhost:5000/student/studentAttendanceCollections?email=${email}`
+    )
+      .then((res) => res.json())
+      .catch((err) => console.log(err));
+    return response;
+  }
+);
+
 export const StudentReducer = createSlice({
   name: "Student",
   initialState: {
@@ -277,6 +313,7 @@ export const StudentReducer = createSlice({
     Notifications: [],
     videos: [],
     video: {},
+    attendance: [],
   },
   reducers: {
     increment: (state) => {
@@ -349,6 +386,10 @@ export const StudentReducer = createSlice({
     // set the specific video to the state
     builder.addCase(GetVideoById.fulfilled, (state, action) => {
       state.video = action.payload;
+    });
+    // get student Attendance Collections
+    builder.addCase(studentAttendanceCollections.fulfilled, (state, action) => {
+      state.attendance = action.payload;
     });
   },
 });
