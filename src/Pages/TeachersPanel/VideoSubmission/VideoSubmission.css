@@ -1,0 +1,11 @@
+.parent-div {
+  background: linear-gradient(
+      0deg,
+      rgba(0, 0, 0, 0.589),
+      rgba(102, 102, 102, 0.548)
+    ),
+    url("../../../img/teachersimage/videoSubmission.jpg");
+  background-position: center;
+  background-repeat: no-repeat;
+  background-size: cover;
+}
