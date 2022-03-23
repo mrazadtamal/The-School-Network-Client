@@ -152,7 +152,7 @@ export const StudnetAssignmentSubmit = createAsyncThunk(
   "Student/StudnetAssignmentSubmit",
   async (data) => {
     console.log("data from std", data);
-    const response = await fetch("http://localhost:5000/pdfUpload", {
+    const response = await fetch("https://blooming-citadel-14218.herokuapp.com/pdfUpload", {
       method: "POST",
       // headers: { "content-type": "application/json" },
       body: data,
@@ -162,6 +162,69 @@ export const StudnetAssignmentSubmit = createAsyncThunk(
     return response;
   }
 );
+
+// -------------libraray-------------
+//student submitting lented book form
+export const LentBook = createAsyncThunk(
+  "Student/LentBook",
+  async (data) => {
+    console.log('slice', data)
+    const response = await fetch(`http://localhost:5000/student/LentBook/${data.id}`, {
+      method: 'POST',
+      headers: { 'content-type': 'application/json' },
+      body: JSON.stringify(data.FullBookData),
+    })
+      .then((res) => res.json())
+      .catch((err) => console.log(err));
+    return response;
+  }
+);
+
+//student submitting lented book form
+export const YourLentBookList = createAsyncThunk(
+  "Student/YourLentBookList",
+  async (email) => {
+    const response = await fetch(`http://localhost:5000/student/YourLentBookList?email=${email}`)
+      .then((res) => res.json())
+      .catch((err) => console.log(err));
+    return response;
+  }
+);
+//student submitting lented book form
+export const ReturnBook = createAsyncThunk(
+  "Student/ReturnBook",
+  async (data) => {  
+    const response = await fetch(`http://localhost:5000/student/ReturnBook?bookId=${data.bookId}&&id=${data.id}`,{
+      method:'DELETE'
+    })
+      .then((res) => res.json())
+      .catch((err) => console.log(err));
+    return response;
+  }
+);
+
+//student geting category book
+export const GetCategoryBook = createAsyncThunk(
+  "Student/GetCategoryBook",
+  async (category) => {  
+    const response = await fetch(`http://localhost:5000/student/GetCategoryBook?category=${category}`)
+      .then((res) => res.json())
+      .catch((err) => console.log(err));
+    return response;
+  }
+);
+
+//student geting category book
+export const GetNotification = createAsyncThunk(
+  "Student/GetNotification",
+  async (email) => {  
+    const response = await fetch(`http://localhost:5000/student/GetNotification?email=${email}`)
+      .then((res) => res.json())
+      .catch((err) => console.log(err));
+    return response;
+  }
+);
+
 export const StudentReducer = createSlice({
   name: "Student",
   initialState: {
@@ -172,6 +235,9 @@ export const StudentReducer = createSlice({
     studentInfo: {},
     notices: [],
     montlyPayment: [],
+    LentBookList: {},
+    CategoryBook: [],
+    Notifications: []
   },
   reducers: {
     increment: (state) => {
@@ -220,6 +286,22 @@ export const StudentReducer = createSlice({
     });
     builder.addCase(StudnetAssignmentSubmit.fulfilled, (state, action) => {
       Swal.fire("Success", "Assingment Published Successfully", "success");
+    });
+    // --------library------------
+    builder.addCase(LentBook.fulfilled, (state, action) => {
+      Swal.fire("Success", "Book Lented Successfully", "success");
+    });
+    builder.addCase(YourLentBookList.fulfilled, (state, action) => {
+      state.LentBookList = action.payload
+    });
+    builder.addCase(ReturnBook.fulfilled, (state, action) => {
+      Swal.fire("Success", "Book Returned Successfully", "success");
+    });
+    builder.addCase(GetCategoryBook.fulfilled, (state, action) => {
+      state.CategoryBook = action.payload
+    });
+    builder.addCase(GetNotification.fulfilled, (state, action) => {
+      state.Notifications = action.payload
     });
   },
 });

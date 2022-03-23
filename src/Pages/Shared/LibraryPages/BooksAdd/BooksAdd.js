@@ -1,6 +1,7 @@
 import React, { useState } from 'react';
 import { useDispatch } from 'react-redux';
 import { AddBooks } from '../../../../SchoolRedux/TeacherSlice';
+import { v4 as uuidv4 } from 'uuid';
 
 const BooksAdd = () => {
     const [img, setImg] = useState('');
@@ -18,6 +19,7 @@ const BooksAdd = () => {
 
     const OnSubmitHandler = (e) => {
         e.preventDefault()
+        const bookId = uuidv4()
         if(!img){
             return;
         }
@@ -28,6 +30,7 @@ const BooksAdd = () => {
         fd.append('category', bookData.category);
         fd.append('description', bookData.description);
         fd.append('bookImg', img);
+        fd.append('bookId', bookId);
         
         dispatch(AddBooks(fd))
         e.terget.reset()
@@ -75,27 +78,23 @@ const BooksAdd = () => {
                     />
                 </div>
             </div>
-            <div className='grid grid-cols-1 md:grid-cols-2 lg:grid-cols-2 gap-5 mb-8'>
+            <div className='grid grid-cols-1 md:grid-cols-1 lg:grid-cols-1 gap-5 mb-8'>
                 <div>
                 <label htmlFor="country" className="block principal_form_all_labels">Choose Exsisting Category</label>
                     <select
                          name="category"
                          onBlur={OnblurHandler}
                         className="mt-1 block w-full py-2 px-3 border border-gray-300 bg-white rounded-md shadow-sm focus:outline-none focus:ring-indigo-500 focus:border-indigo-500 sm:text-sm"
-                    >
+                    >   <option>Choose Exsisting Category</option>
                         <option value="Rhymes">Rhymes</option>
-                        <option value="Story">Story</option>
+                        <option value="Story">Story</option> 
+                        <option value="History">History</option>
+                        <option value="General Knowledge">General Knowledge</option>
+                        <option value="Word Book">Word Book</option>
+                        <option value="Drawing">Drawing</option>
                     </select>
                 </div>
-                <div>
-                    <label htmlFor="first-name" className="block principal_form_all_labels">Add New Category</label>
-                    <input
-                    type="text"
-                    name="category"
-                    onBlur={OnblurHandler}
-                    className="mt-1 principal_form_all_input"
-                    />
-                </div>
+                
             </div>
             <div className='grid grid-cols-1 md:grid-cols-1 lg:grid-cols-1 gap-5 mb-8'>
                 <div>

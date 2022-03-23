@@ -25,10 +25,12 @@
 }
 .sidebar_colam{
     height: 100vh;
-    border-right: inset 15px rgb(194, 19, 0);
     position: sticky;
     top: 0px;
     z-index: 1;
+    overflow: scroll;
+    scroll-behavior: smooth;
+    overflow-x: hidden;
 }
 
 .principal_sidebar_icon{

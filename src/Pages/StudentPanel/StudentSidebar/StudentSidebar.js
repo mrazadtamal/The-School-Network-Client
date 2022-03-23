@@ -3,6 +3,7 @@ import { useDispatch, useSelector } from "react-redux";
 import { Link, NavLink , useNavigate} from "react-router-dom";
 import { getStudentInfo } from "../../../SchoolRedux/StudentSlice";
 import useFirebase from "../../Shared/Authentication/Authentication";
+import { MdCircleNotifications } from 'react-icons/md';
 
 const StudentSidebar = () => {
   const { user, LogOutUser } = useFirebase();
@@ -36,6 +37,17 @@ const StudentSidebar = () => {
       )}
 
       <div className="flex flex-col justify-center items-start tex-left ml-6 right py-3">
+        
+      <NavLink
+          to="/StudentDashboard/NotificationPage"
+          style={({ isActive }) => ({
+            color: isActive ? "#0bc28b" : "#FFF",
+          })}
+        >
+          <p className="text-white py-0.5"><MdCircleNotifications size={25} className="inline text-white" /> <span className="ml-1">Notification</span> </p>
+        </NavLink>
+
+        
         {/*Home  */}
 
         <NavLink
@@ -160,7 +172,7 @@ const StudentSidebar = () => {
           {/*Library */}
 
           <NavLink
-          to="/StudentDashboard/LibraryBooks"
+          to="/LibraryBooks"
           style={({ isActive }) => ({
             color: isActive ? "#0bc28b" : "#545e6f",
             background: isActive ? "#7600dc" : "black",
@@ -170,7 +182,7 @@ const StudentSidebar = () => {
             Library
           </p>
         </NavLink>
-
+          
         <button
           onClick={() => {
             LogOutUser(navigate);

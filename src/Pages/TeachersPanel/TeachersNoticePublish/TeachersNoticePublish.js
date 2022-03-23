@@ -16,7 +16,7 @@ const TeachersNoticePublish = () => {
     };
 
     return (
-        <div className="px-5 h-screen overflow-auto sm:px-10 md:px-16 lg:px-20">
+        <div style={{width: '100%'}}>
             <h2 className="text-5xl text-gray-600 font-bold my-10 text-center">
                 Publish notice
             </h2>

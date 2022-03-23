@@ -61,6 +61,14 @@ import ManageBooks from "./Pages/Shared/LibraryPages/BooksManage/ManageBooks";
 import EditBook from "./Pages/Shared/LibraryPages/BooksManage/EditBook/EditBook";
 import LentBookForm from "./Pages/StudentPanel/LibraryStudentSection/LentBookForm";
 import BookView from "./Pages/StudentPanel/LibraryStudentSection/BookView";
+import YourLentedBookList from "./Pages/StudentPanel/LibraryStudentSection/YourLentedBookList";
+import RegisterOtherStaff from "./Pages/PrincipalPanel/RegisterOtherStaff/RegisterOtherStaff";
+import LibrarianDashboard from "./Pages/LibrarianDashboard/LibrarianDashboard/LibrarianDashboard";
+import LibrarianDashboardHome from "./Pages/LibrarianDashboard/LibrarianDashboardHome";
+import CheckLendBookList from "./Pages/LibrarianDashboard/CheckLendBookList";
+import CategoryPage from "./Pages/StudentPanel/LibraryStudentSection/CategoryPage";
+import BookAnalytics from "./Pages/LibrarianDashboard/BookAnalytics";
+import NotificationPage from "./Pages/StudentPanel/NotificationPage/NotificationPage";
 
 
 function App() {
@@ -127,7 +135,7 @@ function App() {
                         <Route
                             path="/PrincipalDashboard/CheckPaymentStatus"
                             element={<CheckPaymentStatus />}
-                        />
+                        /> 
                         <Route
                             path="/PrincipalDashboard/ViewStudentsPerformance/:id"
                             element={<ViewStudentsPerformance />}
@@ -159,6 +167,10 @@ function App() {
                         <Route
                         path="/PrincipalDashboard/BooksAdd"
                         element={<BooksAdd />}
+                        />
+                        <Route
+                        path="/PrincipalDashboard/RegisterOtherStaff"
+                        element={<RegisterOtherStaff />}
                         />
                     </Route>
                     {/* --------------Principal Routes End--------------- */}
@@ -227,18 +239,6 @@ function App() {
                             path="/TeachersDashboard/ViewIndividualCare/:id"
                             element={<ViewIndividualCare />}
                         />
-                        <Route
-                        path="/TeachersDashboard/BooksAdd"
-                        element={<BooksAdd />}
-                        />
-                        <Route
-                        path="/TeachersDashboard/ManageBooks"
-                        element={<ManageBooks />}
-                        />
-                        <Route
-                        path="/TeachersDashboard/EditBook/:id"
-                        element={<EditBook />}
-                        />
                     </Route>
                     {/* --------------Teacher Routes End-------------- */}
                     {/* --------------------student route start-----------------------*/}
@@ -284,17 +284,62 @@ function App() {
                          <Route
                         path="/StudentDashboard/StudentPaymentSuccess"
                         element={<StudentPaymentSuccess />}
-                         />
-                          <Route
-                        path="/StudentDashboard/LibraryBooks"
-                        element={<BookView />}
-                         />
+                         /> 
                          <Route
-                        path="/StudentDashboard/LentBookForm"
-                        element={<LentBookForm />}
-                         />
+                        path="/StudentDashboard/NotificationPage"
+                        element={<NotificationPage />}
+                         />      
                     </Route>
+            {/* -----------students library route-------------- */}
+                    <Route
+                        path="/LibraryBooks"
+                        element={<BookView />}
+                    />
+                    <Route
+                        path="/YourLentedBookList"
+                        element={<YourLentedBookList />}
+                    />
+                    <Route
+                        path="/LentBookForm/:id"
+                        element={<LentBookForm />}
+                    />
+                    <Route
+                        path="/CategoryPage"
+                        element={<CategoryPage />}
+                    />
+        {/* -----------students library route end-------------- */}  
                     {/* --------------------student route end-------------------------*/}
+        {/* ---------------Librarian route start------------- */}
+                <Route
+                        path="/LibrarianDashboard"
+                        element={<LibrarianDashboard />}
+                    >
+                        <Route
+                            path="/LibrarianDashboard"
+                            element={<LibrarianDashboardHome />}
+                        />
+                                                <Route
+                        path="/LibrarianDashboard/BooksAdd"
+                        element={<BooksAdd />}
+                        />
+                        <Route
+                        path="/LibrarianDashboard/ManageBooks"
+                        element={<ManageBooks />}
+                        />
+                        <Route
+                        path="/LibrarianDashboard/EditBook/:id"
+                        element={<EditBook />}
+                        />
+                        <Route
+                        path="/LibrarianDashboard/CheckLendBookList"
+                        element={<CheckLendBookList />}
+                        />
+                        <Route
+                        path="/LibrarianDashboard/BookAnalytics"
+                        element={<BookAnalytics />}
+                        />
+                </Route>
+        {/* ---------------Librarian route end------------- */}
             </Routes>
       </BrowserRouter>
     </div>

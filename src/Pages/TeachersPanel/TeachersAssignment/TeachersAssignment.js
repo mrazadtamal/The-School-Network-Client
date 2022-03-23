@@ -6,22 +6,25 @@ import'./Teacherpanel.css'
 const TeachersAssignment = () => {
    const dispatch = useDispatch();
    const [img, setImg] = useState("");
-
+   const [assignClass, setAssignClass] = useState('')
     const { register, handleSubmit,reset } = useForm();
+    const arr = [{email: 'abc@gmail.com', assignment: 'abc'}];
+    const submssionarray = JSON.stringify(arr)
     const onSubmit = data =>{
    
       dispatch(assignmentPublish(data))
       reset()
-      console.log(data)
+    
     }
     const SubmitHandler = (e) => {
       e.preventDefault()
-
-    
-              const fd = new FormData();
-              fd.append('noticeImage', img)
-              dispatch(PublishImageAssing(fd))
-              e.target.reset()
+      console.log('aaa', submssionarray)
+        const fd = new FormData();
+        fd.append('noticeImage', img)
+        fd.append('submssionarray', submssionarray)
+        fd.append('class', assignClass)
+        dispatch(PublishImageAssing(fd))
+        e.target.reset()
     }
     useEffect(() => {
       dispatch(GetingPreviosuAssignment())
@@ -30,7 +33,7 @@ const TeachersAssignment = () => {
   const assignment = useSelector(
     (state) => state.teacherStore.assignments
 );
-console.log(assignment)
+
 
 const handleAssignmentDeleteBtn = (id) => {
   dispatch(DeleteAssignment(id));
@@ -39,11 +42,11 @@ const handleAssignmentDeleteBtn = (id) => {
     return (
         <div>
                <div className='text-center w-full m-auto mt-5'>
-            <div className='w-2/4 mx-auto container teacher-side p-5 '>
+            <div className=' mx-auto container teacher-side p-5 '>
             <p class='text-3xl text-sky-400/100'>Published Assignment</p>
 
                   
-               <form className='flex' onSubmit={SubmitHandler}>
+               <form className='flex flex-col' onSubmit={SubmitHandler}>
                <label class="block mx-2">
                         <span class="sr-only">Choose File</span>
                         <input 
@@ -57,11 +60,30 @@ const handleAssignmentDeleteBtn = (id) => {
                              hover:file:bg-violet-100
                              "/>
                       </label>
+
+                      <label htmlFor="class" className="block font-bold">
+                            Class
+                        </label>
+                        <select
+                        onBlur={(e) => setAssignClass(e.target.value)}
+                            className="border block border-gray-700 rounded p-1 w-full"
+                            id="class"
+                            name="class"
+                        >
+                          <option>Choose Class</option>
+                          <option value="class-one">Class One</option>
+                          <option value="class-two">Class Two</option>
+                          <option value="class-three">Class Three</option>
+                          <option value="class-four">Class Four</option>
+                          <option value="class-five">Class Five</option>
+                        </select>
+
                       <input 
                     className="block  my-3 px-5 
                       py-1 bg-cyan-500 hover:bg-cyan-600
                        rounded-lg text-gray-900 font-medium"
                      type="submit" />
+                     
                </form>
                      
                       
@@ -105,7 +127,7 @@ const handleAssignmentDeleteBtn = (id) => {
                       py-1 bg-cyan-500 hover:bg-cyan-600
                        rounded-lg text-gray-900 font-medium"
                      type="submit" />
-        </form>
+           </form>
         
           </div>
         <div className="container mx-auto grid lg:grid-cols-3 md:grid-cols-2 sm:grid-cols-1 pt-5 gap-5 mb-5">
