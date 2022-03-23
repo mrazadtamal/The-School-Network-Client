@@ -88,19 +88,7 @@ const handleAssignmentDeleteBtn = (id) => {
                      
                       
             <form onSubmit={handleSubmit(onSubmit)}>
-                        {/* <label class="block mx-2">
-                        <span class="sr-only">Choose File</span>
-                        <input 
-                        type="file" 
-                        {...register("img")}
-                        class="block w-full text-sm text-slate-500
-                             file:mr-4 file:py-2 file:px-4
-                             file:rounded-full file:border-0
-                             file:text-sm file:font-semibold
-                             file:bg-violet-50 file:text-violet-700
-                             hover:file:bg-violet-100
-                             "/>
-                      </label> */}
+                      
              <p className='mb-4'>Or</p>
 
                       <label class="relative block mt-5 mb-2">
