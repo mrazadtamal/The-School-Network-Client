@@ -13,7 +13,7 @@ const PrincipalManageTeacher = () => {
     const teachers = useSelector(state => state.principalStore.allTeachers);
     
     const RemoveTeacherHandler = (id) => {
-      console.log(id)
+  
         Swal.fire({
           title: 'Are you sure?',
           text: "You won't be able to revert this!",
@@ -27,8 +27,6 @@ const PrincipalManageTeacher = () => {
             dispatch(RemoveTeacher(id))
           }
         })
-
-      
     }
     return (
     <div>

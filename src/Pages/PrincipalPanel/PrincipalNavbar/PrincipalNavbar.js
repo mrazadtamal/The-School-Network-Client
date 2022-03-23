@@ -1,19 +1,24 @@
 import React, { useState } from "react";
 import { Link } from "react-router-dom";
 import { Transition } from "@headlessui/react";
+import {  useNavigate } from "react-router-dom";
 
 const PrincipalNavbar = () => {
     const [isOpen, setIsOpen] = useState(false);
     const [show, setShow] = useState(false);
     const [dropdown, setDropdown] = useState(false);
+    const [show2, setShow2] = useState(false);
 
-    const handleClick = () => {
-        setShow(!show);
-    };
     const handleClickAgain = () => {
         setDropdown(!dropdown);
     };
-
+    const navigate = useNavigate()
+    const PaymentCheckHandler = (route, classname) => {
+      navigate(`/PrincipalDashboard/${route}`, {state: classname})
+    }
+    const ManageStudentHandler = (route, classname) => {
+        navigate(`/PrincipalDashboard/${route}`, {state: classname})
+      }
     return (
         <div className="principal_navbar">
             <nav className="  bg-stone-800">
@@ -117,25 +122,39 @@ const PrincipalNavbar = () => {
                                 </Link>
 
                                 <Link
+                                    to="/PrincipalDashboard/RegisterTeacher"
+                                    className="text-gray-300 hover:bg-gray-700 hover:text-white block px-3 py-2 rounded-md text-base font-medium"
+                                >
+                                    Register Teachers
+                                </Link>
+
+                                <Link
                                     to="/PrincipalDashboard/PrincipalManageTeacher"
                                     className="text-gray-300 hover:bg-gray-700 hover:text-white block px-3 py-2 rounded-md text-base font-medium"
                                 >
                                     Manage Teachers
                                 </Link>
 
-                                {/* ---------------Dropdown */}
+                                <Link
+                                    to="/PrincipalDashboard/RegisterStudent"
+                                    className="text-gray-300 hover:bg-gray-700 hover:text-white block px-3 py-2 rounded-md text-base font-medium"
+                                >
+                                    Register Student
+                                </Link>
 
-                                <div className="relative inline-block text-left">
+                            {/* ---------------Dropdown */}
+
+                            <div className="relative inline-block text-left">
                                     <div>
                                         <button
-                                            onClick={handleClick}
+                                            onClick={() => setShow(!show)}
                                             type="button"
                                             className="inline-flex justify-center w-full rounded-md  border-gray-300 shadow-sm px-4 py-2  text-sm font-medium text-gray-300 hover:text-white focus:outline-none    "
                                             id="menu-button"
                                             aria-expanded="true"
                                             aria-haspopup="true"
                                         >
-                                            Add Result
+                                            Manage Students
                                             <svg
                                                 className="-mr-1 ml-2 h-5 w-5"
                                                 xmlns="http://www.w3.org/2000/svg"
@@ -161,7 +180,7 @@ const PrincipalNavbar = () => {
                                         >
                                             <div className="py-1" role="none">
                                                 <a
-                                                    href="/PrincipalDashboard/ResultAdd"
+                                                    onClick={() => ManageStudentHandler('PrincipalManageStudent', 'class-one')} 
                                                     className="text-gray-700 block px-4 py-2 text-sm"
                                                     role="menuitem"
                                                     id="menu-item-0"
@@ -169,7 +188,7 @@ const PrincipalNavbar = () => {
                                                     Class One
                                                 </a>
                                                 <a
-                                                    href="/PrincipalDashboard/ResultAdd"
+                                                    onClick={() => ManageStudentHandler('PrincipalManageStudent', 'class-two')} 
                                                     className="text-gray-700 block px-4 py-2 text-sm"
                                                     role="menuitem"
                                                     id="menu-item-0"
@@ -177,43 +196,136 @@ const PrincipalNavbar = () => {
                                                     Class Two
                                                 </a>
                                                 <a
-                                                    href="/PrincipalDashboard/ResultAdd"
+                                                    onClick={() => ManageStudentHandler('PrincipalManageStudent', 'class-three')} 
                                                     className="text-gray-700 block px-4 py-2 text-sm"
                                                     role="menuitem"
                                                     id="menu-item-0"
                                                 >
                                                     Class Three
                                                 </a>
+                                                <a
+                                                    onClick={() => ManageStudentHandler('PrincipalManageStudent', 'class-four')} 
+                                                    className="text-gray-700 block px-4 py-2 text-sm"
+                                                    role="menuitem"
+                                                    id="menu-item-0"
+                                                >
+                                                    Class Four
+                                                </a>
+                                                <a
+                                                    onClick={() => ManageStudentHandler('PrincipalManageStudent', 'class-five')} 
+                                                    className="text-gray-700 block px-4 py-2 text-sm"
+                                                    role="menuitem"
+                                                    id="menu-item-0"
+                                                >
+                                                    Class Five
+                                                </a>
                                             </div>
                                         </div>
                                     )}
-                                </div>
+                            </div>
 
                                 {/* -------- Dropdown end------------ */}
 
-                                <Link
-                                    to="/PrincipalDashboard/PrincipalManageStudent"
-                                    className="text-gray-300 hover:bg-gray-700 hover:text-white block px-3 py-2 rounded-md text-base font-medium"
-                                >
-                                    Mange Student
-                                </Link>
-                                <Link
-                                    to="/PrincipalDashboard/RegisterStudent"
-                                    className="text-gray-300 hover:bg-gray-700 hover:text-white block px-3 py-2 rounded-md text-base font-medium"
-                                >
-                                    Register Student
-                                </Link>
                                 <Link
                                     to="/PrincipalDashboard/UploadPayment"
                                     className="text-gray-300 hover:bg-gray-700 hover:text-white block px-3 py-2 rounded-md text-base font-medium"
                                 >
                                     Upload Monthly Payment
                                 </Link>
+                           
+                                <div className="relative inline-block text-left">
+                                    <div>
+                                        <button
+                                            onClick={() => setShow2(!show2)}
+                                            type="button"
+                                            className="inline-flex justify-center w-full rounded-md  border-gray-300 shadow-sm px-4 py-2  text-sm font-medium text-gray-300 hover:text-white focus:outline-none    "
+                                            id="menu-button"
+                                            aria-expanded="true"
+                                            aria-haspopup="true"
+                                        >
+                                            Check Payment Details
+                                            <svg
+                                                className="-mr-1 ml-2 h-5 w-5"
+                                                xmlns="http://www.w3.org/2000/svg"
+                                                viewBox="0 0 20 20"
+                                                fill="currentColor"
+                                                aria-hidden="true"
+                                            >
+                                                <path
+                                                    fillRule="evenodd"
+                                                    d="M5.293 7.293a1 1 0 011.414 0L10 10.586l3.293-3.293a1 1 0 111.414 1.414l-4 4a1 1 0 01-1.414 0l-4-4a1 1 0 010-1.414z"
+                                                    clipRule="evenodd"
+                                                />
+                                            </svg>
+                                        </button>
+                                    </div>
+
+                                    {show2 && (
+                                        <div
+                                            className=" z-50 absolute    mt-2 w-56 rounded-md shadow-lg bg-white ring-1 ring-black ring-opacity-5 focus:outline-none"
+                                            role="menu"
+                                            aria-orientation="vertical"
+                                            aaria-labelledby="menu-button"
+                                        >
+                                            <div className="py-1" role="none">
+                                                <a 
+                                                    onClick={() => PaymentCheckHandler('CheckPaymentStatus', 'class-one')}
+
+                                                    className="text-gray-700 block px-4 py-2 text-sm"
+                                                    role="menuitem"
+                                                    id="menu-item-0"
+                                                >
+                                                    Class One
+                                                </a>
+                                                <a
+                                                    onClick={() => PaymentCheckHandler('CheckPaymentStatus', 'class-two')}
+                                                    className="text-gray-700 block px-4 py-2 text-sm"
+                                                    role="menuitem"
+                                                    id="menu-item-0"
+                                                >
+                                                    Class Two
+                                                </a>
+                                                <a
+                                                    onClick={() => PaymentCheckHandler('CheckPaymentStatus', 'class-three')}
+                                                    className="text-gray-700 block px-4 py-2 text-sm"
+                                                    role="menuitem"
+                                                    id="menu-item-0"
+                                                >
+                                                    Class Three
+                                                </a>
+                                                <a
+                                                    onClick={() => PaymentCheckHandler('CheckPaymentStatus', 'class-four')}
+                                                    className="text-gray-700 block px-4 py-2 text-sm"
+                                                    role="menuitem"
+                                                    id="menu-item-0"
+                                                >
+                                                    Class Four
+                                                </a>
+                                                <a
+                                                    onClick={() => PaymentCheckHandler('CheckPaymentStatus', 'class-five')}
+                                                    className="text-gray-700 block px-4 py-2 text-sm"
+                                                    role="menuitem"
+                                                    id="menu-item-0"
+                                                >
+                                                    Class Five
+                                                </a>
+                                            </div>
+                                        </div>
+                                    )}
+                                </div>
+
                                 <Link
-                                    to="/PrincipalDashboard/CheckPaymentStatus"
+                                    to="/PrincipalDashboard/CheckAdmissionForm"
                                     className="text-gray-300 hover:bg-gray-700 hover:text-white block px-3 py-2 rounded-md text-base font-medium"
                                 >
-                                    Check Payment Status
+                                    Check AdmissionForm
+                                </Link>
+
+                                <Link
+                                to="/PrincipalDashboard/RegisterOtherStaff"
+                                className="text-gray-300 hover:bg-gray-700 hover:text-white block px-3 py-2 rounded-md text-base font-medium"
+                                >
+                                    Register Other Staff
                                 </Link>
                             </div>
                         </div>

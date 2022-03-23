@@ -44,7 +44,7 @@ const NoticeBoard = () => {
         </div>
       ))}
       <div className="pt-16 pb-4 text-center ">
-        <Link to="/allnotice">
+        <Link to="/AllNotices">
           <button className="bg-emerald-900  p-2 pr-4 rounded-full pl-4 text-cyan-50">
             See All Notice
           </button>
