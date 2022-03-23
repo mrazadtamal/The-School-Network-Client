@@ -17,7 +17,7 @@ const StudentSidebar = () => {
 
   return (
     <div className="sm:py-10">
-      <h1 className="my-5 text-left ml-6">
+      <h1 className="mt-8 text-center">
         <span className="text-5xl font-bold text-white ">S</span>
         <span className=" text-lg font-bold text-white ">tudent Dashboard</span>
       </h1>
@@ -140,6 +140,21 @@ const StudentSidebar = () => {
             Transcript
           </p>
         </NavLink>
+
+        {/*  Concession Form */}
+
+        <NavLink
+          to="/StudentDashboard/concessionForm"
+          style={({ isActive }) => ({
+            color: isActive ? "#0bc28b" : "#545e6f",
+            background: isActive ? "#7600dc" : "black",
+          })}
+        >
+          <p className="text-white py-0.5   hover:bg-yellow-200 w-40 hover:text-black">
+            Concession Form
+          </p>
+        </NavLink>
+
 
         {/* Notice Board */}
 

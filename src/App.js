@@ -57,6 +57,7 @@ import CheckAdmissionForm from "./Pages/PrincipalPanel/CheckAdmissionForm/CheckA
 import IndividualForms from "./Pages/PrincipalPanel/CheckAdmissionForm/IndividualForms";
 import BooksAdd from "./Pages/Shared/LibraryPages/BooksAdd/BooksAdd";
 import OurTeachers from "./Pages/AllUser/HomePageComponents/OurTeacers";
+import ConcessionForm from "./Pages/StudentPanel/ConcessionForm/ConcessionForm";
 import ManageBooks from "./Pages/Shared/LibraryPages/BooksManage/ManageBooks";
 import EditBook from "./Pages/Shared/LibraryPages/BooksManage/EditBook/EditBook";
 import LentBookForm from "./Pages/StudentPanel/LibraryStudentSection/LentBookForm";
@@ -69,7 +70,6 @@ import CheckLendBookList from "./Pages/LibrarianDashboard/CheckLendBookList";
 import CategoryPage from "./Pages/StudentPanel/LibraryStudentSection/CategoryPage";
 import BookAnalytics from "./Pages/LibrarianDashboard/BookAnalytics";
 import NotificationPage from "./Pages/StudentPanel/NotificationPage/NotificationPage";
-
 
 function App() {
   return (
@@ -289,6 +289,11 @@ function App() {
                         path="/StudentDashboard/NotificationPage"
                         element={<NotificationPage />}
                          />      
+                        
+                        <Route
+                        path="/StudentDashboard/concessionForm"
+                        element={<ConcessionForm />}
+                      />
                     </Route>
             {/* -----------students library route-------------- */}
                     <Route
