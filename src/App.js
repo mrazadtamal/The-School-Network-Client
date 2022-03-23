@@ -54,7 +54,6 @@ import AdmissionSuccess from "./Pages/AllUser/Admission/AdmissionSuccess";
 import StudentPaymentSuccess from "./Pages/StudentPanel/StudentPay/StudentPaymentSuccess";
 import IndividualPayment from "./Pages/PrincipalPanel/CheckPaymentStatus/IndividualPayment";
 import CheckAdmissionForm from "./Pages/PrincipalPanel/CheckAdmissionForm/CheckAdmissionForm";
-import ConcessionFormP from "./Pages/PrincipalPanel/ConcessionForm/ConcessionForm";
 import IndividualForms from "./Pages/PrincipalPanel/CheckAdmissionForm/IndividualForms";
 import BooksAdd from "./Pages/Shared/LibraryPages/BooksAdd/BooksAdd";
 import OurTeachers from "./Pages/AllUser/HomePageComponents/OurTeacers";
@@ -63,234 +62,318 @@ import ManageBooks from "./Pages/Shared/LibraryPages/BooksManage/ManageBooks";
 import EditBook from "./Pages/Shared/LibraryPages/BooksManage/EditBook/EditBook";
 import LentBookForm from "./Pages/StudentPanel/LibraryStudentSection/LentBookForm";
 import BookView from "./Pages/StudentPanel/LibraryStudentSection/BookView";
+import AllNoticesPage from "./Pages/AllUser/HomePageComponents/AllNoticePage/AllNoticesPage";
+import YourLentedBookList from "./Pages/StudentPanel/LibraryStudentSection/YourLentedBookList";
+import RegisterOtherStaff from "./Pages/PrincipalPanel/RegisterOtherStaff/RegisterOtherStaff";
+import LibrarianDashboard from "./Pages/LibrarianDashboard/LibrarianDashboard/LibrarianDashboard";
+import LibrarianDashboardHome from "./Pages/LibrarianDashboard/LibrarianDashboardHome";
+import CheckLendBookList from "./Pages/LibrarianDashboard/CheckLendBookList";
+import CategoryPage from "./Pages/StudentPanel/LibraryStudentSection/CategoryPage";
+import BookAnalytics from "./Pages/LibrarianDashboard/BookAnalytics";
+import NotificationPage from "./Pages/StudentPanel/NotificationPage/NotificationPage";
+import VideoSubmission from "./Pages/TeachersPanel/VideoSubmission/VideoSubmission";
+import VideosFromTeacher from "./Pages/StudentPanel/VideosFromTeacher/VideosFromTeacher";
+import WatchVideo from "./Pages/StudentPanel/WatchVideo/WatchVideo";
+import ConcessionFormP from "./Pages/PrincipalPanel/ConcessionForm/ConcessionForm";
 import SingleData from "./Pages/PrincipalPanel/ConcessionForm/SingleData";
 
 function App() {
   return (
     <div>
-      <BrowserRouter>
-        <Routes>
-          {/* --------------All User Homepage Routes Start--------------- */}
-          <Route path="/" element={<HomePage />} />
-          <Route path="/home" element={<HomePage />} />
-          <Route path="/aboutus" element={<AboutUsPage />} />
-          <Route path="/login" element={<LogInPage />} />
-          <Route path="/admissionPolicy" element={<AdmissionPolicy />} />
-          <Route path="/howtoapply" element={<HowToApply />} />
-          <Route path="/admissionForm" element={<AdmissionForm />} />
-          <Route path="/canteen" element={<Canteen />} />
-          <Route path="/library" element={<Library />} />
-          <Route path="/auditoriam" element={<Auditoraim />} />
-          <Route path="/games" element={<Games />} />
-          <Route path="/contact" element={<Contact />} />
-          <Route path="/ourTeacehrs" element={<OurTeachers />} />
-          <Route path="/AdmissionSuccess" element={<AdmissionSuccess />} />
-          {/* --------------All User Homepage Routes End--------------- */}
-          {/* --------------Principal Routes Start-------------- */}
-          <Route path="/PrincipalDashboard" element={<PrincipalDashboard />}>
-            <Route path="/PrincipalDashboard" element={<PrincipalHome />} />
-            <Route
-              path="/PrincipalDashboard/PrincipalPublishNotice"
-              element={<PrincipalPublishNotice />}
-            />
-            <Route
-              path="/PrincipalDashboard/PrincipalAnnouncement"
-              element={<PrincipalAnnouncement />}
-            />
-            <Route
-              path="/PrincipalDashboard/PrincipalManageTeacher"
-              element={<PrincipalManageTeacher />}
-            />
-            <Route
-              path="/PrincipalDashboard/RegisterTeacher"
-              element={<RegisterTeacher />}
-            />
-            <Route
-              path="/PrincipalDashboard/PrincipalManageStudent"
-              element={<ManageStudent />}
-            />
-            <Route
-              path="/PrincipalDashboard/UploadPayment"
-              element={<UploadPayment />}
-            />
-            <Route
-              path="/PrincipalDashboard/RegisterStudent"
-              element={<RegisterStudent />}
-            />
-            <Route
-              path="/PrincipalDashboard/CheckPaymentStatus"
-              element={<CheckPaymentStatus />}
-            />
-            <Route
-              path="/PrincipalDashboard/ViewStudentsPerformance/:id"
-              element={<ViewStudentsPerformance />}
-            />
-            <Route
-              path="/PrincipalDashboard/PreviousNotice"
-              element={<PreviousNotice />}
-            />
-            <Route
-              path="/PrincipalDashboard/PreviousNotice"
-              element={<PreviousNotice />}
-            />
-            <Route
-              path="/PrincipalDashboard/PreviousAnnouncement"
-              element={<PreviousAnnouncement />}
-            />
-            <Route
-              path="/PrincipalDashboard/IndividualPayment"
-              element={<IndividualPayment />}
-            />
-            <Route
-              path="/PrincipalDashboard/CheckAdmissionForm"
-              element={<CheckAdmissionForm />}
-            />
-            <Route
-              path="/PrincipalDashboard/ConcessionForm"
-              element={<ConcessionFormP />}
-            />
+        <BrowserRouter>
+            <Routes>
+                    {/* --------------All User Homepage Routes Start--------------- */}
+                    <Route path="/" element={<HomePage />} />
+                    <Route path="/home" element={<HomePage />} />
+                    <Route path="/aboutus" element={<AboutUsPage />} />
+                    <Route path="/login" element={<LogInPage />} />
+                    <Route
+                        path="/admissionPolicy"
+                        element={<AdmissionPolicy />}
+                    />
+                    <Route path="/howtoapply" element={<HowToApply />} />
+                    <Route path="/admissionForm" element={<AdmissionForm />} />
+                    <Route path="/canteen" element={<Canteen />} />
+                    <Route path="/library" element={<Library />} />
+                    <Route path="/auditoriam" element={<Auditoraim />} />
+                    <Route path="/games" element={<Games />} />
+                    <Route path="/contact" element={<Contact />} />
+                    <Route path="/ourTeacehrs" element={<OurTeachers />} />
+                    <Route path="/AdmissionSuccess" element={<AdmissionSuccess />} />
+                    <Route path="/AllNotices" element={<AllNoticesPage />} />
+                    {/* --------------All User Homepage Routes End--------------- */}
+                    {/* --------------Principal Routes Start-------------- */}
+                    <Route
+                        path="/PrincipalDashboard"
+                        element={<PrincipalDashboard />}
+                    >
+                        <Route
+                            path="/PrincipalDashboard"
+                            element={<PrincipalHome />}
+                        />
+                        <Route
+                            path="/PrincipalDashboard/PrincipalPublishNotice"
+                            element={<PrincipalPublishNotice />}
+                        />
+                        <Route
+                            path="/PrincipalDashboard/PrincipalAnnouncement"
+                            element={<PrincipalAnnouncement />}
+                        />
+                        <Route
+                            path="/PrincipalDashboard/PrincipalManageTeacher"
+                            element={<PrincipalManageTeacher />}
+                        />
+                        <Route
+                            path="/PrincipalDashboard/RegisterTeacher"
+                            element={<RegisterTeacher />}
+                        />
+                        <Route
+                            path="/PrincipalDashboard/PrincipalManageStudent"
+                            element={<ManageStudent/>}
+                        />
+                        <Route
+                            path="/PrincipalDashboard/UploadPayment"
+                            element={<UploadPayment />}
+                        />
+                        <Route
+                            path="/PrincipalDashboard/RegisterStudent"
+                            element={<RegisterStudent />}
+                        />
+                        <Route
+                            path="/PrincipalDashboard/CheckPaymentStatus"
+                            element={<CheckPaymentStatus />}
+                        /> 
+                        <Route
+                            path="/PrincipalDashboard/ViewStudentsPerformance/:id"
+                            element={<ViewStudentsPerformance />}
+                        />
+                        <Route
+                            path="/PrincipalDashboard/PreviousNotice"
+                            element={<PreviousNotice />}
+                        />
+                        <Route
+                        path="/PrincipalDashboard/PreviousNotice"
+                        element={<PreviousNotice />}
+                        />
+                        <Route
+                        path="/PrincipalDashboard/PreviousAnnouncement"
+                        element={<PreviousAnnouncement />}
+                        />
+                        <Route
+                        path="/PrincipalDashboard/IndividualPayment"
+                        element={<IndividualPayment />}
+                        />
+                         <Route
+                        path="/PrincipalDashboard/CheckAdmissionForm"
+                        element={<CheckAdmissionForm />}
+                        />
+                        <Route
+                        path="/PrincipalDashboard/IndividualForms/:id"
+                        element={<IndividualForms />}
+                        />
+                        <Route
+                        path="/PrincipalDashboard/BooksAdd"
+                        element={<BooksAdd />}
+                        />
+                        <Route
+                        path="/PrincipalDashboard/RegisterOtherStaff"
+                        element={<RegisterOtherStaff />}
+                        />
+                       <Route
+                        path="/PrincipalDashboard/ConcessionForm"
+                        element={<ConcessionFormP />}
+                      />
 
-            <Route
-              path="/PrincipalDashboard/SingleData/:id"
-              element={<SingleData />}
-            />
-            <Route
-              path="/PrincipalDashboard/IndividualForms/:id"
-              element={<IndividualForms />}
-            />
-            <Route path="/PrincipalDashboard/BooksAdd" element={<BooksAdd />} />
-          </Route>
-          {/* --------------Principal Routes End--------------- */}
-          {/* --------------Teacher Routes Start */}
-          <Route path="/TeachersDashboard" element={<TeachersPanel />}>
-            <Route path="/TeachersDashboard" element={<TeachersPanelHome />} />
-            <Route
-              path="/TeachersDashboard/Profile"
-              element={<TeachersProfile />}
-            />
-            <Route
-              path="/TeachersDashboard/NoticePublish"
-              element={<TeachersNoticePublish />}
-            />
-            <Route
-              path="/TeachersDashboard/ClassRoutine"
-              element={<TeachersClassRoutine />}
-            />
-            <Route
-              path="/TeachersDashboard/ExamRoutine"
-              element={<TeachersExamRoutine />}
-            />
-            <Route
-              path="/TeachersDashboard/RegisterStudent"
-              element={<RegisterStudent />}
-            />
-            <Route
-              path="/TeachersDashboard/publishAssignment"
-              element={<TeachersAssignment />}
-            />
-            <Route
-              path="/TeachersDashboard/SeeExtraRequestPage"
-              element={<SeeExtraRequestPage />}
-            />
-            <Route
-              path="/TeachersDashboard/ManageStudent"
-              element={<ManageStudent />}
-            />
-            <Route
-              path="/TeachersDashboard/ClassFive"
-              element={<ClassFive />}
-            />
-            <Route
-              path="/TeachersDashboard/ClassOneToTwo"
-              element={<ClassOneToTwo />}
-            />
-            <Route
-              path="/TeachersDashboard/ClassThreeAndFour"
-              element={<ClassThreeAndFour />}
-            />
-            <Route
-              path="/TeachersDashboard/ViewNotice"
-              element={<PreviousNotice />}
-            />
-            <Route
-              path="/TeachersDashboard/ViewStudentsPerformance/:id"
-              element={<ViewStudentsPerformance />}
-            />
-            <Route
-              path="/TeachersDashboard/ViewIndividualCare/:id"
-              element={<ViewIndividualCare />}
-            />
-
-            <Route path="/TeachersDashboard/BooksAdd" element={<BooksAdd />} />
-            <Route
-              path="/TeachersDashboard/ManageBooks"
-              element={<ManageBooks />}
-            />
-            <Route
-              path="/TeachersDashboard/EditBook/:id"
-              element={<EditBook />}
-            />
-          </Route>
-          {/* --------------Teacher Routes End-------------- */}
-          {/* --------------------student route start-----------------------*/}
-          <Route path="/StudentDashboard" element={<StudentDashboard />}>
-            <Route path="/StudentDashboard" element={<StudentHome />} />
-            <Route
-              path="/StudentDashboard/RequestCare"
-              element={<RequestCare />}
-            />
-            <Route
-              path="/StudentDashboard/SubmitDocuments"
-              element={<StudentMyDocuments />}
-            />
-            <Route
-              path="/StudentDashboard/StudentPay/:id"
-              element={<StudentPay />}
-            />
-            <Route path="/StudentDashboard/seeResult" element={<SeeResult />} />
-            <Route
-              path="/StudentDashboard/transcript"
-              element={<Transcript />}
-            />
-            <Route
-              path="/StudentDashboard/StudentAnalytics"
-              element={<StAnalytics />}
-            />
-            <Route
-              path="/StudentDashboard/StudentProfile"
-              element={<StudentProfile />}
-            />
-            <Route
-              path="/StudentDashboard/secondSemester"
-              element={<SecondSemester />}
-            />
-            <Route
-              path="/StudentDashboard/NoticBoard"
-              element={<NoticBoard />}
-            />
-            <Route
-              path="/StudentDashboard/MonthlyPayment"
-              element={<MonthlyPayment />}
-            />
-            <Route
-              path="/StudentDashboard/StudentPaymentSuccess"
-              element={<StudentPaymentSuccess />}
-            />
-            <Route
-              path="/StudentDashboard/LibraryBooks"
-              element={<BookView />}
-            />
-            <Route
-              path="/StudentDashboard/LentBookForm"
-              element={<LentBookForm />}
-            />
-            <Route
-              path="/StudentDashboard/concessionForm"
-              element={<ConcessionForm />}
-            />
-          </Route>
-          {/* --------------------student route end-------------------------*/}
-        </Routes>
+                      <Route
+                        path="/PrincipalDashboard/SingleData/:id"
+                        element={<SingleData />}
+                      />
+                    </Route>
+                    {/* --------------Principal Routes End--------------- */}
+                    {/* --------------Teacher Routes Start */}
+                    <Route 
+                        path="/TeachersDashboard"
+                        element={<TeachersPanel />}
+                    >
+                        <Route
+                            path="/TeachersDashboard"
+                            element={<TeachersPanelHome />}
+                        />
+                        <Route
+                            path="/TeachersDashboard/Profile"
+                            element={<TeachersProfile />}
+                        />
+                        <Route
+                            path="/TeachersDashboard/NoticePublish"
+                            element={<TeachersNoticePublish />}
+                        />
+                        <Route
+                            path="/TeachersDashboard/ClassRoutine"
+                            element={<TeachersClassRoutine />}
+                        />
+                        <Route
+                            path="/TeachersDashboard/ExamRoutine"
+                            element={<TeachersExamRoutine />}
+                        />
+                        <Route
+                            path="/TeachersDashboard/RegisterStudent"
+                            element={<RegisterStudent />}
+                        />
+                        <Route
+                            path="/TeachersDashboard/publishAssignment"
+                            element={<TeachersAssignment />}
+                        />
+                        <Route
+                            path="/TeachersDashboard/SeeExtraRequestPage"
+                            element={<SeeExtraRequestPage />}
+                        />
+                         <Route
+                            path="/TeachersDashboard/ManageStudent"
+                            element={<ManageStudent />}
+                        />
+                                                <Route
+                            path="/TeachersDashboard/ClassFive"
+                            element={<ClassFive />}
+                        />
+                        <Route
+                            path="/TeachersDashboard/ClassOneToTwo"
+                            element={<ClassOneToTwo />}
+                        />
+                        <Route
+                            path="/TeachersDashboard/ClassThreeAndFour"
+                            element={<ClassThreeAndFour />}
+                        />
+                        <Route
+                        path="/TeachersDashboard/ViewNotice"
+                        element={<PreviousNotice />}
+                        />
+                        <Route
+                            path="/TeachersDashboard/ViewStudentsPerformance/:id"
+                            element={<ViewStudentsPerformance />}
+                        />
+                        <Route
+                            path="/TeachersDashboard/ViewIndividualCare/:id"
+                            element={<ViewIndividualCare />}
+                        />
+                        <Route
+                        path="/TeachersDashboard/videoSubmission"
+                        element={<VideoSubmission />}
+                      />
+                    </Route>
+                    {/* --------------Teacher Routes End-------------- */}
+                    {/* --------------------student route start-----------------------*/}
+                    <Route path="/StudentDashboard" element={<StudentDashboard />}>
+                        <Route path="/StudentDashboard" element={<StudentHome />} />
+                        <Route
+                        path="/StudentDashboard/RequestCare"
+                        element={<RequestCare />}
+                        />
+                        <Route
+                        path="/StudentDashboard/SubmitDocuments"
+                        element={<StudentMyDocuments />}
+                        />
+                        <Route
+                        path="/StudentDashboard/StudentPay/:id"
+                        element={<StudentPay />}
+                        />
+                        <Route path="/StudentDashboard/seeResult" element={<SeeResult />} />
+                        <Route
+                        path="/StudentDashboard/transcript"
+                        element={<Transcript />}
+                        />
+                        <Route
+                        path="/StudentDashboard/StudentAnalytics"
+                        element={<StAnalytics />}
+                        />
+                       <Route
+                        path="/StudentDashboard/StudentProfile"
+                        element={<StudentProfile />}
+                        />
+                      <Route
+                        path="/StudentDashboard/secondSemester"
+                        element={<SecondSemester />}
+                         />
+                         <Route
+                        path="/StudentDashboard/NoticBoard"
+                        element={<NoticBoard />}
+                         />
+                         <Route
+                        path="/StudentDashboard/MonthlyPayment"
+                        element={<MonthlyPayment />}
+                         />
+                         <Route
+                        path="/StudentDashboard/StudentPaymentSuccess"
+                        element={<StudentPaymentSuccess />}
+                         /> 
+                         <Route
+                        path="/StudentDashboard/NotificationPage"
+                        element={<NotificationPage />}
+                         />      
+                        
+                        <Route
+                        path="/StudentDashboard/concessionForm"
+                        element={<ConcessionForm />}
+                      />
+                         <Route
+                        path="/StudentDashboard/videos"
+                        element={<VideosFromTeacher />}
+                      />
+                      <Route
+                        path="/StudentDashboard/watchVideo/:id"
+                        element={<WatchVideo />}
+                      />
+                    </Route>
+            {/* -----------students library route-------------- */}
+                    <Route
+                        path="/LibraryBooks"
+                        element={<BookView />}
+                    />
+                    <Route
+                        path="/YourLentedBookList"
+                        element={<YourLentedBookList />}
+                    />
+                    <Route
+                        path="/LentBookForm/:id"
+                        element={<LentBookForm />}
+                    />
+                    <Route
+                        path="/CategoryPage"
+                        element={<CategoryPage />}
+                    />
+        {/* -----------students library route end-------------- */}  
+                    {/* --------------------student route end-------------------------*/}
+        {/* ---------------Librarian route start------------- */}
+                <Route
+                        path="/LibrarianDashboard"
+                        element={<LibrarianDashboard />}
+                    >
+                        <Route
+                            path="/LibrarianDashboard"
+                            element={<LibrarianDashboardHome />}
+                        />
+                                                <Route
+                        path="/LibrarianDashboard/BooksAdd"
+                        element={<BooksAdd />}
+                        />
+                        <Route
+                        path="/LibrarianDashboard/ManageBooks"
+                        element={<ManageBooks />}
+                        />
+                        <Route
+                        path="/LibrarianDashboard/EditBook/:id"
+                        element={<EditBook />}
+                        />
+                        <Route
+                        path="/LibrarianDashboard/CheckLendBookList"
+                        element={<CheckLendBookList />}
+                        />
+                        <Route
+                        path="/LibrarianDashboard/BookAnalytics"
+                        element={<BookAnalytics />}
+                        />
+                </Route>
+        {/* ---------------Librarian route end------------- */}
+            </Routes>
       </BrowserRouter>
     </div>
   );
