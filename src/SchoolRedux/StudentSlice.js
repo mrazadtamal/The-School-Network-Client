@@ -391,6 +391,9 @@ export const StudentReducer = createSlice({
     builder.addCase(studentAttendanceCollections.fulfilled, (state, action) => {
       state.attendance = action.payload;
     });
+     builder.addCase(studentConcessionForm.fulfilled, (state, action) => {
+      Swal.fire("Success", "Concession Form Submitted Successfully", "success");
+    });
   },
 });
 
