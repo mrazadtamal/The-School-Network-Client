@@ -36,7 +36,7 @@ const RegisterTeacher = () => {
      
       const teacherdata = {email, teachername, role, teacherclass, teachersection, teachernid, teacherphone, teacheraddress}
 
-        fetch('http://localhost:5000/addUser', {
+        fetch('https://blooming-citadel-14218.herokuapp.com/addUser', {
             method: 'POST',
             headers: {
                 'content-type':'application/json'

@@ -1,53 +1,22 @@
-import React from "react";
+import React, { useState } from "react";
 import { useForm } from "react-hook-form";
-// import useFirebase from "../Authentication/Authentication";
-import Swal from "sweetalert2";
+
+import { useDispatch } from "react-redux";
+import { studentConcessionForm } from "../../../SchoolRedux/StudentSlice";
+import useFirebase from "../../Shared/Authentication/Authentication";
 
 const ConcessionForm = () => {
-  //   const { RegisterUser, setUser } = useFirebase();
-  //   const {
-  //     register,
-  //     handleSubmit,
-  //     watch,
-  //     reset,
-  //     formState: { errors },
-  //   } = useForm();
-  //   const onSubmit = (data) => {
-  //     const studentdata = { ...data, role: "Student" };
+  const { register, handleSubmit } = useForm();
+  const { user } = useFirebase();
+  const dispatch = useDispatch();
 
-  //     RegisterUser(data.email, data.password)
-  //       .then((userCredential) => {
-  //         // Signed in
-  //         const user = userCredential.user;
-  //         setUser(user);
+  const onSubmit = (data, e) => {
+    e.preventDefault();
+    const newData = { ...data, email: user.email };
+    console.log(newData);
+    dispatch(studentConcessionForm(newData));
+  };
 
-  //         SaveStudent(studentdata);
-
-  //         reset();
-  //       })
-  //       .catch((error) => {
-  //         console.log("from register user", error.message);
-  //       });
-  //   };
-
-  //saving teacher to database
-  //   const SaveStudent = (studentdata) => {
-  //     console.log("concession form ", studentdata);
-  //     fetch("https://blooming-citadel-14218.herokuapp.com/ConcessionForm", {
-  //       method: "POST",
-  //       headers: {
-  //         "content-type": "application/json",
-  //       },
-  //       body: JSON.stringify(studentdata),
-  //     })
-  //       .then((res) => res.json())
-  //       .then((data) => {
-  //         console.log("data", data);
-  //         if (data) {
-  //           Swal.fire("Success", "Student Added Successfully", "success");
-  //         }
-  //       });
-  //   };
   return (
     <div>
       <div>
@@ -57,19 +26,22 @@ const ConcessionForm = () => {
       </div>
       <div className="px-3 mb-2">
         <form
-          //   onSubmit={handleSubmit(onSubmit)}
+          onSubmit={handleSubmit(onSubmit)}
           className="grid grid-cols-12 gap-5 "
         >
           {/*--------- Class ---------*/}
           <div className="col-span-4">
-            <label htmlFor="class" className="block font-bold">
+            <label
+              htmlFor="class"
+              className="block font-bold after:content-['*']  after:ml-1  after:text-red-700 text-[#1151FF]"
+            >
               Class
             </label>
             <select
               className="border border-gray-700 rounded p-1 w-full"
               id="class"
               name="studentclass"
-              //   {...register("class", { required: "true" })}
+              {...register("class", { required: "true" })}
             >
               <option value="class-one">Class One</option>
               <option value="class-two">Class Two</option>
@@ -81,22 +53,29 @@ const ConcessionForm = () => {
 
           {/*--------- Section ---------*/}
           <div className="col-span-4">
-            <label htmlFor="section" className="block font-bold">
+            <label
+              htmlFor="section"
+              className="block font-bold after:content-['*']  after:ml-1  after:text-red-700 text-[#1151FF]"
+            >
               Section
             </label>
             <select
               className="border border-gray-700 rounded p-1 w-full"
               id="section"
               name="studentsection"
-              //   {...register("section", { required: true })}
+              {...register("section", { required: true })}
             >
               <option value="section-a">Section-A</option>
               <option value="section-b">Section-B</option>
             </select>
           </div>
+
           {/*--------- Roll ---------*/}
           <div className="col-span-4">
-            <label htmlFor="roll" className="block font-bold">
+            <label
+              htmlFor="roll"
+              className="block font-bold after:content-['*']  after:ml-1  after:text-red-700 text-[#1151FF]"
+            >
               Student Roll
             </label>
             <input
@@ -104,13 +83,16 @@ const ConcessionForm = () => {
               id="roll"
               name="roll"
               className="border border-gray-700 rounded p-1 w-full"
-              //   {...register("roll", { required: true })}
+              {...register("roll", { required: true })}
             />
           </div>
 
           {/*--------- Name ---------*/}
           <div className="col-span-6">
-            <label htmlFor="name" className="block font-bold">
+            <label
+              htmlFor="name"
+              className="block font-bold after:content-['*']  after:ml-1  after:text-red-700 text-[#1151FF]"
+            >
               Student Full Name
             </label>
             <input
@@ -118,13 +100,16 @@ const ConcessionForm = () => {
               id="name"
               name="studentname"
               className="border border-gray-700 rounded p-1 w-full"
-              //   {...register("name", { required: true })}
+              {...register("name", { required: true })}
             />
           </div>
 
           {/*--------- Phone number ---------*/}
           <div className="col-span-6">
-            <label htmlFor="phone" className="block font-bold">
+            <label
+              htmlFor="phone"
+              className="block font-bold after:content-['*']  after:ml-1  after:text-red-700 text-[#1151FF]"
+            >
               Phone Number
             </label>
             <input
@@ -132,13 +117,16 @@ const ConcessionForm = () => {
               id="phone"
               name="phone"
               className="border border-gray-700 rounded p-1 w-full"
-              //   {...register("phone", { required: true })}
+              {...register("phone", { required: true })}
             />
           </div>
 
           {/*--------- Email ---------*/}
           <div className="col-span-6">
-            <label htmlFor="email" className="block font-bold">
+            <label
+              htmlFor="email"
+              className="block font-bold after:content-['*']  after:ml-1  after:text-red-700 text-[#1151FF]"
+            >
               Email Address
             </label>
             <input
@@ -146,13 +134,16 @@ const ConcessionForm = () => {
               id="email"
               name="email"
               className="border border-gray-700 rounded p-1 w-full"
-              //   {...register("email", { required: true })}
+              {...register("email", { required: true })}
             />
           </div>
 
           {/*--------- Father name ---------*/}
           <div className="col-span-6">
-            <label htmlFor="fatherName" className="block font-bold">
+            <label
+              htmlFor="fatherName"
+              className="block font-bold after:content-['*']  after:ml-1  after:text-red-700 text-[#1151FF]"
+            >
               Father Name
             </label>
             <input
@@ -160,13 +151,16 @@ const ConcessionForm = () => {
               id="fatherName"
               name="fatherName"
               className="border border-gray-700 rounded p-1 w-full"
-              //   {...register("fatherName", { required: true })}
+              {...register("fatherName", { required: true })}
             />
           </div>
 
           {/*--------- Mother name ---------*/}
           <div className="col-span-6">
-            <label htmlFor="motherName" className="block font-bold">
+            <label
+              htmlFor="motherName"
+              className="block font-bold after:content-['*']  after:ml-1  after:text-red-700 text-[#1151FF]"
+            >
               Mother Name
             </label>
             <input
@@ -174,13 +168,16 @@ const ConcessionForm = () => {
               id="motherName"
               name="motherName"
               className="border border-gray-700 rounded p-1 w-full"
-              //   {...register("motherName", { required: true })}
+              {...register("motherName", { required: true })}
             />
           </div>
 
-          {/*--------- Father name ---------*/}
+          {/*---------  Father Occupation ---------*/}
           <div className="col-span-6">
-            <label htmlFor="fatherName" className="block font-bold">
+            <label
+              htmlFor="fatherOccupation"
+              className="block font-bold after:content-['*']  after:ml-1  after:text-red-700 text-[#1151FF]"
+            >
               Father Occupation
             </label>
             <input
@@ -188,56 +185,68 @@ const ConcessionForm = () => {
               id="fatherOccupation"
               name="fatherOccupation"
               className="border border-gray-700 rounded p-1 w-full"
-              //   {...register("fatherOccupation", { required: true })}
+              {...register("fatherOccupation", { required: true })}
             />
           </div>
+
           {/*---------  Father Monthly Income---------*/}
           <div className="col-span-6">
-            <label htmlFor="motherName" className="block font-bold">
+            <label
+              htmlFor="fatherMonthlyIncome"
+              className="block font-bold after:content-['*']  after:ml-1  after:text-red-700 text-[#1151FF]"
+            >
               Father Monthly Income
             </label>
             <input
-              type="text"
-              id="motherName"
-              name="motherName"
+              type="number"
+              id="fatherMonthlyIncome"
+              name="fatherMonthlyIncome"
               className="border border-gray-700 rounded p-1 w-full"
-              //   {...register("motherName", { required: true })}
+              {...register("fatherMonthlyIncome", { required: true })}
             />
           </div>
+
           {/*---------   Father Contact No :  ---------*/}
           <div className="col-span-6">
-            <label htmlFor="motherName" className="block font-bold">
+            <label
+              htmlFor="fatherContactNo"
+              className="block font-bold after:content-['*']  after:ml-1  after:text-red-700 text-[#1151FF]"
+            >
               Father Contact No :
             </label>
             <input
-              type="text"
-              id="motherName"
-              name="motherName"
+              type="number"
+              id="fatherContactNo"
+              name="fatherContactNo"
               className="border border-gray-700 rounded p-1 w-full"
-              //   {...register("motherName", { required: true })}
+              {...register("fatherContactNo", { required: true })}
             />
           </div>
-          {/*--------- Address ---------*/}
+
+          {/*---------  Details ---------*/}
           <div className="col-span-12">
-            <label htmlFor="address" className="block font-bold">
+            <label
+              htmlFor="details"
+              className="block font-bold after:content-['*']  after:ml-1  after:text-red-700 text-[#1151FF]"
+            >
               Details :
             </label>
             <textarea
               type="text"
-              id="address"
-              name="address"
+              id="details"
+              name="details"
               className="border border-gray-700 rounded p-1 w-full"
-              //   {...register("address", { required: true })}
+              {...register("details", { required: true })}
             />
           </div>
+
           <div className="col-span-12">
             <div className="flex justify-center">
-              <button
+              <input
+                className="w-1/5 border-2  text-[#1151FF]     bg-green-300 hover:bg-green-400 hover:cursor-pointer rounded-md px-3 py-2"
+                value="Request"
                 type="submit"
-                className="block bg-gray-500 px-5 py-2 rounded text-white font-bold register_btn"
-              >
-                Request
-              </button>
+              />
             </div>
           </div>
         </form>

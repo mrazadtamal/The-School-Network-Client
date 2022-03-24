@@ -71,16 +71,17 @@ import CheckLendBookList from "./Pages/LibrarianDashboard/CheckLendBookList";
 import CategoryPage from "./Pages/StudentPanel/LibraryStudentSection/CategoryPage";
 import BookAnalytics from "./Pages/LibrarianDashboard/BookAnalytics";
 import NotificationPage from "./Pages/StudentPanel/NotificationPage/NotificationPage";
-import TeachersAddAttendance from "./Pages/TeachersPanel/TeachersAddAttendance/TeachersAddAttendance";
-import StudentSubmitAssignment from "./Pages/StudentPanel/StudentDashboard/StudentMyDocuments/StudentSubmitAssignment";
-import ExamRoutine from "./Pages/StudentPanel/ExamRoutine/ExamRoutine";
-import ClassRoutine from "./Pages/StudentPanel/ClassRoutine/ClassRoutine";
+import VideoSubmission from "./Pages/TeachersPanel/VideoSubmission/VideoSubmission";
+import VideosFromTeacher from "./Pages/StudentPanel/VideosFromTeacher/VideosFromTeacher";
+import WatchVideo from "./Pages/StudentPanel/WatchVideo/WatchVideo";
+import ConcessionFormP from "./Pages/PrincipalPanel/ConcessionForm/ConcessionForm";
+import SingleData from "./Pages/PrincipalPanel/ConcessionForm/SingleData";
 
 function App() {
-    return (
-        <div>
-            <BrowserRouter>
-                <Routes>
+  return (
+    <div>
+        <BrowserRouter>
+            <Routes>
                     {/* --------------All User Homepage Routes Start--------------- */}
                     <Route path="/" element={<HomePage />} />
                     <Route path="/home" element={<HomePage />} />
@@ -98,10 +99,7 @@ function App() {
                     <Route path="/games" element={<Games />} />
                     <Route path="/contact" element={<Contact />} />
                     <Route path="/ourTeacehrs" element={<OurTeachers />} />
-                    <Route
-                        path="/AdmissionSuccess"
-                        element={<AdmissionSuccess />}
-                    />
+                    <Route path="/AdmissionSuccess" element={<AdmissionSuccess />} />
                     <Route path="/AllNotices" element={<AllNoticesPage />} />
                     {/* --------------All User Homepage Routes End--------------- */}
                     {/* --------------Principal Routes Start-------------- */}
@@ -131,7 +129,7 @@ function App() {
                         />
                         <Route
                             path="/PrincipalDashboard/PrincipalManageStudent"
-                            element={<ManageStudent />}
+                            element={<ManageStudent/>}
                         />
                         <Route
                             path="/PrincipalDashboard/UploadPayment"
@@ -144,7 +142,7 @@ function App() {
                         <Route
                             path="/PrincipalDashboard/CheckPaymentStatus"
                             element={<CheckPaymentStatus />}
-                        />
+                        /> 
                         <Route
                             path="/PrincipalDashboard/ViewStudentsPerformance/:id"
                             element={<ViewStudentsPerformance />}
@@ -154,37 +152,46 @@ function App() {
                             element={<PreviousNotice />}
                         />
                         <Route
-                            path="/PrincipalDashboard/PreviousNotice"
-                            element={<PreviousNotice />}
+                        path="/PrincipalDashboard/PreviousNotice"
+                        element={<PreviousNotice />}
                         />
                         <Route
-                            path="/PrincipalDashboard/PreviousAnnouncement"
-                            element={<PreviousAnnouncement />}
+                        path="/PrincipalDashboard/PreviousAnnouncement"
+                        element={<PreviousAnnouncement />}
                         />
                         <Route
-                            path="/PrincipalDashboard/IndividualPayment"
-                            element={<IndividualPayment />}
+                        path="/PrincipalDashboard/IndividualPayment"
+                        element={<IndividualPayment />}
+                        />
+                         <Route
+                        path="/PrincipalDashboard/CheckAdmissionForm"
+                        element={<CheckAdmissionForm />}
                         />
                         <Route
-                            path="/PrincipalDashboard/CheckAdmissionForm"
-                            element={<CheckAdmissionForm />}
+                        path="/PrincipalDashboard/IndividualForms/:id"
+                        element={<IndividualForms />}
                         />
                         <Route
-                            path="/PrincipalDashboard/IndividualForms/:id"
-                            element={<IndividualForms />}
+                        path="/PrincipalDashboard/BooksAdd"
+                        element={<BooksAdd />}
                         />
                         <Route
-                            path="/PrincipalDashboard/BooksAdd"
-                            element={<BooksAdd />}
+                        path="/PrincipalDashboard/RegisterOtherStaff"
+                        element={<RegisterOtherStaff />}
                         />
-                        <Route
-                            path="/PrincipalDashboard/RegisterOtherStaff"
-                            element={<RegisterOtherStaff />}
-                        />
+                       <Route
+                        path="/PrincipalDashboard/ConcessionForm"
+                        element={<ConcessionFormP />}
+                      />
+
+                      <Route
+                        path="/PrincipalDashboard/SingleData/:id"
+                        element={<SingleData />}
+                      />
                     </Route>
                     {/* --------------Principal Routes End--------------- */}
                     {/* --------------Teacher Routes Start */}
-                    <Route
+                    <Route 
                         path="/TeachersDashboard"
                         element={<TeachersPanel />}
                     >
@@ -220,15 +227,11 @@ function App() {
                             path="/TeachersDashboard/SeeExtraRequestPage"
                             element={<SeeExtraRequestPage />}
                         />
-                        <Route
-                            path="/TeachersDashboard/AddAttendance"
-                            element={<TeachersAddAttendance />}
-                        />
-                        <Route
+                         <Route
                             path="/TeachersDashboard/ManageStudent"
                             element={<ManageStudent />}
                         />
-                        <Route
+                                                <Route
                             path="/TeachersDashboard/ClassFive"
                             element={<ClassFive />}
                         />
@@ -241,8 +244,8 @@ function App() {
                             element={<ClassThreeAndFour />}
                         />
                         <Route
-                            path="/TeachersDashboard/ViewNotice"
-                            element={<PreviousNotice />}
+                        path="/TeachersDashboard/ViewNotice"
+                        element={<PreviousNotice />}
                         />
                         <Route
                             path="/TeachersDashboard/ViewStudentsPerformance/:id"
@@ -252,81 +255,79 @@ function App() {
                             path="/TeachersDashboard/ViewIndividualCare/:id"
                             element={<ViewIndividualCare />}
                         />
+                        <Route
+                        path="/TeachersDashboard/videoSubmission"
+                        element={<VideoSubmission />}
+                      />
                     </Route>
                     {/* --------------Teacher Routes End-------------- */}
                     {/* --------------------student route start-----------------------*/}
-                    <Route
-                        path="/StudentDashboard"
-                        element={<StudentDashboard />}
-                    >
+                    <Route path="/StudentDashboard" element={<StudentDashboard />}>
+                        <Route path="/StudentDashboard" element={<StudentHome />} />
                         <Route
-                            path="/StudentDashboard"
-                            element={<StudentHome />}
+                        path="/StudentDashboard/RequestCare"
+                        element={<RequestCare />}
                         />
                         <Route
-                            path="/StudentDashboard/RequestCare"
-                            element={<RequestCare />}
+                        path="/StudentDashboard/SubmitDocuments"
+                        element={<StudentMyDocuments />}
                         />
                         <Route
-                            path="/StudentDashboard/SubmitDocuments"
-                            element={<StudentSubmitAssignment />}
+                        path="/StudentDashboard/StudentPay/:id"
+                        element={<StudentPay />}
+                        />
+                        <Route path="/StudentDashboard/seeResult" element={<SeeResult />} />
+                        <Route
+                        path="/StudentDashboard/transcript"
+                        element={<Transcript />}
                         />
                         <Route
-                            path="/StudentDashboard/StudentPay/:id"
-                            element={<StudentPay />}
+                        path="/StudentDashboard/StudentAnalytics"
+                        element={<StAnalytics />}
                         />
+                       <Route
+                        path="/StudentDashboard/StudentProfile"
+                        element={<StudentProfile />}
+                        />
+                      <Route
+                        path="/StudentDashboard/secondSemester"
+                        element={<SecondSemester />}
+                         />
+                         <Route
+                        path="/StudentDashboard/NoticBoard"
+                        element={<NoticBoard />}
+                         />
+                         <Route
+                        path="/StudentDashboard/MonthlyPayment"
+                        element={<MonthlyPayment />}
+                         />
+                         <Route
+                        path="/StudentDashboard/StudentPaymentSuccess"
+                        element={<StudentPaymentSuccess />}
+                         /> 
+                         <Route
+                        path="/StudentDashboard/NotificationPage"
+                        element={<NotificationPage />}
+                         />      
+                        
                         <Route
-                            path="/StudentDashboard/seeResult"
-                            element={<SeeResult />}
-                        />
-                        <Route
-                            path="/StudentDashboard/transcript"
-                            element={<Transcript />}
-                        />
-                        <Route
-                            path="/StudentDashboard/StudentAnalytics"
-                            element={<StAnalytics />}
-                        />
-                        <Route
-                            path="/StudentDashboard/StudentProfile"
-                            element={<StudentProfile />}
-                        />
-                        <Route
-                            path="/StudentDashboard/secondSemester"
-                            element={<SecondSemester />}
-                        />
-                        <Route
-                            path="/StudentDashboard/NoticBoard"
-                            element={<NoticBoard />}
-                        />
-                        <Route
-                            path="/StudentDashboard/MonthlyPayment"
-                            element={<MonthlyPayment />}
-                        />
-                        <Route
-                            path="/StudentDashboard/StudentPaymentSuccess"
-                            element={<StudentPaymentSuccess />}
-                        />
-                        <Route
-                            path="/StudentDashboard/NotificationPage"
-                            element={<NotificationPage />}
-                        />
-
-                        <Route
-                            path="/StudentDashboard/concessionForm"
-                            element={<ConcessionForm />}
-                        />
-                        <Route
-                            path="/StudentDashboard/classRoutine"
-                            element={<ClassRoutine />}
-                        />
-                        <Route
-                            path="/StudentDashboard/examRoutine"
-                            element={<ExamRoutine />}
-                        />
+                        path="/StudentDashboard/concessionForm"
+                        element={<ConcessionForm />}
+                      />
+                         <Route
+                        path="/StudentDashboard/videos"
+                        element={<VideosFromTeacher />}
+                      />
+                      <Route
+                        path="/StudentDashboard/watchVideo/:id"
+                        element={<WatchVideo />}
+                      />
                     </Route>
-                    {/* -----------students library route-------------- */}
-                    <Route path="/LibraryBooks" element={<BookView />} />
+            {/* -----------students library route-------------- */}
+                    <Route
+                        path="/LibraryBooks"
+                        element={<BookView />}
+                    />
                     <Route
                         path="/YourLentedBookList"
                         element={<YourLentedBookList />}
@@ -335,11 +336,14 @@ function App() {
                         path="/LentBookForm/:id"
                         element={<LentBookForm />}
                     />
-                    <Route path="/CategoryPage" element={<CategoryPage />} />
-                    {/* -----------students library route end-------------- */}
-                    {/* --------------------student route end-------------------------*/}
-                    {/* ---------------Librarian route start------------- */}
                     <Route
+                        path="/CategoryPage"
+                        element={<CategoryPage />}
+                    />
+        {/* -----------students library route end-------------- */}  
+                    {/* --------------------student route end-------------------------*/}
+        {/* ---------------Librarian route start------------- */}
+                <Route
                         path="/LibrarianDashboard"
                         element={<LibrarianDashboard />}
                     >
@@ -347,31 +351,31 @@ function App() {
                             path="/LibrarianDashboard"
                             element={<LibrarianDashboardHome />}
                         />
-                        <Route
-                            path="/LibrarianDashboard/BooksAdd"
-                            element={<BooksAdd />}
+                                                <Route
+                        path="/LibrarianDashboard/BooksAdd"
+                        element={<BooksAdd />}
                         />
                         <Route
-                            path="/LibrarianDashboard/ManageBooks"
-                            element={<ManageBooks />}
+                        path="/LibrarianDashboard/ManageBooks"
+                        element={<ManageBooks />}
                         />
                         <Route
-                            path="/LibrarianDashboard/EditBook/:id"
-                            element={<EditBook />}
+                        path="/LibrarianDashboard/EditBook/:id"
+                        element={<EditBook />}
                         />
                         <Route
-                            path="/LibrarianDashboard/CheckLendBookList"
-                            element={<CheckLendBookList />}
+                        path="/LibrarianDashboard/CheckLendBookList"
+                        element={<CheckLendBookList />}
                         />
                         <Route
-                            path="/LibrarianDashboard/BookAnalytics"
-                            element={<BookAnalytics />}
+                        path="/LibrarianDashboard/BookAnalytics"
+                        element={<BookAnalytics />}
                         />
-                    </Route>
-                    {/* ---------------Librarian route end------------- */}
-                </Routes>
-            </BrowserRouter>
-        </div>
-    );
+                </Route>
+        {/* ---------------Librarian route end------------- */}
+            </Routes>
+      </BrowserRouter>
+    </div>
+  );
 }
 export default App;
