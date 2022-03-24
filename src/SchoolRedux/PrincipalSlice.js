@@ -270,7 +270,7 @@ export const RemoveTeacher = createAsyncThunk(
 export const GetSingleData = createAsyncThunk(
   "Principal/GetSingleData",
   async (id) => {
-    const response = await fetch(`http://localhost:5000/GetSingleData/${id}`)
+    const response = await fetch(`https://blooming-citadel-14218.herokuapp.com/GetSingleData/${id}`)
       .then((res) => res.json())
       .catch((error) => {
         Swal.fire("!", "Error!", "error");
@@ -284,7 +284,7 @@ export const ConcessionFormData = createAsyncThunk(
   "Principal/ConcessionFormData",
   async (data) => {
     const response = await fetch(
-      "http://localhost:5000/ConcessionFormData"
+      "https://blooming-citadel-14218.herokuapp.com/ConcessionFormData"
     ).then((res) => res.json());
     return response;
   }

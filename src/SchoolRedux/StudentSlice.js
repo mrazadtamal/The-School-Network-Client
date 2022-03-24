@@ -268,7 +268,7 @@ export const studentConcessionForm = createAsyncThunk(
   async (data) => {
     console.log("Hitted student Concession Form");
     const response = await fetch(
-      "http://localhost:5000/student/concessionForm",
+      "https://blooming-citadel-14218.herokuapp.com/student/concessionForm",
       {
         method: "POST",
         headers: {
@@ -290,7 +290,7 @@ export const studentAttendanceCollections = createAsyncThunk(
   "Student/studentAttendanceCollections",
   async (email) => {
     const response = await fetch(
-      `http://localhost:5000/student/studentAttendanceCollections?email=${email}`
+      `https://blooming-citadel-14218.herokuapp.com/student/studentAttendanceCollections?email=${email}`
     )
       .then((res) => res.json())
       .catch((err) => console.log(err));

@@ -15,8 +15,15 @@ const ChartTwo = () => {
   const attendanceCollections = useSelector(
     (state) => state.studentStore.attendance
   );
+  const TotalDaysArr = []
+  const presentArr = []
+  const absentArr = []
+  const monthArr = []
+  const TotalDays = attendanceCollections?.map(a => TotalDaysArr.push(a?.totalClass))
+  const pDays = attendanceCollections?.map(a => presentArr.push(a?.presentDays))
 
-  console.log(attendanceCollections);
+  const aDays = attendanceCollections?.map(a => absentArr.push(a?.absentDays))
+  const m = attendanceCollections?.map(a => monthArr.push(a?.month))
 
   // const [chart, setChart] = useState({});
 
@@ -27,15 +34,15 @@ const ChartTwo = () => {
     series: [
       {
         name: "Total Days",
-        data: [44, 55, 57, 56, 61, 58, 63, 60, 66, 55],
+        data: [...TotalDaysArr],
       },
       {
         name: "Present",
-        data: [76, 85, 101, 98, 87, 105, 91, 114, 94, 70],
+        data: [...presentArr],
       },
       {
         name: "Absent",
-        data: [35, 41, 36, 26, 45, 48, 52, 53, 41, 54],
+        data: [...absentArr],
       },
     ],
     options: {
@@ -59,18 +66,7 @@ const ChartTwo = () => {
         colors: ["transparent"],
       },
       xaxis: {
-        categories: [
-          "Jun",
-          "Feb",
-          "Mar",
-          "Apr",
-          "May",
-          "Jun",
-          "Jul",
-          "Aug",
-          "Sep",
-          "Oct",
-        ],
+        categories: [...monthArr],
       },
       yaxis: {
         title: {
@@ -96,7 +92,7 @@ const ChartTwo = () => {
         series={data.series}
         type="bar"
         height={450}
-        width={500}
+        width={900}
       />
     </>
   );
