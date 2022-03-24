@@ -297,6 +297,59 @@ export const teacherVideoUpload = createAsyncThunk(
     return response;
   }
 );
+
+// Upload class routine
+export const UploadClassRoutine = createAsyncThunk(
+    "Teacher/UploadClassRoutine",
+    async (data) => {
+        const response = await fetch(
+            `http://localhost:5000/UploadClassRoutine?class=${data.classRoutineData.class}&&section=${data.classRoutineData.section}`,
+            {
+                method: "POST",
+                body: data.fd,
+            }
+        );
+        return response;
+    }
+);
+
+// Upload Exam Routine
+export const UploadExamRoutine = createAsyncThunk(
+    "Teacher/UploadExamRoutine",
+    async (data) => {
+        const response = await fetch(
+            `http://localhost:5000/UploadExamRoutine?class=${data.class}&&term=${data.term}`,
+            {
+                method: "POST",
+                body: data.fd,
+            }
+        );
+        return response;
+    }
+);
+
+// Get All Class Routines
+export const GetClassRoutine = createAsyncThunk(
+    "Teacher/GetClassRoutine",
+    async () => {
+        const response = await fetch(
+            "http://localhost:5000/GetClassRoutine"
+        ).then((res) => res.json());
+        return response;
+    }
+);
+
+// Get All Exam Routines
+export const GetExamRoutine = createAsyncThunk(
+    "Teacher/GetExamRoutine",
+    async () => {
+        const response = await fetch(
+            "http://localhost:5000/GetExamRoutine"
+        ).then((res) => res.json());
+        return response;
+    }
+);
+
 const initialState = {
     value: 0,
     extraCares: [],
@@ -304,7 +357,9 @@ const initialState = {
     IndividualCare: {},
     assignments:[],
     Books: [],
-    AllLendBook: []
+    AllLendBook: [],
+    classRoutines: [],
+    examRoutines: [],
 };
 
 export const TeacherReducer = createSlice({
@@ -381,6 +436,12 @@ export const TeacherReducer = createSlice({
     // teacher video upload
     builder.addCase(teacherVideoUpload.fulfilled, (state, action) => {
       Swal.fire("Success", "Video Uploaded Successfully", "success");
+    });
+      builder.addCase(GetClassRoutine.fulfilled, (state, action) => {
+            state.classRoutines = action.payload;
+      });
+    builder.addCase(GetExamRoutine.fulfilled, (state, action) => {
+        state.examRoutines = action.payload;
     });
     },
 });
