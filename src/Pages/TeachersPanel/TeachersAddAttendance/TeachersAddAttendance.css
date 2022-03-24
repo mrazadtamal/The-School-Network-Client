@@ -1,0 +1,77 @@
+/* .booking-table tr {
+    display: block;
+    float: left;
+} */
+.my-orders-page {
+    min-height: 500px;
+}
+.order-table {
+    border-collapse: collapse;
+    width: 100%;
+}
+.order-table th,
+td {
+    text-align: center;
+    padding: 6px;
+    border: 1px solid black;
+}
+.order-table img {
+    width: 70px;
+}
+.cancel-order-btn {
+    border: 1px solid gray;
+    border-radius: 10px;
+    padding: 5px 10px;
+    background-color: crimson;
+    color: white;
+    font-weight: 500;
+}
+
+@media only screen and (max-width: 576px) {
+    .order-table table,
+    .order-table thead,
+    .order-table tbody,
+    .order-table th,
+    .order-table td,
+    .order-table tr {
+        display: block;
+    }
+
+    /* Hide table headers (but not display: none;, for accessibility) */
+    .order-table thead tr {
+        position: absolute;
+        top: -9999px;
+        left: -9999px;
+    }
+
+    .order-table tr {
+        border: 1px solid #ccc;
+    }
+
+    .order-table td {
+        /* Behave  like a "row" */
+        border: none;
+        border-bottom: 1px solid #eee;
+        position: relative;
+        padding-left: 50%;
+        white-space: normal;
+        text-align: left;
+    }
+
+    .order-table td:before {
+        /* Now like a table header */
+        position: absolute;
+        /* Top/left values mimic padding */
+        top: 6px;
+        left: 6px;
+        width: 45%;
+        padding-right: 10px;
+        white-space: nowrap;
+        text-align: left;
+        font-weight: bold;
+    }
+
+    .order-table td:before {
+        content: attr(data-title);
+    }
+}
