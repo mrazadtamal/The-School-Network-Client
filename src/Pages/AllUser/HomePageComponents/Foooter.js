@@ -2,7 +2,7 @@ import React from "react";
 
 const MyComponent = () => {
   return (
-    <div className=" mt-20 bg-stone-800 w-full p-8 text-white">
+    <div className=" mt-20 bg-[#0C4A6E] w-full p-8 text-white">
       <div className="sm:flex mb-4">
         <div className="sm:w-1/4 ">
           <img
@@ -18,42 +18,42 @@ const MyComponent = () => {
           <div className="text-blue mb-2">COMPANY</div>
           <ul className="list-reset leading-normal">
             <li className="hover:text-blue mt-1 text-grey-darker">About Us</li>
+            <li className="hover:text-blue mt-1 text-grey-darker">Admission</li>
             <li className="hover:text-blue mt-1 text-grey-darker">
-              Achievements
+              How To apply
+            </li>
+
+            <li className="hover:text-blue mt-1 text-grey-darker">
+              Application Form
             </li>
             <li className="hover:text-blue mt-1 text-grey-darker">
-              Case Studies
-            </li>
-            <li className="hover:text-blue mt-1 text-grey-darker">Solutions</li>
-            <li className="hover:text-blue mt-1 text-grey-darker">
-              Download Brochure
+              Application procedures
             </li>
             <li className="hover:text-blue mt-1 text-grey-darker">
-              Announcements
+              Our Teachers
             </li>
-            <li className="hover:text-blue mt-1 text-grey-darker">Our Blogs</li>
           </ul>
         </div>
         <div className="sm:w-1/4 h-auto sm:mt-0 mt-8">
-          <div className="text-green-dark mb-2">USEFUL LINK</div>
+          <div className="text-green-dark mb-2">SERVICE</div>
           <ul className="list-reset leading-normal">
             <li className="hover:text-green-dark mt-1 text-grey-darker">
-              Register Institute
+              Facilities
             </li>
             <li className="hover:text-green-dark mt-1 text-grey-darker">
-              Login
+              Auditorium
             </li>
             <li className="hover:text-green-dark mt-1 text-grey-darker">
-              Sign-Up
+              Canteen
             </li>
             <li className="hover:text-green-dark mt-1 text-grey-darker">
-              Blog
+              Library
+            </li>
+            <li className="hover:text-green-dark mt-1 text-grey-darker">
+              Games
             </li>
             <li className="hover:text-green-dark mt-1 text-grey-darker">
               Become A Partner
-            </li>
-            <li className="hover:text-green-dark mt-1 text-grey-darker">
-              Refer And Earn
             </li>
           </ul>
         </div>

@@ -1,13 +1,13 @@
 import React, { useEffect } from "react";
 import { useDispatch, useSelector } from "react-redux";
-import { Link, NavLink , useNavigate} from "react-router-dom";
+import { Link, NavLink, useNavigate } from "react-router-dom";
 import { getStudentInfo } from "../../../SchoolRedux/StudentSlice";
 import useFirebase from "../../Shared/Authentication/Authentication";
 
 const StudentSidebar = () => {
   const { user, LogOutUser } = useFirebase();
   const dispatch = useDispatch();
-  const navigate = useNavigate()
+  const navigate = useNavigate();
   useEffect(() => {
     dispatch(getStudentInfo(user.email));
   }, [user.email, dispatch]);
@@ -31,7 +31,7 @@ const StudentSidebar = () => {
         <img
           src="https://res.cloudinary.com/abidazad/image/upload/v1637747947/user_xsd3a7.png"
           alt=""
-          className=" w-80"
+          className=" w-64"
         />
       )}
 
@@ -143,7 +143,6 @@ const StudentSidebar = () => {
           </p>
         </NavLink>
 
-
         {/* Notice Board */}
 
         <NavLink
@@ -172,9 +171,9 @@ const StudentSidebar = () => {
           </p>
         </NavLink>
 
-          {/*Library */}
+        {/*Library */}
 
-          <NavLink
+        <NavLink
           to="/StudentDashboard/LibraryBooks"
           style={({ isActive }) => ({
             color: isActive ? "#0bc28b" : "#545e6f",
@@ -192,7 +191,7 @@ const StudentSidebar = () => {
           }}
           className="my-5"
         >
-          <span  className=" bg-red-400 w-20 h-10 p-2 text-black hover:bg-red-500 rounded">
+          <span className=" bg-red-400 w-20 h-10 p-2 text-black hover:bg-red-500 rounded">
             Logout
           </span>
         </button>

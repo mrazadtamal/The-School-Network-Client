@@ -18,15 +18,10 @@ const ChartTwo = () => {
 
   console.log(attendanceCollections);
 
-  // const [chart, setChart] = useState({});
-
-  // const month = attendanceCollections.filter((item) => item.month);
-  // console.log("month", month);
-
   const data = {
     series: [
       {
-        name: "Total Days",
+        name: "Total Class",
         data: [44, 55, 57, 56, 61, 58, 63, 60, 66, 55],
       },
       {

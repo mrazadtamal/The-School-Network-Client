@@ -1,7 +1,5 @@
 import React, { useEffect } from "react";
 import { useDispatch, useSelector } from "react-redux";
-import { BiMessageAltCheck } from "react-icons/bi";
-import { FaArrowAltCircleRight } from "react-icons/fa";
 import { ConcessionFormData } from "../../../SchoolRedux/PrincipalSlice";
 import { useNavigate } from "react-router-dom";
 
@@ -25,7 +23,7 @@ const ConcessionForm = () => {
 
         <div className="container mt-12 text-white">
           {data?.map((item) => (
-            <div className="ml-4 mt-10 mr-4 md:ml-28 md:mr-28 bg-white pt-2 pb-2 text-black border-4 border-b-8 border-green-500">
+            <div className="ml-4 mt-6 mr-4 md:ml-28 md:mr-28 bg-white pt-2 pb-2 text-black border-4 border-b-8 border-green-500">
               <div className="ml-4 text-2xl mr-4">
                 Request For Fee Reduction By {item?.name}
                 <div className="bottom">
@@ -44,32 +42,6 @@ const ConcessionForm = () => {
             </div>
           ))}
         </div>
-
-        {/* <div className="extra_care_section mt-8">
-        {data?.map((item) => (
-          <div key={item._id} className="extra_care_div mx-auto p-4 ">
-            <h4 className="font-bold text-xl care_student_title">
-              <BiMessageAltCheck
-                className="react__button_icons care_icons"
-                size={40}
-              />{" "}
-              Concession Request by {item?.name}
-            </h4>
-            <p
-              onClick={() =>
-                navigate(`/PrincipalDashboard/SingleData/${item._id}`)
-              }
-              className="care_view_btn"
-            >
-              VIEW
-              <FaArrowAltCircleRight
-                className="react__button_icons ml-2"
-                size={25}
-              />
-            </p>
-          </div>
-        ))}
-      </div> */}
       </div>
     </>
   );
