@@ -129,10 +129,10 @@ const teachersData = useSelector((state) => state.teacherStore.teacherInfo);
           Upload Class
         </p>
       </Link>
-       <Link to="/TeachersDashboard/AddAttendance">
+       <Link to="/TeachersDashboard/TeachersAddAttendance">
         <p
             className={
-                location.pathname === "/TeachersDashboard/AddAttendance"
+                location.pathname === "/TeachersDashboard/TeachersAddAttendance"
                     ? "active_principal_link mt-4"
                     : "principal_sidebar_link   text-white mt-4"
             }

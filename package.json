@@ -17,6 +17,7 @@
         "emailjs": "^3.7.0",
         "firebase": "^9.6.6",
         "flowbite": "^1.3.4",
+        "framer-motion": "^6.2.8",
         "react": "^17.0.2",
         "react-apexcharts": "^1.3.9",
         "react-confetti": "^6.0.1",

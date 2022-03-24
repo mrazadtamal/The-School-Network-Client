@@ -6,7 +6,7 @@ export const GetExtraCareRequest = createAsyncThunk(
   "Teacher/getExtraCareRequest",
   async (teacherclass) => {
     const response = await fetch(
-      `https://blooming-citadel-14218.herokuapp.com/requestCare?teacherclass=${teacherclass}`
+      `http://localhost:5000/requestCare?teacherclass=${teacherclass}`
     ).then((res) => res.json());
     return response;
   }
@@ -17,7 +17,7 @@ export const noticePublishFromTeacher = createAsyncThunk(
   "Teacher/PublishNotice",
   async (data) => {
     const response = await fetch(
-      "https://blooming-citadel-14218.herokuapp.com/PublishNotice",
+      "http://localhost:5000/PublishNotice",
       {
         method: "POST",
         headers: {
@@ -39,7 +39,7 @@ export const getTeacherInfo = createAsyncThunk(
   "Teacher/TeacherProfile",
   async (email) => {
     const response = await fetch(
-      `https://blooming-citadel-14218.herokuapp.com/TeacherProfile?email=${email}`
+      `http://localhost:5000/TeacherProfile?email=${email}`
     ).then((res) => res.json());
     return response;
   }
@@ -51,7 +51,7 @@ export const updateTeacherDP = createAsyncThunk(
   async (data) => {
     console.log("Hitted", data);
     const response = await fetch(
-      `https://blooming-citadel-14218.herokuapp.com/UpdateTeacherDP?email=${data.email}`,
+      `http://localhost:5000/UpdateTeacherDP?email=${data.email}`,
       {
         method: "PUT",
         body: data.fd,
@@ -68,7 +68,7 @@ export const addTeacherInfo = createAsyncThunk(
   "Teacher/AddTeacherInfo",
   async (data) => {
     const response = await fetch(
-      `https://blooming-citadel-14218.herokuapp.com/AddTeacherInfo?email=${data.email}`,
+      `http://localhost:5000/AddTeacherInfo?email=${data.email}`,
       {
         method: "PUT",
         headers: {
@@ -89,7 +89,7 @@ export const PublishResult = createAsyncThunk(
   async (data) => {
     console.log("hitted result", data);
     const response = await fetch(
-      "https://blooming-citadel-14218.herokuapp.com/PublishResult",
+      "http://localhost:5000/PublishResult",
       {
         method: "POST",
         headers: {
@@ -111,7 +111,7 @@ export const GetIndividualCare = createAsyncThunk(
   "Teacher/GetIndividualCare",
   async (id) => {
     const response = await fetch(
-      `https://blooming-citadel-14218.herokuapp.com/GetIndividualCare/${id}`
+      `http://localhost:5000/GetIndividualCare/${id}`
     )
       .then((res) => res.json())
       .catch((error) => {
@@ -125,7 +125,7 @@ export const ChangeRequestHandler = createAsyncThunk(
   "Teacher/ChangeRequestHandler",
   async (data) => {
     const response = await fetch(
-      `https://blooming-citadel-14218.herokuapp.com/ChangeRequestHandler?status=${data.status}&&id=${data.id}`
+      `http://localhost:5000/ChangeRequestHandler?status=${data.status}&&id=${data.id}`
     )
       .then((res) => res.json())
       .catch((error) => {
@@ -139,7 +139,7 @@ export const assignmentPublish = createAsyncThunk(
   "Teacher/assignmentPublish",
   async (data) => {
     console.log(data);
-    const response = await fetch("https://blooming-citadel-14218.herokuapp.com/assignmentPublish", {
+    const response = await fetch("http://localhost:5000/assignmentPublish", {
       method: "POST",
       headers: {
         "content-type": "application/json",
@@ -158,7 +158,7 @@ export const GetingPreviosuAssignment = createAsyncThunk(
   "Teacher/GetingPreviosuAssignment",
   async () => {
     const response = await fetch(
-      "https://blooming-citadel-14218.herokuapp.com/GetingPreviosuAssignment"
+      "http://localhost:5000/GetingPreviosuAssignment"
     ).then((res) => res.json());
     return response;
   }
@@ -167,7 +167,7 @@ export const GetingPreviosuAssignment = createAsyncThunk(
 export const PublishImageAssing = createAsyncThunk(
   "Teacher/PublishImageAssing",
   async (fd) => {
-    const response = await fetch("https://blooming-citadel-14218.herokuapp.com/PublishImageAssing", {
+    const response = await fetch("http://localhost:5000/PublishImageAssing", {
       method: "POST",
       body: fd,
     })
@@ -183,7 +183,7 @@ export const DeleteAssignment = createAsyncThunk(
   "Teacher/DeleteAssignment",
   async (id) => {
     const response = await fetch(
-      `https://blooming-citadel-14218.herokuapp.com/DeleteAssignment/${id}`,
+      `http://localhost:5000/DeleteAssignment/${id}`,
       {
         method: "DELETE",
       }
@@ -196,7 +196,7 @@ export const DeleteAssignment = createAsyncThunk(
 // -----------------------Lirbrary thunks--------------
 //librarian adding book to library
 export const AddBooks = createAsyncThunk("Teacher/AddBooks", async (data) => {
-  const response = await fetch("https://blooming-citadel-14218.herokuapp.com/AddBook", {
+  const response = await fetch("http://localhost:5000/AddBook", {
     method: "POST",
     body: data,
   })
@@ -211,7 +211,7 @@ export const AddBooks = createAsyncThunk("Teacher/AddBooks", async (data) => {
 export const GetAllBooks = createAsyncThunk(
   "Teacher/GetAllBooks",
   async () => {
-    const response = await fetch("https://blooming-citadel-14218.herokuapp.com/GetAllBooks")
+    const response = await fetch("http://localhost:5000/GetAllBooks")
       .then((res) => res.json())
       .catch((error) => {
         Swal.fire("!", "Error!", "error");
@@ -224,7 +224,7 @@ export const GetAllBooks = createAsyncThunk(
 export const SubmitEditedBook = createAsyncThunk(
     'Teacher/SubmitEditedBook',
     async (data) => {
-      const response = await fetch(`https://blooming-citadel-14218.herokuapp.com/SubmitEditedBook/${data.id}`,{
+      const response = await fetch(`http://localhost:5000/SubmitEditedBook/${data.id}`,{
           method: 'PUT',
           headers:{
             'content-type':'application/json'
@@ -245,7 +245,7 @@ export const SubmitEditedBook = createAsyncThunk(
 //librarian deleting to library
 export const DeleteBook = createAsyncThunk("Teacher/DeleteBook",
  async (id) => {
-  const response = await fetch(`https://blooming-citadel-14218.herokuapp.com/DeleteBook/${id}`, {
+  const response = await fetch(`http://localhost:5000/DeleteBook/${id}`, {
     method: "DELETE"})
     .then((res) => res.json())
     .catch((error) => {
@@ -258,7 +258,7 @@ export const DeleteBook = createAsyncThunk("Teacher/DeleteBook",
 export const GetAllLendBooks = createAsyncThunk(
   "Teacher/GetAllLendBooks",
   async () => {
-    const response = await fetch("https://blooming-citadel-14218.herokuapp.com/GetAllLendBooks")
+    const response = await fetch("http://localhost:5000/GetAllLendBooks")
       .then((res) => res.json())
       .catch((error) => {
         Swal.fire("!", "Error!", "error");
@@ -270,7 +270,7 @@ export const GetAllLendBooks = createAsyncThunk(
 export const NotifyStudents = createAsyncThunk(
   "Teacher/NotifyStudents",
   async (data) => {
-    const response = await fetch("https://blooming-citadel-14218.herokuapp.com/NotifyStudents",{
+    const response = await fetch("http://localhost:5000/NotifyStudents",{
       method: 'POST',
       headers:{'content-type':'application/json'},
       body: JSON.stringify(data)
@@ -287,7 +287,7 @@ export const teacherVideoUpload = createAsyncThunk(
   "Teacher/TeacherVideoUpload",
   async (data) => {
     console.log("data from teacher", data);
-    const response = await fetch("https://blooming-citadel-14218.herokuapp.com/videoUpload", {
+    const response = await fetch("http://localhost:5000/videoUpload", {
       method: "POST",
       // headers: { "content-type": "application/json" },
       body: data,
@@ -349,7 +349,49 @@ export const GetExamRoutine = createAsyncThunk(
         return response;
     }
 );
-
+// Add Individual Attendance Data in Database
+export const AddAttendanceData = createAsyncThunk(
+  "Teacher/AddAttendanceData",
+  async (data) => {
+      const response = await fetch(
+          "http://localhost:5000/AddAttendanceData",
+          {
+              method: "PUT",
+              headers: {
+                  "content-type": "application/json",
+              },
+              body: JSON.stringify(data),
+          }
+      );
+      return response;
+  }
+);
+// Delete A Class Routine
+export const DeleteClassRoutine = createAsyncThunk(
+  "Teacher/DeleteClassRoutine",
+  async (data) => {
+      const response = await fetch(
+          `http://localhost:5000/DeleteClassRoutine?id=${data}`,
+          {
+              method: "DELETE",
+          }
+      );
+      return response;
+  }
+);
+// Delete A Exam Routine
+export const DeleteExamRoutine = createAsyncThunk(
+  "Teacher/DeleteExamRoutine",
+  async (id) => {
+      const response = await fetch(
+          `http://localhost:5000/DeleteExamRoutine?id=${id}`,
+          {
+              method: "DELETE",
+          }
+      );
+      return response;
+  }
+);
 const initialState = {
     value: 0,
     extraCares: [],
@@ -443,7 +485,16 @@ export const TeacherReducer = createSlice({
     builder.addCase(GetExamRoutine.fulfilled, (state, action) => {
         state.examRoutines = action.payload;
     });
-    },
+    builder.addCase(AddAttendanceData.fulfilled, (state, action) => {
+      Swal.fire("Success", "Attendance Added Successfully", "success");
+    });
+    builder.addCase(DeleteClassRoutine.fulfilled, (state, action) => {
+      Swal.fire("Success", "Class Routine Deleted Successfully", "success");
+    });
+    builder.addCase(DeleteExamRoutine.fulfilled, (state, action) => {
+      Swal.fire("Success", "Exam Routine Deleted Successfully", "success");
+    });
+    }, 
 });
 
 // Action creators are generated for each case reducer function

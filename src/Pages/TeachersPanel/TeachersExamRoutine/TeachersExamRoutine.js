@@ -89,7 +89,7 @@ const TeachersExamRoutine = () => {
                     />
                 </form>
             </div>
-            <div className="my-20 px-6 md:px-10 lg:px-16">
+            {/* <div className="my-20 px-6 md:px-10 lg:px-16">
                 <div>
                     <h1 className="text-4xl font-bold text-blue-900">
                         View Previous Routines
@@ -137,7 +137,7 @@ const TeachersExamRoutine = () => {
                         </div>
                     ))}
                 </div>
-            </div>
+            </div> */}
         </div>
     );
 };

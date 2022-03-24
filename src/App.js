@@ -76,6 +76,9 @@ import VideosFromTeacher from "./Pages/StudentPanel/VideosFromTeacher/VideosFrom
 import WatchVideo from "./Pages/StudentPanel/WatchVideo/WatchVideo";
 import ConcessionFormP from "./Pages/PrincipalPanel/ConcessionForm/ConcessionForm";
 import SingleData from "./Pages/PrincipalPanel/ConcessionForm/SingleData";
+import ClassRoutine from "./Pages/StudentPanel/ClassRoutine/ClassRoutine";
+import ExamRoutine from "./Pages/StudentPanel/ExamRoutine/ExamRoutine";
+import TeachersAddAttendance from "./Pages/TeachersPanel/TeachersAddAttendance/TeachersAddAttendance";
 
 function App() {
   return (
@@ -231,7 +234,7 @@ function App() {
                             path="/TeachersDashboard/ManageStudent"
                             element={<ManageStudent />}
                         />
-                                                <Route
+                        <Route
                             path="/TeachersDashboard/ClassFive"
                             element={<ClassFive />}
                         />
@@ -258,6 +261,10 @@ function App() {
                         <Route
                         path="/TeachersDashboard/videoSubmission"
                         element={<VideoSubmission />}
+                      />
+                      <Route
+                        path="/TeachersDashboard/TeachersAddAttendance"
+                        element={<TeachersAddAttendance />}
                       />
                     </Route>
                     {/* --------------Teacher Routes End-------------- */}
@@ -322,6 +329,14 @@ function App() {
                         path="/StudentDashboard/watchVideo/:id"
                         element={<WatchVideo />}
                       />
+                      <Route
+                        path="/StudentDashboard/ClassRoutine"
+                        element={<ClassRoutine />}
+                      />
+                       <Route
+                        path="/StudentDashboard/ExamRoutine"
+                        element={<ExamRoutine />}
+                      />
                     </Route>
             {/* -----------students library route-------------- */}
                     <Route
@@ -351,7 +366,7 @@ function App() {
                             path="/LibrarianDashboard"
                             element={<LibrarianDashboardHome />}
                         />
-                                                <Route
+                        <Route
                         path="/LibrarianDashboard/BooksAdd"
                         element={<BooksAdd />}
                         />

@@ -9,7 +9,7 @@ const EditBook = () => {
     const [bookData, setBookData] = useState({})
 
     useEffect(() => {
-       fetch(`https://blooming-citadel-14218.herokuapp.com/GetEditBook/${id}`)
+       fetch(`http://localhost:5000/GetEditBook/${id}`)
        .then(res=> res.json())
        .then(data => setBookData(data))
     }, [id]);

@@ -8,7 +8,7 @@ const WatchVideo = () => {
   const [video, setVideo] = useState({});
 
   useEffect(() => {
-    fetch(`https://blooming-citadel-14218.herokuapp.com/video?id=${id}`)
+    fetch(`http://localhost:5000/video?id=${id}`)
       .then((res) => res.json())
       .then((data) => {
         console.log(data);
@@ -22,7 +22,7 @@ const WatchVideo = () => {
         {video.videoUploadPath !== undefined ? (
           <div className="w-3/5 my-auto">
             <video controls>
-              <source src={`https://blooming-citadel-14218.herokuapp.com/${video?.videoUploadPath}`} />
+              <source src={`http://localhost:5000/${video?.videoUploadPath}`} />
             </video>
           </div>
         ) : (
