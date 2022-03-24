@@ -1,22 +1,37 @@
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 import { Link } from "react-router-dom";
 import { Transition } from "@headlessui/react";
+import {  useNavigate } from "react-router-dom";
+import useFirebase from "../../Shared/Authentication/Authentication";
+import { useDispatch, useSelector } from "react-redux";
+import { getTeacherInfo } from "../../../SchoolRedux/TeacherSlice";
 
 const TeacherNavbar = () => {
+    const {user, LogOutUser} = useFirebase()
     const [isOpen, setIsOpen] = useState(false);
     const [show, setShow] = useState(false);
     const [dropdown, setDropdown] = useState(false);
-
-    const handleClick = () => {
-        setShow(!show);
-    };
+    const [show2, setShow2] = useState(false);
+    const dispatch = useDispatch()
     const handleClickAgain = () => {
         setDropdown(!dropdown);
     };
+    const navigate = useNavigate()
 
+    const ResultNavigateHandler = (route, classname) => {
+        navigate(`/TeachersDashboard/${route}`, {state: classname})
+      }
+      const ManageStudentHandler = (route, classname) => {
+        navigate(`/TeachersDashboard/${route}`, {state: classname})
+      }
+      useEffect(() => {
+        dispatch(getTeacherInfo(user.email));
+    }, [user.email, dispatch]);
+    
+    const teachersData = useSelector((state) => state.teacherStore.teacherInfo);
     return (
-        <div className="principal_navbar">
-            <nav className="  bg-stone-800">
+        <div className="teacher_navbar">
+               <nav className="  bg-stone-800">
                 <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
                     <div className="flex items-center justify-between h-16">
                         <div className="flex items-center">
@@ -29,7 +44,7 @@ const TeacherNavbar = () => {
                                     />
                                 </div>
                                 <div>
-                                    <h2>Principal Dashboard</h2>
+                                    <h2>Teacher Dashboard</h2>
                                 </div>
                             </div>
                         </div>
@@ -95,47 +110,55 @@ const TeacherNavbar = () => {
                                 ref={ref}
                                 className="px-2 pt-2 pb-3 space-y-1 sm:px-3"
                             >
+                                <p onClick={() => LogOutUser(navigate)}  className="hover:bg-gray-700 text-white block px-3 py-2 rounded-md text-base font-medium">LogOut</p>
                                 <Link
-                                    to="/PrincipalDashboard"
+                                    to="/TeachersDashboard"
                                     className="hover:bg-gray-700 text-white block px-3 py-2 rounded-md text-base font-medium"
                                 >
                                     Home
                                 </Link>
 
                                 <Link
-                                    to="/PrincipalDashboard/PrincipalPublishNotice"
+                                    to="/TeachersDashboard/Profile"
+                                    className="hover:bg-gray-700 text-white block px-3 py-2 rounded-md text-base font-medium"
+                                >
+                                    My Profile
+                                </Link>
+
+                                <Link
+                                    to="/PrincipalDashboard/NoticePublish"
                                     className="text-gray-300 hover:bg-gray-700 hover:text-white block px-3 py-2 rounded-md text-base font-medium"
                                 >
                                     Publish Notice
                                 </Link>
 
                                 <Link
-                                    to="/PrincipalDashboard/PrincipalAnnouncement"
+                                    to="/TeachersDashboard/publishAssignment"
                                     className="text-gray-300 hover:bg-gray-700 hover:text-white block px-3 py-2 rounded-md text-base font-medium"
                                 >
-                                    Announcement
+                                    Assign Assignment
                                 </Link>
 
                                 <Link
-                                    to="/PrincipalDashboard/PrincipalManageTeacher"
+                                    to="/TeachersDashboard/RegisterStudent"
                                     className="text-gray-300 hover:bg-gray-700 hover:text-white block px-3 py-2 rounded-md text-base font-medium"
                                 >
-                                    Manage Teachers
+                                    Register Student
                                 </Link>
 
-                                {/* ---------------Dropdown */}
+                            {/* ---------------Dropdown */}
 
-                                <div className="relative inline-block text-left">
+                            <div className="relative inline-block text-left">
                                     <div>
                                         <button
-                                            onClick={handleClick}
+                                            onClick={() => setShow(!show)}
                                             type="button"
                                             className="inline-flex justify-center w-full rounded-md  border-gray-300 shadow-sm px-4 py-2  text-sm font-medium text-gray-300 hover:text-white focus:outline-none    "
                                             id="menu-button"
                                             aria-expanded="true"
                                             aria-haspopup="true"
                                         >
-                                            Add Result
+                                            Manage Students
                                             <svg
                                                 className="-mr-1 ml-2 h-5 w-5"
                                                 xmlns="http://www.w3.org/2000/svg"
@@ -160,61 +183,71 @@ const TeacherNavbar = () => {
                                             aaria-labelledby="menu-button"
                                         >
                                             <div className="py-1" role="none">
-                                                <a
-                                                    href="/PrincipalDashboard/ResultAdd"
+                                                {teachersData.teacherclass === 'class-one' && <a 
+                                                    onClick={() => ManageStudentHandler('PrincipalManageStudent', 'class-one')} 
                                                     className="text-gray-700 block px-4 py-2 text-sm"
                                                     role="menuitem"
                                                     id="menu-item-0"
                                                 >
                                                     Class One
-                                                </a>
-                                                <a
-                                                    href="/PrincipalDashboard/ResultAdd"
+                                                </a>}
+
+                                                {teachersData.teacherclass === 'class-two' && <a 
+                                                    onClick={() => ManageStudentHandler('PrincipalManageStudent', 'class-one')} 
                                                     className="text-gray-700 block px-4 py-2 text-sm"
                                                     role="menuitem"
                                                     id="menu-item-0"
                                                 >
                                                     Class Two
-                                                </a>
-                                                <a
-                                                    href="/PrincipalDashboard/ResultAdd"
+                                                </a>}
+
+                                                {teachersData.teacherclass === 'class-three' && <a 
+                                                    onClick={() => ManageStudentHandler('PrincipalManageStudent', 'class-one')} 
                                                     className="text-gray-700 block px-4 py-2 text-sm"
                                                     role="menuitem"
                                                     id="menu-item-0"
                                                 >
                                                     Class Three
-                                                </a>
+                                                </a>}
+
+                                                {teachersData.teacherclass === 'class-four' && <a 
+                                                    onClick={() => ManageStudentHandler('PrincipalManageStudent', 'class-one')} 
+                                                    className="text-gray-700 block px-4 py-2 text-sm"
+                                                    role="menuitem"
+                                                    id="menu-item-0"
+                                                >
+                                                    Class four
+                                                </a>}
+
+                                                {teachersData.teacherclass === 'class-five' && <a 
+                                                    onClick={() => ManageStudentHandler('PrincipalManageStudent', 'class-one')} 
+                                                    className="text-gray-700 block px-4 py-2 text-sm"
+                                                    role="menuitem"
+                                                    id="menu-item-0"
+                                                >
+                                                    Class Five
+                                                </a>}
                                             </div>
                                         </div>
                                     )}
-                                </div>
+                            </div>
 
-                                {/* -------- Dropdown end------------ */}
+                            {/* -------- Dropdown end------------ */}
 
                                 <Link
-                                    to="/PrincipalDashboard/PrincipalManageStudent"
+                                    to="/TeachersDashboard/SeeExtraRequestPage"
                                     className="text-gray-300 hover:bg-gray-700 hover:text-white block px-3 py-2 rounded-md text-base font-medium"
                                 >
-                                    Mange Student
+                                    View ExtraCare Request
                                 </Link>
+
                                 <Link
-                                    to="/PrincipalDashboard/RegisterStudent"
-                                    className="text-gray-300 hover:bg-gray-700 hover:text-white block px-3 py-2 rounded-md text-base font-medium"
+                                to="/TeachersDashboard/ViewNotice"
+                                className="text-gray-300 hover:bg-gray-700 hover:text-white block px-3 py-2 rounded-md text-base font-medium"
                                 >
-                                    Register Student
+                                   View Notice
                                 </Link>
-                                <Link
-                                    to="/PrincipalDashboard/UploadPayment"
-                                    className="text-gray-300 hover:bg-gray-700 hover:text-white block px-3 py-2 rounded-md text-base font-medium"
-                                >
-                                    Upload Monthly Payment
-                                </Link>
-                                <Link
-                                    to="/PrincipalDashboard/CheckPaymentStatus"
-                                    className="text-gray-300 hover:bg-gray-700 hover:text-white block px-3 py-2 rounded-md text-base font-medium"
-                                >
-                                    Check Payment Status
-                                </Link>
+
                             </div>
                         </div>
                     )}

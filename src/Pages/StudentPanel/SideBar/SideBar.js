@@ -1,19 +1,9 @@
 import { NavLink, useNavigate } from "react-router-dom";
-import {
-  FaBars,
-  FaHome,
-  FaLock,
-  FaMoneyBill,
-  FaUser,
-  FaWpforms,
-} from "react-icons/fa";
+import { FaBars, FaHome, FaUser, FaWpforms } from "react-icons/fa";
 import { MdMessage, MdPayments } from "react-icons/md";
 import { BiAnalyse } from "react-icons/bi";
 
-import {
-  AiTwotoneFileExclamation,
-  AiOutlineNotification,
-} from "react-icons/ai";
+import { AiOutlineNotification } from "react-icons/ai";
 import { BsBook } from "react-icons/bs";
 import { FcDocument } from "react-icons/fc";
 import { CgTranscript } from "react-icons/cg";
@@ -81,6 +71,11 @@ const routes = [
   {
     path: "/StudentDashboard/LibraryBooks",
     name: "Library",
+    icon: <BsBook />,
+  },
+  {
+    path: "/StudentDashboard/videos",
+    name: "My Videos",
     icon: <BsBook />,
   },
   // ----------------------
@@ -179,9 +174,9 @@ const SideBar = ({ children }) => {
                     to={route.path}
                     key={index}
                     className="st-link"
-                    activeClassName="-st-active"
+                    activeClassName="st-active"
                   >
-                    <div className="icon">{route.icon}</div>
+                    <div className="">{route.icon}</div>
                     <AnimatePresence>
                       {isOpen && (
                         <motion.div

@@ -51,7 +51,7 @@ const SidebarMenu = ({ route, showAnimation, isOpen, setIsOpen }) => {
     <>
       <div className="st-menu" onClick={toggleMenu}>
         <div className="st-menu_item">
-          <div className="st-icon">{route.icon}</div>
+          <div className="">{route.icon}</div>
           <AnimatePresence>
             {isOpen && (
               <motion.div
@@ -59,7 +59,7 @@ const SidebarMenu = ({ route, showAnimation, isOpen, setIsOpen }) => {
                 initial="hidden"
                 animate="show"
                 exit="hidden"
-                className="link_text"
+                className="st-link_text"
               >
                 {route.name}
               </motion.div>
@@ -91,8 +91,8 @@ const SidebarMenu = ({ route, showAnimation, isOpen, setIsOpen }) => {
           >
             {route.subRoutes.map((subRoute, i) => (
               <motion.div variants={menuItemAnimation} key={i} custom={i}>
-                <NavLink to={subRoute.path} className="link">
-                  <div className="icon">{subRoute.icon}</div>
+                <NavLink to={subRoute.path} className="st-link">
+                  <div className="">{subRoute.icon}</div>
                   <motion.div className="st-link_text">
                     {subRoute.name}
                   </motion.div>

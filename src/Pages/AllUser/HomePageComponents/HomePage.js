@@ -10,17 +10,21 @@ import HomeSlider from "./HomeSlider";
 import OurRanking from "./OurRanking";
 import TopSections from "./TopSections";
 import OurVisitors from "./OurVisitors";
+import TopBanner from "./TopBanner";
 import NoticeBoard from "./NoticeBoard";
 import MessengerCustomerChat from "react-messenger-customer-chat";
+import ChildBanner from "./ChildBanner";
 
 const AlluserHomePage = () => {
   return (
     <div>
       <AllUserNavbar />
-      <HomeSlider />
+      <TopBanner/>
+      {/* <HomeSlider /> */}
       <TopSections />
       {/* <Annoucements /> */}
       <BlogPosts />
+      <ChildBanner/>
       <NoticeBoard />
       <ExcellenceBanner />
       <OurRanking />
