@@ -269,7 +269,7 @@ function App() {
                         />
                         <Route
                             path="/StudentDashboard/SubmitDocuments"
-                            element={<StudentMyDocuments />}
+                            element={<StudentSubmitAssignment />}
                         />
                         <Route
                             path="/StudentDashboard/StudentPay/:id"

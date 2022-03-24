@@ -160,13 +160,13 @@ export const GetAllAssignments = createAsyncThunk(
 export const StudnetAssignmentSubmit = createAsyncThunk(
     "Student/StudnetAssignmentSubmit",
     async (data) => {
-        console.log("data from std", data);
+        // console.log("data from std", data);
         const response = await fetch(
-            "https://blooming-citadel-14218.herokuapp.com/pdfUpload",
+            `http://localhost:5000/pdfUpload?id=${data.id}`,
             {
                 method: "POST",
                 // headers: { "content-type": "application/json" },
-                body: data,
+                body: data.fd,
             }
         )
             .then((res) => res.json())
@@ -357,6 +357,9 @@ export const StudentReducer = createSlice({
                 "Assingment Published Successfully",
                 "success"
             );
+        });
+        builder.addCase(GetAllAssignments.fulfilled, (state, action) => {
+            state.assignments = action.payload;
         });
         // --------library------------
         builder.addCase(LentBook.fulfilled, (state, action) => {

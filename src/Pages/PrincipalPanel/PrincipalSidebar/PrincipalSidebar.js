@@ -305,20 +305,20 @@ const PrincipalSidebar = () => {
                 </p>
             </Link>
 
-<<<<<<< HEAD
-            {/* <p onClick={() => setShown3(!shown3)} className="principal_sidebar_link mt-4"><span><SiSamsungpay className='principal_react_icons'/>Library <IoIosArrowDown className="principal_react_icons"/></span></p>
-          {
-            shown3 && <ul className="drop_link">
-            <Link to="/PrincipalDashboard/BooksAdd"><li className="class_text">Add Books</li></Link>
-            <li className="class_text">Class Two</li>
-          </ul>
-          } */}
-=======
-          <Link to="/PrincipalDashboard/RegisterOtherStaff">
-          <p className={location.pathname === '/PrincipalDashboard/RegisterOtherStaff' ? 'active_principal_link mt-4' : 'principal_sidebar_link   text-white mt-4'}> <FaChalkboardTeacher className='principal_react_icons' /> Register Other Staff</p>
-        </Link>
-
->>>>>>> d5c2b5ed488a479c1cb665950de04e7c2399eac3
+            <Link to="/PrincipalDashboard/RegisterOtherStaff">
+                <p
+                    className={
+                        location.pathname ===
+                        "/PrincipalDashboard/RegisterOtherStaff"
+                            ? "active_principal_link mt-4"
+                            : "principal_sidebar_link   text-white mt-4"
+                    }
+                >
+                    {" "}
+                    <FaChalkboardTeacher className="principal_react_icons" />{" "}
+                    Register Other Staff
+                </p>
+            </Link>
         </div>
     );
 };

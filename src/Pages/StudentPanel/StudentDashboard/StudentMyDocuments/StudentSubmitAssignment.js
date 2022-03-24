@@ -4,6 +4,7 @@ import { useDispatch, useSelector } from "react-redux";
 import {
     GetAllAssignments,
     getStudentInfo,
+    StudnetAssignmentSubmit,
 } from "../../../../SchoolRedux/StudentSlice";
 import useFirebase from "./../../../Shared/Authentication/Authentication";
 
@@ -16,16 +17,24 @@ const StudentSubmitAssignment = () => {
         dispatch(getStudentInfo(user.email));
     }, [dispatch, user.email]);
     const student = useSelector((state) => state.studentStore.studentInfo);
+    // console.log(student);
 
     useEffect(() => {
         dispatch(GetAllAssignments(student.class));
     }, [dispatch, student.class]);
 
     const assignments = useSelector((state) => state.studentStore.assignments);
+    console.log(assignments);
 
     const handleAssignmentSubmitBtn = (data) => {
-        const assignmentData = { ...data, pdfData };
-        console.log(assignmentData);
+        console.log(data);
+        const fd = new FormData();
+        fd.append("pdf", pdfData);
+        fd.append("StudentEmail", student.email);
+        fd.append("studentClass", student.class);
+        fd.append("studentRoll", student.roll);
+        console.log(fd);
+        dispatch(StudnetAssignmentSubmit({ fd, id: data.assignmentID }));
     };
 
     return (
