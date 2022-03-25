@@ -54,7 +54,7 @@ const VideoSubmission = () => {
   //   console.log(formData);
 
   return (
-    <>
+    <div className="w-screen">
       <div className="flex h-screen bg-gray-200 parent-div items-center justify-center">
         <div className="grid bg-gray-800 rounded-lg shadow-xl w-11/12 md:w-9/12 lg:w-1/2">
           <div className="flex justify-center py-4">
@@ -158,7 +158,7 @@ const VideoSubmission = () => {
           {/*end of  video submission */}
         </div>
       </div>
-    </>
+    </div>
   );
 };
 
