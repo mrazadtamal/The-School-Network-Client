@@ -54,7 +54,8 @@ const IndividualPayment = () => {
                     </th>
                     </tr>
                 </thead>
-                  <tbody>
+                  {
+                    PaymentDetails.length === 0 ? <h1 className='text-center text-blue-700 my-8 font-bolt text-3xl'>Payment history is not Availabel</h1> : <tbody>
                     {
                       PaymentDetails?.map(payment => <tr>
                         <td className="px-5 py-5 border-b border-gray-400 bg-white text-sm">
@@ -103,6 +104,7 @@ const IndividualPayment = () => {
                       </tr>)
                     }
                   </tbody>
+                  }
                 </table>
               </div>
             </div>

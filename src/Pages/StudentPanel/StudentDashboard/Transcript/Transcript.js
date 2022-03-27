@@ -113,16 +113,16 @@ const Transcript = () => {
                   {Number(firstTerm?.firsttermCgpa) < 1.0
                     ? "F"
                     : Number(firstTerm?.firsttermCgpa) > 1.0 &&
-                      Number(firstTerm?.firsttermCgpa) < 2.0
+                      Number(firstTerm?.firsttermCgpa) <= 2.0
                     ? "D"
-                    : Number(firstTerm?.firsttermCgpa) >= 2 &&
-                      Number(firstTerm?.firsttermCgpa) < 3.0
+                    : Number(firstTerm?.firsttermCgpa) > 2 &&
+                      Number(firstTerm?.firsttermCgpa) <= 3.0
                     ? "C"
-                    : Number(firstTerm?.firsttermCgpa) >= 3.0 &&
-                      Number(firstTerm?.firsttermCgpa) < 3.5
+                    : Number(firstTerm?.firsttermCgpa) > 3.0 &&
+                      Number(firstTerm?.firsttermCgpa) <= 3.5
                     ? "B"
-                    : Number(firstTerm?.firsttermCgpa) >= 3.5 &&
-                      Number(firstTerm?.firsttermCgpa) < 4.0
+                    : Number(firstTerm?.firsttermCgpa) > 3.5 &&
+                      Number(firstTerm?.firsttermCgpa) <= 4.0
                     ? "A"
                     : "A+"}
                 </td>
@@ -137,16 +137,16 @@ const Transcript = () => {
                   {Number(secondTerm?.secondtermCgpa) < 1.0
                     ? "F"
                     : Number(secondTerm?.secondtermCgpa) > 1.0 &&
-                      Number(secondTerm?.secondtermCgpa) < 2.0
+                      Number(secondTerm?.secondtermCgpa)  <= 2.0
                     ? "D"
-                    : Number(secondTerm?.secondtermCgpa) >= 2 &&
-                      Number(secondTerm?.secondtermCgpa) < 3.0
+                    : Number(secondTerm?.secondtermCgpa) > 2 &&
+                      Number(secondTerm?.secondtermCgpa) <= 3.0
                     ? "C"
-                    : Number(secondTerm?.secondtermCgpa) >= 3.0 &&
-                      Number(secondTerm?.secondtermCgpa) < 3.5
+                    : Number(secondTerm?.secondtermCgpa) > 3.0 &&
+                      Number(secondTerm?.secondtermCgpa) <= 3.5
                     ? "B"
-                    : Number(secondTerm?.secondtermCgpa) >= 3.5 &&
-                      Number(secondTerm?.secondtermCgpa) < 4.0
+                    : Number(secondTerm?.secondtermCgpa) > 3.5 &&
+                      Number(secondTerm?.secondtermCgpa) <= 4.0
                     ? "A"
                     : "A+"}
                 </td>
@@ -160,16 +160,16 @@ const Transcript = () => {
                   {Number(thirdTerm?.thirdtermCgpa) < 1.0
                     ? "F"
                     : Number(thirdTerm?.thirdtermCgpa) > 1.0 &&
-                      Number(thirdTerm?.thirdtermCgpa) < 2.0
+                      Number(thirdTerm?.thirdtermCgpa) <= 2.0
                     ? "D"
-                    : Number(thirdTerm?.thirdtermCgpa) >= 2 &&
-                      Number(thirdTerm?.thirdtermCgpa) < 3.0
+                    : Number(thirdTerm?.thirdtermCgpa) > 2 &&
+                      Number(thirdTerm?.thirdtermCgpa) <= 3.0
                     ? "C"
-                    : Number(thirdTerm?.thirdtermCgpa) >= 3.0 &&
-                      Number(thirdTerm?.thirdtermCgpa) < 3.5
+                    : Number(thirdTerm?.thirdtermCgpa) > 3.0 &&
+                      Number(thirdTerm?.thirdtermCgpa) <= 3.5
                     ? "B"
-                    : Number(thirdTerm?.thirdtermCgpa) >= 3.5 &&
-                      Number(thirdTerm?.thirdtermCgpa) < 4.0
+                    : Number(thirdTerm?.thirdtermCgpa) > 3.5 &&
+                      Number(thirdTerm?.thirdtermCgpa) <= 4.0
                     ? "A"
                     : "A+"}
                 </td>
@@ -181,13 +181,13 @@ const Transcript = () => {
                 <td className="text-center">
                   {Number(avrgCgpa) < 1.0
                     ? "F"
-                    : Number(avrgCgpa) > 1.0 && Number(avrgCgpa) < 2.0
+                    : Number(avrgCgpa) > 1.0 && Number(avrgCgpa) <= 2.0
                     ? "D"
-                    : Number(avrgCgpa) >= 2 && Number(avrgCgpa) < 3.0
+                    : Number(avrgCgpa) > 2 && Number(avrgCgpa) <= 3.0
                     ? "C"
-                    : Number(avrgCgpa) >= 3.0 && Number(avrgCgpa) < 3.5
+                    : Number(avrgCgpa) > 3.0 && Number(avrgCgpa) <= 3.5
                     ? "B"
-                    : Number(avrgCgpa) >= 3.5 && Number(avrgCgpa) < 4.0
+                    : Number(avrgCgpa) > 3.5 && Number(avrgCgpa) <= 4.0
                     ? "A"
                     : "A+"}
                 </td>
@@ -198,9 +198,9 @@ const Transcript = () => {
         </div>
       </div>
       <div className="flex justify-center items-center">
-        <button className="border-2 w-60 mt-5 ml-20  text-center m-auto   border-blue-500 rounded-md font-bold text-blue-500 px-4 py-3 transition duration-300 ease-in-out hover:bg-blue-500 hover:text-white mr-6">
+        {/* <button className="border-2 w-60 mt-5 ml-20  text-center m-auto   border-blue-500 rounded-md font-bold text-blue-500 px-4 py-3 transition duration-300 ease-in-out hover:bg-blue-500 hover:text-white mr-6">
           Download Transcript
-        </button>
+        </button> */}
       </div>
     </>
   );

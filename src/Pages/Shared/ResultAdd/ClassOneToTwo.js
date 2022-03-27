@@ -216,6 +216,7 @@ const ClassOneToTwo = () => {
         
     }
 
+
     if(result.term === 'First-Term')
     {
       firsttermCgpa = parseFloat((banglaCgpa + englishCgpa + mathCgpa + gsCgpa + religionCgpa ) / 7).toFixed(2)

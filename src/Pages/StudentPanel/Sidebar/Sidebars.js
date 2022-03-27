@@ -70,7 +70,7 @@ const routes = [
     icon: <MdPayments />,
   },
   {
-    path: "/StudentDashboard/LibraryBooks",
+    path: "/LibraryBooks",
     name: "Library",
     icon: <BsBook />,
   },
@@ -79,10 +79,20 @@ const routes = [
     name: "My Videos",
     icon: <BsBook />,
   },
+  {
+    path: "/StudentDashboard/ClassRoutine",
+    name: "Class Routine",
+    icon: <AiOutlineNotification />,
+  },
+  {
+    path: "/StudentDashboard/ExamRoutine",
+    name: "Exam Routine",
+    icon: <AiOutlineNotification />,
+  },
   // ----------------------
 ];
 
-const SideBar = ({ children }) => {
+const SideBars = ({ children }) => {
   const { user, LogOutUser } = useFirebase();
   const navigate = useNavigate();
   const [isOpen, setIsOpen] = useState(false);
@@ -215,4 +225,4 @@ const SideBar = ({ children }) => {
   );
 };
 
-export default SideBar;
+export default SideBars;

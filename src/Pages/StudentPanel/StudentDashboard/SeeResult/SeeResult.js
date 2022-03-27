@@ -127,7 +127,13 @@ const SeeResult = () => {
                         {/* grade */}
                         <td class="px-5 py-5 border-b border-gray-200 bg-white text-sm">
                           <p class="text-gray-900 whitespace-no-wrap text-center">
-                            A+
+                            {filteredResult.banglatotal < 32 && 'F' }
+                            {filteredResult.banglatotal >= 33 && filteredResult.banglatotal <= 40 ? 'D' : '' }
+                            {filteredResult.banglatotal > 40 && filteredResult.banglatotal <= 50 ? 'C' : '' }
+                            {filteredResult.banglatotal > 50 && filteredResult.banglatotal <= 60 ? 'B' : '' }
+                            {filteredResult.banglatotal > 60 && filteredResult.banglatotal <= 70 ? 'A-' : '' }
+                            {filteredResult.banglatotal > 70 && filteredResult.banglatotal <= 80 ? 'A' : '' }
+                            {filteredResult.banglatotal > 80 && filteredResult.banglatotal <= 100 ? 'A+' : '' }
                           </p>
                         </td>
                       </tr>
@@ -172,7 +178,13 @@ const SeeResult = () => {
                         {/* subject grade letter*/}
                         <td class="px-5 py-5 border-b border-gray-200 bg-white text-sm">
                           <p class="text-gray-900 whitespace-no-wrap text-center">
-                            A+
+                            {filteredResult.drawtotal < 32 && 'F' }
+                            {filteredResult.drawtotal >= 33 && filteredResult.drawtotal <= 40 ? 'D' : '' }
+                            {filteredResult.drawtotal > 40 && filteredResult.drawtotal <= 50 ? 'C' : '' }
+                            {filteredResult.drawtotal > 50 && filteredResult.drawtotal <= 60 ? 'B' : '' }
+                            {filteredResult.drawtotal > 60 && filteredResult.drawtotal <= 70 ? 'A-' : '' }
+                            {filteredResult.drawtotal > 70 && filteredResult.drawtotal <= 80 ? 'A' : '' }
+                            {filteredResult.drawtotal > 80 && filteredResult.drawtotal <= 100 ? 'A+' : '' }
                           </p>
                         </td>
                       </tr>
@@ -217,7 +229,13 @@ const SeeResult = () => {
                         {/* subject grade letter */}
                         <td class="px-5 py-5 border-b border-gray-200 bg-white text-sm">
                           <p class="text-gray-900 whitespace-no-wrap text-center">
-                            A+
+                            {filteredResult.englishtotal < 32 && 'F' }
+                            {filteredResult.englishtotal >= 33 && filteredResult.englishtotal <= 40 ? 'D' : '' }
+                            {filteredResult.englishtotal > 40 && filteredResult.englishtotal <= 50 ? 'C' : '' }
+                            {filteredResult.englishtotal > 50 && filteredResult.englishtotal <= 60 ? 'B' : '' }
+                            {filteredResult.englishtotal > 60 && filteredResult.englishtotal <= 70 ? 'A-' : '' }
+                            {filteredResult.englishtotal > 70 && filteredResult.englishtotal <= 80 ? 'A' : '' }
+                            {filteredResult.englishtotal > 80 && filteredResult.englishtotal <= 100 ? 'A+' : '' }
                           </p>
                         </td>
                       </tr>
@@ -261,7 +279,13 @@ const SeeResult = () => {
                         {/* subject grade letter */}
                         <td class="px-5 py-5 border-b border-gray-200 bg-white text-sm">
                           <p class="text-gray-900 whitespace-no-wrap text-center">
-                            A+
+                            {filteredResult.gstotal < 32 && 'F' }
+                            {filteredResult.gstotal >= 33 &&filteredResult.gstotal <= 40 ? 'D' : '' }
+                            {filteredResult.gstotal > 40 && filteredResult.gstotal <= 50 ? 'C' : '' }
+                            {filteredResult.gstotal > 50 && filteredResult.gstotal <= 60 ? 'B' : '' }
+                            {filteredResult.gstotal > 60 && filteredResult.gstotal <= 70 ? 'A-' : '' }
+                            {filteredResult.gstotal > 70 && filteredResult.gstotal <= 80 ? 'A' : '' }
+                            {filteredResult.gstotal > 80 && filteredResult.gstotal <= 100 ? 'A+' : '' }
                           </p>
                         </td>
                       </tr>
@@ -305,7 +329,13 @@ const SeeResult = () => {
                         {/* subject grade letter */}
                         <td class="px-5 py-5 border-b border-gray-200 bg-white text-sm">
                           <p class="text-gray-900 whitespace-no-wrap text-center">
-                            A+
+                            {filteredResult.mathtotal < 32 && 'F' }
+                            {filteredResult.mathtotal >= 33 &&filteredResult.mathtotal <= 40 ? 'D' : '' }
+                            {filteredResult.mathtotal > 40 && filteredResult.mathtotal <= 50 ? 'C' : '' }
+                            {filteredResult.mathtotal > 50 && filteredResult.mathtotal <= 60 ? 'B' : '' }
+                            {filteredResult.mathtotal > 60 && filteredResult.mathtotal <= 70 ? 'A-' : '' }
+                            {filteredResult.mathtotal > 70 && filteredResult.mathtotal <= 80 ? 'A' : '' }
+                            {filteredResult.mathtotal > 80 && filteredResult.mathtotal <= 100 ? 'A+' : '' }
                           </p>
                         </td>
                       </tr>
@@ -349,7 +379,13 @@ const SeeResult = () => {
                         {/* subject grade letter */}
                         <td class="px-5 py-5 border-b border-gray-200 bg-white text-sm">
                           <p class="text-gray-900 whitespace-no-wrap text-center">
-                            A+
+                            {filteredResult.religiontotal < 32 && 'F' }
+                            {filteredResult.religiontotal >= 33 &&filteredResult.religiontotal <= 40 ? 'D' : '' }
+                            {filteredResult.religiontotal > 40 && filteredResult.religiontotal <= 50 ? 'C' : '' }
+                            {filteredResult.religiontotal > 50 && filteredResult.religiontotal <= 60 ? 'B' : '' }
+                            {filteredResult.religiontotal > 60 && filteredResult.religiontotal <= 70 ? 'A-' : '' }
+                            {filteredResult.religiontotal > 70 && filteredResult.religiontotal <= 80 ? 'A' : '' }
+                            {filteredResult.religiontotal > 80 && filteredResult.religiontotal <= 100 ? 'A+' : '' }
                           </p>
                         </td>
                       </tr>

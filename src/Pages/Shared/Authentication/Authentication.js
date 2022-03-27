@@ -11,21 +11,25 @@ import {
 initializationFirebase();
 
 const useFirebase = () => {
-  const [user, setUser] = useState({});
+  const [user, setUser] = useState({}); 
   const auth = getAuth();
+  const [isloading, setIsloading] = useState(true)
 
   //registering user
   const RegisterUser = (email, password) => {
+    setIsloading(true)
     return createUserWithEmailAndPassword(auth, email, password);
   };
 
   //Login user
   const LoginUser = (email, password, role) => {
+    setIsloading(true)
     return signInWithEmailAndPassword(auth, email, password);
   };
 
   //geting current user
   useEffect(() => {
+    setIsloading(true)
     onAuthStateChanged(auth, (user) => {
       if (user) {
         const uid = user.uid;
@@ -36,6 +40,7 @@ const useFirebase = () => {
         // ...
         setUser({});
       }
+      setIsloading(false)
     });
   }, [auth]);
 
@@ -57,6 +62,8 @@ const useFirebase = () => {
     RegisterUser,
     LoginUser,
     LogOutUser,
+    setIsloading,
+    isloading
   };
 };
 

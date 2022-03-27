@@ -210,7 +210,7 @@ const ViewFirstTerm = ({result}) => {
                             <p className="text-gray-900 whitespace-no-wrap"></p>
                           </td>
                           <td className="px-5 py-5 bg-white text-sm font-bold">
-                            {result.Failcount > 0? <p className="text-red-900 whitespace-no-wrap">Failed in {result.Failcount} Subject</p> : <p className="text-green-900 whitespace-no-wrap font-bold">{result.secondtermCgpa}</p>}
+                            {result.Failcount > 0? <p className="text-red-900 whitespace-no-wrap">Failed in {result.Failcount} Subject</p> : <p className="text-green-900 whitespace-no-wrap font-bold">{result.firsttermCgpa} </p>}
                           </td>
                       </tr>
                     </tbody>

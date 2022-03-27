@@ -20,14 +20,12 @@ import StudentHome from "./Pages/StudentPanel/StudentHome/StudentHome";
 import RequestCare from "./Pages/StudentPanel/RequestCare/RequestCare";
 import PrincipalManageTeacher from "./Pages/PrincipalPanel/PrincipalManageTeacher/PrincipalManageTeacher";
 import RegisterTeacher from "./Pages/PrincipalPanel/RegisterTeacher/RegisterTeacher";
-import PrincipalManageStudent from "./Pages/Shared/ManageStudent/ManageStudent";
 import UploadPayment from "./Pages/PrincipalPanel/UploadPayment/UploadPayment";
 import Canteen from "./Pages/AllUser/Facilities/Canteen";
 import Library from "./Pages/AllUser/Facilities/Library";
 import Auditoraim from "./Pages/AllUser/Facilities/Auditoraim";
 import Games from "./Pages/AllUser/Facilities/Games";
 import AboutUsPage from "./Pages/AllUser/HomePageComponents/AboutUsPage/AboutUsPage";
-import StudentMyDocuments from "./Pages/StudentPanel/StudentDashboard/StudentMyDocuments/StudentMyDocuments";
 import StudentPay from "./Pages/StudentPanel/StudentPay/StudentPay";
 import StAnalytics from "./Pages/StudentPanel/StudentDashboard/StAnalytics/StAnalytics";
 import SeeResult from "./Pages/StudentPanel/StudentDashboard/SeeResult/SeeResult";
@@ -79,6 +77,9 @@ import SingleData from "./Pages/PrincipalPanel/ConcessionForm/SingleData";
 import ClassRoutine from "./Pages/StudentPanel/ClassRoutine/ClassRoutine";
 import ExamRoutine from "./Pages/StudentPanel/ExamRoutine/ExamRoutine";
 import TeachersAddAttendance from "./Pages/TeachersPanel/TeachersAddAttendance/TeachersAddAttendance";
+import StudentSubmitAssignment from "./Pages/StudentPanel/StudentDashboard/StudentMyDocuments/StudentSubmitAssignment";
+import ViewAssignmentSubmission from "./Pages/TeachersPanel/TeachersAssignment/ViewAssignmentSubmission";
+import Privateroute from "./PrivateRoute/PrivateRoute";
 
 function App() {
   return (
@@ -108,7 +109,7 @@ function App() {
                     {/* --------------Principal Routes Start-------------- */}
                     <Route
                         path="/PrincipalDashboard"
-                        element={<PrincipalDashboard />}
+                        element={<Privateroute><PrincipalDashboard /></Privateroute>}
                     >
                         <Route
                             path="/PrincipalDashboard"
@@ -196,7 +197,7 @@ function App() {
                     {/* --------------Teacher Routes Start */}
                     <Route 
                         path="/TeachersDashboard"
-                        element={<TeachersPanel />}
+                        element={<Privateroute><TeachersPanel /></Privateroute>}
                     >
                         <Route
                             path="/TeachersDashboard"
@@ -266,10 +267,14 @@ function App() {
                         path="/TeachersDashboard/TeachersAddAttendance"
                         element={<TeachersAddAttendance />}
                       />
+                    <Route
+                        path="/TeachersDashboard/ViewSubmission/:id"
+                        element={<ViewAssignmentSubmission />}
+                      />
                     </Route>
                     {/* --------------Teacher Routes End-------------- */}
                     {/* --------------------student route start-----------------------*/}
-                    <Route path="/StudentDashboard" element={<StudentDashboard />}>
+                    <Route path="/StudentDashboard" element={<Privateroute><StudentDashboard /></Privateroute>}>
                         <Route path="/StudentDashboard" element={<StudentHome />} />
                         <Route
                         path="/StudentDashboard/RequestCare"
@@ -277,7 +282,7 @@ function App() {
                         />
                         <Route
                         path="/StudentDashboard/SubmitDocuments"
-                        element={<StudentMyDocuments />}
+                        element={<StudentSubmitAssignment />}
                         />
                         <Route
                         path="/StudentDashboard/StudentPay/:id"
@@ -341,15 +346,15 @@ function App() {
             {/* -----------students library route-------------- */}
                     <Route
                         path="/LibraryBooks"
-                        element={<BookView />}
+                        element={<Privateroute><BookView /></Privateroute>}
                     />
                     <Route
                         path="/YourLentedBookList"
-                        element={<YourLentedBookList />}
+                        element={<Privateroute><YourLentedBookList /></Privateroute>}
                     />
                     <Route
                         path="/LentBookForm/:id"
-                        element={<LentBookForm />}
+                        element={<Privateroute><LentBookForm /></Privateroute>}
                     />
                     <Route
                         path="/CategoryPage"
@@ -360,7 +365,7 @@ function App() {
         {/* ---------------Librarian route start------------- */}
                 <Route
                         path="/LibrarianDashboard"
-                        element={<LibrarianDashboard />}
+                        element={<Privateroute><LibrarianDashboard /></Privateroute>}
                     >
                         <Route
                             path="/LibrarianDashboard"

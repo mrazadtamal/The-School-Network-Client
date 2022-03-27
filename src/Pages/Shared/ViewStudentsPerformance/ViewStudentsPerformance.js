@@ -23,13 +23,15 @@ const ViewStudentsPerformance = () => {
   return (
         <>
             {
-              first?.term === 'First-Term' && <ViewFirstTerm result={first}/>
-            }
-             {
-              second?.term === 'Second-Term' && <ViewSecondTerm result={second}/>
-            }
-            {
-              third?.term === 'Third-Term' && <ViewThirdTerm result={third}/>
+              performance.length === 0 ? <h1 className='text-blue font-bold text-3xl my-8 text-center'>Result is not Publish Yet</h1> : <>{
+                first?.term === 'First-Term' && <ViewFirstTerm result={first}/>
+              }
+               {
+                second?.term === 'Second-Term' && <ViewSecondTerm result={second}/>
+              }
+              {
+                third?.term === 'Third-Term' && <ViewThirdTerm result={third}/>
+              }</>
             }
         </>
   )

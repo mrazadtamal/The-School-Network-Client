@@ -3,7 +3,7 @@ import useFirebase from '../../Shared/Authentication/Authentication';
 import Swal from 'sweetalert2'
 const RegisterTeacher = () => {
     const [regdata, setRegData] = useState({})
-    const {RegisterUser, setUser} = useFirebase();
+    const {RegisterUser, setUser, setIsloading} = useFirebase();
     
     const OnblurHandler = e => {
         const fieldname = e.target.name;
@@ -26,7 +26,7 @@ const RegisterTeacher = () => {
     }).catch((error) => {
          
         console.log('from register user', error.message)
-    });
+    }).finally(() => setIsloading(false));;
     e.preventDefault()
 
     }
@@ -36,7 +36,7 @@ const RegisterTeacher = () => {
      
       const teacherdata = {email, teachername, role, teacherclass, teachersection, teachernid, teacherphone, teacheraddress}
 
-        fetch('http://localhost:5000/addUser', {
+        fetch('https://blooming-citadel-14218.herokuapp.com/addUser', {
             method: 'POST',
             headers: {
                 'content-type':'application/json'

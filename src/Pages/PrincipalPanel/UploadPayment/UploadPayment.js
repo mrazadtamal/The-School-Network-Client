@@ -13,18 +13,18 @@ const UploadPayment = () => {
         const newdata = {...monthlyPayment};
         newdata[fieldname] = fieldvalue;
         setMonthlyPayment(newdata)
-    }
+    } 
 
     useEffect(() => {
         dispatch(GetAllStudents(monthlyPayment.class))
     },[dispatch, monthlyPayment.class]);
 
     const students = useSelector(state => state.principalStore.Allstudents)
-    console.log('students', students)
+
     const paymentarray = [];
     students.forEach(student => {
-    
-    const obj = {...student, month: monthlyPayment.month, amount: monthlyPayment.paymentamount, publishdate: dates, lastdate: monthlyPayment.lastdate};
+
+    const obj = {class: student.class, roll: student.roll, email: student.email, name: student.name, month: monthlyPayment.month, amount: monthlyPayment.paymentamount, publishdate: dates, lastdate: monthlyPayment.lastdate};
     paymentarray.push(obj)
     })
     const SubmitHandler = (e) => {

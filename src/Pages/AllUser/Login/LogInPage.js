@@ -5,7 +5,7 @@ import AllUserNavbar from "../AllUserNavbar/AllUserNavbar";
 import Foooter from "../HomePageComponents/Foooter";
 import Swal from "sweetalert2";
 const LogInPage = () => {
-  const [logindata, setLogindata] = useState({});
+  const [logindata, setLogindata, setIsloading] = useState({});
   const [role, setRole] = useState("");
   const navigate = useNavigate();
   const { LoginUser, setUser } = useFirebase();
@@ -22,7 +22,7 @@ const LogInPage = () => {
   const onSubmitHandler = (e) => {
     setLoader(true);
     fetch(
-      `http://localhost:5000/checkUser?email=${logindata.email}`)
+      `https://blooming-citadel-14218.herokuapp.com/checkUser?email=${logindata.email}`)
       .then((res) => res.json())
       .then((data) => {
         if (data.userrole === "Principal" && role === "Principal") {
@@ -54,7 +54,7 @@ const LogInPage = () => {
               console.log("from login user", error.message);
               Swal.fire("Error!", "User Password/Email is Wrong", "error");
               setLoader(false);
-            });
+            }).finally(() => setIsloading(false));
         } else if (data.userrole === "Student" && role === "Student") {
           LoginUser(logindata.email, logindata.password)
             .then((userCredential) => {
@@ -69,7 +69,7 @@ const LogInPage = () => {
               console.log("from login user", error.message);
               Swal.fire("Error!", "User Password/Email is Wrong", "error");
               setLoader(false);
-            });
+            }).finally(() => setIsloading(false));
         }
         else if (data.userrole === "Librarian" && role === "Librarian") {
           LoginUser(logindata.email, logindata.password)
@@ -85,7 +85,7 @@ const LogInPage = () => {
               console.log("from login user", error.message);
               Swal.fire("Error!", "User Password/Email is Wrong", "error");
               setLoader(false);
-            });
+            }).finally(() => setIsloading(false));
         }
          else {
           Swal.fire("Error!", "UnAuthorised User", "error");

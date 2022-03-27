@@ -12,7 +12,7 @@ const TeachersPanel = () => {
                <div className='col-span-3 lg:col-span-2  bg-black teacher_side_colam'>
                 <TeachersPanelSideBar />
                </div>
-               <div className='col-span-9 lg:col-span-10 mb-10 lg:mb-0 mx-auto pb-4 justify-content-center'>
+               <div className='col-span-9 lg:col-span-10 lg:mb-0 flex flex-col justify-center item-center'>
                    <Outlet/>
                </div>
            </div>

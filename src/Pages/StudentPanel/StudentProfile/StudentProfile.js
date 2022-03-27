@@ -72,13 +72,13 @@ const StudentProfile = () => {
               </div>
               <form onSubmit={updateDPBtnHandler}>
                 <div>
-                  <button
+                  {/* <button
                     className="block mt-3 text-white bg-green-400 hover:bg-green-700  focus:ring-blue-300 font-bold rounded-lg text-sm px-3 py-2 text-center "
                     type="button"
                     data-modal-toggle="defaultModal"
                   >
                     Update Profile Picture
-                  </button>
+                  </button> */}
 
                   <div
                     id="defaultModal"
