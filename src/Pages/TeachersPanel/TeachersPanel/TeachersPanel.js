@@ -1,8 +1,8 @@
 import React from "react";
 import { Outlet } from "react-router-dom";
 import TeachersPanelSideBar from "../TeachersPanelSideBar/TeachersPanelSideBar";
-import '../Teachers.css';
-import TeacherNavbar from '../TeacherNavbar/TeacherNavbar';
+import "../Teachers.css";
+import TeacherNavbar from "../TeacherNavbar/TeacherNavbar";
 
 const TeachersPanel = () => {
     return (
